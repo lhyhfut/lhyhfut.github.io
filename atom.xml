@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title><![CDATA[lhy的博客]]></title>
-  
+  <subtitle><![CDATA[Science technology and culture]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
   <updated>2016-01-10T04:44:29.000Z</updated>
