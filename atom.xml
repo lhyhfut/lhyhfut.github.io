@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Science technology and culture]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-21T16:20:11.000Z</updated>
+  <updated>2016-04-21T22:47:01.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2016/04/20/%E4%BD%BF%E7%94%A8githubpages-hexo-atom%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2016/04/20/使用githubpages-hexo-atom写博客/</id>
     <published>2016-04-19T23:18:14.000Z</published>
-    <updated>2016-04-21T16:20:11.000Z</updated>
+    <updated>2016-04-21T22:47:01.000Z</updated>
     <content type="html"><![CDATA[<h1 id="u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88"><a href="#u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88" class="headerlink" title="一.git(客户端)github pages 配置连接与取消"></a>一.git(客户端)github pages 配置连接与取消</h1><h2 id="1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002"><a href="#1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002" class="headerlink" title="1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。"></a>1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。</h2><h2 id="1-2-githubpages_u7684_u4F7F_u7528_u3002"><a href="#1-2-githubpages_u7684_u4F7F_u7528_u3002" class="headerlink" title="1.2.githubpages的使用。"></a>1.2.githubpages的使用。</h2><h3 id="1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09"><a href="#1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09" class="headerlink" title="1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）"></a>1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages1.png" alt=""></p>
 <p>添加相应的说明文字</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages2.png" alt=""></p>
@@ -73,10 +73,11 @@
 <p><code>language: zh-Hans</code></p>
 <p>还有许多配置(比如菜单设置)详见<a href="http://theme-next.iissnan.com/five-minutes-setup.html" target="_blank" rel="external">Next主题官网</a></p>
 <h3 id="2-3-4_u5C06_u672C_u5730_u6587_u4EF6_u90E8_u7F72_u5230_GitHub"><a href="#2-3-4_u5C06_u672C_u5730_u6587_u4EF6_u90E8_u7F72_u5230_GitHub" class="headerlink" title="2.3.4将本地文件部署到 GitHub"></a>2.3.4将本地文件部署到 GitHub</h3><p>修改 Hexo 中的_config.yml 文件,找到deploy字段,如下设置:<br>(注:冒号后面要加上一个空格，否则会报错)</p>
-<p>`deploy:</p>
-<p>  type: git</p>
-<p>  repository:<br>   <a href="https://github.com/lhyhfut/lhyhfut.github.io.git" target="_blank" rel="external">https://github.com/lhyhfut/lhyhfut.github.io.git</a></p>
-<p>  branch: master`</p>
+<p><code>deploy:</code></p>
+<p>  <code>type: git</code></p>
+<p>  <code>repository:
+   https://github.com/lhyhfut/lhyhfut.github.io.git</code></p>
+<p>  <code>branch: master</code></p>
 <p>  将其 deploy 到仓库中:</p>
 <p>  <code>npm install hexo-deployer-git --save</code></p>
 <p>  <code>hexo clean</code></p>
@@ -89,7 +90,9 @@
 <h2 id="3-2_u65B0_u5EFA_u9875_u9762"><a href="#3-2_u65B0_u5EFA_u9875_u9762" class="headerlink" title="3.2新建页面"></a>3.2新建页面</h2><p>上面新建的博文是显示在单个文章界面，这里新建的页面是作为单个页面显示的，比如下图的分类、标签、归档和关于我，你点击后都是显示为单个页面。</p>
 <p><code>hexo new page &quot;页面名称&quot;</code></p>
 <p>命令执行完后，就会发现在在 Hexo\source 目录中多了一个文件夹，里面还有一个index.md,这就代表我们新建了一个页面。</p>
-<h2 id="3-3_u5199_u535A_u6587"><a href="#3-3_u5199_u535A_u6587" class="headerlink" title="3.3写博文"></a>3.3写博文</h2><h3 id="3-3-1_atom_u7F16_u8F91_u5668_u548Cmarkdown-prew_u63D2_u4EF6_u5C31_u53EF_u4EE5_u4F7F_u7528markdow_u6765_u7F16_u8F91_u535A_u5BA2"><a href="#3-3-1_atom_u7F16_u8F91_u5668_u548Cmarkdown-prew_u63D2_u4EF6_u5C31_u53EF_u4EE5_u4F7F_u7528markdow_u6765_u7F16_u8F91_u535A_u5BA2" class="headerlink" title="3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客"></a>3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客</h3><p><a href="http://www.jianshu.com/p/1e402922ee32/" target="_blank" rel="external">Markdown——入门指南</a>中推荐了MouMarkdown 编辑器.但个人还是觉得atom编辑器和markdown-prew插件可以把写代码和写博客统一起来。并且也支持实时预览，既左边是你编辑 Markdown 语言，右边会实时的生成预览效果。在atom中使用快捷键command + shift + p，弹出包搜索框，输入markdown Preview，然后点击确定即可。</p>
+<h2 id="3-3_u5199_u535A_u6587"><a href="#3-3_u5199_u535A_u6587" class="headerlink" title="3.3写博文"></a>3.3写博文</h2><h3 id="3-3-1_atom_u7F16_u8F91_u5668_u548Cmarkdown-prew_u63D2_u4EF6_u5C31_u53EF_u4EE5_u4F7F_u7528markdow_u6765_u7F16_u8F91_u535A_u5BA2"><a href="#3-3-1_atom_u7F16_u8F91_u5668_u548Cmarkdown-prew_u63D2_u4EF6_u5C31_u53EF_u4EE5_u4F7F_u7528markdow_u6765_u7F16_u8F91_u535A_u5BA2" class="headerlink" title="3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客"></a>3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客</h3><p><a href="http://www.jianshu.com/p/1e402922ee32/" target="_blank" rel="external">Markdown——入门指南</a>中推荐了MouMarkdown 编辑器.但个人还是觉得atom编辑器和</p>
+<p>markdown-prew插件可以把写代码和写博客统一起来。并且也支持实时预览，既左边是你编辑 Markdown 语言，右边会实时的生成预览效果。在atom中</p>
+<p>使用快捷键command + shift + p，弹出包搜索框，输入markdown Preview，然后点击确定即可。</p>
 <h3 id="3-3-3_markdown_u8BED_u6CD5"><a href="#3-3-3_markdown_u8BED_u6CD5" class="headerlink" title="3.3.3 markdown语法"></a>3.3.3 markdown语法</h3><p><a href="http://www.jianshu.com/p/1e402922ee32/" target="_blank" rel="external">Markdown——入门指南</a></p>
 <p><a href="http://www.cnblogs.com/hnrainll/p/3514637.html" target="_blank" rel="external">Markdown 11种基本语法</a></p>
 <p>记住几个常用的如:标题,代码快,插入图片,插入链接</p>
