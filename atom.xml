@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Science technology and culture]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-21T15:58:55.000Z</updated>
+  <updated>2016-04-21T16:11:23.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,12 +19,11 @@
     <link href="http://yoursite.com/2016/04/20/%E4%BD%BF%E7%94%A8githubpages-hexo-atom%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2016/04/20/使用githubpages-hexo-atom写博客/</id>
     <published>2016-04-19T23:18:14.000Z</published>
-    <updated>2016-04-21T15:58:55.000Z</updated>
-    <content type="html"><![CDATA[<h1 id="u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88"><a href="#u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88" class="headerlink" title="一.git(客户端)github pages 配置连接与取消"></a>一.git(客户端)github pages 配置连接与取消</h1><h2 id="1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002"><a href="#1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002" class="headerlink" title="1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。"></a>1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。</h2><h2 id="2-githubpages_u7684_u4F7F_u7528_u3002"><a href="#2-githubpages_u7684_u4F7F_u7528_u3002" class="headerlink" title="2.githubpages的使用。"></a>2.githubpages的使用。</h2><p>###2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）<br><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages1.png" alt=""></p>
+    <updated>2016-04-21T16:11:23.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88"><a href="#u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88" class="headerlink" title="一.git(客户端)github pages 配置连接与取消"></a>一.git(客户端)github pages 配置连接与取消</h1><h2 id="1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002"><a href="#1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002" class="headerlink" title="1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。"></a>1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。</h2><h2 id="1-2-githubpages_u7684_u4F7F_u7528_u3002"><a href="#1-2-githubpages_u7684_u4F7F_u7528_u3002" class="headerlink" title="1.2.githubpages的使用。"></a>1.2.githubpages的使用。</h2><h3 id="1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09"><a href="#1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09" class="headerlink" title="1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）"></a>1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages1.png" alt=""></p>
 <p>添加相应的说明文字</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages2.png" alt=""></p>
-<p>###2.2点击上图lhyhfut.github.io仓库右上角的settings.点击launch Automatic page generator，Github将会自动替你创建出一个github-pages的页面。</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages3.png" alt=""></p>
+<h3 id="1-2-2_u70B9_u51FB_u4E0A_u56FElhyhfut-github-io_u4ED3_u5E93_u53F3_u4E0A_u89D2_u7684settings-_u70B9_u51FBlaunch_Automatic_page_generator_uFF0CGithub_u5C06_u4F1A_u81EA_u52A8_u66FF_u4F60_u521B_u5EFA_u51FA_u4E00_u4E2Agithub-pages_u7684_u9875_u9762_u3002"><a href="#1-2-2_u70B9_u51FB_u4E0A_u56FElhyhfut-github-io_u4ED3_u5E93_u53F3_u4E0A_u89D2_u7684settings-_u70B9_u51FBlaunch_Automatic_page_generator_uFF0CGithub_u5C06_u4F1A_u81EA_u52A8_u66FF_u4F60_u521B_u5EFA_u51FA_u4E00_u4E2Agithub-pages_u7684_u9875_u9762_u3002" class="headerlink" title="1.2.2点击上图lhyhfut.github.io仓库右上角的settings.点击launch Automatic page generator，Github将会自动替你创建出一个github-pages的页面。"></a>1.2.2点击上图lhyhfut.github.io仓库右上角的settings.点击launch Automatic page generator，Github将会自动替你创建出一个github-pages的页面。</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages3.png" alt=""></p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages4.png" alt=""></p>
 <p>点击右下角的按钮</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages5.png" alt=""></p>
@@ -42,7 +41,7 @@
 <p><code>npm istall //安装hexo package.json中默认的包</code></p>
 <p><code>hexo g  //hexo generate</code></p>
 <p><code>hexo s //hexo server</code></p>
-<p>这时在浏览器中输入<a href="http://localhost:4000,可以看到本地的效果" target="_blank" rel="external">http://localhost:4000,可以看到本地的效果</a></p>
+<p>这时在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ,可以看到本地的效果</p>
 <h2 id="2-2-npm_u5B89_u88C5_u63D2_u4EF6"><a href="#2-2-npm_u5B89_u88C5_u63D2_u4EF6" class="headerlink" title="2.2.npm安装插件"></a>2.2.npm安装插件</h2><p>`npm install hexo-generator-index –save   </p>
 <p>npm install hexo-generator-archive –save   </p>
 <p>npm install hexo-generator-category –save  </p>
@@ -63,8 +62,10 @@
 <h3 id="2-3-1_u590D_u5236_u4E3B_u9898_3A"><a href="#2-3-1_u590D_u5236_u4E3B_u9898_3A" class="headerlink" title="2.3.1复制主题:"></a>2.3.1复制主题:</h3><p>在终端窗口下，定位到 Hexo 站点目录下。使用 Git checkout 代码：</p>
 <p><code>cd your-hexo-site</code></p>
 <p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p>
-<h3 id="2-3-2__u542F_u7528_u4E3B_u9898"><a href="#2-3-2__u542F_u7528_u4E3B_u9898" class="headerlink" title="2.3.2 启用主题"></a>2.3.2 启用主题</h3><p>打开站点配置文件(在Hexo 站点目录下的_config.yml中)， 找到theme字段，并将其值更改为 next<br>下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 <code>hexo clean</code> 来清除 Hexo 的缓存。</p>
-<h3 id="2-3-3__u9A8C_u8BC1_u4E3B_u9898"><a href="#2-3-3__u9A8C_u8BC1_u4E3B_u9898" class="headerlink" title="2.3.3 验证主题"></a>2.3.3 验证主题</h3><p>启动 Hexo 本地站点，并开启调试模式（即加上 –debug），整个命令是 <code>hexo s --debug</code></p>
+<h3 id="2-3-2__u542F_u7528_u4E3B_u9898"><a href="#2-3-2__u542F_u7528_u4E3B_u9898" class="headerlink" title="2.3.2 启用主题"></a>2.3.2 启用主题</h3><p>打开站点配置文件(在Hexo 站点目录下的_config.yml中)， 找</p>
+<p>到theme字段，并将其值更改为 next</p>
+<p>下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 <code>hexo clean</code> 来清除 Hexo 的缓存。</p>
+<h3 id="2-3-3__u9A8C_u8BC1_u4E3B_u9898"><a href="#2-3-3__u9A8C_u8BC1_u4E3B_u9898" class="headerlink" title="2.3.3 验证主题"></a>2.3.3 验证主题</h3><p>启动 Hexo 本地站点，并开启调试模式（即加上 –debug），整<br>个命令是 <code>hexo s --debug</code></p>
 <p>在浏览器中输入<a href="http://localhost:4000,可以看到本地的效果" target="_blank" rel="external">http://localhost:4000,可以看到本地的效果</a></p>
 <h3 id="2-3-3-1_u9009_u62E9_Scheme"><a href="#2-3-3-1_u9009_u62E9_Scheme" class="headerlink" title="2.3.3.1选择 Scheme"></a>2.3.3.1选择 Scheme</h3><p>在themes\next目录中的_config.yml中</p>
 <p><code>scheme: Mist</code></p>
@@ -93,9 +94,16 @@
 <p><a href="http://www.cnblogs.com/hnrainll/p/3514637.html" target="_blank" rel="external">Markdown 11种基本语法</a></p>
 <p>记住几个常用的如:标题,代码快,插入图片,插入链接</p>
 <h3 id="3-3-4__u7528_u4E03_u725B_u56FE_u5E8A_u6765_u4FDD_u5B58_u535A_u5BA2_u4E2D_u6240_u9700_u8981_u7684_u56FE_u7247"><a href="#3-3-4__u7528_u4E03_u725B_u56FE_u5E8A_u6765_u4FDD_u5B58_u535A_u5BA2_u4E2D_u6240_u9700_u8981_u7684_u56FE_u7247" class="headerlink" title="3.3.4 用七牛图床来保存博客中所需要的图片"></a>3.3.4 用七牛图床来保存博客中所需要的图片</h3><p>把本地的图片上传到<a href="https://portal.qiniu.com/" target="_blank" rel="external">七牛云服务</a>,七牛会给你的图片生成相应的外链,在博客中插入这个图片外链就可以了</p>
-<p><a href="https://portal.qiniu.com/tutorial/index" target="_blank" rel="external">新手上路</a>中有详细的教程。总得步骤如下:</p>
+<p><a href="https://portal.qiniu.com/tutorial/index" target="_blank" rel="external">新手上路</a>中有详细的教程。总的步骤如下:</p>
 <p>新建空间——内容管理——上传文件——复制外链到博客    </p>
-<h3 id="3-3-5_u6700_u7EC8_u6548_u679C"><a href="#3-3-5_u6700_u7EC8_u6548_u679C" class="headerlink" title="3.3.5最终效果"></a>3.3.5最终效果</h3><h2 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h2><p>1.博客上只有”归档”等够使用,”关于,分类,标签”都不能打开。可能仅仅新建了博文,没有新建页面</p>
+<h3 id="3-3-5_u6700_u7EC8_u6548_u679C"><a href="#3-3-5_u6700_u7EC8_u6548_u679C" class="headerlink" title="3.3.5最终效果"></a>3.3.5最终效果</h3><p>在终端切换到你的hexo站点目录</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo d</code></p>
+<p>在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ,可以看到本地的效果</p>
+<p>在浏览器browser的URL中输入<a href="http://lhyhfut.github.io/" target="_blank" rel="external">http://lhyhfut.github.io/</a>  ,这样就可以看到githubpages的页面了。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages9.png" alt=""></p>
+<h2 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h2><p>1.博客上只有”归档”等够使用,”关于,分类,标签”都不能打开。可能仅仅新建了博文,没有新建页面</p>
 <p>2.插入外链时<a href="/"></a>这样会不起作用。直接写反倒是可以的。需要写入名字。相反,插入图片的时候不需要写入名字就可以直接显示图片。</p>
 ]]></content>
     <summary type="html">
