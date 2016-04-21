@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Science technology and culture]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-04-21T16:15:09.000Z</updated>
+  <updated>2016-04-21T16:20:11.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -19,7 +19,7 @@
     <link href="http://yoursite.com/2016/04/20/%E4%BD%BF%E7%94%A8githubpages-hexo-atom%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2016/04/20/使用githubpages-hexo-atom写博客/</id>
     <published>2016-04-19T23:18:14.000Z</published>
-    <updated>2016-04-21T16:15:09.000Z</updated>
+    <updated>2016-04-21T16:20:11.000Z</updated>
     <content type="html"><![CDATA[<h1 id="u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88"><a href="#u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88" class="headerlink" title="一.git(客户端)github pages 配置连接与取消"></a>一.git(客户端)github pages 配置连接与取消</h1><h2 id="1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002"><a href="#1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002" class="headerlink" title="1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。"></a>1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。</h2><h2 id="1-2-githubpages_u7684_u4F7F_u7528_u3002"><a href="#1-2-githubpages_u7684_u4F7F_u7528_u3002" class="headerlink" title="1.2.githubpages的使用。"></a>1.2.githubpages的使用。</h2><h3 id="1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09"><a href="#1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09" class="headerlink" title="1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）"></a>1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages1.png" alt=""></p>
 <p>添加相应的说明文字</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages2.png" alt=""></p>
@@ -103,6 +103,7 @@
 <p>在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ,可以看到本地的效果</p>
 <p>在浏览器browser的URL中输入<a href="http://lhyhfut.github.io/" target="_blank" rel="external">http://lhyhfut.github.io/</a>  ,这样就可以看到githubpages的页面了。</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages9.png" alt=""></p>
+<h2 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h2><p><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a>   </p>
 <h2 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h2><p>1.博客上只有”归档”等够使用,”关于,分类,标签”都不能打开。可能仅仅新建了博文,没有新建页面</p>
 <p>2.插入外链时<a href="/"></a>这样会不起作用。直接写反倒是可以的。需要写入名字。相反,插入图片的时候不需要写入名字就可以直接显示图片。</p>
 <p>3.hexo配置的继续折腾。</p>
