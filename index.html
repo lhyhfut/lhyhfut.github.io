@@ -189,15 +189,170 @@
 
     
     
+
+    
       
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/01/效率工具/" itemprop="url">
+                  效率工具
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-01T11:37:39+08:00" content="2016-05-01">
+              2016-05-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
       
-        
-        
-        
       
 
       
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="MACOS"><a href="#MACOS" class="headerlink" title="MACOS"></a>MACOS</h1><h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h2><h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>#Windows</p>
+<p>#linux(unbuntu)</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/05/01/终端命令/" itemprop="url">
+                  终端命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-01T11:33:52+08:00" content="2016-05-01">
+              2016-05-01
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="MACOS"><a href="#MACOS" class="headerlink" title="MACOS"></a>MACOS</h1><h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h2><h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><h2 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h2><p>#Windows</p>
+<p>#linux(unbuntu)</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
 
     
       
@@ -259,7 +414,916 @@
         
           <span itemprop="articleBody">
             
+              <h1 id="u7F18_u8D77"><a href="#u7F18_u8D77" class="headerlink" title="缘起"></a>缘起</h1><p>鉴于git,github已经成为程序员的基础技能,有必要总结一下。本文主要参考了<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a> ,该文深入浅出,很适合入门。</p>
+<h1 id="git_u7684_u5B89_u88C5_u548C_u4F7F_u7528"><a href="#git_u7684_u5B89_u88C5_u548C_u4F7F_u7528" class="headerlink" title="git的安装和使用"></a>git的安装和使用</h1><h2 id="1-_u5B89_u88C5"><a href="#1-_u5B89_u88C5" class="headerlink" title="1.安装"></a>1.安装</h2><p>MAC下采用brew安装。具体方法请参考<a href="http://brew.sh/" target="_blank" rel="external">homebrew的文档</a>。</p>
+<p><code>brew install git</code></p>
+<p>查看git软件包安装的详细路径和安装内容:</p>
+<p><code>brew list git</code></p>
+<h2 id="2-_u8BBE_u7F6E"><a href="#2-_u8BBE_u7F6E" class="headerlink" title="2.设置"></a>2.设置</h2><p>安装之后需要设置邮箱和用户名:</p>
+<p><code>git config --global user.name &quot;Your Name&quot;</code></p>
+<p><code>git config --global user.email &quot;email@example.com&quot;</code></p>
+<p>因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。</p>
+<h1 id="git_u7684_u539F_u7406"><a href="#git_u7684_u539F_u7406" class="headerlink" title="git的原理"></a>git的原理</h1><h2 id="1-_u96C6_u4E2D_u5F0FVS_u5206_u5E03_u5F0F"><a href="#1-_u96C6_u4E2D_u5F0FVS_u5206_u5E03_u5F0F" class="headerlink" title="1.集中式VS分布式"></a>1.集中式VS分布式</h2><p>集中式版本控制系统有一个“中央服务器”,用户端都是它的离线拷贝。所有提交最终都要汇总到中央服务器，并且可以影响全部离线拷贝。它必须在联网的时候才能够正常工作。</p>
+<p>分布式版本控制系统根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。所有代码库能够自由的从一个用户端分发到另一个用户端。分布式版本控制系统通常也有一台充当“中央服务器”的电脑(但其实也相当于一个用户端,不是像集中式版本控制系统那样的意义)，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家也一样干活，只是交换修改不方便而已。</p>
+<h2 id="2-_u5DE5_u4F5C_u533A_2C_u6682_u5B58_u533A_2C_u7248_u672C_u5E93"><a href="#2-_u5DE5_u4F5C_u533A_2C_u6682_u5B58_u533A_2C_u7248_u672C_u5E93" class="headerlink" title="2.工作区,暂存区,版本库"></a>2.工作区,暂存区,版本库</h2><p>在 Git 中，存在三个工作区域：</p>
+<p>工作区(working directory)</p>
+<p>暂存区(staging area)</p>
+<p>版本库(git directory)</p>
+<p>同时，文件有三种状态：</p>
+<p>已提交（committed）：该文件被安全地保存在了本地数据库</p>
+<p>已修改（modified）：修改了某个文件，但还没有保存</p>
+<p>已暂存（staged）：把已修改的文件放下下次保存的清单中</p>
+<p>下图说明了这三个区域和文件状态的差别：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github1.png" alt=""></p>
+<p>所以，在Git中，你可以暂存部分文件，甚至一个文件中的部分内容，你的本地可以将版本管理玩的非常复杂和有趣。 这也是为什么 SVN 用户最常疑问 Git 为什么每次都要TM的 git add 才能再 commit 的原因</p>
+<h1 id="git_u7684_u547D_u4EE4"><a href="#git_u7684_u547D_u4EE4" class="headerlink" title="git的命令"></a>git的命令</h1><h2 id="1-git_init"><a href="#1-git_init" class="headerlink" title="1.git init"></a>1.git init</h2><p>在本地创建版本库(仓库,repository)。</p>
+<h2 id="1-1__u5728_u4F60_u7684_u5DE5_u4F5C_u76EE_u5F55_u65B0_u5EFAlearngit_u6587_u4EF6_u5939_u3002"><a href="#1-1__u5728_u4F60_u7684_u5DE5_u4F5C_u76EE_u5F55_u65B0_u5EFAlearngit_u6587_u4EF6_u5939_u3002" class="headerlink" title="1.1 在你的工作目录新建learngit文件夹。"></a>1.1 在你的工作目录新建learngit文件夹。</h2><p><code>mdkir learngit</code></p>
+<p><code>cd learngit</code></p>
+<p><code>pwd</code>   //用于显示当前目录</p>
+<h2 id="1-2__u901A_u8FC7git_init_u547D_u4EE4_u628A_u8FD9_u4E2A_u76EE_u5F55_u53D8_u6210Git_u53EF_u4EE5_u7BA1_u7406_u7684_u4ED3_u5E93"><a href="#1-2__u901A_u8FC7git_init_u547D_u4EE4_u628A_u8FD9_u4E2A_u76EE_u5F55_u53D8_u6210Git_u53EF_u4EE5_u7BA1_u7406_u7684_u4ED3_u5E93" class="headerlink" title="1.2 通过git init命令把这个目录变成Git可以管理的仓库"></a>1.2 通过git init命令把这个目录变成Git可以管理的仓库</h2><p><code>git init</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github2.png" alt=""></p>
+<p>这样就把git仓库建立好了。并且是一个初始化了的空的repository。可以看到learngit中有个空的.git文件夹。这个目录默认是隐藏的，用<code>ls -ah</code>命令就可以看见。</p>
+<p>在learngit目录下新建readme.txt文件,内容如下:</p>
+<p><code>Git is a version control system.</code></p>
+<p><code>Git is free software.</code></p>
+<h2 id="1-3_git_add"><a href="#1-3_git_add" class="headerlink" title="1.3 git add"></a>1.3 git add</h2><p>用命令git add告诉Git，把文件添加到仓库:</p>
+<p><code>git add readme.txt</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github3.png" alt=""></p>
+<p>没有任何显示。这是对的。</p>
+<h2 id="1-4_git_commit"><a href="#1-4_git_commit" class="headerlink" title="1.4 git commit"></a>1.4 git commit</h2><p>用命令git commit告诉Git，把文件提交到仓库：</p>
+<p><code>git commit -m &#39;wrote a readme file&#39;</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github4.png" alt=""></p>
+<p>git commit命令执行成功后会告诉你，1个文件被改动（我们新添加的readme.txt文件），插入了两行内容（readme.txt有两行内容）。</p>
+<p>为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件,如</p>
+<p><code>git add file1.txt</code></p>
+<p><code>git add file2.txt file3.txt</code></p>
+<p><code>git commit -m &#39;add 3 files&#39;</code></p>
+<p>在你新建readme.txt时,它是在工作区(working directory),用git add命令是把它提交到暂存区(staging area),也就是说需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
+<p>然后用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支(master)。</p>
+<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</p>
+<h2 id="1-5_git_status"><a href="#1-5_git_status" class="headerlink" title="1.5 git status"></a>1.5 git status</h2><p>运行<code>git status</code>命令看看结果：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github5.png" alt=""></p>
+<p>说明暂存区的代码已经提交完了。没有需要提交的了。</p>
+<p>修改readme.txt文件，改成如下内容：</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software.</code></p>
+<p>运行<code>git status</code>命令看看结果：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github6.png" alt=""></p>
+<p>readme.txt被修改过了(工作区(working directory))，但还没有准备提交的修改(由于还没有git add,暂存区(staging area)内还没有要提交的修改)。</p>
+<p>从上面可以看出暂存区的作用。同时通过<code>git status</code>命令我们可以清楚的知道我们修改的代码到底到哪了。是在工作区?还是在暂存区?还是在本地仓库?</p>
+<h2 id="1-6_git_diff"><a href="#1-6_git_diff" class="headerlink" title="1.6 git diff"></a>1.6 git diff</h2><p>虽然Git告诉我们readme.txt被修改了，但如果能看看具体修改了什么内容(这是在工作区的操作)，自然是很好的。<code>git diff</code>命令能满足这个需求。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github7.png" alt=""></p>
+<p>git diff顾名思义就是查看difference，显示的格式正是Unix通用的diff格式，可以从上面的命令输出看到，我们在第一行添加了一个“distributed”单词。</p>
+<p>知道了对readme.txt作了什么修改后，再把它提交到仓库就放心多了，</p>
+<p>提交新文件:<code>git add readme.txt</code>,这个命令没有任何输出</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github8.png" alt=""></p>
+<p>通过<code>git status</code>命令我们可以看出将要被提交的修改包括readme.txt，下一步，就可以放心地提交了：</p>
+<p>提交修改:<code>git commit -m &quot;add distributed&quot;</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github9.png" alt=""></p>
+<p><code>git diff readme.txt</code>命令是没有输出的。原因是<code>git diff</code>是针对工作区的。通过<code>git status</code>命令我们可以看出(暂存区)当前没有需要提交的修改，而且工作目录是干净（working directory clean）的。所以<code>git diff</code>命令没输出。</p>
+<h2 id="1-7_git_log"><a href="#1-7_git_log" class="headerlink" title="1.7 git log"></a>1.7 git log</h2><p>现在，你已经学会了修改文件，然后把修改提交到Git版本库，现在，再练习一次，修改readme.txt文件如下：</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p>然后尝试提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github10.png" alt=""></p>
+<p>像这样，你不断对文件进行修改，然后不断提交修改到版本库里，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。</p>
+<p>现在，我们回顾一下readme.txt文件一共有几个版本被提交到Git仓库里了：</p>
+<p>版本1：<code>wrote a readme file</code></p>
+<p><code>Git is a version control system.</code></p>
+<p><code>Git is free software.</code></p>
+<p>版本2：<code>add distributed</code></p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software.</code></p>
+<p>版本3：<code>append GPL</code></p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p>当然了，在实际工作中，我们脑子里怎么可能记得一个几千行的文件每次都改了什么内容，不然要版本控制系统干什么。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用<code>git log</code>命令查看：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github11.png" alt=""></p>
+<p>从上面看到了你在前面配置的邮箱和用户名。因为分布式管理系统是端对端的。不同的用户端需要自报姓名。</p>
+<p>git log命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是<code>append GPL</code>，上一次是<code>add distributed</code>，最早的一次是<code>wrote a readme file</code>。<br>如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github12.png" alt=""></p>
+<p>你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，而且你看到的commit id和我的肯定不一样，以你自己的为准。为什么commit id需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。</p>
+<p>每提交一个新版本，实际上Git就会把它们自动串成一条时间线。如果使用可视化工具查看Git历史，就可以更清楚地看到提交历史的时间线：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github13.jpeg" alt=""></p>
+<p><code>git log</code>主要是针对<code>git commit</code>和版本库(git directory)的。</p>
+<h2 id="1-8_git_reset"><a href="#1-8_git_reset" class="headerlink" title="1.8 git reset"></a>1.8 git reset</h2><p>准备把readme.txt回退到上一个版本，也就是“add distributed”的那个版本，怎么做呢？</p>
+<p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交3628164…882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。</p>
+<p>现在，我们要把当前版本<code>“append GPL”</code>回退到上一个版本<code>“add distributed”</code>，就可以使用<code>git reset</code>命令：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github14.png" alt=""></p>
+<p><code>hard</code>参数下面会用到。跟一个commit id。<code>HEAD</code>现在指向了上一个版本 <code>add distributed</code>,上面还给出了它的commit id:20fcdfe。对照一下前面的commit id,确实是这样的。</p>
+<p>看看readme.txt的内容确实是版本<code>add distributed</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github15.png" alt=""></p>
+<p>用<code>git log</code>再看看现在版本库的状态：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github16.png" alt=""></p>
+<p>最新的那个版本append GPL已经看不到了！</p>
+<p>只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个<code>append GPL</code>的commit id是3628164…，于是就可以指定回到未来的某个版本：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github17.png" alt=""></p>
+<p>前面<code>git reset --hard HEAD^</code>可以恢复到上一版本。因为HEAD指向当前版本。但这种表示方法只能表示上面的版本。如果是时间线上下一个版本。只能用你的commit id了。版本号(commit id)没必要写全，前7位就可以了.</p>
+<p>Git的版本回退速度非常快，因为Git在内部有个指向当前版本的<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是把<code>HEAD</code>从指向<code>append GPL</code>。</p>
+<h2 id="1-9_git_reflog"><a href="#1-9_git_reflog" class="headerlink" title="1.9 git reflog"></a>1.9 git reflog</h2><p>找不到版本号(commit id)怎么办?当你用<code>git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>append GPL</code>，就必须找到<code>append GPL</code>的commit id。Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github18.png" alt=""></p>
+<p>第三行显示<code>append GPL</code>的commit id是d9c87a6,这样就可以回到<code>append GPL</code>版本了。</p>
+<p><code>HEAD</code>指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令<code>git reset --hard commit_id</code>。</p>
+<p>穿梭前，用<code>git log</code>可以查看提交历史，以便确定要回退到哪个版本。</p>
+<p>要重返未来，用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本。</p>
+<h2 id="1-10__u7BA1_u7406_u4FEE_u6539"><a href="#1-10__u7BA1_u7406_u4FEE_u6539" class="headerlink" title="1.10 管理修改"></a>1.10 管理修改</h2><p>现在把readme.txt由</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes.</code></p>
+<p>改为:</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes of files.</code></p>
+<p>假设有下面的操作流程:<br>第一次修改-&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git commit</code></p>
+<p>当你用git add命令后，在工作区的第一次修改被放入暂存区，准备提交，但是，在工作区的第二次修改并没有放入暂存区，所以，git commit只负责把暂存区的修改提交了，也就是第一次的修改被提交了，第二次的修改不会被提交。</p>
+<p>提交后，用<code>git diff HEAD -- readme.txt</code>(中间要有空格,<code>git diff</code>本来就针对工作区,所以用<code>git diff</code>,<code>git diff HEAD</code>都可以)命令可以查看工作区和版本库里面最新版本的区别。可以看到第二次修改确实没有被提交。</p>
+<p>下面的流程可以提交第二次修改(方法不止一种,但需要在commit之前把第二次修改add到暂存区):<br>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git add</code> -&gt; <code>git commit</code></p>
+<p>所以,每次修改，如果不add到暂存区，那就不会加入到commit中。</p>
+<h2 id="1-11__u64A4_u9500_u4FEE_u6539_28git_checkout_-_file_29"><a href="#1-11__u64A4_u9500_u4FEE_u6539_28git_checkout_-_file_29" class="headerlink" title="1.11 撤销修改(git checkout -- file)"></a>1.11 撤销修改(<code>git checkout -- file</code>)</h2><p>这个命令主要针对下面的应用场景:</p>
+<p>工作区修改了文件(还没有add到暂存区),发现修改的有错误,想纠正它。这时候用<code>git status</code>查看的话,git会提示你用<code>git add</code>把它提交到暂存区或者用<code>git checkout -- file</code>撤销你刚才的修改。总的来说,<code>git checkout -- file</code>针对工作区的文件修改。即<code>git checkout -- file</code>可以丢弃工作区的修改。</p>
+<p>当然,你也可以手动修改文件,把它手动恢复到上一个版本的状态。</p>
+<p>延续1.10的修改,用<code>git status</code>查看:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github19.png" alt=""></p>
+<p>会提示你有一次对工作区文件readme.txt的修改(modified)没有提交到暂存区(modified, not staged for commit)。</p>
+<p>会有下面2种场景:</p>
+<p>(1)一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库(commit)一模一样的状态；<br>比如上图的情况:已经commit到版本库一次,又修改了一次(modified),但是还没有放到暂存区(not staged)<br>这种情况下用<code>git checkout -- file</code>可以丢弃工作区的修改。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github20.png" alt=""></p>
+<p>现在就撤销了工作去的修改,返回到了版本库的状态。</p>
+<p>(2)另一种情况就是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
+<p>现在依然把readme.txt由</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes.</code></p>
+<p>改为:</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes of files.</code></p>
+<p><code>git add -- readme.txt</code>之后再修改为:</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes.</code></p>
+<p> 然后再<code>git checkout -- readme.txt</code>,恢复成了add时候的状态。<br><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github22.png" alt=""></p>
+<h2 id="1-12_git_reset_HEAD_file"><a href="#1-12_git_reset_HEAD_file" class="headerlink" title="1.12 git reset HEAD file"></a>1.12 git reset HEAD file</h2><p>撤销修改</p>
+<p>把暂存区的修改撤销掉（unstage），重新放回工作区：</p>
+<p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</p>
+<p>reset命令不仅可用于版本库,还可以用于暂存区。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github23.png" alt=""></p>
+<p>(1)丢弃工作区的修改:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github24.png" alt=""></p>
+<p>BW:如果想撤销刚才的撤销怎么办?git log貌似只能查询commit的id。对于add和modified好像没办法。</p>
+<p>(2)现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退一节吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。</p>
+<h2 id="1-13_git_rm"><a href="#1-13_git_rm" class="headerlink" title="1.13 git rm"></a>1.13 git rm</h2><p>删除文件</p>
+<p>在git中,删除也是一个修改操作，我们实战一下，先添加一个新文件test.txt到Git并且提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github25.png" alt=""></p>
+<p>一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用rm命令删了,这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻告诉你哪些文件被删除了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github26.png" alt=""></p>
+<p>下面就有2种情况:</p>
+<p>(1)一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github27.png" alt=""></p>
+<p>现在，文件就从版本库中被删除了。</p>
+<p>即使你不手动删除工作区的test.txt,仅仅是git rm版本库的test.txt,则工作区的test.txt也讲会被删除。</p>
+<p>(2)另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本</p>
+<p>由于(1)中删除了test.txt,现在再重来一遍,新建test.txt</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github28.png" alt=""></p>
+<p>注意上面第三步不是<code>git rm test.txt</code>,而是’rm test.txt’,前者会同时删除版本库和工作区的文件。后者只会删除工作区文件。如果用前者,你后来的<code>git checkout</code>就没用了。因为它也是按照版本库恢复工作区的文件。既然版本库的文件都被你删除了。那么也恢复不了了。</p>
+<p>小结</p>
+<p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容(它依然版本库的内容恢复工作区的文件)。</p>
+<h2 id="1-14__u8FDC_u7A0B_u4ED3_u5E93"><a href="#1-14__u8FDC_u7A0B_u4ED3_u5E93" class="headerlink" title="1.14 远程仓库"></a>1.14 远程仓库</h2><p>我们已经掌握了如何在Git仓库里对一个文件进行时光穿梭，你再也不用担心文件备份或者丢失的问题了。这些功能在SVN里早就有了。</p>
+<p>如果只是在一个仓库里管理文件历史，Git和SVN真没啥区别。</p>
+<p>Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。</p>
+<p>至少需要两台机器才能玩远程库。其实一台电脑上也是可以克隆多个版本库的，只要不在同一个目录下。但一般不建议这样玩。没有意义,硬盘挂掉了全都没了。所以也不折腾在一台电脑上怎么克隆多个仓库。</p>
+<p>实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。</p>
+<p>也就是说:虽然是分布式的软件,但仍然需要一个服务器。</p>
+<p>你可以自己搭建一台运行Git的服务器，不过现阶段，为了学Git先搭个服务器绝对是小题大作。</p>
+<p>还可以用现成的:<a href="https://github.com/" target="_blank" rel="external">Github</a>,这个网站就是提供Git仓库托管服务的，所以，只要注册一个GitHub账号，就可以免费获得Git远程仓库。</p>
+<h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><h3 id="2-1_github_u4F7F_u7528"><a href="#2-1_github_u4F7F_u7528" class="headerlink" title="2.1 github使用"></a>2.1 github使用</h3><p>注册GitHub账号。</p>
+<p>由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：</p>
+<p>步骤见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" target="_blank" rel="external">远程仓库</a></p>
+<p>(1)第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>
+<p><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code></p>
+<p>你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github30.png" alt=""></p>
+<p>注:由于我的已经用github客户端设置过了,所以有.ssh文件夹。</p>
+<p>(2)登陆GitHub，打开“Account settings”，“SSH Keys”页面：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github29.png" alt=""></p>
+<p>注:我的已经用github客户端设置过了,但上面显示There are no SSH keys with access to your account.。</p>
+<p>为什么GitHub需要SSH Key呢？因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。</p>
+<p>当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
+<p>最后友情提示，在GitHub上免费托管的Git仓库，任何人都可以看到喔（但只有你自己才能改）。所以，不要把敏感信息放进去。</p>
+<p>如果你不想让别人看到Git库，有两个办法，一个是交点保护费，让GitHub把公开的仓库变成私有的，这样别人就看不见了（不可读更不可写）。另一个办法是自己动手，搭一个Git服务器，因为是你自己的Git服务器，所以别人也是看不见的。这个方法我们后面会讲到的，相当简单，公司内部开发必备。</p>
+<h2 id="2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93"><a href="#2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93" class="headerlink" title="2.2 添加远程库"></a>2.2 添加远程库</h2><p>现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。</p>
+<p>(1)首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库<br>(2)在Repository name填入learngit，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库<br>(3)目前，在GitHub上的这个learngit仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。<br>(4)现在，我们根据GitHub的提示:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github31.png" alt=""></p>
+<p>在本地的learngit仓库下运行命令：(上图中有)</p>
+<p>SSH为:<code>git@github.com:lhyhfut/learngit.git</code></p>
+<p>上图中还推荐:We recommend every repository include a README, LICENSE, and .gitignore.</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github32.png" alt=""></p>
+<p>第一次<code>git remote add origin</code>失败的原因是:找错目录了。这个目录里没有git init,没有.git文件夹。找到正确的本地工作区即可。<br>(5)请千万注意，把上面的lhyhfut替换成你自己的GitHub账户名，否则，你在本地关联的就是我的远程库，关联没有问题，但是你以后推送是推不上去的，因为你的SSH Key公钥不在我的账户列表中。<br>添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。</p>
+<p>(6)把本地库的所有内容推送到远程库上：<br><code>git push -u origin master</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github33.png" alt=""></p>
+<p>类似的:</p>
+<p><code>git clone git@github.com:lhyhfut/learngit.git</code>也会报错:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github34.png" alt=""></p>
+<p><strong>错因:</strong></p>
+<p><strong>使用git clone命令从github上同步github上的代码库时，如果使用SSH链接（如我自己的learngit项目：git@github.com:lhyhfut/learngit.git），而你的SSH key没有添加到github帐号设置中，系统会报下面的错误：</strong></p>
+<p><code>Permission denied (publickey).</code></p>
+<p><code>fatal: Could not read from remote repository.</code></p>
+<p><code>Please make sure you have the correct access rights
+and the repository exists.</code></p>
+<p><strong>这时需要在本地创建SSH key，然后将生成的SSH key文件内容添加到github帐号上去。</strong></p>
+<p><strong>即:为github帐号添加SSH keys</strong></p>
+<p>前面讲到我的主目录已经有了.ssh文件夹</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github30.png" alt=""></p>
+<p><strong>错因:</strong></p>
+<p>上面是 <strong>github_rsa.pub,github_rsa</strong> (目前还不知道他们怎么生成的),而非所需要的 <strong>id_rsa和id_rsa.pub</strong> 两个文件。</p>
+<p><strong>上面也讲了我的github——settings——SSH keys 中显示:</strong></p>
+<p><code>There are no SSH keys with access to your account.</code></p>
+<p><strong>创建SSH key的方法很简单，生成ssh key的过程如下图所示：</strong></p>
+<p>`ssh-keygen -t rsa -C “youremail@example.com”``<br>你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。</p>
+<p>如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥，可以放心地告诉任何人。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github35.png" alt=""></p>
+<p>这下就生成了所需要的需要的 <strong>id_rsa和id_rsa.pub</strong> 两个文件</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github36.png" alt=""></p>
+<p>登陆GitHub，打开“Account settings”，“SSH Keys”页面：</p>
+<p>然后，点“Add SSH Key”，填上 <strong>任意Title</strong> ，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容。使用<code>cat  ~/.ssh/id_rsa.pub</code>命令即可。如果在linux下，也可以直接使用记事本打开该文件，但一定要注意其内容中包含空格和换行，要将其去掉。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github37.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github38.png" alt=""></p>
+<p>下面在来测试:</p>
+<p><code>git push -u origin master</code></p>
+<p><code>git clone git@github.com:lhyhfut/learngit.git</code>  <strong>如果是在同一个目录下,会替换原有的本地的工作区的仓库</strong></p>
+<p>就不会报错了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github39.png" alt=""></p>
+<p>github上也可以查询你每一次的commit id,这样就不用终端<code>git log</code>了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github40.png" alt=""></p>
+<p>最好还是按照刚建项目时候github的推荐:<strong>We recommend every repository include a README, LICENSE, and .gitignore.</strong></p>
+<p><strong>小结</strong></p>
+<p>(1)要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</p>
+<p>关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</p>
+<p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</p>
+<p>(2)要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</p>
+<p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+<h2 id="2-3__u5206_u652F_u7BA1_u7406"><a href="#2-3__u5206_u652F_u7BA1_u7406" class="headerlink" title="2.3 分支管理"></a>2.3 分支管理</h2><p>应用场景:假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
+<p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到(如果你commit的话,别人还是可以看的到的吧?比如github上面很多开源项目你都可以看得到它的分支。只是你可以先不commit,你提交的是能够稳定运行的master分支,新的分支只是做实验)，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上(因为新的分支是在master分支的基础上进行修改的。会替换掉以前的matser分支。这个合并到底是怎么合并的?如果同时有多个分支,合并的时候是否会造成冲突呢?在Bug分支章节提到了stash功能)，这样，既安全，又不影响别人工作(还是从协作,安全角度来考虑的)。</p>
+<h3 id="2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F"><a href="#2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F" class="headerlink" title="2.3.1 创建与合并分支"></a>2.3.1 创建与合并分支</h3><p>原理本分见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="external">廖雪峰的本节教程</a>,上面有图示,很清晰。</p>
+<p><strong>关键词:matser指针,master分支,dev指针,dev分支(dev只是分支的名字),Head指针</strong></p>
+<p>(1)每次提交(commit)，Git都把它们串成一条时间线，这条时间线就是一个分支(branch)。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。</p>
+<p>(2)初始没有其余分支的时候。master分支是一条线,master指针指向最新的提交,HEAD指针指向master分支,这样就确定了当前分支,以及当前分支的提交点。每次提交，master分支都会向前移动一步。</p>
+<p>(3)现在新建分支dev时,Git创建了一个dev指针。指向与master分支相同的提交点。再把HEAD指向dev分支,这样当前分支就在dev上了。所以Git创建一个分支很快:增加一个dev指针,更改HEAD指针的指向。工作区的文件等都没有任何变化。</p>
+<p>(4)不过，从现在开始，对工作区的修改和提交就是针对dev分支了(下面的终端命令中可以看到相关提示,确实是你新建分支后,对工作区的修改提交就针对新的分支了)，比如新提交一次后，dev指针往前移动一步，而master指针不变.</p>
+<p>(5)假如我们在dev上的工作完成了，就可以把dev合并到master上。Git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并。所以Git合并分支也很快！就改改指针，工作区内容也不变。</p>
+<p>(6)合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支。</p>
+<p><strong>实战</strong></p>
+<p>创建dev分支，然后切换到dev分支</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github41.png" alt=""></p>
+<p><code>git checkout</code>命令加上<code>-b</code>参数表示创建并切换，相当于以下两条命令：</p>
+<p><code>git branch dev</code></p>
+<p><code>git checkout dev</code></p>
+<p>用<code>git branch</code>命令查看当前分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github42.png" alt=""></p>
+<p><code>git branch</code>命令会列出所有分支，当前分支前面会标一个*号。</p>
+<p>然后，我们就可以在dev分支上正常提交，比如对readme.txt做个修改，加上一行：</p>
+<p><code>Creating a new branch is quick.</code></p>
+<p>然后提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github43.png" alt=""></p>
+<p>现在，dev分支的工作完成，我们就可以切换回master分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github44.png" alt=""></p>
+<p>切换回master分支后，再查看一个readme.txt文件，刚才添加的内容不见了！因为那个提交是在dev分支上，而master分支此刻的提交点并没有变：</p>
+<p>现在，我们把dev分支的工作成果合并到master分支上：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github45.png" alt=""></p>
+<p><code>git merge</code>命令用于合并指定分支到当前分支。合并后，再查看readme.txt的内容，就可以看到，和dev分支的最新提交是完全一样的。</p>
+<p>注意到上面的Fast-forward信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。</p>
+<p>当然，也不是每次合并都能Fast-forward，我们后面会讲其他方式的合并。</p>
+<p>合并完成后，就可以放心地删除dev分支了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github46.png" alt=""></p>
+<p>删除后，查看branch，就只剩下master分支了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github47.png" alt=""></p>
+<p>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。</p>
+<p><strong>小结</strong></p>
+<p>Git鼓励大量使用分支：</p>
+<p>查看分支：<code>git branch</code></p>
+<p>创建分支：<code>git branch &lt;name&gt;</code></p>
+<p>切换分支：<code>git checkout &lt;name&gt;</code></p>
+<p>创建+切换分支：<code>git checkout -b &lt;name&gt;</code></p>
+<p>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
+<p>删除分支：<code>git branch -d &lt;name&gt;</code></p>
+<h3 id="2-3-2_u89E3_u51B3_u51B2_u7A81"><a href="#2-3-2_u89E3_u51B3_u51B2_u7A81" class="headerlink" title="2.3.2解决冲突"></a>2.3.2解决冲突</h3><p>出现场景:master分支和feature1分支各自都分别有新的提交.这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。</p>
+<p>新建feature1分支</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github48.png" alt=""></p>
+<p>修改readme.txt最后一行，改为：</p>
+<p><code>Creating a new branch is quick AND simple.</code></p>
+<p>在feature1分支上提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github49.png" alt=""></p>
+<p>切换到master分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github50.png" alt=""></p>
+<p>Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。</p>
+<p>在master分支上把readme.txt文件的最后一行改为：</p>
+<p><code>Creating a new branch is quick &amp; simple.</code></p>
+<p>在master分支上提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github51.png" alt=""></p>
+<p>master分支和feature1分支各自都分别有新的提交，这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突.用<code>git merge</code>合并</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github52.png" alt=""></p>
+<p>Git告诉我们，readme.txt文件存在冲突，必须手动解决冲突后再提交。<code>git status</code>也可以告诉我们冲突的文件:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github53.png" alt=""></p>
+<p>直接查看readme.txt的内容：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github54.png" alt=""></p>
+<p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们手动修改readme.txt如下后保存：</p>
+<p><code>Creating a new branch is quick and simple.</code></p>
+<p>在master分支上提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github55.png" alt=""></p>
+<p>手动修改,保存,提交后,提示冲突解决。</p>
+<p>用 <strong>带参数的git log</strong> 也可以看到分支的合并情况：</p>
+<p><code>git log --graph --pretty=oneline --abbrev-commit</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github56.png" alt=""></p>
+<p>可以看到上面有2个冲突分支。但经过修改提交之后,冲突解决,分支正常合并。</p>
+<p>删除feature1分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github57.png" alt=""></p>
+<p><strong>小结</strong></p>
+<p>当Git无法自动合并分支时，就必须首先解决冲突(手动修改?)。解决冲突后，再提交，合并完成。</p>
+<p>用git log –graph命令可以看到分支合并图。</p>
+<h3 id="2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565"><a href="#2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565" class="headerlink" title="2.3.3分支管理策略"></a>2.3.3分支管理策略</h3><p>通常，合并分支时，如果可能，Git会用 <strong>Fast forward</strong> 模式，但这种模式下，<strong>删除分支后，会丢掉分支信息</strong> 。</p>
+<p>如果要强制 <strong>禁用Fast forward</strong> 模式，Git就会 <strong>在merge时生成一个新的commit</strong> ，这样，从 <strong>分支历史上就可以看出分支信息</strong>。</p>
+<p><strong>注:</strong> 2.3.2中<code>git log --graph --pretty=oneline --abbrev-commit</code>就没有看见2.3.1中创建并删除的dev分支的信息。</p>
+<p>下面我们实战一下<code>--no-ff</code>方式的<code>git merge</code>：</p>
+<p>创建并切换dev分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github58.png" alt=""></p>
+<p>修改readme.txt文件，并提交一个新的commit：</p>
+<p>然后再切换到matser分支:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github59.png" alt=""></p>
+<p>准备合并dev分支，请注意<code>--no-ff</code>参数，表示禁用<code>Fast forward</code>：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github61.png" alt=""></p>
+<p>因为本次合并要创建一个新的commit，所以加上 <strong>-m</strong> 参数，把commit描述写进去。</p>
+<p>合并后，我们用<code>git log --graph --pretty=oneline --abbrev-commit</code>看看分支历史：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github62.png" alt=""></p>
+<p>可以看到，不使用<code>Fast forward</code>模式，merge后就像这样：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github63.png" alt=""></p>
+<p>而以前使用<code>Fast forward</code>模式，merge后就像这样：(看不到删除的dev分支信息)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github64.png" alt=""></p>
+<p><strong>分支策略</strong></p>
+<p>在实际开发中，我们应该按照几个基本原则进行分支管理：</p>
+<p>首先，master分支应该是非常稳定的，也就是仅用来 <strong>发布新版本</strong> ，平时不能在上面干活；</p>
+<p>那在哪干活呢？<strong>干活都在dev分支上</strong> ，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；</p>
+<p>你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</p>
+<p>所以，团队合作的分支看起来就像这样：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github65.png" alt=""></p>
+<p><strong>小结</strong></p>
+<p>Git分支十分强大，在团队开发中应该充分应用。</p>
+<p>合并分支时，加上–no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
+<h3 id="2-3-4Bug_u5206_u652F"><a href="#2-3-4Bug_u5206_u652F" class="headerlink" title="2.3.4Bug分支"></a>2.3.4Bug分支</h3><p>软件开发中，bug很常见。在Git中每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。</p>
+<p>切换到dev分支,修改readme.txt(先不add,commit)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github67.png" alt=""></p>
+<p><code>测试BUG分支。初始dev上的修改。</code></p>
+<p>当你接到一个修复一个代号101的bug的任务时，很自然地，你想创建一个分支issue-101来修复它，但是，等等，当前正在dev上进行的工作还没有提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github66.png" alt=""></p>
+<p>并不是你不想提交，而是工作只进行到一半，还没法提交，预计完成还需1天时间。但是，必须在两个小时内修复该bug，怎么办？</p>
+<p>幸好，Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github68.png" alt=""></p>
+<p>现在，用git status查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github69.png" alt=""></p>
+<p>首先确定要在哪个分支上修复bug，假定需要在master分支上修复，就从master创建临时分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github70.png" alt=""></p>
+<p>现在修复bug，修改readme.txt:</p>
+<p><code>修复BUG,修改readme.txt</code></p>
+<p>然后提交：(下图多截了<code>git checkout -b issue-101</code>命令)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github71.png" alt=""></p>
+<p>修复完成后，切换到master分支，并完成合并，最后删除issue-101分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github72.png" alt=""></p>
+<p>太棒了，原计划两个小时的bug修复只花了5分钟！现在，是时候接着回到dev分支干活了！</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github73.png" alt=""></p>
+<p>工作区是干净的，刚才的工作现场存到哪去了？用git stash list命令看看：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github74.png" alt=""></p>
+<p>工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：</p>
+<p>一是用<code>git stash apply</code>恢复，但是恢复后，stash内容并不删除，你需要用<code>git stash drop</code>来删除；</p>
+<p>另一种方式是用<code>git stash pop</code>，恢复的同时把stash内容也删了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github75.png" alt=""></p>
+<p>再用git stash list查看，就看不到任何stash内容了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github76.png" alt=""></p>
+<p>你可以多次stash，恢复的时候，先用<code>git stash list</code>查看，然后恢复指定的stash，用命令：</p>
+<p><code>git stash apply stash@{0}</code></p>
+<p>我们现在还是在dev分支,readme.txt中的修改还在(不然就修复不了BUG了),仅仅是用<code>git stash pop</code>之后再用用<code>git stash list</code>看不到任何修改痕迹。但具体的修改内容还在,确实是修复BUG了。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github77.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github78.png" alt=""></p>
+<h3 id="2-3-4Feature_u5206_u652F"><a href="#2-3-4Feature_u5206_u652F" class="headerlink" title="2.3.4Feature分支"></a>2.3.4Feature分支</h3><p>软件开发中，总有无穷无尽的新的功能要不断添加进来。</p>
+<p>添加一个新功能时，你肯定不希望因为一些实验性质的代码，把主分支搞乱了，所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支。</p>
+<p>现在，你终于接到了一个新任务：开发代号为Vulcan的新功能，该功能计划用于下一代星际飞船。</p>
+<p>修改readme.txt:</p>
+<p><strong>新建vulcan.py</strong></p>
+<p>新建并且换到vulcan feature分支</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github79.png" alt=""></p>
+<p>5分钟后，开发完毕：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github80.png" alt=""></p>
+<p>切回dev，准备合并：(下面出现2个是因为刚才自己有误操作,在matser分支也创建又删除了vulcan.py)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github81.png" alt=""></p>
+<p>一切顺利的话，feature分支和bug分支是类似的，合并，然后删除。</p>
+<p>但是，</p>
+<p>就在此时，接到上级命令，因经费不足，新功能必须取消！</p>
+<p>虽然白干了，但是这个分支还是必须就地销毁：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github82.png" alt=""></p>
+<p><strong>注:</strong> 此处教程上是删除不了的。教程上Git友情提醒，feature-vulcan分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用命令git branch -D feature-vulcan。但自己这里却删除了。</p>
+<p><strong>小结</strong></p>
+<p>小结</p>
+<p>开发一个新feature，最好新建一个分支；</p>
+<p>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。(自己这里用git branch -d <name>就直接删除了)</name></p>
+<h3 id="2-3-5_u591A_u4EBA_u534F_u4F5C"><a href="#2-3-5_u591A_u4EBA_u534F_u4F5C" class="headerlink" title="2.3.5多人协作"></a>2.3.5多人协作</h3><p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。</p>
+<p>要查看远程库的信息，用<code>git remote</code>,或者，用<code>git remote -v</code>显示更详细的信息.会显示可以抓取(fetch)和推送(push)的origin的地址。如果没有推送权限，就看不到push的地址。</p>
+<p><strong>推送分支</strong></p>
+<p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
+<p><code>git push origin master</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github83.png" alt=""></p>
+<p>如果要推送其他分支，比如dev，就改成：</p>
+<p><code>git push origin dev</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github84.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github85.png" alt=""></p>
+<p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
+<p>master分支是主分支，因此要时刻与远程同步；</p>
+<p>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</p>
+<p>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</p>
+<p>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</p>
+<p>总之，就是在Git中，分支完全可以在本地自己藏着玩，是否推送，视你的心情而定</p>
+<p><strong>抓取分支</strong></p>
+<p>多人协作时，大家都会往master和dev分支上推送各自的修改。</p>
+<hr>
+<p><strong>你的小伙伴的操作</strong></p>
+<p>现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）<strong>或者同一台电脑的另一个目录下克隆,重新打开一个终端窗口,切换到clone下来的learngit仓库目录</strong> ：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github86.png" alt=""></p>
+<p>当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支。不信可以用<code>git branch</code>命令看看：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github87.png" alt=""></p>
+<p>现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github88.png" alt=""></p>
+<p>现在，他就可以在dev上继续修改(clone下来的learngit目录中的readme.txt)，</p>
+<p><code>远程dev,修改</code>   //你的小伙伴的readme.txt上的修改</p>
+<p>然后，时不时地把dev分支push到远程：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github89.png" alt=""></p>
+<p><strong>你的小伙伴的操作结束</strong></p>
+<hr>
+<p><strong>你的操作</strong></p>
+<p>你的小伙伴已经向origin/dev分支推送了他的提交，而碰巧你也对同样的文件(现在你也修改了本地目录中的readme.txt, <strong>不是你的小伙伴clone下来的learngit目录</strong> )作了修改( <strong>注:换到你操作了,在以前那个终端窗口</strong>):</p>
+<p><code>本地的dev分支修改</code>  //你的readme.txt上的修改</p>
+<p>并试图推送：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github90.png" alt=""></p>
+<p>推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用<code>git pull</code>(不是<code>git clone</code>)(<strong>提示:You may want to first integrate the remote changes(e.g., ‘git pull …’) before pushing again.</strong>)把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github91.png" alt=""></p>
+<p><strong>注:提示There is no tracking information for the current branch.Please specify which branch you want to merge with.If you wish to set tracking information for this branch you can do so with:<br>git branch –set-upstream-to=origin/<branch> dev</branch></strong></p>
+<p>git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：</p>
+<p><strong>注:用–track 或 –set-upstream-to都是可以的,教程上用的–set-upstream已经被删除了</strong></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github92.png" alt=""></p>
+<p><strong>注:这里不知道为什么会提示dev已经存在,但已经不影响下面的git pull</strong></p>
+<p>再去<code>git pull</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github93.png" alt=""></p>
+<p>这回<code>git pull</code>成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" target="_blank" rel="external">解决冲突</a>完全一样。解决后，提交，再push：</p>
+<p><strong>注:方法也就是手动修改</strong></p>
+<p>readme.txt现在是这个样子:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github94.png" alt=""></p>
+<p>把&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br>以及&gt;&gt;&gt;&gt;&gt;&gt;&gt; …. 8cf0804468ed80f7b92a3de5cc285388782fd989</p>
+<p>修改成你想要的就行了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github95.png" alt=""></p>
+<p>提交,然后再去push。</p>
+<p><strong>注:下面本应该是readme.txt写成教程上的hello.py了。但只是提交说明,不影响,考虑进行版本退回</strong></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github96.png" alt=""></p>
+<p>github上也相应有了修改:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github97.png" alt=""></p>
+<p><strong>因此，多人协作的工作模式通常是这样：</strong></p>
+<p>首先，可以试图用<code>git push origin branch-name</code>推送自己的修改；</p>
+<p>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；</p>
+<p>如果合并有冲突，则解决冲突，并在本地提交；</p>
+<p>没有冲突或者解决掉冲突后，再用<code>git push origin branch-name</code>推送就能成功！</p>
+<p>如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream branch-name origin/branch-name</code>。</p>
+<p>这就是多人协作的工作模式，一旦熟悉了，就非常简单。</p>
+<p><strong>小结</strong></p>
+<p>查看远程库信息，使用<code>git remote -v</code>；</p>
+<p>本地新建的分支如果不推送到远程，对其他人就是不可见的；</p>
+<p>从本地推送分支，使用<code>git push origin branch-name</code>，如果推送失败，先用git pull抓取远程的新提交；</p>
+<p>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</p>
+<p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream-to branch-name origin/branch-name</code>；</p>
+<p>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突(<strong>手动处理成想要的样子</strong>)。</p>
+<h2 id="2-4_u6807_u7B7E_u7BA1_u7406"><a href="#2-4_u6807_u7B7E_u7BA1_u7406" class="headerlink" title="2.4标签管理"></a>2.4标签管理</h2><p>发布一个版本时，我们通常先在版本库中打一个标签(如v1.0之类的)，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。</p>
+<p>Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。</p>
+<h3 id="2-4-1_u521B_u5EFA_u6807_u7B7E"><a href="#2-4-1_u521B_u5EFA_u6807_u7B7E" class="headerlink" title="2.4.1创建标签"></a>2.4.1创建标签</h3><p>在Git中打标签非常简单，首先，切换到需要打标签的分支上：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github98.png" alt=""></p>
+<p>然后，敲命令git tag <name>就可以打一个新标签：</name></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github99.png" alt=""></p>
+<p>可以用命令<code>git tag</code>查看所有标签：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github100.png" alt=""></p>
+<p>默认标签是打在最新提交的commit上的。有时候，如果忘了打标签，比如，现在已经是周五了，但应该在周一打的标签没有打，怎么办？</p>
+<p>方法是找到历史提交的commit id，然后打上就可以了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github102.png" alt=""></p>
+<p>比方说要对<code>add merge</code>这次提交打标签，它对应的commit id是7e0d834，敲入命令,再用命令<code>git tag</code>查看标签：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github101.png" alt=""></p>
+<p>注意，标签不是按时间顺序列出，而是按字母排序的。可以用<code>git show &lt;tagname&gt;</code>查看标签信息：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github103.png" alt=""></p>
+<p>可以看到，<code>v0.9</code>确实打在<code>add merge</code>这次提交上。</p>
+<p>还可以创建带有说明的标签，用<code>-a</code>指定标签名，<code>-m</code>指定说明文字：</p>
+<p>用命令<code>git show &lt;tagname&gt;</code>可以看到说明文字：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github104.png" alt=""></p>
+<p>用命令<code>git show &lt;tagname&gt;</code>可以看到说明文字：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github105.png" alt=""></p>
+<p>还可以通过<code>-s</code>用私钥签名一个标签,签名采用PGP签名，因此，必须首先安装gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github106.png" alt=""></p>
+<p>如果报错，请参考 <strong>GnuPG帮助文档配置Key</strong>。</p>
+<p>用命令<code>git show &lt;tagname&gt;</code>可以看到PGP签名信息：</p>
+<p><code>git show v0.2</code></p>
+<p><strong>注:PGP签名先就不折腾了</strong></p>
+<p>用PGP签名的标签是不可伪造的，因为可以验证PGP签名。验证签名的方法比较复杂，这里就不介绍了。</p>
+<p><strong>小结</strong></p>
+<p>命令<code>git tag &lt;name&gt;</code>用于新建一个标签，默认为<code>HEAD</code>，也可以指定一个commit id；</p>
+<p><code>git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以指定标签信息；</p>
+<p><code>git tag -s &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以用PGP签名标签；</p>
+<p>命令<code>git tag</code>可以查看所有标签。</p>
+<h3 id="2-4-2_u64CD_u4F5C_u6807_u7B7E"><a href="#2-4-2_u64CD_u4F5C_u6807_u7B7E" class="headerlink" title="2.4.2操作标签"></a>2.4.2操作标签</h3><p>如果标签打错了，也可以删除：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github107.png" alt=""></p>
+<p>因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。</p>
+<p>如果要推送某个标签到远程，使用命令<code>git push origin &lt;tagname&gt;</code>：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github108.png" alt=""></p>
+<p>或者，一次性推送全部尚未推送到远程的本地标签：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github109.png" alt=""></p>
+<p>github上在releases选项中可以看到:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github110.png" alt=""></p>
+<p>如果标签已经推送到远程，要删除远程标签就麻烦一点，<strong>先从本地删除</strong>：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github111.png" alt=""></p>
+<p>然后，从远程删除。删除命令也是push，但是格式如下：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github112.png" alt=""></p>
+<p>要看看是否真的从远程库删除了标签，可以登陆GitHub查看。</p>
+<p><strong>小结</strong></p>
+<p>命令<code>git push origin &lt;tagname&gt;</code>可以推送一个本地标签；</p>
+<p>命令<code>git push origin --tags</code>可以推送全部未推送过的本地标签；</p>
+<p>命令<code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</p>
+<p>命令<code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。</p>
+<h2 id="2-5_u4F7F_u7528GitHub"><a href="#2-5_u4F7F_u7528GitHub" class="headerlink" title="2.5使用GitHub"></a>2.5使用GitHub</h2><p>我们一直用GitHub作为免费的远程仓库，如果是个人的开源项目，放到GitHub上是完全没有问题的。其实GitHub还是一个开源协作社区，通过GitHub，<strong>既可以让别人参与你的开源项目，也可以参与别人的开源项目</strong>。</p>
+<p><strong>如何参与一个开源项目呢？</strong></p>
+<p>(1)fork别人的仓库</p>
+<p>(2)从自己的账号下clone刚才你fork的仓库，这样你才能推送修改。如果从作者的仓库地址clone，因为没有权限，你将 <strong>不能推送修改</strong>。</p>
+<p>(3)剩下的就是对你自己的仓库操作了。如果你想修复bootstrap的一个bug，或者新增一个功能，立刻就可以开始干活，干完后，往自己的仓库推送。</p>
+<p>(4)如果你希望bootstrap的官方库能接受你的修改，你就可以在GitHub上发起一个<code>pull request</code>。当然，对方是否接受你的<code>pull request</code>就不一定了。</p>
+<p><strong>小结</strong></p>
+<p>在GitHub上，可以任意Fork开源仓库；</p>
+<p>自己拥有Fork后的仓库的读写权限；</p>
+<p>可以推送pull request给官方仓库来贡献代码。</p>
+<h2 id="2-6_u81EA_u5B9A_u4E49Git"><a href="#2-6_u81EA_u5B9A_u4E49Git" class="headerlink" title="2.6自定义Git"></a>2.6自定义Git</h2><p><strong>这部分内容参考教程</strong></p>
+<h3 id="2-6-1_Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879"><a href="#2-6-1_Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879" class="headerlink" title="2.6.1 Git的其它可配置项"></a>2.6.1 Git的其它可配置项</h3><h3 id="2-6-2__u5FFD_u7565_u7279_u6B8A_u6587_u4EF6"><a href="#2-6-2__u5FFD_u7565_u7279_u6B8A_u6587_u4EF6" class="headerlink" title="2.6.2 忽略特殊文件"></a>2.6.2 忽略特殊文件</h3><p>忽略某些文件时，需要编写.gitignore；</p>
+<p>.gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！</p>
+<p>不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。所有配置文件可以直接在线浏览：<a href="https://github.com/github/gitignore" target="_blank" rel="external">github的gitignore配置</a></p>
+<h3 id="2-6-3__u914D_u7F6E_u522B_u540D"><a href="#2-6-3__u914D_u7F6E_u522B_u540D" class="headerlink" title="2.6.3 配置别名"></a>2.6.3 配置别名</h3><h3 id="2-6-4__u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29"><a href="#2-6-4__u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29" class="headerlink" title="2.6.4 搭建Git服务器(局域网,Web)"></a>2.6.4 搭建Git服务器(局域网,Web)</h3><p>GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。</p>
+<p>搭建Git服务器需要准备一台运行<code>Linux的机器</code>，强烈推荐用<code>Ubuntu或Debian</code>，这样，通过几条简单的<code>apt命令</code>就可以完成安装。</p>
+<p>(1)安装git</p>
+<p>(2)创建一个git用户，用来运行git服务</p>
+<p>(3)创建证书登录</p>
+<p>(4)初始化Git仓库</p>
+<p>(5)禁用shell登录</p>
+<p>(6)克隆远程仓库</p>
+<p><strong>管理公钥</strong></p>
+<p><strong>管理权限</strong></p>
+<p><strong>小结</strong></p>
+<p>搭建Git服务器非常简单，通常10分钟即可完成；</p>
+<p>要方便管理公钥，用<code>Gitosis</code>；</p>
+<p>要像SVN那样变态地控制权限，用<code>Gitolite</code>。</p>
+<h1 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h1><h3 id="1-GitHub__u6F2B_u6E38_u6307_u5357"><a href="#1-GitHub__u6F2B_u6E38_u6307_u5357" class="headerlink" title="1.GitHub 漫游指南"></a>1.<a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h3><h3 id="2-_u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B"><a href="#2-_u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B" class="headerlink" title="2.廖雪峰的Git教程"></a>2.<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h3><h3 id="3-_u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355"><a href="#3-_u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355" class="headerlink" title="3.常用 Git 命令清单"></a>3.<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h3><h3 id="4-git-recipes"><a href="#4-git-recipes" class="headerlink" title="4.git-recipes"></a>4.<a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h3><h3 id="5-_u56FE_u89E3git"><a href="#5-_u56FE_u89E3git" class="headerlink" title="5.图解git"></a>5.<a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h3><h3 id="6-_u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8"><a href="#6-_u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8" class="headerlink" title="6.猴子都能懂的Git入门"></a>6.<a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h3><h3 id="7-_u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9"><a href="#7-_u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9" class="headerlink" title="7.《走进git时代系列一》 你该怎么玩"></a>7.<a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h3><h3 id="8-Pro_Git_v2__u4E2D_u6587_u7248"><a href="#8-Pro_Git_v2__u4E2D_u6587_u7248" class="headerlink" title="8.Pro Git v2 中文版"></a>8.<a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h3><h3 id="9-_Git_u7684_u5B98_u65B9_u7F51_u7AD9"><a href="#9-_Git_u7684_u5B98_u65B9_u7F51_u7AD9" class="headerlink" title="9. Git的官方网站"></a>9. <a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h3><h1 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h1><h3 id="1-gitlab_2Ccoding"><a href="#1-gitlab_2Ccoding" class="headerlink" title="1.gitlab,coding"></a>1.gitlab,coding</h3><h3 id="2-git_flow_2Cgitlab_flow_2Cgithub_flow"><a href="#2-git_flow_2Cgitlab_flow_2Cgithub_flow" class="headerlink" title="2.git flow,gitlab flow,github flow"></a>2.git flow,gitlab flow,github flow</h3><h3 id="3-Git_u4E0E_u534F_u4F5C"><a href="#3-Git_u4E0E_u534F_u4F5C" class="headerlink" title="3.Git与协作"></a>3.Git与协作</h3>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
               
+                
+                <a class="post-title-link" href="/2016/04/20/使用githubpages-hexo-atom写博客/" itemprop="url">
+                  使用githubpages+hexo+atom写博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-04-20T07:18:14+08:00" content="2016-04-20">
+              2016-04-20
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88"><a href="#u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88" class="headerlink" title="一.git(客户端)github pages 配置连接与取消"></a>一.git(客户端)github pages 配置连接与取消</h1><h2 id="1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002"><a href="#1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002" class="headerlink" title="1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。"></a>1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。</h2><h2 id="1-2-githubpages_u7684_u4F7F_u7528_u3002"><a href="#1-2-githubpages_u7684_u4F7F_u7528_u3002" class="headerlink" title="1.2.githubpages的使用。"></a>1.2.githubpages的使用。</h2><h3 id="1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09"><a href="#1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09" class="headerlink" title="1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）"></a>1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages1.png" alt=""></p>
+<p>添加相应的说明文字</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages2.png" alt=""></p>
+<h3 id="1-2-2_u70B9_u51FB_u4E0A_u56FElhyhfut-github-io_u4ED3_u5E93_u53F3_u4E0A_u89D2_u7684settings-_u70B9_u51FBlaunch_Automatic_page_generator_uFF0CGithub_u5C06_u4F1A_u81EA_u52A8_u66FF_u4F60_u521B_u5EFA_u51FA_u4E00_u4E2Agithub-pages_u7684_u9875_u9762_u3002"><a href="#1-2-2_u70B9_u51FB_u4E0A_u56FElhyhfut-github-io_u4ED3_u5E93_u53F3_u4E0A_u89D2_u7684settings-_u70B9_u51FBlaunch_Automatic_page_generator_uFF0CGithub_u5C06_u4F1A_u81EA_u52A8_u66FF_u4F60_u521B_u5EFA_u51FA_u4E00_u4E2Agithub-pages_u7684_u9875_u9762_u3002" class="headerlink" title="1.2.2点击上图lhyhfut.github.io仓库右上角的settings.点击launch Automatic page generator，Github将会自动替你创建出一个github-pages的页面。"></a>1.2.2点击上图lhyhfut.github.io仓库右上角的settings.点击launch Automatic page generator，Github将会自动替你创建出一个github-pages的页面。</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages3.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages4.png" alt=""></p>
+<p>点击右下角的按钮</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages5.png" alt=""></p>
+<p>选择一个主题，点击publish</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages6.png" alt=""></p>
+<p>成功后会有提示，并且可以看到仓库里多了一些文件:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages7.png" alt=""></p>
+<p>等待15分钟，在浏览器browser的URL中输入<a href="http://lhyhfut.github.io/" target="_blank" rel="external">http://lhyhfut.github.io/</a>  这样就可以看到githubpages的页面了。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages8.png" alt=""></p>
+<h1 id="u4E8C-hexo_u7684_u5B89_u88C5_u4E0E_u8BBE_u7F6E"><a href="#u4E8C-hexo_u7684_u5B89_u88C5_u4E0E_u8BBE_u7F6E" class="headerlink" title="二.hexo的安装与设置"></a>二.hexo的安装与设置</h1><p>上面只是githubpages默认的页面。下面采用的是hexo</p>
+<h2 id="2-1-hexo_u662F_u7528npm_u5B89_u88C5_u7684_u3002npm_u662Fnode_u7684_u5305_u7BA1_u7406_u5DE5_u5177_u3002_u9700_u8981_u5148_u5B89_u88C5_u5B83_u3002_u5B89_u88C5_u597Dnpm_u540E_2C_u7EC8_u7AEF_u7528_u5982_u4E0B_u547D_u4EE4_3A"><a href="#2-1-hexo_u662F_u7528npm_u5B89_u88C5_u7684_u3002npm_u662Fnode_u7684_u5305_u7BA1_u7406_u5DE5_u5177_u3002_u9700_u8981_u5148_u5B89_u88C5_u5B83_u3002_u5B89_u88C5_u597Dnpm_u540E_2C_u7EC8_u7AEF_u7528_u5982_u4E0B_u547D_u4EE4_3A" class="headerlink" title="2.1.hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后,终端用如下命令:"></a>2.1.hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后,终端用如下命令:</h2><p><code>sudo npm install -g hexo</code></p>
+<p>默认被安装在了node的包目录下。可以使用``</p>
+<p>然后切换到想安装的目录:</p>
+<p><code>hexo init</code></p>
+<p><code>npm istall //安装hexo package.json中默认的包</code></p>
+<p><code>hexo g  //hexo generate</code></p>
+<p><code>hexo s //hexo server</code></p>
+<p>这时在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ,可以看到本地的效果</p>
+<h2 id="2-2-npm_u5B89_u88C5_u63D2_u4EF6"><a href="#2-2-npm_u5B89_u88C5_u63D2_u4EF6" class="headerlink" title="2.2.npm安装插件"></a>2.2.npm安装插件</h2><p>`npm install hexo-generator-index –save   </p>
+<p>npm install hexo-generator-archive –save   </p>
+<p>npm install hexo-generator-category –save  </p>
+<p>npm install hexo-generator-tag –save    </p>
+<p>npm install hexo-server –save   </p>
+<p>npm install hexo-deployer-git –save   安装时有错误  </p>
+<p>npm install hexo-deployer-heroku –save  </p>
+<p>npm install hexo-deployer-rsync –save  </p>
+<p>npm install hexo-deployer-openshift –save  </p>
+<p>npm install hexo-renderer-marked@0.2 –save  </p>
+<p>npm install hexo-renderer-stylus@0.2 –save  </p>
+<p>npm install hexo-generator-feed@1 –save     </p>
+<p>npm install hexo-generator-sitemap@1 –save`</p>
+<p>然后再<br><code>hexo s //hexo server</code></p>
+<p>这时在浏览器中输入<a href="http://localhost:4000,可以看到本地的效果" target="_blank" rel="external">http://localhost:4000,可以看到本地的效果</a></p>
+<h2 id="2-3-_u66F4_u6362_u4E3B_u9898"><a href="#2-3-_u66F4_u6362_u4E3B_u9898" class="headerlink" title="2.3.更换主题"></a>2.3.更换主题</h2><p>hexo默认的主题不好看,在知乎上的推荐中选了一个投票较高的:NexT 主题</p>
+<p><a href="http://theme-next.iissnan.com/five-minutes-setup.html" target="_blank" rel="external">Next主题官网</a></p>
+<h3 id="2-3-1_u590D_u5236_u4E3B_u9898_3A"><a href="#2-3-1_u590D_u5236_u4E3B_u9898_3A" class="headerlink" title="2.3.1复制主题:"></a>2.3.1复制主题:</h3><p>在终端窗口下，定位到 Hexo 站点目录下。使用 Git checkout 代码：</p>
+<p><code>cd your-hexo-site</code></p>
+<p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p>
+<h3 id="2-3-2__u542F_u7528_u4E3B_u9898"><a href="#2-3-2__u542F_u7528_u4E3B_u9898" class="headerlink" title="2.3.2 启用主题"></a>2.3.2 启用主题</h3><p>打开站点配置文件(在Hexo 站点目录下的_config.yml中)， 找</p>
+<p>到theme字段，并将其值更改为 next</p>
+<p>下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 <code>hexo clean</code> 来清除 Hexo 的缓存。</p>
+<h3 id="2-3-3__u9A8C_u8BC1_u4E3B_u9898"><a href="#2-3-3__u9A8C_u8BC1_u4E3B_u9898" class="headerlink" title="2.3.3 验证主题"></a>2.3.3 验证主题</h3><p>启动 Hexo 本地站点，并开启调试模式（即加上 –debug），整<br>个命令是 <code>hexo s --debug</code></p>
+<p>在浏览器中输入<a href="http://localhost:4000,可以看到本地的效果" target="_blank" rel="external">http://localhost:4000,可以看到本地的效果</a></p>
+<h3 id="2-3-3-1_u9009_u62E9_Scheme"><a href="#2-3-3-1_u9009_u62E9_Scheme" class="headerlink" title="2.3.3.1选择 Scheme"></a>2.3.3.1选择 Scheme</h3><p>在themes\next目录中的_config.yml中</p>
+<p><code>scheme: Mist</code></p>
+<h3 id="2-3-3-2_u8BBE_u7F6E_u4E3A_u7B80_u4F53_u4E2D_u6587"><a href="#2-3-3-2_u8BBE_u7F6E_u4E3A_u7B80_u4F53_u4E2D_u6587" class="headerlink" title="2.3.3.2设置为简体中文"></a>2.3.3.2设置为简体中文</h3><p>在Hexo 站点目录下的_config.yml中</p>
+<p><code>language: zh-Hans</code></p>
+<p>还有许多配置(比如菜单设置)详见<a href="http://theme-next.iissnan.com/five-minutes-setup.html" target="_blank" rel="external">Next主题官网</a></p>
+<h3 id="2-3-4_u5C06_u672C_u5730_u6587_u4EF6_u90E8_u7F72_u5230_GitHub"><a href="#2-3-4_u5C06_u672C_u5730_u6587_u4EF6_u90E8_u7F72_u5230_GitHub" class="headerlink" title="2.3.4将本地文件部署到 GitHub"></a>2.3.4将本地文件部署到 GitHub</h3><p>修改 Hexo 中的_config.yml 文件,找到deploy字段,如下设置:<br>(注:冒号后面要加上一个空格，否则会报错)</p>
+<p><code>deploy:</code></p>
+<p>  <code>type: git</code></p>
+<p>  <code>repository:
+   https://github.com/lhyhfut/lhyhfut.github.io.git</code></p>
+<p>  <code>branch: master</code></p>
+<p>  将其 deploy 到仓库中:</p>
+<p>  <code>npm install hexo-deployer-git --save</code></p>
+<p>  <code>hexo clean</code></p>
+<p>  <code>hexo generate</code></p>
+<p>  <code>hexo deploy</code></p>
+<p>  到这一步，个人博客就已经部署到 GitHub 上了，你可以到你的GitHub仓库查看是否已经更新.在浏览器browser的URL中输入<a href="http://lhyhfut.github.io/" target="_blank" rel="external">http://lhyhfut.github.io/</a>  这样就可以看到githubpages的页面了。</p>
+<h1 id="u4E09-_u53D1_u8868_u535A_u6587"><a href="#u4E09-_u53D1_u8868_u535A_u6587" class="headerlink" title="三.发表博文"></a>三.发表博文</h1><h2 id="3-1_u65B0_u5EFA_u535A_u6587"><a href="#3-1_u65B0_u5EFA_u535A_u6587" class="headerlink" title="3.1新建博文"></a>3.1新建博文</h2><p>终端中进入hexo站点目录:</p>
+<p><code>hexo new &quot;文章题目&quot;</code></p>
+<p>会生成相应的.md文件。也可以手动再Hexo\source_posts 目录中下新建md文件</p>
+<h2 id="3-2_u65B0_u5EFA_u9875_u9762"><a href="#3-2_u65B0_u5EFA_u9875_u9762" class="headerlink" title="3.2新建页面"></a>3.2新建页面</h2><p>上面新建的博文是显示在单个文章界面，这里新建的页面是作为单个页面显示的，比如下图的分类、标签、归档和关于我，你点击后都是显示为单个页面。</p>
+<p><code>hexo new page &quot;页面名称&quot;</code></p>
+<p>命令执行完后，就会发现在在 Hexo\source 目录中多了一个文件夹，里面还有一个index.md,这就代表我们新建了一个页面。</p>
+<h2 id="3-3_u5199_u535A_u6587"><a href="#3-3_u5199_u535A_u6587" class="headerlink" title="3.3写博文"></a>3.3写博文</h2><h3 id="3-3-1_atom_u7F16_u8F91_u5668_u548Cmarkdown-prew_u63D2_u4EF6_u5C31_u53EF_u4EE5_u4F7F_u7528markdow_u6765_u7F16_u8F91_u535A_u5BA2"><a href="#3-3-1_atom_u7F16_u8F91_u5668_u548Cmarkdown-prew_u63D2_u4EF6_u5C31_u53EF_u4EE5_u4F7F_u7528markdow_u6765_u7F16_u8F91_u535A_u5BA2" class="headerlink" title="3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客"></a>3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客</h3><p><a href="http://www.jianshu.com/p/1e402922ee32/" target="_blank" rel="external">Markdown——入门指南</a>中推荐了MouMarkdown 编辑器.但个人还是觉得atom编辑器和</p>
+<p>markdown-prew插件可以把写代码和写博客统一起来。并且也支持实时预览，既左边是你编辑 Markdown 语言，右边会实时的生成预览效果。在atom中</p>
+<p>使用快捷键command + shift + p，弹出包搜索框，输入markdown Preview，然后点击确定即可。</p>
+<h3 id="3-3-3_markdown_u8BED_u6CD5"><a href="#3-3-3_markdown_u8BED_u6CD5" class="headerlink" title="3.3.3 markdown语法"></a>3.3.3 markdown语法</h3><p><a href="http://www.jianshu.com/p/1e402922ee32/" target="_blank" rel="external">Markdown——入门指南</a></p>
+<p><a href="http://www.cnblogs.com/hnrainll/p/3514637.html" target="_blank" rel="external">Markdown 11种基本语法</a></p>
+<p>记住几个常用的如:标题,代码快,插入图片,插入链接</p>
+<h3 id="3-3-4__u7528_u4E03_u725B_u56FE_u5E8A_u6765_u4FDD_u5B58_u535A_u5BA2_u4E2D_u6240_u9700_u8981_u7684_u56FE_u7247"><a href="#3-3-4__u7528_u4E03_u725B_u56FE_u5E8A_u6765_u4FDD_u5B58_u535A_u5BA2_u4E2D_u6240_u9700_u8981_u7684_u56FE_u7247" class="headerlink" title="3.3.4 用七牛图床来保存博客中所需要的图片"></a>3.3.4 用七牛图床来保存博客中所需要的图片</h3><p>把本地的图片上传到<a href="https://portal.qiniu.com/" target="_blank" rel="external">七牛云服务</a>,七牛会给你的图片生成相应的外链,在博客中插入这个图片外链就可以了</p>
+<p><a href="https://portal.qiniu.com/tutorial/index" target="_blank" rel="external">新手上路</a>中有详细的教程。总的步骤如下:</p>
+<p>新建空间——内容管理——上传文件——复制外链到博客    </p>
+<h3 id="3-3-5_u6700_u7EC8_u6548_u679C"><a href="#3-3-5_u6700_u7EC8_u6548_u679C" class="headerlink" title="3.3.5最终效果"></a>3.3.5最终效果</h3><p>在终端切换到你的hexo站点目录</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo s</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo d</code></p>
+<p>在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ,可以看到本地的效果</p>
+<p>在浏览器browser的URL中输入<a href="http://lhyhfut.github.io/" target="_blank" rel="external">http://lhyhfut.github.io/</a>  ,这样就可以看到githubpages的页面了。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages9.png" alt=""></p>
+<h2 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h2><p><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a>   </p>
+<h2 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h2><p>1.博客上只有”归档”等够使用,”关于,分类,标签”都不能打开。可能仅仅新建了博文,没有新建页面</p>
+<p>2.插入外链时<a href="/"></a>这样会不起作用。直接写反倒是可以的。需要写入名字。相反,插入图片的时候不需要写入名字就可以直接显示图片。</p>
+<p>3.hexo配置的继续折腾。比如菜单等设置。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/10/测试七牛图床/" itemprop="url">
+                  测试七牛图床
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-10T12:19:11+08:00" content="2016-01-10">
+              2016-01-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <blockquote>
+<p>下面是测试图片:<br><img src="http://7xpy7l.com1.z0.glb.clouddn.com/3.jpg" alt="image"></p>
+</blockquote>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/10/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-10T09:58:08+08:00" content="2016-01-10">
+              2016-01-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick_Start"><a href="#Quick_Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create_a_new_post"><a href="#Create_a_new_post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run_server"><a href="#Run_server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate_static_files"><a href="#Generate_static_files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy_to_remote_sites"><a href="#Deploy_to_remote_sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
             
           </span>
         
@@ -322,7 +1386,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
