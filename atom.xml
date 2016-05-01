@@ -650,7 +650,7 @@ and the repository exists.</code></p>
     <link href="http://yoursite.com/2016/04/20/%E4%BD%BF%E7%94%A8githubpages-hexo-atom%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2016/04/20/使用githubpages-hexo-atom写博客/</id>
     <published>2016-04-19T23:18:14.000Z</published>
-    <updated>2016-05-01T09:56:01.000Z</updated>
+    <updated>2016-05-01T10:06:25.000Z</updated>
     <content type="html"><![CDATA[<h1 id="u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88"><a href="#u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88" class="headerlink" title="一.git(客户端)github pages 配置连接与取消"></a>一.git(客户端)github pages 配置连接与取消</h1><h2 id="1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002"><a href="#1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002" class="headerlink" title="1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。"></a>1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。</h2><h2 id="1-2-githubpages_u7684_u4F7F_u7528_u3002"><a href="#1-2-githubpages_u7684_u4F7F_u7528_u3002" class="headerlink" title="1.2.githubpages的使用。"></a>1.2.githubpages的使用。</h2><h3 id="1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09"><a href="#1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09" class="headerlink" title="1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）"></a>1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages1.png" alt=""></p>
 <p>添加相应的说明文字</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages2.png" alt=""></p>
@@ -725,7 +725,15 @@ and the repository exists.</code></p>
 <p><code>终端切换到你的hexo站点目录</code></p>
 <p><code>hexo new page categories</code></p>
 <p><code>hexo new page tags</code>  </p>
+<p><code>hexo new page about</code></p>
 <p><code>hexo new page title</code> //没用,右上角没这个</p>
+<p>与</p>
+<p><a href="http://localhost:4000/about/" target="_blank" rel="external"></a></p>
+<p><a href="http://localhost:4000/tags/" target="_blank" rel="external"></a></p>
+<p><a href="http://localhost:4000/categories/" target="_blank" rel="external"></a></p>
+<p>是对应的</p>
+<p>点击进入,由于你还 <strong>没在生成的页面中添加内容</strong>,网站上相应页面也都还是一片空白:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github119.png" alt=""></p>
 <h3 id="2-3-4_u5C06_u672C_u5730_u6587_u4EF6_u90E8_u7F72_u5230_GitHub"><a href="#2-3-4_u5C06_u672C_u5730_u6587_u4EF6_u90E8_u7F72_u5230_GitHub" class="headerlink" title="2.3.4将本地文件部署到 GitHub"></a>2.3.4将本地文件部署到 GitHub</h3><p>修改 Hexo 中的_config.yml 文件,找到deploy字段,如下设置:<br>(注:冒号后面要加上一个空格，否则会报错)</p>
 <p><code>deploy:</code></p>
 <p>  <code>type: git</code></p>
@@ -768,6 +776,7 @@ and the repository exists.</code></p>
 <p><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">主题配置</a></p>
 <p><a href="https://hexo.io/zh-cn/docs/front-matter.html#分类和标签" target="_blank" rel="external">Hexo 的分类与标签文档</a></p>
 <p><a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">第三方服务</a></p>
+<p>4.图片在博客中的位置还不够美观。显得比较乱。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h1 id="u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88"><a href="#u4E00-git_28_u5BA2_u6237_u7AEF_2]]>
@@ -776,25 +785,6 @@ and the repository exists.</code></p>
       <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
       <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
-    
-  </entry>
-  
-  <entry>
-    <title><![CDATA[测试七牛图床]]></title>
-    <link href="http://yoursite.com/2016/01/10/%E6%B5%8B%E8%AF%95%E4%B8%83%E7%89%9B%E5%9B%BE%E5%BA%8A/"/>
-    <id>http://yoursite.com/2016/01/10/测试七牛图床/</id>
-    <published>2016-01-10T04:19:11.000Z</published>
-    <updated>2016-01-10T04:44:29.000Z</updated>
-    <content type="html"><![CDATA[<blockquote>
-<p>下面是测试图片:<br><img src="http://7xpy7l.com1.z0.glb.clouddn.com/3.jpg" alt="image"></p>
-</blockquote>
-]]></content>
-    <summary type="html">
-    <![CDATA[<blockquote>
-<p>下面是测试图片:<br><img src="http://7xpy7l.com1.z0.glb.clouddn.com/3.jpg" alt="image"></p>
-</blockquote>
-]]>
-    </summary>
     
   </entry>
   
