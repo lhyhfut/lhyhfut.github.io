@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="git&github," />
+  <meta name="keywords" content="博客," />
 
 
 
@@ -74,7 +74,7 @@
 <meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages7.png">
 <meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages8.png">
 <meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages9.png">
-<meta property="og:updated_time" content="2016-04-24T06:06:53.000Z">
+<meta property="og:updated_time" content="2016-05-01T09:32:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用githubpages+hexo+atom写博客">
 <meta name="twitter:description" content="一.git(客户端)github pages 配置连接与取消1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。1.2.githubpages的使用。1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;amp;组织页（站）
@@ -237,6 +237,21 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -270,7 +285,7 @@
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages8.png" alt=""></p>
 <h1 id="u4E8C-hexo_u7684_u5B89_u88C5_u4E0E_u8BBE_u7F6E"><a href="#u4E8C-hexo_u7684_u5B89_u88C5_u4E0E_u8BBE_u7F6E" class="headerlink" title="二.hexo的安装与设置"></a>二.hexo的安装与设置</h1><p>上面只是githubpages默认的页面。下面采用的是hexo</p>
 <h2 id="2-1-hexo_u662F_u7528npm_u5B89_u88C5_u7684_u3002npm_u662Fnode_u7684_u5305_u7BA1_u7406_u5DE5_u5177_u3002_u9700_u8981_u5148_u5B89_u88C5_u5B83_u3002_u5B89_u88C5_u597Dnpm_u540E_2C_u7EC8_u7AEF_u7528_u5982_u4E0B_u547D_u4EE4_3A"><a href="#2-1-hexo_u662F_u7528npm_u5B89_u88C5_u7684_u3002npm_u662Fnode_u7684_u5305_u7BA1_u7406_u5DE5_u5177_u3002_u9700_u8981_u5148_u5B89_u88C5_u5B83_u3002_u5B89_u88C5_u597Dnpm_u540E_2C_u7EC8_u7AEF_u7528_u5982_u4E0B_u547D_u4EE4_3A" class="headerlink" title="2.1.hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后,终端用如下命令:"></a>2.1.hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后,终端用如下命令:</h2><p><code>sudo npm install -g hexo</code></p>
-<p>默认被安装在了node的包目录下。可以使用``</p>
+<p>默认被安装在了node的包目录下。可以使用<code>hexo -h</code>查看帮助</p>
 <p>然后切换到想安装的目录:</p>
 <p><code>hexo init</code></p>
 <p><code>npm istall //安装hexo package.json中默认的包</code></p>
@@ -293,7 +308,7 @@
 <p>然后再<br><code>hexo s //hexo server</code></p>
 <p>这时在浏览器中输入<a href="http://localhost:4000,可以看到本地的效果" target="_blank" rel="external">http://localhost:4000,可以看到本地的效果</a></p>
 <h2 id="2-3-_u66F4_u6362_u4E3B_u9898"><a href="#2-3-_u66F4_u6362_u4E3B_u9898" class="headerlink" title="2.3.更换主题"></a>2.3.更换主题</h2><p>hexo默认的主题不好看,在知乎上的推荐中选了一个投票较高的:NexT 主题</p>
-<p><a href="http://theme-next.iissnan.com/five-minutes-setup.html" target="_blank" rel="external">Next主题官网</a></p>
+<p><a href="http://theme-next.iissnan.com" target="_blank" rel="external">Next主题官网</a></p>
 <h3 id="2-3-1_u590D_u5236_u4E3B_u9898_3A"><a href="#2-3-1_u590D_u5236_u4E3B_u9898_3A" class="headerlink" title="2.3.1复制主题:"></a>2.3.1复制主题:</h3><p>在终端窗口下，定位到 Hexo 站点目录下。使用 Git checkout 代码：</p>
 <p><code>cd your-hexo-site</code></p>
 <p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p>
@@ -346,6 +361,9 @@
 <h2 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h2><p>1.博客上只有”归档”等够使用,”关于,分类,标签”都不能打开。可能仅仅新建了博文,没有新建页面</p>
 <p>2.插入外链时<a href="/"></a>这样会不起作用。直接写反倒是可以的。需要写入名字。相反,插入图片的时候不需要写入名字就可以直接显示图片。</p>
 <p>3.hexo配置的继续折腾。比如菜单等设置。</p>
+<p><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">主题配置</a></p>
+<p><a href="https://hexo.io/zh-cn/docs/front-matter.html#分类和标签" target="_blank" rel="external">Hexo 的分类与标签文档</a></p>
+<p><a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">第三方服务</a></p>
 </span>
       
     </div>
@@ -354,7 +372,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/git-github/" rel="tag">#git&github</a>
+            <a href="/tags/博客/" rel="tag">#博客</a>
           
         </div>
       
@@ -441,21 +459,21 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-count">1</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>

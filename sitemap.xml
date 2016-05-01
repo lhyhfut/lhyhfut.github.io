@@ -2,8 +2,18 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yoursite.com/2016/04/20/%E4%BD%BF%E7%94%A8githubpages-hexo-atom%E5%86%99%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2016-05-01T09:32:48.000Z</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://yoursite.com/2016/05/01/git-github%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%972/</loc>
+    <lastmod>2016-05-01T09:32:32.000Z</lastmod>
+  </url>
+  
+  <url>
     <loc>http://yoursite.com/2016/04/24/git-github%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%971/</loc>
-    <lastmod>2016-05-01T09:06:45.000Z</lastmod>
+    <lastmod>2016-05-01T09:32:23.000Z</lastmod>
   </url>
   
   <url>
@@ -14,11 +24,6 @@
   <url>
     <loc>http://yoursite.com/2016/05/01/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/</loc>
     <lastmod>2016-05-01T03:35:04.000Z</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://yoursite.com/2016/04/20/%E4%BD%BF%E7%94%A8githubpages-hexo-atom%E5%86%99%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2016-04-24T06:06:53.000Z</lastmod>
   </url>
   
   <url>

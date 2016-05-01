@@ -1,0 +1,1121 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="git&github," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="lhy的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="github2.1 github使用注册GitHub账号。
+由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：
+步骤见远程仓库
+(1)第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Gi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git-github使用指南2">
+<meta property="og:url" content="http://yoursite.com/2016/05/01/git-github使用指南2/index.html">
+<meta property="og:site_name" content="lhy的博客">
+<meta property="og:description" content="github2.1 github使用注册GitHub账号。
+由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：
+步骤见远程仓库
+(1)第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Gi">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github30.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github29.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github31.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github32.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github33.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github34.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github30.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github35.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github36.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github37.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github38.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github39.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github40.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github41.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github42.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github43.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github44.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github45.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github46.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github47.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github48.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github49.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github50.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github51.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github52.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github53.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github54.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github55.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github56.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github57.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github58.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github59.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github61.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github62.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github63.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github64.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github65.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github67.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github66.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github68.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github69.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github70.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github71.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github72.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github73.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github74.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github75.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github76.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github77.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github78.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github79.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github80.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github81.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github82.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github83.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github84.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github85.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github86.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github87.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github88.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github89.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github90.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github91.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github92.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github93.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github94.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github95.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github96.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github97.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github98.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github99.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github100.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github102.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github101.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github103.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github104.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github105.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github106.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github107.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github108.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github109.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github110.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github111.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github112.png">
+<meta property="og:updated_time" content="2016-05-01T09:32:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git-github使用指南2">
+<meta name="twitter:description" content="github2.1 github使用注册GitHub账号。
+由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：
+步骤见远程仓库
+(1)第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Gi">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> git-github使用指南2 | lhy的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">lhy的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Science technology and culture</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git-github使用指南2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-01T17:15:29+08:00" content="2016-05-01">
+              2016-05-01
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><h3 id="2-1_github_u4F7F_u7528"><a href="#2-1_github_u4F7F_u7528" class="headerlink" title="2.1 github使用"></a>2.1 github使用</h3><p>注册GitHub账号。</p>
+<p>由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：</p>
+<p>步骤见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" target="_blank" rel="external">远程仓库</a></p>
+<p>(1)第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>
+<p><code>ssh-keygen -t rsa -C &quot;youremail@example.com&quot;</code></p>
+<p>你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有id_rsa和id_rsa.pub两个文件，这两个就是SSH Key的秘钥对，id_rsa是私钥，不能泄露出去，id_rsa.pub是公钥，可以放心地告诉任何人。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github30.png" alt=""></p>
+<p>注:由于我的已经用github客户端设置过了,所以有.ssh文件夹。</p>
+<p>(2)登陆GitHub，打开“Account settings”，“SSH Keys”页面：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github29.png" alt=""></p>
+<p>注:我的已经用github客户端设置过了,但上面显示There are no SSH keys with access to your account.。</p>
+<p>为什么GitHub需要SSH Key呢？因为GitHub需要识别出你推送的提交确实是你推送的，而不是别人冒充的，而Git支持SSH协议，所以，GitHub只要知道了你的公钥，就可以确认只有你自己才能推送。</p>
+<p>当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
+<p>最后友情提示，在GitHub上免费托管的Git仓库，任何人都可以看到喔（但只有你自己才能改）。所以，不要把敏感信息放进去。</p>
+<p>如果你不想让别人看到Git库，有两个办法，一个是交点保护费，让GitHub把公开的仓库变成私有的，这样别人就看不见了（不可读更不可写）。另一个办法是自己动手，搭一个Git服务器，因为是你自己的Git服务器，所以别人也是看不见的。这个方法我们后面会讲到的，相当简单，公司内部开发必备。</p>
+<h2 id="2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93"><a href="#2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93" class="headerlink" title="2.2 添加远程库"></a>2.2 添加远程库</h2><p>现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。</p>
+<p>(1)首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库<br>(2)在Repository name填入learngit，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库<br>(3)目前，在GitHub上的这个learngit仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。<br>(4)现在，我们根据GitHub的提示:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github31.png" alt=""></p>
+<p>在本地的learngit仓库下运行命令：(上图中有)</p>
+<p>SSH为:<code>git@github.com:lhyhfut/learngit.git</code></p>
+<p>上图中还推荐:We recommend every repository include a README, LICENSE, and .gitignore.</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github32.png" alt=""></p>
+<p>第一次<code>git remote add origin</code>失败的原因是:找错目录了。这个目录里没有git init,没有.git文件夹。找到正确的本地工作区即可。<br>(5)请千万注意，把上面的lhyhfut替换成你自己的GitHub账户名，否则，你在本地关联的就是我的远程库，关联没有问题，但是你以后推送是推不上去的，因为你的SSH Key公钥不在我的账户列表中。<br>添加后，远程库的名字就是origin，这是Git默认的叫法，也可以改成别的，但是origin这个名字一看就知道是远程库。</p>
+<p>(6)把本地库的所有内容推送到远程库上：<br><code>git push -u origin master</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github33.png" alt=""></p>
+<p>类似的:</p>
+<p><code>git clone git@github.com:lhyhfut/learngit.git</code>也会报错:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github34.png" alt=""></p>
+<p><strong>错因:</strong></p>
+<p><strong>使用git clone命令从github上同步github上的代码库时，如果使用SSH链接（如我自己的learngit项目：git@github.com:lhyhfut/learngit.git），而你的SSH key没有添加到github帐号设置中，系统会报下面的错误：</strong></p>
+<p><code>Permission denied (publickey).</code></p>
+<p><code>fatal: Could not read from remote repository.</code></p>
+<p><code>Please make sure you have the correct access rights
+and the repository exists.</code></p>
+<p><strong>这时需要在本地创建SSH key，然后将生成的SSH key文件内容添加到github帐号上去。</strong></p>
+<p><strong>即:为github帐号添加SSH keys</strong></p>
+<p>前面讲到我的主目录已经有了.ssh文件夹</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github30.png" alt=""></p>
+<p><strong>错因:</strong></p>
+<p>上面是 <strong>github_rsa.pub,github_rsa</strong> (目前还不知道他们怎么生成的),而非所需要的 <strong>id_rsa和id_rsa.pub</strong> 两个文件。</p>
+<p><strong>上面也讲了我的github——settings——SSH keys 中显示:</strong></p>
+<p><code>There are no SSH keys with access to your account.</code></p>
+<p><strong>创建SSH key的方法很简单，生成ssh key的过程如下图所示：</strong></p>
+<p>`ssh-keygen -t rsa -C “youremail@example.com”``<br>你需要把邮件地址换成你自己的邮件地址，然后一路回车，使用默认值即可，由于这个Key也不是用于军事目的，所以也无需设置密码。</p>
+<p>如果一切顺利的话，可以在用户主目录里找到.ssh目录，里面有<code>id_rsa</code>和<code>id_rsa.pub</code>两个文件，这两个就是SSH Key的秘钥对，<code>id_rsa</code>是私钥，不能泄露出去，<code>id_rsa.pub</code>是公钥，可以放心地告诉任何人。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github35.png" alt=""></p>
+<p>这下就生成了所需要的需要的 <strong>id_rsa和id_rsa.pub</strong> 两个文件</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github36.png" alt=""></p>
+<p>登陆GitHub，打开“Account settings”，“SSH Keys”页面：</p>
+<p>然后，点“Add SSH Key”，填上 <strong>任意Title</strong> ，在Key文本框里粘贴<code>id_rsa.pub</code>文件的内容。使用<code>cat  ~/.ssh/id_rsa.pub</code>命令即可。如果在linux下，也可以直接使用记事本打开该文件，但一定要注意其内容中包含空格和换行，要将其去掉。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github37.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github38.png" alt=""></p>
+<p>下面在来测试:</p>
+<p><code>git push -u origin master</code></p>
+<p><code>git clone git@github.com:lhyhfut/learngit.git</code>  <strong>如果是在同一个目录下,会替换原有的本地的工作区的仓库</strong></p>
+<p>就不会报错了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github39.png" alt=""></p>
+<p>github上也可以查询你每一次的commit id,这样就不用终端<code>git log</code>了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github40.png" alt=""></p>
+<p>最好还是按照刚建项目时候github的推荐:<strong>We recommend every repository include a README, LICENSE, and .gitignore.</strong></p>
+<p><strong>小结</strong></p>
+<p>(1)要关联一个远程库，使用命令git remote add origin git@server-name:path/repo-name.git；</p>
+<p>关联后，使用命令git push -u origin master第一次推送master分支的所有内容；</p>
+<p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</p>
+<p>(2)要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</p>
+<p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
+<h2 id="2-3__u5206_u652F_u7BA1_u7406"><a href="#2-3__u5206_u652F_u7BA1_u7406" class="headerlink" title="2.3 分支管理"></a>2.3 分支管理</h2><p>应用场景:假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
+<p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到(如果你commit的话,别人还是可以看的到的吧?比如github上面很多开源项目你都可以看得到它的分支。只是你可以先不commit,你提交的是能够稳定运行的master分支,新的分支只是做实验)，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上(因为新的分支是在master分支的基础上进行修改的。会替换掉以前的matser分支。这个合并到底是怎么合并的?如果同时有多个分支,合并的时候是否会造成冲突呢?在Bug分支章节提到了stash功能)，这样，既安全，又不影响别人工作(还是从协作,安全角度来考虑的)。</p>
+<h3 id="2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F"><a href="#2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F" class="headerlink" title="2.3.1 创建与合并分支"></a>2.3.1 创建与合并分支</h3><p>原理本分见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="external">廖雪峰的本节教程</a>,上面有图示,很清晰。</p>
+<p><strong>关键词:matser指针,master分支,dev指针,dev分支(dev只是分支的名字),Head指针</strong></p>
+<p>(1)每次提交(commit)，Git都把它们串成一条时间线，这条时间线就是一个分支(branch)。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。</p>
+<p>(2)初始没有其余分支的时候。master分支是一条线,master指针指向最新的提交,HEAD指针指向master分支,这样就确定了当前分支,以及当前分支的提交点。每次提交，master分支都会向前移动一步。</p>
+<p>(3)现在新建分支dev时,Git创建了一个dev指针。指向与master分支相同的提交点。再把HEAD指向dev分支,这样当前分支就在dev上了。所以Git创建一个分支很快:增加一个dev指针,更改HEAD指针的指向。工作区的文件等都没有任何变化。</p>
+<p>(4)不过，从现在开始，对工作区的修改和提交就是针对dev分支了(下面的终端命令中可以看到相关提示,确实是你新建分支后,对工作区的修改提交就针对新的分支了)，比如新提交一次后，dev指针往前移动一步，而master指针不变.</p>
+<p>(5)假如我们在dev上的工作完成了，就可以把dev合并到master上。Git怎么合并呢？最简单的方法，就是直接把master指向dev的当前提交，就完成了合并。所以Git合并分支也很快！就改改指针，工作区内容也不变。</p>
+<p>(6)合并完分支后，甚至可以删除dev分支。删除dev分支就是把dev指针给删掉，删掉后，我们就剩下了一条master分支。</p>
+<p><strong>实战</strong></p>
+<p>创建dev分支，然后切换到dev分支</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github41.png" alt=""></p>
+<p><code>git checkout</code>命令加上<code>-b</code>参数表示创建并切换，相当于以下两条命令：</p>
+<p><code>git branch dev</code></p>
+<p><code>git checkout dev</code></p>
+<p>用<code>git branch</code>命令查看当前分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github42.png" alt=""></p>
+<p><code>git branch</code>命令会列出所有分支，当前分支前面会标一个*号。</p>
+<p>然后，我们就可以在dev分支上正常提交，比如对readme.txt做个修改，加上一行：</p>
+<p><code>Creating a new branch is quick.</code></p>
+<p>然后提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github43.png" alt=""></p>
+<p>现在，dev分支的工作完成，我们就可以切换回master分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github44.png" alt=""></p>
+<p>切换回master分支后，再查看一个readme.txt文件，刚才添加的内容不见了！因为那个提交是在dev分支上，而master分支此刻的提交点并没有变：</p>
+<p>现在，我们把dev分支的工作成果合并到master分支上：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github45.png" alt=""></p>
+<p><code>git merge</code>命令用于合并指定分支到当前分支。合并后，再查看readme.txt的内容，就可以看到，和dev分支的最新提交是完全一样的。</p>
+<p>注意到上面的Fast-forward信息，Git告诉我们，这次合并是“快进模式”，也就是直接把master指向dev的当前提交，所以合并速度非常快。</p>
+<p>当然，也不是每次合并都能Fast-forward，我们后面会讲其他方式的合并。</p>
+<p>合并完成后，就可以放心地删除dev分支了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github46.png" alt=""></p>
+<p>删除后，查看branch，就只剩下master分支了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github47.png" alt=""></p>
+<p>因为创建、合并和删除分支非常快，所以Git鼓励你使用分支完成某个任务，合并后再删掉分支，这和直接在master分支上工作效果是一样的，但过程更安全。</p>
+<p><strong>小结</strong></p>
+<p>Git鼓励大量使用分支：</p>
+<p>查看分支：<code>git branch</code></p>
+<p>创建分支：<code>git branch &lt;name&gt;</code></p>
+<p>切换分支：<code>git checkout &lt;name&gt;</code></p>
+<p>创建+切换分支：<code>git checkout -b &lt;name&gt;</code></p>
+<p>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
+<p>删除分支：<code>git branch -d &lt;name&gt;</code></p>
+<h3 id="2-3-2_u89E3_u51B3_u51B2_u7A81"><a href="#2-3-2_u89E3_u51B3_u51B2_u7A81" class="headerlink" title="2.3.2解决冲突"></a>2.3.2解决冲突</h3><p>出现场景:master分支和feature1分支各自都分别有新的提交.这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。</p>
+<p>新建feature1分支</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github48.png" alt=""></p>
+<p>修改readme.txt最后一行，改为：</p>
+<p><code>Creating a new branch is quick AND simple.</code></p>
+<p>在feature1分支上提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github49.png" alt=""></p>
+<p>切换到master分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github50.png" alt=""></p>
+<p>Git还会自动提示我们当前master分支比远程的master分支要超前1个提交。</p>
+<p>在master分支上把readme.txt文件的最后一行改为：</p>
+<p><code>Creating a new branch is quick &amp; simple.</code></p>
+<p>在master分支上提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github51.png" alt=""></p>
+<p>master分支和feature1分支各自都分别有新的提交，这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突.用<code>git merge</code>合并</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github52.png" alt=""></p>
+<p>Git告诉我们，readme.txt文件存在冲突，必须手动解决冲突后再提交。<code>git status</code>也可以告诉我们冲突的文件:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github53.png" alt=""></p>
+<p>直接查看readme.txt的内容：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github54.png" alt=""></p>
+<p>Git用&lt;&lt;&lt;&lt;&lt;&lt;&lt;，=======，&gt;&gt;&gt;&gt;&gt;&gt;&gt;标记出不同分支的内容，我们手动修改readme.txt如下后保存：</p>
+<p><code>Creating a new branch is quick and simple.</code></p>
+<p>在master分支上提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github55.png" alt=""></p>
+<p>手动修改,保存,提交后,提示冲突解决。</p>
+<p>用 <strong>带参数的git log</strong> 也可以看到分支的合并情况：</p>
+<p><code>git log --graph --pretty=oneline --abbrev-commit</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github56.png" alt=""></p>
+<p>可以看到上面有2个冲突分支。但经过修改提交之后,冲突解决,分支正常合并。</p>
+<p>删除feature1分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github57.png" alt=""></p>
+<p><strong>小结</strong></p>
+<p>当Git无法自动合并分支时，就必须首先解决冲突(手动修改?)。解决冲突后，再提交，合并完成。</p>
+<p>用git log –graph命令可以看到分支合并图。</p>
+<h3 id="2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565"><a href="#2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565" class="headerlink" title="2.3.3分支管理策略"></a>2.3.3分支管理策略</h3><p>通常，合并分支时，如果可能，Git会用 <strong>Fast forward</strong> 模式，但这种模式下，<strong>删除分支后，会丢掉分支信息</strong> 。</p>
+<p>如果要强制 <strong>禁用Fast forward</strong> 模式，Git就会 <strong>在merge时生成一个新的commit</strong> ，这样，从 <strong>分支历史上就可以看出分支信息</strong>。</p>
+<p><strong>注:</strong> 2.3.2中<code>git log --graph --pretty=oneline --abbrev-commit</code>就没有看见2.3.1中创建并删除的dev分支的信息。</p>
+<p>下面我们实战一下<code>--no-ff</code>方式的<code>git merge</code>：</p>
+<p>创建并切换dev分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github58.png" alt=""></p>
+<p>修改readme.txt文件，并提交一个新的commit：</p>
+<p>然后再切换到matser分支:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github59.png" alt=""></p>
+<p>准备合并dev分支，请注意<code>--no-ff</code>参数，表示禁用<code>Fast forward</code>：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github61.png" alt=""></p>
+<p>因为本次合并要创建一个新的commit，所以加上 <strong>-m</strong> 参数，把commit描述写进去。</p>
+<p>合并后，我们用<code>git log --graph --pretty=oneline --abbrev-commit</code>看看分支历史：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github62.png" alt=""></p>
+<p>可以看到，不使用<code>Fast forward</code>模式，merge后就像这样：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github63.png" alt=""></p>
+<p>而以前使用<code>Fast forward</code>模式，merge后就像这样：(看不到删除的dev分支信息)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github64.png" alt=""></p>
+<p><strong>分支策略</strong></p>
+<p>在实际开发中，我们应该按照几个基本原则进行分支管理：</p>
+<p>首先，master分支应该是非常稳定的，也就是仅用来 <strong>发布新版本</strong> ，平时不能在上面干活；</p>
+<p>那在哪干活呢？<strong>干活都在dev分支上</strong> ，也就是说，dev分支是不稳定的，到某个时候，比如1.0版本发布时，再把dev分支合并到master上，在master分支发布1.0版本；</p>
+<p>你和你的小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以了。</p>
+<p>所以，团队合作的分支看起来就像这样：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github65.png" alt=""></p>
+<p><strong>小结</strong></p>
+<p>Git分支十分强大，在团队开发中应该充分应用。</p>
+<p>合并分支时，加上–no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
+<h3 id="2-3-4Bug_u5206_u652F"><a href="#2-3-4Bug_u5206_u652F" class="headerlink" title="2.3.4Bug分支"></a>2.3.4Bug分支</h3><p>软件开发中，bug很常见。在Git中每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。</p>
+<p>切换到dev分支,修改readme.txt(先不add,commit)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github67.png" alt=""></p>
+<p><code>测试BUG分支。初始dev上的修改。</code></p>
+<p>当你接到一个修复一个代号101的bug的任务时，很自然地，你想创建一个分支issue-101来修复它，但是，等等，当前正在dev上进行的工作还没有提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github66.png" alt=""></p>
+<p>并不是你不想提交，而是工作只进行到一半，还没法提交，预计完成还需1天时间。但是，必须在两个小时内修复该bug，怎么办？</p>
+<p>幸好，Git还提供了一个stash功能，可以把当前工作现场“储藏”起来，等以后恢复现场后继续工作：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github68.png" alt=""></p>
+<p>现在，用git status查看工作区，就是干净的（除非有没有被Git管理的文件），因此可以放心地创建分支来修复bug。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github69.png" alt=""></p>
+<p>首先确定要在哪个分支上修复bug，假定需要在master分支上修复，就从master创建临时分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github70.png" alt=""></p>
+<p>现在修复bug，修改readme.txt:</p>
+<p><code>修复BUG,修改readme.txt</code></p>
+<p>然后提交：(下图多截了<code>git checkout -b issue-101</code>命令)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github71.png" alt=""></p>
+<p>修复完成后，切换到master分支，并完成合并，最后删除issue-101分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github72.png" alt=""></p>
+<p>太棒了，原计划两个小时的bug修复只花了5分钟！现在，是时候接着回到dev分支干活了！</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github73.png" alt=""></p>
+<p>工作区是干净的，刚才的工作现场存到哪去了？用git stash list命令看看：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github74.png" alt=""></p>
+<p>工作现场还在，Git把stash内容存在某个地方了，但是需要恢复一下，有两个办法：</p>
+<p>一是用<code>git stash apply</code>恢复，但是恢复后，stash内容并不删除，你需要用<code>git stash drop</code>来删除；</p>
+<p>另一种方式是用<code>git stash pop</code>，恢复的同时把stash内容也删了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github75.png" alt=""></p>
+<p>再用git stash list查看，就看不到任何stash内容了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github76.png" alt=""></p>
+<p>你可以多次stash，恢复的时候，先用<code>git stash list</code>查看，然后恢复指定的stash，用命令：</p>
+<p><code>git stash apply stash@{0}</code></p>
+<p>我们现在还是在dev分支,readme.txt中的修改还在(不然就修复不了BUG了),仅仅是用<code>git stash pop</code>之后再用用<code>git stash list</code>看不到任何修改痕迹。但具体的修改内容还在,确实是修复BUG了。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github77.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github78.png" alt=""></p>
+<h3 id="2-3-4Feature_u5206_u652F"><a href="#2-3-4Feature_u5206_u652F" class="headerlink" title="2.3.4Feature分支"></a>2.3.4Feature分支</h3><p>软件开发中，总有无穷无尽的新的功能要不断添加进来。</p>
+<p>添加一个新功能时，你肯定不希望因为一些实验性质的代码，把主分支搞乱了，所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支。</p>
+<p>现在，你终于接到了一个新任务：开发代号为Vulcan的新功能，该功能计划用于下一代星际飞船。</p>
+<p>修改readme.txt:</p>
+<p><strong>新建vulcan.py</strong></p>
+<p>新建并且换到vulcan feature分支</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github79.png" alt=""></p>
+<p>5分钟后，开发完毕：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github80.png" alt=""></p>
+<p>切回dev，准备合并：(下面出现2个是因为刚才自己有误操作,在matser分支也创建又删除了vulcan.py)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github81.png" alt=""></p>
+<p>一切顺利的话，feature分支和bug分支是类似的，合并，然后删除。</p>
+<p>但是，</p>
+<p>就在此时，接到上级命令，因经费不足，新功能必须取消！</p>
+<p>虽然白干了，但是这个分支还是必须就地销毁：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github82.png" alt=""></p>
+<p><strong>注:</strong> 此处教程上是删除不了的。教程上Git友情提醒，feature-vulcan分支还没有被合并，如果删除，将丢失掉修改，如果要强行删除，需要使用命令git branch -D feature-vulcan。但自己这里却删除了。</p>
+<p><strong>小结</strong></p>
+<p>小结</p>
+<p>开发一个新feature，最好新建一个分支；</p>
+<p>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。(自己这里用git branch -d <name>就直接删除了)</name></p>
+<h3 id="2-3-5_u591A_u4EBA_u534F_u4F5C"><a href="#2-3-5_u591A_u4EBA_u534F_u4F5C" class="headerlink" title="2.3.5多人协作"></a>2.3.5多人协作</h3><p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。</p>
+<p>要查看远程库的信息，用<code>git remote</code>,或者，用<code>git remote -v</code>显示更详细的信息.会显示可以抓取(fetch)和推送(push)的origin的地址。如果没有推送权限，就看不到push的地址。</p>
+<p><strong>推送分支</strong></p>
+<p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
+<p><code>git push origin master</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github83.png" alt=""></p>
+<p>如果要推送其他分支，比如dev，就改成：</p>
+<p><code>git push origin dev</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github84.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github85.png" alt=""></p>
+<p>但是，并不是一定要把本地分支往远程推送，那么，哪些分支需要推送，哪些不需要呢？</p>
+<p>master分支是主分支，因此要时刻与远程同步；</p>
+<p>dev分支是开发分支，团队所有成员都需要在上面工作，所以也需要与远程同步；</p>
+<p>bug分支只用于在本地修复bug，就没必要推到远程了，除非老板要看看你每周到底修复了几个bug；</p>
+<p>feature分支是否推到远程，取决于你是否和你的小伙伴合作在上面开发。</p>
+<p>总之，就是在Git中，分支完全可以在本地自己藏着玩，是否推送，视你的心情而定</p>
+<p><strong>抓取分支</strong></p>
+<p>多人协作时，大家都会往master和dev分支上推送各自的修改。</p>
+<hr>
+<p><strong>你的小伙伴的操作</strong></p>
+<p>现在，模拟一个你的小伙伴，可以在另一台电脑（注意要把SSH Key添加到GitHub）<strong>或者同一台电脑的另一个目录下克隆,重新打开一个终端窗口,切换到clone下来的learngit仓库目录</strong> ：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github86.png" alt=""></p>
+<p>当你的小伙伴从远程库clone时，默认情况下，你的小伙伴只能看到本地的master分支。不信可以用<code>git branch</code>命令看看：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github87.png" alt=""></p>
+<p>现在，你的小伙伴要在dev分支上开发，就必须创建远程origin的dev分支到本地，于是他用这个命令创建本地dev分支：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github88.png" alt=""></p>
+<p>现在，他就可以在dev上继续修改(clone下来的learngit目录中的readme.txt)，</p>
+<p><code>远程dev,修改</code>   //你的小伙伴的readme.txt上的修改</p>
+<p>然后，时不时地把dev分支push到远程：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github89.png" alt=""></p>
+<p><strong>你的小伙伴的操作结束</strong></p>
+<hr>
+<p><strong>你的操作</strong></p>
+<p>你的小伙伴已经向origin/dev分支推送了他的提交，而碰巧你也对同样的文件(现在你也修改了本地目录中的readme.txt, <strong>不是你的小伙伴clone下来的learngit目录</strong> )作了修改( <strong>注:换到你操作了,在以前那个终端窗口</strong>):</p>
+<p><code>本地的dev分支修改</code>  //你的readme.txt上的修改</p>
+<p>并试图推送：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github90.png" alt=""></p>
+<p>推送失败，因为你的小伙伴的最新提交和你试图推送的提交有冲突，解决办法也很简单，Git已经提示我们，先用<code>git pull</code>(不是<code>git clone</code>)(<strong>提示:You may want to first integrate the remote changes(e.g., ‘git pull …’) before pushing again.</strong>)把最新的提交从origin/dev抓下来，然后，在本地合并，解决冲突，再推送：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github91.png" alt=""></p>
+<p><strong>注:提示There is no tracking information for the current branch.Please specify which branch you want to merge with.If you wish to set tracking information for this branch you can do so with:<br>git branch –set-upstream-to=origin/<branch> dev</branch></strong></p>
+<p>git pull也失败了，原因是没有指定本地dev分支与远程origin/dev分支的链接，根据提示，设置dev和origin/dev的链接：</p>
+<p><strong>注:用–track 或 –set-upstream-to都是可以的,教程上用的–set-upstream已经被删除了</strong></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github92.png" alt=""></p>
+<p><strong>注:这里不知道为什么会提示dev已经存在,但已经不影响下面的git pull</strong></p>
+<p>再去<code>git pull</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github93.png" alt=""></p>
+<p>这回<code>git pull</code>成功，但是合并有冲突，需要手动解决，解决的方法和分支管理中的<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840202368c74be33fbd884e71b570f2cc3c0d1dcf000" target="_blank" rel="external">解决冲突</a>完全一样。解决后，提交，再push：</p>
+<p><strong>注:方法也就是手动修改</strong></p>
+<p>readme.txt现在是这个样子:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github94.png" alt=""></p>
+<p>把&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD<br>以及&gt;&gt;&gt;&gt;&gt;&gt;&gt; …. 8cf0804468ed80f7b92a3de5cc285388782fd989</p>
+<p>修改成你想要的就行了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github95.png" alt=""></p>
+<p>提交,然后再去push。</p>
+<p><strong>注:下面本应该是readme.txt写成教程上的hello.py了。但只是提交说明,不影响,考虑进行版本退回</strong></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github96.png" alt=""></p>
+<p>github上也相应有了修改:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github97.png" alt=""></p>
+<p><strong>因此，多人协作的工作模式通常是这样：</strong></p>
+<p>首先，可以试图用<code>git push origin branch-name</code>推送自己的修改；</p>
+<p>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；</p>
+<p>如果合并有冲突，则解决冲突，并在本地提交；</p>
+<p>没有冲突或者解决掉冲突后，再用<code>git push origin branch-name</code>推送就能成功！</p>
+<p>如果git pull提示“no tracking information”，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream branch-name origin/branch-name</code>。</p>
+<p>这就是多人协作的工作模式，一旦熟悉了，就非常简单。</p>
+<p><strong>小结</strong></p>
+<p>查看远程库信息，使用<code>git remote -v</code>；</p>
+<p>本地新建的分支如果不推送到远程，对其他人就是不可见的；</p>
+<p>从本地推送分支，使用<code>git push origin branch-name</code>，如果推送失败，先用git pull抓取远程的新提交；</p>
+<p>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</p>
+<p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream-to branch-name origin/branch-name</code>；</p>
+<p>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突(<strong>手动处理成想要的样子</strong>)。</p>
+<h2 id="2-4_u6807_u7B7E_u7BA1_u7406"><a href="#2-4_u6807_u7B7E_u7BA1_u7406" class="headerlink" title="2.4标签管理"></a>2.4标签管理</h2><p>发布一个版本时，我们通常先在版本库中打一个标签(如v1.0之类的)，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。</p>
+<p>Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。</p>
+<h3 id="2-4-1_u521B_u5EFA_u6807_u7B7E"><a href="#2-4-1_u521B_u5EFA_u6807_u7B7E" class="headerlink" title="2.4.1创建标签"></a>2.4.1创建标签</h3><p>在Git中打标签非常简单，首先，切换到需要打标签的分支上：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github98.png" alt=""></p>
+<p>然后，敲命令git tag <name>就可以打一个新标签：</name></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github99.png" alt=""></p>
+<p>可以用命令<code>git tag</code>查看所有标签：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github100.png" alt=""></p>
+<p>默认标签是打在最新提交的commit上的。有时候，如果忘了打标签，比如，现在已经是周五了，但应该在周一打的标签没有打，怎么办？</p>
+<p>方法是找到历史提交的commit id，然后打上就可以了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github102.png" alt=""></p>
+<p>比方说要对<code>add merge</code>这次提交打标签，它对应的commit id是7e0d834，敲入命令,再用命令<code>git tag</code>查看标签：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github101.png" alt=""></p>
+<p>注意，标签不是按时间顺序列出，而是按字母排序的。可以用<code>git show &lt;tagname&gt;</code>查看标签信息：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github103.png" alt=""></p>
+<p>可以看到，<code>v0.9</code>确实打在<code>add merge</code>这次提交上。</p>
+<p>还可以创建带有说明的标签，用<code>-a</code>指定标签名，<code>-m</code>指定说明文字：</p>
+<p>用命令<code>git show &lt;tagname&gt;</code>可以看到说明文字：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github104.png" alt=""></p>
+<p>用命令<code>git show &lt;tagname&gt;</code>可以看到说明文字：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github105.png" alt=""></p>
+<p>还可以通过<code>-s</code>用私钥签名一个标签,签名采用PGP签名，因此，必须首先安装gpg（GnuPG），如果没有找到gpg，或者没有gpg密钥对，就会报错：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github106.png" alt=""></p>
+<p>如果报错，请参考 <strong>GnuPG帮助文档配置Key</strong>。</p>
+<p>用命令<code>git show &lt;tagname&gt;</code>可以看到PGP签名信息：</p>
+<p><code>git show v0.2</code></p>
+<p><strong>注:PGP签名先就不折腾了</strong></p>
+<p>用PGP签名的标签是不可伪造的，因为可以验证PGP签名。验证签名的方法比较复杂，这里就不介绍了。</p>
+<p><strong>小结</strong></p>
+<p>命令<code>git tag &lt;name&gt;</code>用于新建一个标签，默认为<code>HEAD</code>，也可以指定一个commit id；</p>
+<p><code>git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以指定标签信息；</p>
+<p><code>git tag -s &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以用PGP签名标签；</p>
+<p>命令<code>git tag</code>可以查看所有标签。</p>
+<h3 id="2-4-2_u64CD_u4F5C_u6807_u7B7E"><a href="#2-4-2_u64CD_u4F5C_u6807_u7B7E" class="headerlink" title="2.4.2操作标签"></a>2.4.2操作标签</h3><p>如果标签打错了，也可以删除：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github107.png" alt=""></p>
+<p>因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。</p>
+<p>如果要推送某个标签到远程，使用命令<code>git push origin &lt;tagname&gt;</code>：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github108.png" alt=""></p>
+<p>或者，一次性推送全部尚未推送到远程的本地标签：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github109.png" alt=""></p>
+<p>github上在releases选项中可以看到:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github110.png" alt=""></p>
+<p>如果标签已经推送到远程，要删除远程标签就麻烦一点，<strong>先从本地删除</strong>：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github111.png" alt=""></p>
+<p>然后，从远程删除。删除命令也是push，但是格式如下：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github112.png" alt=""></p>
+<p>要看看是否真的从远程库删除了标签，可以登陆GitHub查看。</p>
+<p><strong>小结</strong></p>
+<p>命令<code>git push origin &lt;tagname&gt;</code>可以推送一个本地标签；</p>
+<p>命令<code>git push origin --tags</code>可以推送全部未推送过的本地标签；</p>
+<p>命令<code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</p>
+<p>命令<code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。</p>
+<h2 id="2-5_u4F7F_u7528GitHub"><a href="#2-5_u4F7F_u7528GitHub" class="headerlink" title="2.5使用GitHub"></a>2.5使用GitHub</h2><p>我们一直用GitHub作为免费的远程仓库，如果是个人的开源项目，放到GitHub上是完全没有问题的。其实GitHub还是一个开源协作社区，通过GitHub，<strong>既可以让别人参与你的开源项目，也可以参与别人的开源项目</strong>。</p>
+<p><strong>如何参与一个开源项目呢？</strong></p>
+<p>(1)fork别人的仓库</p>
+<p>(2)从自己的账号下clone刚才你fork的仓库，这样你才能推送修改。如果从作者的仓库地址clone，因为没有权限，你将 <strong>不能推送修改</strong>。</p>
+<p>(3)剩下的就是对你自己的仓库操作了。如果你想修复bootstrap的一个bug，或者新增一个功能，立刻就可以开始干活，干完后，往自己的仓库推送。</p>
+<p>(4)如果你希望bootstrap的官方库能接受你的修改，你就可以在GitHub上发起一个<code>pull request</code>。当然，对方是否接受你的<code>pull request</code>就不一定了。</p>
+<p><strong>小结</strong></p>
+<p>在GitHub上，可以任意Fork开源仓库；</p>
+<p>自己拥有Fork后的仓库的读写权限；</p>
+<p>可以推送pull request给官方仓库来贡献代码。</p>
+<p>#自定义Git</p>
+<p><strong>这部分内容参考教程</strong></p>
+<h2 id="Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879"><a href="#Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879" class="headerlink" title="Git的其它可配置项"></a>Git的其它可配置项</h2><h2 id="u5FFD_u7565_u7279_u6B8A_u6587_u4EF6"><a href="#u5FFD_u7565_u7279_u6B8A_u6587_u4EF6" class="headerlink" title="忽略特殊文件"></a>忽略特殊文件</h2><p>忽略某些文件时，需要编写.gitignore；</p>
+<p>.gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！</p>
+<p>不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。所有配置文件可以直接在线浏览：<a href="https://github.com/github/gitignore" target="_blank" rel="external">github的gitignore配置</a></p>
+<h2 id="u914D_u7F6E_u522B_u540D"><a href="#u914D_u7F6E_u522B_u540D" class="headerlink" title="配置别名"></a>配置别名</h2><h2 id="u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29"><a href="#u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29" class="headerlink" title="搭建Git服务器(局域网,Web)"></a>搭建Git服务器(局域网,Web)</h2><p>GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。</p>
+<p>搭建Git服务器需要准备一台运行<code>Linux的机器</code>，强烈推荐用<code>Ubuntu或Debian</code>，这样，通过几条简单的<code>apt命令</code>就可以完成安装。</p>
+<p>(1)安装git</p>
+<p>(2)创建一个git用户，用来运行git服务</p>
+<p>(3)创建证书登录</p>
+<p>(4)初始化Git仓库</p>
+<p>(5)禁用shell登录</p>
+<p>(6)克隆远程仓库</p>
+<p><strong>管理公钥</strong></p>
+<p><strong>管理权限</strong></p>
+<p><strong>小结</strong></p>
+<p>搭建Git服务器非常简单，通常10分钟即可完成；</p>
+<p>要方便管理公钥，用<code>Gitosis</code>；</p>
+<p>要像SVN那样变态地控制权限，用<code>Gitolite</code>。</p>
+<p>#reference:</p>
+<h2 id="GitHub__u6F2B_u6E38_u6307_u5357"><a href="#GitHub__u6F2B_u6E38_u6307_u5357" class="headerlink" title="GitHub 漫游指南"></a><a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h2><h2 id="u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B"><a href="#u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B" class="headerlink" title="廖雪峰的Git教程"></a><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h2><h2 id="u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355"><a href="#u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355" class="headerlink" title="常用 Git 命令清单"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h2><h2 id="git-recipes"><a href="#git-recipes" class="headerlink" title="git-recipes"></a><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h2><h2 id="u56FE_u89E3git"><a href="#u56FE_u89E3git" class="headerlink" title="图解git"></a><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h2><h2 id="u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8"><a href="#u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8" class="headerlink" title="猴子都能懂的Git入门"></a><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h2><h2 id="u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9"><a href="#u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9" class="headerlink" title="《走进git时代系列一》 你该怎么玩"></a><a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h2><h2 id="Pro_Git_v2__u4E2D_u6587_u7248"><a href="#Pro_Git_v2__u4E2D_u6587_u7248" class="headerlink" title="Pro Git v2 中文版"></a><a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h2><h2 id="Git_u7684_u5B98_u65B9_u7F51_u7AD9"><a href="#Git_u7684_u5B98_u65B9_u7F51_u7AD9" class="headerlink" title="Git的官方网站"></a><a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h2><h1 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h1><h2 id="gitlab_2Ccoding"><a href="#gitlab_2Ccoding" class="headerlink" title="gitlab,coding"></a>gitlab,coding</h2><h2 id="git_flow_2Cgitlab_flow_2Cgithub_flow"><a href="#git_flow_2Cgitlab_flow_2Cgithub_flow" class="headerlink" title="git flow,gitlab flow,github flow"></a>git flow,gitlab flow,github flow</h2><h2 id="Git_u4E0E_u534F_u4F5C"><a href="#Git_u4E0E_u534F_u4F5C" class="headerlink" title="Git与协作"></a>Git与协作</h2></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/git-github/" rel="tag">#git&github</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/01/效率工具/" rel="next" title="效率工具">
+                <i class="fa fa-chevron-left"></i> 效率工具
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="lhy" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">lhy</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Science technology and culture</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">1.</span> <span class="nav-text">github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1_github_u4F7F_u7528"><span class="nav-number">1.0.1.</span> <span class="nav-text">2.1 github使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93"><span class="nav-number">1.1.</span> <span class="nav-text">2.2 添加远程库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3__u5206_u652F_u7BA1_u7406"><span class="nav-number">1.2.</span> <span class="nav-text">2.3 分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.3.1 创建与合并分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2_u89E3_u51B3_u51B2_u7A81"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.3.2解决冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3.3分支管理策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4Bug_u5206_u652F"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.3.4Bug分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4Feature_u5206_u652F"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.3.4Feature分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-5_u591A_u4EBA_u534F_u4F5C"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.3.5多人协作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4_u6807_u7B7E_u7BA1_u7406"><span class="nav-number">1.3.</span> <span class="nav-text">2.4标签管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1_u521B_u5EFA_u6807_u7B7E"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.4.1创建标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2_u64CD_u4F5C_u6807_u7B7E"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.4.2操作标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5_u4F7F_u7528GitHub"><span class="nav-number">1.4.</span> <span class="nav-text">2.5使用GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879"><span class="nav-number">1.5.</span> <span class="nav-text">Git的其它可配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5FFD_u7565_u7279_u6B8A_u6587_u4EF6"><span class="nav-number">1.6.</span> <span class="nav-text">忽略特殊文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u914D_u7F6E_u522B_u540D"><span class="nav-number">1.7.</span> <span class="nav-text">配置别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29"><span class="nav-number">1.8.</span> <span class="nav-text">搭建Git服务器(局域网,Web)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GitHub__u6F2B_u6E38_u6307_u5357"><span class="nav-number">1.9.</span> <span class="nav-text">GitHub 漫游指南</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B"><span class="nav-number">1.10.</span> <span class="nav-text">廖雪峰的Git教程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355"><span class="nav-number">1.11.</span> <span class="nav-text">常用 Git 命令清单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git-recipes"><span class="nav-number">1.12.</span> <span class="nav-text">git-recipes</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u56FE_u89E3git"><span class="nav-number">1.13.</span> <span class="nav-text">图解git</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8"><span class="nav-number">1.14.</span> <span class="nav-text">猴子都能懂的Git入门</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9"><span class="nav-number">1.15.</span> <span class="nav-text">《走进git时代系列一》 你该怎么玩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pro_Git_v2__u4E2D_u6587_u7248"><span class="nav-number">1.16.</span> <span class="nav-text">Pro Git v2 中文版</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git_u7684_u5B98_u65B9_u7F51_u7AD9"><span class="nav-number">1.17.</span> <span class="nav-text">Git的官方网站</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#To_do_list_3A"><span class="nav-number">2.</span> <span class="nav-text">To do list:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gitlab_2Ccoding"><span class="nav-number">2.1.</span> <span class="nav-text">gitlab,coding</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#git_flow_2Cgitlab_flow_2Cgithub_flow"><span class="nav-number">2.2.</span> <span class="nav-text">git flow,gitlab flow,github flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git_u4E0E_u534F_u4F5C"><span class="nav-number">2.3.</span> <span class="nav-text">Git与协作</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lhy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+
+</body>
+</html>
