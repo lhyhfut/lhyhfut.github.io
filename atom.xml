@@ -4,7 +4,7 @@
   <subtitle><![CDATA[Science technology and culture]]></subtitle>
   <link href="/atom.xml" rel="self"/>
   <link href="http://yoursite.com/"/>
-  <updated>2016-05-01T09:54:12.000Z</updated>
+  <updated>2016-05-13T15:21:17.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -13,6 +13,306 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title><![CDATA[Android开发指南2]]></title>
+    <link href="http://yoursite.com/2016/05/13/Android%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%972/"/>
+    <id>http://yoursite.com/2016/05/13/Android开发指南2/</id>
+    <published>2016-05-13T15:17:45.000Z</published>
+    <updated>2016-05-13T15:21:17.000Z</updated>
+    <content type="html"><![CDATA[<p>继续<a href="https://developer.android.com/training/index.html" target="_blank" rel="external">AndroidDeveloperTraining</a>的练习</p>
+<h1 id="Managing_the_Activity_Lifecycle"><a href="#Managing_the_Activity_Lifecycle" class="headerlink" title="Managing the Activity Lifecycle"></a><a href="https://developer.android.com/training/basics/activity-lifecycle/index.html" target="_blank" rel="external">Managing the Activity Lifecycle</a></h1>]]></content>
+    <summary type="html">
+    <![CDATA[<p>继续<a href="https://developer.android.com/training/index.html" target="_blank" rel="external">AndroidDeveloperTraining</a>的练习</p>
+<h1 id="]]>
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Android开发指南1]]></title>
+    <link href="http://yoursite.com/2016/05/04/Android%E5%BC%80%E5%8F%91%E6%8C%87%E5%8D%971/"/>
+    <id>http://yoursite.com/2016/05/04/Android开发指南1/</id>
+    <published>2016-05-04T11:01:30.000Z</published>
+    <updated>2016-05-13T15:19:42.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="Android_Studio"><a href="#Android_Studio" class="headerlink" title="Android Studio"></a>Android Studio</h1><h2 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h2><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android122.png" alt=""></p>
+<p>与eclipse和intelligent idea相比。Android Studio的ADT及Android SDK的安装要方便些。</p>
+<h2 id="u914D_u7F6E"><a href="#u914D_u7F6E" class="headerlink" title="配置"></a>配置</h2><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android123.png" alt=""></p>
+<p>选择你需要安装的SDK版本:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android124.png" alt=""></p>
+<h2 id="u5F00_u53D1"><a href="#u5F00_u53D1" class="headerlink" title="开发"></a>开发</h2><h2 id="Building_Your_First_App"><a href="#Building_Your_First_App" class="headerlink" title="Building Your First App"></a>Building Your First App</h2><p>在<a href="https://developer.android.com" target="_blank" rel="external">android开发者</a>上面有一些入门教程。大部分步骤见教程,下面只是一些截图:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android126.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android127.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android128.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android129.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android130.png" alt=""></p>
+<h3 id="u6587_u4EF6_u7ED3_u6784_3A"><a href="#u6587_u4EF6_u7ED3_u6784_3A" class="headerlink" title="文件结构:"></a>文件结构:</h3><p>有几个比较重要的:</p>
+<p>(1)app/src/main</p>
+<p>(2)app/src/main/res  包含工程的一些资源。</p>
+<p>(3)app/build.gradle</p>
+<p>Android Studio uses Gradle to compile and build your app</p>
+<h3 id="u8FD0_u884C_u7A0B_u5E8F"><a href="#u8FD0_u884C_u7A0B_u5E8F" class="headerlink" title="运行程序"></a>运行程序</h3><h4 id="u771F_u673A_u8C03_u8BD5"><a href="#u771F_u673A_u8C03_u8BD5" class="headerlink" title="真机调试"></a>真机调试</h4><p>在手机——设置——开发者选项——勾选USB调试</p>
+<p><strong>Error:the selected device is incompatible</strong></p>
+<p>开始的时候还以为是API level设置错了。state上显示的是unauthored。猜想估计是手机和电脑没有相互识别。</p>
+<p>后来的解决办法:</p>
+<p>在手机——设置——开发者选项——去勾选USB调试,然后再勾选。这时候会弹出一个是否允许的选项。勾选就可以了。所以还是没有识别的原因。</p>
+<p>然后state就变成online了</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android131.png" alt=""></p>
+<p>点击RUN,这是在你手机上会弹出应用程序许可。点击”确认”。就可以了。然后就会弹出helloworld,证明OK了。</p>
+<h4 id="u865A_u62DF_u673A_u8C03_u8BD5"><a href="#u865A_u62DF_u673A_u8C03_u8BD5" class="headerlink" title="虚拟机调试"></a>虚拟机调试</h4><p>在运行设置里面是可以选的。也需要下载相应的SDK。然后再让你选择,配置设备。</p>
+<p><strong>virtual device failed to load android studio mac</strong></p>
+<p>重启android studio就行了</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android132.png" alt=""></p>
+<p><strong>WIN10上先是出现Android studio启动的时候报错:找不到64 bit的java。这个原因是自己装的是32bit的。下载64 bit安装不上,原因是自己找错目录了(其实已经安装上了)。C盘是WIN10的,D盘是WIN8的,找错找到D盘去了</strong></p>
+<p>BW:虚拟机比较慢</p>
+<h2 id="Building_a_Simple_User_Interface"><a href="#Building_a_Simple_User_Interface" class="headerlink" title="Building a Simple User Interface"></a>Building a Simple User Interface</h2><h3 id="create_a_layout_in_XML_that_includes_a_text_field_and_a_button"><a href="#create_a_layout_in_XML_that_includes_a_text_field_and_a_button" class="headerlink" title="create a layout in XML that includes a text field and a button"></a>create a layout in XML that includes a text field and a button</h3><p>Android应用的用户界面由View和ViewGroup对象组成。它们之间靠XML表来联系。</p>
+<p>Layouts are subclasses of the ViewGroup。</p>
+<p>Create a Linear Layout</p>
+<p>res/layout directory, open the content_my.xml file</p>
+<p>中间区域选择text面板:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android2.png" alt=""></p>
+<p>中间区域选择design面板:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android3.png" alt=""></p>
+<p>在Preview pane中点击elements会打开Design pane中的WYSIWYG tools。</p>
+<p>(1)Delete the <textview> element.  (可以咋component tree或者Preview pane中删除)</textview></p>
+<p>(2)Change the <relativelayout> element to <linearlayout></linearlayout></relativelayout></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android4.png" alt=""></p>
+<p>Press Next and select <code>LinearLayout</code> as Root Element and give File Name</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android5.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android6.png" alt=""></p>
+<p>(3)Add the android:orientation attribute and set it to “horizontal”</p>
+<p>(4)Remove the android:padding attributes and the tools:context attribute.</p>
+<p>可以点击text,直接在layout.xml中修改:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android7.png" alt=""></p>
+<p>可以看到.xml中就是一组 <strong>键值对</strong></p>
+<p>也可以点击design,在右侧的properties中修改(但这样要麻烦一些):</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android8.png" alt=""></p>
+<p>在.xml中直接替换成教程中的内容即可:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android9.png" alt=""></p>
+<p><strong>LinearLayout:a view group (a subclass of ViewGroup) </strong></p>
+<p><strong>属性android:layout_width</strong></p>
+<p><strong>属性android:layout_height</strong></p>
+<p><strong>但上面这样修改是错的,与教程不一致,上面是new一个LinearLayout,而教程上是Change the RelativeLayout element to LinearLayout</strong></p>
+<p>直接把<code>content_my.xml</code>内容</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android10.png" alt=""></p>
+<p>改为:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android11.png" alt=""></p>
+<h3 id="Add_a_Text_Field"><a href="#Add_a_Text_Field" class="headerlink" title="Add a Text Field"></a>Add a Text Field</h3><p>(1)继续在content_my.xml file里。在<linearlayout>元素内定义一个<edittext>元素。并把它的<code>id</code>属性<code>@+id/edit_message</code></edittext></linearlayout></p>
+<p>(2)再定义几个属性,最终content_my.xml file。<edittext>元素内容就变成了:</edittext></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android12.png" alt=""></p>
+<p><strong>报错:cannot resolve symbol @string/edit_message,下面修改res/values/strings.xml就行了</strong></p>
+<h3 id="Add_String_Resources"><a href="#Add_String_Resources" class="headerlink" title="Add String Resources"></a>Add String Resources</h3><p>By default, your Android project includes a string resource file at res/values/strings.xml. Here, you’ll add a new string named “edit_message” and set the value to “Enter a message.”</p>
+<p>需要修改<code>res/values/strings.xml</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android13.png" alt=""></p>
+<p><strong>content_my.xml中最下面<edittext>处报错就消失了</edittext></strong></p>
+<h3 id="Add_a_Button"><a href="#Add_a_Button" class="headerlink" title="Add a Button"></a>Add a Button</h3><p>修改<code>content_my.xml</code>内容,定义一个<code>&lt;Button&gt;</code>元素,最终<code>&lt;LinearLayout&gt;</code>变成了下面这样:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android14.png" alt=""></p>
+<p><strong>button 元素不包含 android:id 属性</strong></p>
+<p>design面板就变成了下面这样:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android15.png" alt=""></p>
+<h3 id="Make_the_Input_Box_Fill_in_the_Screen_Width"><a href="#Make_the_Input_Box_Fill_in_the_Screen_Width" class="headerlink" title="Make the Input Box Fill in the Screen Width"></a>Make the Input Box Fill in the Screen Width</h3><p>在右侧会做出相应的改变:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android16.png" alt=""></p>
+<h3 id="Run_Your_App"><a href="#Run_Your_App" class="headerlink" title="Run Your App"></a>Run Your App</h3><p>安装ant</p>
+<p><code>brew install ant</code></p>
+<p>(1) android studio上点击RUN</p>
+<p>(2) 终端<code>ant debug adb install -r app/build/outputs/apk/app-debug.apk</code></p>
+<p><strong>报错:adb: command not found</strong></p>
+<h3 id="Starting_Another_Activity"><a href="#Starting_Another_Activity" class="headerlink" title="Starting Another Activity"></a>Starting Another Activity</h3><p>经过上面的学习,我们已经有了一个activity (a single screen) with a text field and a button。本节add some code to MyActivity that starts a new activity when the user clicks the Send button.也就是说另外添加一个界面,当用户点击send按钮的时候跳转到这个界面。</p>
+<h4 id="Respond_to_the_Send_Button"><a href="#Respond_to_the_Send_Button" class="headerlink" title="Respond to the Send Button"></a>Respond to the Send Button</h4><p>(1)修改 res/layout/content_my.xml文件。添加android:onClick 属性到 <code>&lt;Button&gt;</code>元素.</p>
+<p><code>android:onClick=&quot;sendMessage&quot;</code></p>
+<p><code>android:onClick</code>的值<code>sendMessage</code>就是你的activity里的方法名。当用户点击这个button的时候就会跳转到这个activity。</p>
+<p>(2)修改<code>app/src/main/java/com/example/liuhongyu/helloworld/MyActivity.java</code></p>
+<p>在<code>MyActivity</code> class内,添加<code>sendMessage()</code> method。</p>
+<p><code>public void sendMessage(View view){</code><br>    <code>}</code></p>
+<p>注意里面的<code>View view</code>参数。保证了点击的是<code>View</code></p>
+<h4 id="Build_an_Intent"><a href="#Build_an_Intent" class="headerlink" title="Build an Intent"></a>Build an Intent</h4><p>(1)在上面的<code>sendMessage</code> method内创建一个Intent 来开启一个名为<code>DisplayMessageActivity</code>的:</p>
+<p><code>Intent intent = new Intent(this, DisplayMessageActivity.class);</code></p>
+<p><strong>The reference to DisplayMessageActivity will raise an error if you’re using an IDE such as Android Studio because the class doesn’t exist yet. Ignore the error for now; you’ll create the class soon.即暂时会因为没有DisplayMessageActivity而报错,待会创建它</strong></p>
+<p><strong>An Intent is an object that provides runtime binding between separate components (such as two activities). The Intent represents an app’s “intent to do something.” You can use intents for a wide variety of tasks, but most often they’re used to start another activity 即Intent常用来启动另一个activity</strong></p>
+<p><strong>上面构造函数的2个参数:</strong></p>
+<p><strong>A Context as its first parameter (this is used because the Activity class is a subclass of Context)</strong></p>
+<p><strong>The Class of the app component to which the system should deliver the Intent (in this case, the activity that should be started)</strong></p>
+<p>(2)在MyActivity.java顶部import  Intent class</p>
+<p><strong>报错:Android studio不能够resolve symbol Intent。你必须import the Intent class:</strong></p>
+<p><code>import android.content.Intent;</code></p>
+<p><strong>小技巧:</strong> In Android Studio, press <strong>Alt + Enter</strong> (<strong>option + return on Mac</strong>) to import missing classes.</p>
+<p>(3)Inside the sendMessage() method, use findViewById() to get the EditText element.</p>
+<p>(4)在MyActivity.java顶部import the EditText class</p>
+<p>(5)Assign the text to a local message variable, and use the putExtra() method to add its text value to the intent.</p>
+<p>(6)在MyActivity class,添加EXTRA_MESSAGE的定义</p>
+<p>(7)在sendMessage()方法内,调用startActivity()方法,传入(1)中的indent参数。</p>
+<p>The system receives this call and starts an instance of the Activity specified by the Intent. Now you need to create the <code>DisplayMessageActivity</code> class in order for this to work.</p>
+<h3 id="Create_the_Second_Activity"><a href="#Create_the_Second_Activity" class="headerlink" title="Create the Second Activity"></a>Create the Second Activity</h3><p><strong>onCreate()</strong></p>
+<p><strong>setContentView()</strong></p>
+<h4 id="Create_a_new_activity_using_Android_Studio"><a href="#Create_a_new_activity_using_Android_Studio" class="headerlink" title="Create a new activity using Android Studio"></a>Create a new activity using Android Studio</h4><p>(1)右键<code>com.mycompany.myfirstapp</code>,New &gt; Activity &gt; Blank Activity</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android17.png" alt=""></p>
+<p>可以看到src/main/res/layout中生成了<code>activity_display_message.xml</code>,<code>content_display_message.xml</code>文件。</p>
+<p>(2)下面的Hierarchical Parent,你只需要选择默认的<code>com.mycompany.myfirstapp.MyActivity</code>就行了。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android18.png" alt=""></p>
+<p>(3)src/main/java中打开<code>DisplayMessageActivity.java</code>,这个class里面包含了所需的onCreate()方法的实现。你只需要去补充完善它就行了。</p>
+<p>(4)现在你运行这个app,点击按钮,开启第二个activity。but it uses a default “Hello world” layout provided by the template. You’ll soon update the activity to instead display a custom text view.</p>
+<h4 id="Create_the_activity_without_Android_Studio"><a href="#Create_the_activity_without_Android_Studio" class="headerlink" title="Create the activity without Android Studio"></a>Create the activity without Android Studio</h4><p>(1)如果你用的IDE不是Android Studio,或者使用终端命令行。可以在<code>MyActivity.java</code>文件所在的文件夹手动创建<code>DisplayMessageActivity.java</code>。</p>
+<p>(2)在<code>DisplayMessageActivity.java</code>中添加代码</p>
+<p>(3)src/main/res/values/<code>strings.xml</code>中添加新的activity’的标题</p>
+<p>(4)在你的manifest file:<code>AndroidManifest.xml</code>中,<code>在Application</code> element内,add the <code>&lt;activity&gt;</code> element for your <code>DisplayMessageActivity</code> class</p>
+<p><code>android:parentActivityName attribute</code></p>
+<h4 id="Receive_the_Intent"><a href="#Receive_the_Intent" class="headerlink" title="Receive the Intent"></a>Receive the Intent</h4><p>Every <code>Activity</code> is invoked by an <code>Intent</code>, regardless of how the user navigated there. You can get the <code>Intent</code> that started your <code>activity</code> by calling <code>getIntent()</code> and retrieve(检索) the data contained within the intent.</p>
+<p>(1)编辑java/com.mycompany.myfirstapp 目录中的<code>DisplayMessageActivity.java</code>.</p>
+<p>In Android Studio, press Alt + Enter (<code>option + return</code> on Mac) to import missing classes.</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android19.png" alt=""></p>
+<h4 id="Display_the_Message"><a href="#Display_the_Message" class="headerlink" title="Display the Message"></a>Display the Message</h4><p>(1)在<code>res/layout</code> directory, 编辑 <code>content_display_message.xml</code></p>
+<p>给<code>RelativeLayout</code> 添加 <code>android:id</code> 属性。</p>
+<p>(2)编辑 <code>DisplayMessageActivity.java</code></p>
+<p>完善<code>onCreate()</code>方法。</p>
+<p><strong>报错:</strong> <code>DisplayMessageActivity.java</code>显示<code>cannot resolve symbol content</code>, <code>content_display_message.xml</code>中显示<code>unexpected text found in layout file “android:id=&quot;@+id/content&quot;&gt;”</code></p>
+<p><strong>原因:</strong> 上面已经有了一个 <strong>“&gt;”</strong>,应该在上面的 <strong>“&gt;”</strong> 之内写一个。</p>
+<p>(3)运行app,在弹出的对话框内填上信息,点击send.The second activity replaces the first one on the screen, showing the message you entered in the first activity.</p>
+<p>一个基本的app就这样完成了</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android20.png" alt=""></p>
+<p><code>running an x86 based android virtual device is 10x faster</code></p>
+<p><a href="http://stackoverflow.com/questions/1554099/why-is-the-android-emulator-so-slow-how-can-we-speed-up-the-android-emulator" target="_blank" rel="external">stackoverflow上的回答</a></p>
+<p><strong>需要下载x86 Atom System Images and the Intel Hardware Accelerated Execution Manager Driver</strong></p>
+<p>在Android SDK的SDK Tools里面可以看到应该是下载了,但下载的是6.0的,可能导致5.x版本不能用?</p>
+<p>选择一个android5.0的虚拟机,</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android28.png" alt=""></p>
+<p>android5.0右侧点击<code>change</code></p>
+<p>勾选<code>show downloadable system images</code>下载<code>5.0的x86的systerm images</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android29.png" alt=""></p>
+<p>点击finish,返回刚才的界面,名称变成了<code>android 5.0 x86</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android30.png" alt=""></p>
+<p>myavd1设备右侧的<code>Repair Device</code>黄色感叹号没有了</p>
+<p><strong>双击该虚拟机,运行app,运行速度确实要快一些。</strong></p>
+<p>在消息框中输入<code>3333</code>,点击send,就能正确跳转到第2个activity了,反应也挺快的:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android32.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android31.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android27.png" alt=""></p>
+<p>自带的虚拟机非常的慢:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android21.png" alt=""></p>
+<p>进入后点击<code>hellword</code> app,输入message,点击send:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android22.png" alt=""></p>
+<p>等了很久,也不会弹出第2个activity。在真机上测试一遍,也是不能弹出。说明是代码的问题,而非虚拟机的问题。</p>
+<p>可能的原因:在新建activity的时候有误。从错误结果来看,弹不出第2个activity,也很可能是这个原因。问题在 <strong>Starting Another Activity</strong> 章节。</p>
+<p><strong>为了追踪改动,使用git&amp;github</strong></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android23.png" alt=""></p>
+<p><strong>可以看到git忽略了HelloWorld.iml,build,local.properties一些文件,这可能会导致你clone这个仓库到本地的时候会因为少了一些文件而导致app不能运行</strong></p>
+<p><strong>但上面也提示了可以用git add -f来手动添加这些文件</strong></p>
+<p>在github上新建一个仓库Create a new repo: <code>AndroidDeveloperTraining</code>,添加一个README</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android24.png" alt=""></p>
+<p>从上面找到远程仓库的SSH</p>
+<p>终端把本地的含有<code>.git</code>文件见的仓库和github上的远程仓库联系起来:<code>git remote add origin git@github.com:lhyhfut/AndroidDeveloperTraining.git</code></p>
+<p>然后把本地内容推送到远程仓库: <code>git push -u origin master</code></p>
+<p><strong>报错:Updates were rejected because the remote contains work that you do not have locally.</strong></p>
+<p><strong>原因:远程仓库中有README,本地仓库没有,这样不能推送</strong></p>
+<p>在<code>settings——Delete this repository</code>中删除刚才的远程仓库。新建一个不含README的仓库。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android25.png" alt=""></p>
+<p>不需要重新用git add remote origin SSH建立联系了。因为2个仓库的SSH是一样的。只需要重新git push -u origin推送就行了。</p>
+<p>在github上看每次commit的代码修改就比较方便:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android26.png" alt=""></p>
+<p><strong>解决点击按钮之后不能够弹出对话框的问题。原因是在Respond to the Send Button章节Add the android:onClick attribute to the Button element的时候少了android:onClick=”sendMessage”这个属性,sendMessage是MyActivity.java中的方法,点击按钮时跳转到第2个activity时会调用这个方法,补上这个方法,就可以了</strong></p>
+<p>然后上传到远程仓库中:</p>
+<p><code>git add *</code></p>
+<p><code>git commit -m &quot;solve cannot run second activity&quot;</code></p>
+<p><code>git push -u origin master</code></p>
+<h2 id="Supporting_Different_Devices"><a href="#Supporting_Different_Devices" class="headerlink" title="Supporting Different Devices"></a>Supporting Different Devices</h2><p>android有很多种不同屏幕尺寸的机型。这意味着你需要适配很多种。Some of the important variations that you should consider include different languages, screen sizes, and versions of the Android platform.</p>
+<h3 id="Supporting_Different_Languages"><a href="#Supporting_Different_Languages" class="headerlink" title="Supporting Different Languages"></a>Supporting Different Languages</h3><p>为了便于管理<code>UI strings</code>,android在每一个project里都有一个resources 目录。如果你用<code>Android SDK Tools</code>创建project。则这个tools会在项目顶层创建一个<code>res/</code>目录。它里面有很多子目录用于处理不同的资源类型。还有一些默认的资源文件如<code>res/values/strings.xml</code>,用于存储<code>string values</code>.</p>
+<h4 id="Create_Locale_Directories_and_String_Files"><a href="#Create_Locale_Directories_and_String_Files" class="headerlink" title="Create Locale Directories and String Files"></a>Create Locale Directories and String Files</h4><p>android studio 在<code>res/</code>中添加了不同的<code>values</code>目录,用于支持更多类型的语言。里面都有各自的<code>strings.xml</code></p>
+<h4 id="Use_the_String_Resources"><a href="#Use_the_String_Resources" class="headerlink" title="Use the String Resources"></a>Use the String Resources</h4><p>你可以通过使用<code>resource name defined by the &lt;string&gt; element&#39;s name attribute</code>在源码中引用<code>string resources</code>或者其他的<code>XML files</code>。在源码中,可以使用<code>R.string.&lt;string_name&gt;</code>类似语法来引用<code>string resource</code>。</p>
+<h3 id="Supporting_Different_Screens"><a href="#Supporting_Different_Screens" class="headerlink" title="Supporting Different Screens"></a>Supporting Different Screens</h3><p><strong>BW:该节内容查阅即可</strong></p>
+<h3 id="Supporting_Different_Platform_Versions"><a href="#Supporting_Different_Platform_Versions" class="headerlink" title="Supporting Different Platform Versions"></a>Supporting Different Platform Versions</h3><p><strong>BW:该节内容查阅即可</strong></p>
+<h2 id="API_2CSDK_u7684_u7EC4_u6210"><a href="#API_2CSDK_u7684_u7EC4_u6210" class="headerlink" title="API,SDK的组成"></a>API,SDK的组成</h2><h2 id="Java_u57FA_u7840"><a href="#Java_u57FA_u7840" class="headerlink" title="Java基础"></a>Java基础</h2><h2 id="Java_Web"><a href="#Java_Web" class="headerlink" title="Java Web"></a>Java Web</h2><p><a href="https://www.raywenderlich.com/78576/android-tutorial-for-beginners-part-2" target="_blank" rel="external">raywenderlich android教程</a></p>
+<h2 id="To_do_list"><a href="#To_do_list" class="headerlink" title="To do list"></a>To do list</h2><h3 id="u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002"><a href="#u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002" class="headerlink" title="等在博客中会显示为其他字符。可能受markdown语法的影响。"></a><relativelayout>等在博客中会显示为其他字符。可能受markdown语法的影响。</relativelayout></h3>]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="Android_Studio"><a href="#Android_Studio" class="headerlink" title="Android Studio"></a>Android Studio</h1><h2 id="u5B89_u88C5"><a h]]>
+    </summary>
+    
+      <category term="Android" scheme="http://yoursite.com/tags/Android/"/>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[简历]]></title>
+    <link href="http://yoursite.com/2016/05/02/%E7%AE%80%E5%8E%86/"/>
+    <id>http://yoursite.com/2016/05/02/简历/</id>
+    <published>2016-05-02T10:02:15.000Z</published>
+    <updated>2016-05-02T10:02:15.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Resourcelist]]></title>
+    <link href="http://yoursite.com/2016/05/02/Resourcelist/"/>
+    <id>http://yoursite.com/2016/05/02/Resourcelist/</id>
+    <published>2016-05-02T09:55:41.000Z</published>
+    <updated>2016-05-02T09:55:41.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Nodeclub源码分析]]></title>
+    <link href="http://yoursite.com/2016/05/02/Nodeclub%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
+    <id>http://yoursite.com/2016/05/02/Nodeclub源码分析/</id>
+    <published>2016-05-02T09:36:51.000Z</published>
+    <updated>2016-05-02T12:32:51.000Z</updated>
+    <content type="html"><![CDATA[<h1 id="u7F18_u8D77"><a href="#u7F18_u8D77" class="headerlink" title="缘起"></a>缘起</h1><h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h1><p><strong>这部分内容可以独立出来另外写一篇博客</strong></p>
+<h2 id="u5B89_u88C5nodejs"><a href="#u5B89_u88C5nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><h3 id="u5B89_u88C5nvm"><a href="#u5B89_u88C5nvm" class="headerlink" title="安装nvm"></a>安装nvm</h3><h3 id="u5B89_u88C5node_2Cnpm"><a href="#u5B89_u88C5node_2Cnpm" class="headerlink" title="安装node,npm"></a>安装node,npm</h3><h1 id="express"><a href="#express" class="headerlink" title="express"></a>express</h1><h2 id="express_u6784_u5EFA_u9879_u76EE_u76842_u79CD_u65B9_u5F0F"><a href="#express_u6784_u5EFA_u9879_u76EE_u76842_u79CD_u65B9_u5F0F" class="headerlink" title="express构建项目的2种方式"></a>express构建项目的2种方式</h2><h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h1><h1 id="mongoose"><a href="#mongoose" class="headerlink" title="mongoose"></a>mongoose</h1><h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><h1 id="angular-js"><a href="#angular-js" class="headerlink" title="angular.js"></a>angular.js</h1><h1 id="Nodeclub"><a href="#Nodeclub" class="headerlink" title="Nodeclub"></a>Nodeclub</h1><h2 id="fork_Nodeclub_2Cclone_u5230_u672C_u5730"><a href="#fork_Nodeclub_2Cclone_u5230_u672C_u5730" class="headerlink" title="fork Nodeclub,clone到本地"></a>fork Nodeclub,clone到本地</h2><h2 id="u5EFA_u7ACBexercise_branch"><a href="#u5EFA_u7ACBexercise_branch" class="headerlink" title="建立exercise branch"></a>建立exercise branch</h2><h2 id="u8FD0_u884CNodeclub"><a href="#u8FD0_u884CNodeclub" class="headerlink" title="运行Nodeclub"></a>运行Nodeclub</h2><p>按照<a href="https://github.com/cnodejs/nodeclub" target="_blank" rel="external">Nodeclub README</a>上的说明。<br>终端输入以下命令:</p>
+<p><code>redis-server</code></p>
+<p><code>redis-cli</code></p>
+<p><code>mongod</code></p>
+<p><code>mongo</code></p>
+<p><code>npm install</code> (切换到package.json所在目录,因为这个是在本地安装,而非全局安装)</p>
+<p><code>sudo supervisor app.js</code> //需用npm安装supervisor,否则用<code>node app.js</code>也可以.注意加上sudo,否则有时会报错</p>
+<p>浏览器中打开<a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodejs121.png" alt=""></p>
+<h2 id="u90AE_u7BB1_u9A8C_u8BC1"><a href="#u90AE_u7BB1_u9A8C_u8BC1" class="headerlink" title="邮箱验证"></a>邮箱验证</h2><h2 id="u6E90_u7801_u5206_u6790"><a href="#u6E90_u7801_u5206_u6790" class="headerlink" title="源码分析"></a>源码分析</h2><h2 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h2><h3 id="N-blog"><a href="#N-blog" class="headerlink" title="N-blog"></a><a href="https://github.com/nswbmw/N-blog/wiki/_pages" target="_blank" rel="external">N-blog</a></h3><h3 id="u300Anodejs_u5B9E_u6218_u300B"><a href="#u300Anodejs_u5B9E_u6218_u300B" class="headerlink" title="《nodejs实战》"></a>《nodejs实战》</h3><h3 id="u300Anodejs_u5B9E_u6218_u300B_u7B2C2_u5B63"><a href="#u300Anodejs_u5B9E_u6218_u300B_u7B2C2_u5B63" class="headerlink" title="《nodejs实战》第2季"></a>《nodejs实战》第2季</h3><h2 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h2>]]></content>
+    <summary type="html">
+    <![CDATA[<h1 id="u7F18_u8D77"><a href="#u7F18_u8D77" class="headerlink" title="缘起"></a>缘起</h1><h1 id="nodejs"><a href="#nodejs" class="headerlink" ti]]>
+    </summary>
+    
+      <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Skilllist]]></title>
+    <link href="http://yoursite.com/2016/05/02/Skilllist/"/>
+    <id>http://yoursite.com/2016/05/02/Skilllist/</id>
+    <published>2016-05-02T06:11:35.000Z</published>
+    <updated>2016-05-02T06:11:35.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+  </entry>
+  
+  <entry>
+    <title><![CDATA[Booklist]]></title>
+    <link href="http://yoursite.com/2016/05/02/Booklist/"/>
+    <id>http://yoursite.com/2016/05/02/Booklist/</id>
+    <published>2016-05-02T06:10:27.000Z</published>
+    <updated>2016-05-02T06:10:28.000Z</updated>
+    <content type="html"></content>
+    <summary type="html">
+    
+    </summary>
+    
+  </entry>
   
   <entry>
     <title><![CDATA[git-github使用指南2]]></title>
@@ -446,7 +746,7 @@ and the repository exists.</code></p>
     <link href="http://yoursite.com/2016/04/24/git-github%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%971/"/>
     <id>http://yoursite.com/2016/04/24/git-github使用指南1/</id>
     <published>2016-04-24T06:05:23.000Z</published>
-    <updated>2016-05-01T09:54:01.000Z</updated>
+    <updated>2016-05-02T09:52:34.000Z</updated>
     <content type="html"><![CDATA[<h1 id="u7F18_u8D77"><a href="#u7F18_u8D77" class="headerlink" title="缘起"></a>缘起</h1><p>鉴于git,github已经成为程序员的基础技能,有必要总结一下。本文主要参考了<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a> ,该文深入浅出,很适合入门。</p>
 <h1 id="git_u7684_u5B89_u88C5_u548C_u4F7F_u7528"><a href="#git_u7684_u5B89_u88C5_u548C_u4F7F_u7528" class="headerlink" title="git的安装和使用"></a>git的安装和使用</h1><h2 id="1-_u5B89_u88C5"><a href="#1-_u5B89_u88C5" class="headerlink" title="1.安装"></a>1.安装</h2><p>MAC下采用brew安装。具体方法请参考<a href="http://brew.sh/" target="_blank" rel="external">homebrew的文档</a>。</p>
 <p><code>brew install git</code></p>
@@ -634,7 +934,7 @@ and the repository exists.</code></p>
 <p>也就是说:虽然是分布式的软件,但仍然需要一个服务器。</p>
 <p>你可以自己搭建一台运行Git的服务器，不过现阶段，为了学Git先搭个服务器绝对是小题大作。</p>
 <p>还可以用现成的:<a href="https://github.com/" target="_blank" rel="external">Github</a>,这个网站就是提供Git仓库托管服务的，所以，只要注册一个GitHub账号，就可以免费获得Git远程仓库。</p>
-<h1 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h1><h3 id="GitHub__u6F2B_u6E38_u6307_u5357"><a href="#GitHub__u6F2B_u6E38_u6307_u5357" class="headerlink" title="GitHub 漫游指南"></a><a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h3><h3 id="u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B"><a href="#u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B" class="headerlink" title="廖雪峰的Git教程"></a><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h3><h3 id="u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355"><a href="#u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355" class="headerlink" title="常用 Git 命令清单"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h3><h3 id="git-recipes"><a href="#git-recipes" class="headerlink" title="git-recipes"></a><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h3><h3 id="u56FE_u89E3git"><a href="#u56FE_u89E3git" class="headerlink" title="图解git"></a><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h3><h3 id="u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8"><a href="#u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8" class="headerlink" title="猴子都能懂的Git入门"></a><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h3><h3 id="u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9"><a href="#u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9" class="headerlink" title="《走进git时代系列一》 你该怎么玩"></a><a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h3><h3 id="Pro_Git_v2__u4E2D_u6587_u7248"><a href="#Pro_Git_v2__u4E2D_u6587_u7248" class="headerlink" title="Pro Git v2 中文版"></a><a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h3><h3 id="Git_u7684_u5B98_u65B9_u7F51_u7AD9"><a href="#Git_u7684_u5B98_u65B9_u7F51_u7AD9" class="headerlink" title="Git的官方网站"></a><a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h3><h1 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h1><h3 id="1-gitlab_2Ccoding"><a href="#1-gitlab_2Ccoding" class="headerlink" title="1.gitlab,coding"></a>1.gitlab,coding</h3><h3 id="2-git_flow_2Cgitlab_flow_2Cgithub_flow"><a href="#2-git_flow_2Cgitlab_flow_2Cgithub_flow" class="headerlink" title="2.git flow,gitlab flow,github flow"></a>2.git flow,gitlab flow,github flow</h3><h3 id="3-Git_u4E0E_u534F_u4F5C"><a href="#3-Git_u4E0E_u534F_u4F5C" class="headerlink" title="3.Git与协作"></a>3.Git与协作</h3>]]></content>
+<h1 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h1><h3 id="GitHub__u6F2B_u6E38_u6307_u5357"><a href="#GitHub__u6F2B_u6E38_u6307_u5357" class="headerlink" title="GitHub 漫游指南"></a><a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h3><h3 id="u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B"><a href="#u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B" class="headerlink" title="廖雪峰的Git教程"></a><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h3><h3 id="u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355"><a href="#u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355" class="headerlink" title="常用 Git 命令清单"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h3><h3 id="git-recipes"><a href="#git-recipes" class="headerlink" title="git-recipes"></a><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h3><h3 id="u56FE_u89E3git"><a href="#u56FE_u89E3git" class="headerlink" title="图解git"></a><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h3><h3 id="u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8"><a href="#u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8" class="headerlink" title="猴子都能懂的Git入门"></a><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h3><h3 id="u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9"><a href="#u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9" class="headerlink" title="《走进git时代系列一》 你该怎么玩"></a><a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h3><h3 id="Pro_Git_v2__u4E2D_u6587_u7248"><a href="#Pro_Git_v2__u4E2D_u6587_u7248" class="headerlink" title="Pro Git v2 中文版"></a><a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h3><h3 id="Git_u7684_u5B98_u65B9_u7F51_u7AD9"><a href="#Git_u7684_u5B98_u65B9_u7F51_u7AD9" class="headerlink" title="Git的官方网站"></a><a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h3><h1 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h1><h3 id="gitlab_2Ccoding"><a href="#gitlab_2Ccoding" class="headerlink" title="gitlab,coding"></a>gitlab,coding</h3><h3 id="git_flow_2Cgitlab_flow_2Cgithub_flow"><a href="#git_flow_2Cgitlab_flow_2Cgithub_flow" class="headerlink" title="git flow,gitlab flow,github flow"></a>git flow,gitlab flow,github flow</h3><h3 id="Git_u4E0E_u534F_u4F5C"><a href="#Git_u4E0E_u534F_u4F5C" class="headerlink" title="Git与协作"></a>Git与协作</h3>]]></content>
     <summary type="html">
     <![CDATA[<h1 id="u7F18_u8D77"><a href="#u7F18_u8D77" class="headerlink" title="缘起"></a>缘起</h1><p>鉴于git,github已经成为程序员的基础技能,有必要总结一下。本文主要参考了<a href="htt]]>
     </summary>
@@ -650,7 +950,7 @@ and the repository exists.</code></p>
     <link href="http://yoursite.com/2016/04/20/%E4%BD%BF%E7%94%A8githubpages-hexo-atom%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
     <id>http://yoursite.com/2016/04/20/使用githubpages-hexo-atom写博客/</id>
     <published>2016-04-19T23:18:14.000Z</published>
-    <updated>2016-05-01T10:06:25.000Z</updated>
+    <updated>2016-05-02T11:05:18.000Z</updated>
     <content type="html"><![CDATA[<h1 id="u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88"><a href="#u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88" class="headerlink" title="一.git(客户端)github pages 配置连接与取消"></a>一.git(客户端)github pages 配置连接与取消</h1><h2 id="1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002"><a href="#1-1-git_u65B9_u9762_u81EA_u5DF1_u662F_u7528_u7684_u662Fmac_u4E0A_u7684github_u5BA2_u6237_u7AEF_u3002_u7701_u7565_u4E86_u4E00_u4E9B_u547D_u4EE4_u64CD_u4F5C_u3002" class="headerlink" title="1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。"></a>1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。</h2><h2 id="1-2-githubpages_u7684_u4F7F_u7528_u3002"><a href="#1-2-githubpages_u7684_u4F7F_u7528_u3002" class="headerlink" title="1.2.githubpages的使用。"></a>1.2.githubpages的使用。</h2><h3 id="1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09"><a href="#1-2-1_u9996_u5148_u8981_u6CE8_u518C_u4E00_u4E2Agithub_u5E10_u53F7_u3002_u70B9_u51FBnew_repository_u3002_u5EFA_u7ACB_u540D_u4E3Ausername-github-io_u8FD9_u6837_u7684_u7528_u6237_26amp_3B_u7EC4_u7EC7_u9875_uFF08_u7AD9_uFF09" class="headerlink" title="1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）"></a>1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages1.png" alt=""></p>
 <p>添加相应的说明文字</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages2.png" alt=""></p>
@@ -769,7 +1069,15 @@ and the repository exists.</code></p>
 <p>在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ,可以看到本地的效果</p>
 <p>在浏览器browser的URL中输入<a href="http://lhyhfut.github.io/" target="_blank" rel="external">http://lhyhfut.github.io/</a>  ,这样就可以看到githubpages的页面了。</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages9.png" alt=""></p>
+<h1 id="u7ED9_u535A_u5BA2_u6DFB_u52A0github_star_u94FE_u63A5"><a href="#u7ED9_u535A_u5BA2_u6DFB_u52A0github_star_u94FE_u63A5" class="headerlink" title="给博客添加github star链接"></a>给博客添加github star链接</h1><p>参考<a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="external">Hexo搭建Github静态博客</a></p>
+<p>给blog主页添加一个“Fork me on Github”的绶带（ribbon），比如选择了红色的ribbon，将下面链接中提供的相应代码复制到Hexo正在使用的theme下_layout.swig中。比如我使用的next theme，那么将下面的代码（注意将you改为你自己的github上的注册名）</p>
+<p>代码在<a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">GitHub Ribbons</a>上挑选你喜欢的样式</p>
+<p>粘贴到 themes\next\layout\layout.swig中，放置在 最后，标签之前即可。</p>
+<p>效果:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github120.png" alt=""></p>
 <h2 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h2><p><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a>   </p>
+<p><a href="http://www.cnblogs.com/Leo_wl/p/3608794.html" target="_blank" rel="external">给你的博客加上“Fork me on Github”彩带</a>   </p>
+<p><a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="external">Hexo搭建Github静态博客</a>   </p>
 <h2 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h2><p>1.博客上只有”归档”等够使用,”关于,分类,标签”都不能打开。可能仅仅新建了博文,没有新建页面</p>
 <p>2.插入外链时<a href="/"></a>这样会不起作用。直接写反倒是可以的。需要写入名字。相反,插入图片的时候不需要写入名字就可以直接显示图片。</p>
 <p>3.hexo配置的继续折腾。比如菜单等设置。</p>
@@ -777,6 +1085,7 @@ and the repository exists.</code></p>
 <p><a href="https://hexo.io/zh-cn/docs/front-matter.html#分类和标签" target="_blank" rel="external">Hexo 的分类与标签文档</a></p>
 <p><a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">第三方服务</a></p>
 <p>4.图片在博客中的位置还不够美观。显得比较乱。</p>
+<p>5.向标签和分类页面添加内容。</p>
 ]]></content>
     <summary type="html">
     <![CDATA[<h1 id="u4E00-git_28_u5BA2_u6237_u7AEF_29github_pages__u914D_u7F6E_u8FDE_u63A5_u4E0E_u53D6_u6D88"><a href="#u4E00-git_28_u5BA2_u6237_u7AEF_2]]>
