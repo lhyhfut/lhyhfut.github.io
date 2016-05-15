@@ -1,0 +1,680 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="lhy的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="继续AndroidDeveloperTraining的练习
+Working with System PermissionsTo protect the system’s integrity and the user’s privacy, Android runs each app in a limited access sandbox. If the app wants to use resour">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidDeveloperTraining3">
+<meta property="og:url" content="http://yoursite.com/2016/05/15/AndroidDeveloperTraining3/index.html">
+<meta property="og:site_name" content="lhy的博客">
+<meta property="og:description" content="继续AndroidDeveloperTraining的练习
+Working with System PermissionsTo protect the system’s integrity and the user’s privacy, Android runs each app in a limited access sandbox. If the app wants to use resour">
+<meta property="og:updated_time" content="2016-05-15T08:26:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndroidDeveloperTraining3">
+<meta name="twitter:description" content="继续AndroidDeveloperTraining的练习
+Working with System PermissionsTo protect the system’s integrity and the user’s privacy, Android runs each app in a limited access sandbox. If the app wants to use resour">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> AndroidDeveloperTraining3 | lhy的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">lhy的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Science technology and culture</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AndroidDeveloperTraining3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-15T14:41:37+08:00" content="2016-05-15">
+              2016-05-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>继续<a href="https://developer.android.com/training/index.html" target="_blank" rel="external">AndroidDeveloperTraining</a>的练习</p>
+<h1 id="Working_with_System_Permissions"><a href="#Working_with_System_Permissions" class="headerlink" title="Working with System Permissions"></a><a href="https://developer.android.com/training/permissions/index.html" target="_blank" rel="external">Working with System Permissions</a></h1><p>To protect the system’s integrity and the user’s privacy, <code>Android</code> runs each app in a <code>limited access sandbox</code>. If the app wants to use resources or information <code>outside</code> of its sandbox, the <code>app</code>has to explicitly <code>request permission</code>. Depending on the <code>type</code> of permission the app requests, the system may grant the permission automatically, or the <code>system</code> may ask the <code>user</code> to grant the permission.</p>
+<h2 id="Declaring_Permissions"><a href="#Declaring_Permissions" class="headerlink" title="Declaring Permissions"></a>Declaring Permissions</h2><p>Every Android app runs in a limited-access sandbox. If an app needs to use resources or information <code>outside</code> of its own sandbox, the app has to <code>request</code> the appropriate permission. You declare that your app needs a permission by listing the permission in the App <code>Manifest</code>.</p>
+<h3 id="Determine_What_Permissions_Your_App_Needs"><a href="#Determine_What_Permissions_Your_App_Needs" class="headerlink" title="Determine What Permissions Your App Needs"></a>Determine What Permissions Your App Needs</h3><p>For a list of system permissions, see <code>Normal and Dangerous Permissions</code>.</p>
+<h3 id="Add_Permissions_to_the_Manifest"><a href="#Add_Permissions_to_the_Manifest" class="headerlink" title="Add Permissions to the Manifest"></a>Add Permissions to the Manifest</h3><p>To declare that your app needs a permission, put a <code>uses-permission element</code> in your app manifest, as a child of the <code>top-level manifest</code> element.</p>
+<p>For more information about the different kinds of permissions, see <code>Normal and Dangerous Permissions</code>.</p>
+<h2 id="Requesting_Permissions_at_Run_Time"><a href="#Requesting_Permissions_at_Run_Time" class="headerlink" title="Requesting Permissions at Run Time"></a>Requesting Permissions at Run Time</h2><p>Beginning in Android 6.0 (API level 23), users grant permissions to apps while the app is running, not when they install the app.</p>
+<p>System permissions are divided into <code>two</code> categories, <code>normal</code> and <code>dangerous</code></p>
+<h3 id="Check_For_Permissions"><a href="#Check_For_Permissions" class="headerlink" title="Check For Permissions"></a>Check For Permissions</h3><p><code>ContextCompat.checkSelfPermission()</code></p>
+<p>2个返回值:</p>
+<p><code>PackageManager.PERMISSION_GRANTED</code>:the app has the permission</p>
+<p><code>PERMISSION_DENIED</code>:the app does not have the permission</p>
+<h3 id="Request_Permissions"><a href="#Request_Permissions" class="headerlink" title="Request Permissions"></a>Request Permissions</h3><h3 id="Explain_why_the_app_needs_permissions"><a href="#Explain_why_the_app_needs_permissions" class="headerlink" title="Explain why the app needs permissions"></a>Explain why the app needs permissions</h3><h3 id="Request_the_permissions_you_need"><a href="#Request_the_permissions_you_need" class="headerlink" title="Request the permissions you need"></a>Request the permissions you need</h3><p>When your app calls <code>requestPermissions()</code>, the system shows a <code>standard dialog box</code>(默认的,非定制的?) to the user.</p>
+<h3 id="Handle_the_permissions_request_response"><a href="#Handle_the_permissions_request_response" class="headerlink" title="Handle the permissions request response"></a>Handle the permissions request response</h3><p>When your app requests permissions, the system presents a <code>dialog box</code> to the user. When the user responds, the system invokes your app’s <code>onRequestPermissionsResult()</code> method, passing it the user response. Your app has to override that method to find out whether the permission was granted(授予). The callback is passed the same request code you passed to <code>requestPermissions()</code></p>
+<p><code>READ_CONTACTS</code></p>
+<p><code>WRITE_CONTACTS</code></p>
+<h2 id="Permissions_Best_Practices"><a href="#Permissions_Best_Practices" class="headerlink" title="Permissions Best Practices"></a>Permissions Best Practices</h2><p>The following best practices can help you avoid such bad user experiences.</p>
+<h3 id="Consider_Using_an_Intent"><a href="#Consider_Using_an_Intent" class="headerlink" title="Consider Using an Intent"></a>Consider Using an Intent</h3><p>In many cases, you can choose between <code>two</code>ways for your app to perform a task. You can have your app ask for permission to perform the <code>operation itself</code>. Alternatively, you can have the app use an intent to have <code>another app</code> perform the task.</p>
+<p><strong>use permissions和use an intent的二种不通的使用场景见官方教程</strong></p>
+<h3 id="Only_Ask_for_Permissions_You_Need"><a href="#Only_Ask_for_Permissions_You_Need" class="headerlink" title="Only Ask for Permissions You Need"></a>Only Ask for Permissions You Need</h3><h3 id="Don_u2019t_Overwhelm_the_User"><a href="#Don_u2019t_Overwhelm_the_User" class="headerlink" title="Don’t Overwhelm the User"></a>Don’t Overwhelm the User</h3><h3 id="Explain_Why_You_Need_Permissions"><a href="#Explain_Why_You_Need_Permissions" class="headerlink" title="Explain Why You Need Permissions"></a>Explain Why You Need Permissions</h3><p><code>requestPermissions()</code></p>
+<h3 id="Test_for_Both_Permissions_Models"><a href="#Test_for_Both_Permissions_Models" class="headerlink" title="Test for Both Permissions Models"></a>Test for Both Permissions Models</h3><h1 id="Building_Apps_with_Content_Sharing"><a href="#Building_Apps_with_Content_Sharing" class="headerlink" title="Building Apps with Content Sharing"></a><a href="https://developer.android.com/training/building-content-sharing.html" target="_blank" rel="external">Building Apps with Content Sharing</a></h1><p>These classes teach you how to create apps that <code>share data</code> between <code>apps</code> and <code>devices</code>.</p>
+<p><strong>本节内容见官方教程</strong></p>
+<h2 id="Sharing_Simple_Data"><a href="#Sharing_Simple_Data" class="headerlink" title="Sharing Simple Data"></a>Sharing Simple Data</h2><h3 id="Sending_Simple_Data_to_Other_Apps"><a href="#Sending_Simple_Data_to_Other_Apps" class="headerlink" title="Sending Simple Data to Other Apps"></a>Sending Simple Data to Other Apps</h3><h3 id="Receiving_Simple_Data_from_Other_Apps"><a href="#Receiving_Simple_Data_from_Other_Apps" class="headerlink" title="Receiving Simple Data from Other Apps"></a>Receiving Simple Data from Other Apps</h3><h3 id="Adding_an_Easy_Share_Action"><a href="#Adding_an_Easy_Share_Action" class="headerlink" title="Adding an Easy Share Action"></a>Adding an Easy Share Action</h3><h2 id="Sharing_Files"><a href="#Sharing_Files" class="headerlink" title="Sharing Files"></a>Sharing Files</h2><h3 id="Setting_Up_File_Sharing"><a href="#Setting_Up_File_Sharing" class="headerlink" title="Setting Up File Sharing"></a>Setting Up File Sharing</h3><h3 id="Sharing_a_File"><a href="#Sharing_a_File" class="headerlink" title="Sharing a File"></a>Sharing a File</h3><h3 id="Requesting_a_Shared_File"><a href="#Requesting_a_Shared_File" class="headerlink" title="Requesting a Shared File"></a>Requesting a Shared File</h3><h3 id="Retrieving_File_Information"><a href="#Retrieving_File_Information" class="headerlink" title="Retrieving File Information"></a>Retrieving File Information</h3><h2 id="Sharing_Files_with_NFC"><a href="#Sharing_Files_with_NFC" class="headerlink" title="Sharing Files with NFC"></a>Sharing Files with NFC</h2><h3 id="Sending_Files_to_Another_Device"><a href="#Sending_Files_to_Another_Device" class="headerlink" title="Sending Files to Another Device"></a>Sending Files to Another Device</h3><h3 id="Receiving_Files_from_Another_Device"><a href="#Receiving_Files_from_Another_Device" class="headerlink" title="Receiving Files from Another Device"></a>Receiving Files from Another Device</h3><h1 id="Building_Apps_with_Multimedia_28_u591A_u5A92_u4F53_29"><a href="#Building_Apps_with_Multimedia_28_u591A_u5A92_u4F53_29" class="headerlink" title="Building Apps with Multimedia(多媒体)"></a><a href="https://developer.android.com/training/building-multimedia.html" target="_blank" rel="external">Building Apps with Multimedia(多媒体)</a></h1><h2 id="Managing_Audio_Playback"><a href="#Managing_Audio_Playback" class="headerlink" title="Managing Audio Playback"></a>Managing Audio Playback</h2><h3 id="Controlling_Your_App_u2019s_Volume_and_Playback"><a href="#Controlling_Your_App_u2019s_Volume_and_Playback" class="headerlink" title="Controlling Your App’s Volume and Playback"></a>Controlling Your App’s Volume and Playback</h3><h3 id="Managing_Audio_Focus"><a href="#Managing_Audio_Focus" class="headerlink" title="Managing Audio Focus"></a>Managing Audio Focus</h3><h3 id="Dealing_with_Audio_Output_Hardware"><a href="#Dealing_with_Audio_Output_Hardware" class="headerlink" title="Dealing with Audio Output Hardware"></a>Dealing with Audio Output Hardware</h3><h2 id="Capturing_Photos"><a href="#Capturing_Photos" class="headerlink" title="Capturing Photos"></a>Capturing Photos</h2><h3 id="Taking_Photos_Simply"><a href="#Taking_Photos_Simply" class="headerlink" title="Taking Photos Simply"></a>Taking Photos Simply</h3><h3 id="Recording_Videos_Simply"><a href="#Recording_Videos_Simply" class="headerlink" title="Recording Videos Simply"></a>Recording Videos Simply</h3><h3 id="Controlling_the_Camera"><a href="#Controlling_the_Camera" class="headerlink" title="Controlling the Camera"></a>Controlling the Camera</h3><h2 id="Printing_Content"><a href="#Printing_Content" class="headerlink" title="Printing Content"></a>Printing Content</h2><h3 id="Photos"><a href="#Photos" class="headerlink" title="Photos"></a>Photos</h3><h3 id="HTML_Documents"><a href="#HTML_Documents" class="headerlink" title="HTML Documents"></a>HTML Documents</h3><h3 id="Custom_Documents"><a href="#Custom_Documents" class="headerlink" title="Custom Documents"></a>Custom Documents</h3><h1 id="Building_Apps_with_Graphics__26amp_3B_Animation"><a href="#Building_Apps_with_Graphics__26amp_3B_Animation" class="headerlink" title="Building Apps with Graphics &amp; Animation"></a><a href="https://developer.android.com/training/building-graphics.html" target="_blank" rel="external">Building Apps with Graphics &amp; Animation</a></h1><h2 id="Displaying_Bitmaps_Efficiently"><a href="#Displaying_Bitmaps_Efficiently" class="headerlink" title="Displaying Bitmaps Efficiently"></a>Displaying Bitmaps Efficiently</h2><h3 id="Loading_Large_Bitmaps_Efficiently"><a href="#Loading_Large_Bitmaps_Efficiently" class="headerlink" title="Loading Large Bitmaps Efficiently"></a>Loading Large Bitmaps Efficiently</h3><h3 id="Processing_Bitmaps_Off_the_UI_Thread"><a href="#Processing_Bitmaps_Off_the_UI_Thread" class="headerlink" title="Processing Bitmaps Off the UI Thread"></a>Processing Bitmaps Off the UI Thread</h3><h3 id="Caching_Bitmaps"><a href="#Caching_Bitmaps" class="headerlink" title="Caching Bitmaps"></a>Caching Bitmaps</h3><h3 id="Managing_Bitmap_Memory"><a href="#Managing_Bitmap_Memory" class="headerlink" title="Managing Bitmap Memory"></a>Managing Bitmap Memory</h3><h3 id="Displaying_Bitmaps_in_Your_UI"><a href="#Displaying_Bitmaps_in_Your_UI" class="headerlink" title="Displaying Bitmaps in Your UI"></a>Displaying Bitmaps in Your UI</h3><h2 id="Displaying_Graphics_with_OpenGL_ES"><a href="#Displaying_Graphics_with_OpenGL_ES" class="headerlink" title="Displaying Graphics with OpenGL ES"></a>Displaying Graphics with OpenGL ES</h2><h3 id="Building_an_OpenGL_ES_Environment"><a href="#Building_an_OpenGL_ES_Environment" class="headerlink" title="Building an OpenGL ES Environment"></a>Building an OpenGL ES Environment</h3><h3 id="Defining_Shapes"><a href="#Defining_Shapes" class="headerlink" title="Defining Shapes"></a>Defining Shapes</h3><h3 id="Drawing_Shapes"><a href="#Drawing_Shapes" class="headerlink" title="Drawing Shapes"></a>Drawing Shapes</h3><h3 id="Applying_Projection_and_Camera_Views"><a href="#Applying_Projection_and_Camera_Views" class="headerlink" title="Applying Projection and Camera Views"></a>Applying Projection and Camera Views</h3><h3 id="Adding_Motion"><a href="#Adding_Motion" class="headerlink" title="Adding Motion"></a>Adding Motion</h3><h3 id="Responding_to_Touch_Events"><a href="#Responding_to_Touch_Events" class="headerlink" title="Responding to Touch Events"></a>Responding to Touch Events</h3><h2 id="Animating_Views_Using_Scenes_and_Transitions"><a href="#Animating_Views_Using_Scenes_and_Transitions" class="headerlink" title="Animating Views Using Scenes and Transitions"></a>Animating Views Using Scenes and Transitions</h2><h3 id="The_Transitions_Framework"><a href="#The_Transitions_Framework" class="headerlink" title="The Transitions Framework"></a>The Transitions Framework</h3><h3 id="Creating_a_Scene"><a href="#Creating_a_Scene" class="headerlink" title="Creating a Scene"></a>Creating a Scene</h3><h3 id="Applying_a_Transition"><a href="#Applying_a_Transition" class="headerlink" title="Applying a Transition"></a>Applying a Transition</h3><h3 id="Creating_Custom_Transitions"><a href="#Creating_Custom_Transitions" class="headerlink" title="Creating Custom Transitions"></a>Creating Custom Transitions</h3><h1 id="Building_Apps_with_Connectivity__26amp_3B_the_Cloud"><a href="#Building_Apps_with_Connectivity__26amp_3B_the_Cloud" class="headerlink" title="Building Apps with Connectivity &amp; the Cloud"></a><a href="https://developer.android.com/training/building-connectivity.html" target="_blank" rel="external">Building Apps with Connectivity &amp; the Cloud</a></h1><h2 id="Connecting_Devices_Wirelessly"><a href="#Connecting_Devices_Wirelessly" class="headerlink" title="Connecting Devices Wirelessly"></a>Connecting Devices Wirelessly</h2><h3 id="Using_Network_Service_Discovery"><a href="#Using_Network_Service_Discovery" class="headerlink" title="Using Network Service Discovery"></a>Using Network Service Discovery</h3><h3 id="Creating_P2P_Connections_with_Wi-Fi"><a href="#Creating_P2P_Connections_with_Wi-Fi" class="headerlink" title="Creating P2P Connections with Wi-Fi"></a>Creating P2P Connections with Wi-Fi</h3><h3 id="Using_Wi-Fi_P2P_for_Service_Discovery"><a href="#Using_Wi-Fi_P2P_for_Service_Discovery" class="headerlink" title="Using Wi-Fi P2P for Service Discovery"></a>Using Wi-Fi P2P for Service Discovery</h3><h2 id="Performing_Network_Operations"><a href="#Performing_Network_Operations" class="headerlink" title="Performing Network Operations"></a>Performing Network Operations</h2><h3 id="Connecting_to_the_Network"><a href="#Connecting_to_the_Network" class="headerlink" title="Connecting to the Network"></a>Connecting to the Network</h3><h3 id="Managing_Network_Usage"><a href="#Managing_Network_Usage" class="headerlink" title="Managing Network Usage"></a>Managing Network Usage</h3><h3 id="Parsing_XML_Data"><a href="#Parsing_XML_Data" class="headerlink" title="Parsing XML Data"></a>Parsing XML Data</h3><h2 id="Transferring_Data_Without_Draining_the_Battery"><a href="#Transferring_Data_Without_Draining_the_Battery" class="headerlink" title="Transferring Data Without Draining the Battery"></a>Transferring Data Without Draining the Battery</h2><h3 id="Optimizing_Downloads_for_Efficient_Network_Access"><a href="#Optimizing_Downloads_for_Efficient_Network_Access" class="headerlink" title="Optimizing Downloads for Efficient Network Access"></a>Optimizing Downloads for Efficient Network Access</h3><h3 id="Minimizing_the_Effect_of_Regular_Updates"><a href="#Minimizing_the_Effect_of_Regular_Updates" class="headerlink" title="Minimizing the Effect of Regular Updates"></a>Minimizing the Effect of Regular Updates</h3><h3 id="Redundant_Downloads_are_Redundant"><a href="#Redundant_Downloads_are_Redundant" class="headerlink" title="Redundant Downloads are Redundant"></a>Redundant Downloads are Redundant</h3><h3 id="Modifying_Patterns_Based_on_the_Connectivity_Type"><a href="#Modifying_Patterns_Based_on_the_Connectivity_Type" class="headerlink" title="Modifying Patterns Based on the Connectivity Type"></a>Modifying Patterns Based on the Connectivity Type</h3><h2 id="Syncing_to_the_Cloud"><a href="#Syncing_to_the_Cloud" class="headerlink" title="Syncing to the Cloud"></a>Syncing to the Cloud</h2><h3 id="Configuring_Auto_Backup"><a href="#Configuring_Auto_Backup" class="headerlink" title="Configuring Auto Backup"></a>Configuring Auto Backup</h3><h3 id="Using_the_Backup_API"><a href="#Using_the_Backup_API" class="headerlink" title="Using the Backup API"></a>Using the Backup API</h3><h2 id="Resolving_Cloud_Save_Conflicts"><a href="#Resolving_Cloud_Save_Conflicts" class="headerlink" title="Resolving Cloud Save Conflicts"></a>Resolving Cloud Save Conflicts</h2><h2 id="Transferring_Data_Using_Sync_Adapters"><a href="#Transferring_Data_Using_Sync_Adapters" class="headerlink" title="Transferring Data Using Sync Adapters"></a>Transferring Data Using Sync Adapters</h2><h3 id="Creating_a_Stub_Authenticator"><a href="#Creating_a_Stub_Authenticator" class="headerlink" title="Creating a Stub Authenticator"></a>Creating a Stub Authenticator</h3><h3 id="Creating_a_Stub_Content_Provider"><a href="#Creating_a_Stub_Content_Provider" class="headerlink" title="Creating a Stub Content Provider"></a>Creating a Stub Content Provider</h3><h3 id="Creating_a_Sync_Adapter"><a href="#Creating_a_Sync_Adapter" class="headerlink" title="Creating a Sync Adapter"></a>Creating a Sync Adapter</h3><h3 id="Running_a_Sync_Adapter"><a href="#Running_a_Sync_Adapter" class="headerlink" title="Running a Sync Adapter"></a>Running a Sync Adapter</h3><h2 id="Transmitting_Network_Data_Using_Volley"><a href="#Transmitting_Network_Data_Using_Volley" class="headerlink" title="Transmitting Network Data Using Volley"></a>Transmitting Network Data Using Volley</h2><h3 id="Sending_a_Simple_Request"><a href="#Sending_a_Simple_Request" class="headerlink" title="Sending a Simple Request"></a>Sending a Simple Request</h3><h3 id="Setting_Up_a_RequestQueue"><a href="#Setting_Up_a_RequestQueue" class="headerlink" title="Setting Up a RequestQueue"></a>Setting Up a RequestQueue</h3><h3 id="Making_a_Standard_Request"><a href="#Making_a_Standard_Request" class="headerlink" title="Making a Standard Request"></a>Making a Standard Request</h3><h3 id="Implementing_a_Custom_Request"><a href="#Implementing_a_Custom_Request" class="headerlink" title="Implementing a Custom Request"></a>Implementing a Custom Request</h3><h1 id="Building_Apps_with_Location__26amp_3B_Maps"><a href="#Building_Apps_with_Location__26amp_3B_Maps" class="headerlink" title="Building Apps with Location &amp; Maps"></a><a href="https://developer.android.com/training/building-location.html" target="_blank" rel="external">Building Apps with Location &amp; Maps</a></h1><p><strong>暂时用不到,需要时再补充</strong></p>
+<h2 id="Making_Your_App_Location-Aware"><a href="#Making_Your_App_Location-Aware" class="headerlink" title="Making Your App Location-Aware"></a>Making Your App Location-Aware</h2><h3 id="Getting_the_Last_Known_Location"><a href="#Getting_the_Last_Known_Location" class="headerlink" title="Getting the Last Known Location"></a>Getting the Last Known Location</h3><h3 id="Changing_Location_Settings"><a href="#Changing_Location_Settings" class="headerlink" title="Changing Location Settings"></a>Changing Location Settings</h3><h3 id="Receiving_Location_Updates"><a href="#Receiving_Location_Updates" class="headerlink" title="Receiving Location Updates"></a>Receiving Location Updates</h3><h3 id="Displaying_a_Location_Address"><a href="#Displaying_a_Location_Address" class="headerlink" title="Displaying a Location Address"></a>Displaying a Location Address</h3><h3 id="Creating_and_Monitoring_Geofences"><a href="#Creating_and_Monitoring_Geofences" class="headerlink" title="Creating and Monitoring Geofences"></a>Creating and Monitoring Geofences</h3><h2 id="Adding_Maps"><a href="#Adding_Maps" class="headerlink" title="Adding Maps"></a>Adding Maps</h2><h1 id="Building_Apps_with_Contacts__26amp_3B_Sign-In"><a href="#Building_Apps_with_Contacts__26amp_3B_Sign-In" class="headerlink" title="Building Apps with Contacts &amp; Sign-In"></a><a href="https://developer.android.com/training/building-userinfo.html" target="_blank" rel="external">Building Apps with Contacts &amp; Sign-In</a></h1><p><strong>暂时用不到,需要时再补充</strong></p>
+<h2 id="Accessing_Contacts_Data"><a href="#Accessing_Contacts_Data" class="headerlink" title="Accessing Contacts Data"></a>Accessing Contacts Data</h2><h3 id="Retrieving_a_List_of_Contacts"><a href="#Retrieving_a_List_of_Contacts" class="headerlink" title="Retrieving a List of Contacts"></a>Retrieving a List of Contacts</h3><h3 id="Retrieving_Details_for_a_Contact"><a href="#Retrieving_Details_for_a_Contact" class="headerlink" title="Retrieving Details for a Contact"></a>Retrieving Details for a Contact</h3><h3 id="Modifying_Contacts_Using_Intents"><a href="#Modifying_Contacts_Using_Intents" class="headerlink" title="Modifying Contacts Using Intents"></a>Modifying Contacts Using Intents</h3><h3 id="Displaying_the_Quick_Contact_Badge"><a href="#Displaying_the_Quick_Contact_Badge" class="headerlink" title="Displaying the Quick Contact Badge"></a>Displaying the Quick Contact Badge</h3><h2 id="Adding_Sign-In"><a href="#Adding_Sign-In" class="headerlink" title="Adding Sign-In"></a>Adding Sign-In</h2><h2 id="API_2CSDK_u7684_u7EC4_u6210"><a href="#API_2CSDK_u7684_u7EC4_u6210" class="headerlink" title="API,SDK的组成"></a>API,SDK的组成</h2><h2 id="Java_u57FA_u7840"><a href="#Java_u57FA_u7840" class="headerlink" title="Java基础"></a>Java基础</h2><h2 id="Java_Web"><a href="#Java_Web" class="headerlink" title="Java Web"></a>Java Web</h2><p><a href="https://www.raywenderlich.com/78576/android-tutorial-for-beginners-part-2" target="_blank" rel="external">raywenderlich android教程</a></p>
+<p><a href="http://blog.csdn.net/mynameishuangshuai/article/details/51332790" target="_blank" rel="external">最全面的AndroidStudio配置指南总结-包括护眼模式</a></p>
+<h2 id="To_do_list"><a href="#To_do_list" class="headerlink" title="To do list"></a>To do list</h2><h3 id="u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002"><a href="#u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002" class="headerlink" title="等在博客中会显示为其他字符。可能受markdown语法的影响。"></a><relativelayout>等在博客中会显示为其他字符。可能受markdown语法的影响。</relativelayout></h3></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/13/AndroidDeveloperTraining2/" rel="next" title="AndroidDeveloperTraining2">
+                <i class="fa fa-chevron-left"></i> AndroidDeveloperTraining2
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/15/AndroidDeveloperTraining4/" rel="prev" title="AndroidDeveloperTraining4">
+                AndroidDeveloperTraining4 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="lhy" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">lhy</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Science technology and culture</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Working_with_System_Permissions"><span class="nav-number">1.</span> <span class="nav-text">Working with System Permissions</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Declaring_Permissions"><span class="nav-number">1.1.</span> <span class="nav-text">Declaring Permissions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Determine_What_Permissions_Your_App_Needs"><span class="nav-number">1.1.1.</span> <span class="nav-text">Determine What Permissions Your App Needs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add_Permissions_to_the_Manifest"><span class="nav-number">1.1.2.</span> <span class="nav-text">Add Permissions to the Manifest</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Requesting_Permissions_at_Run_Time"><span class="nav-number">1.2.</span> <span class="nav-text">Requesting Permissions at Run Time</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Check_For_Permissions"><span class="nav-number">1.2.1.</span> <span class="nav-text">Check For Permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Request_Permissions"><span class="nav-number">1.2.2.</span> <span class="nav-text">Request Permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Explain_why_the_app_needs_permissions"><span class="nav-number">1.2.3.</span> <span class="nav-text">Explain why the app needs permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Request_the_permissions_you_need"><span class="nav-number">1.2.4.</span> <span class="nav-text">Request the permissions you need</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handle_the_permissions_request_response"><span class="nav-number">1.2.5.</span> <span class="nav-text">Handle the permissions request response</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Permissions_Best_Practices"><span class="nav-number">1.3.</span> <span class="nav-text">Permissions Best Practices</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Consider_Using_an_Intent"><span class="nav-number">1.3.1.</span> <span class="nav-text">Consider Using an Intent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Only_Ask_for_Permissions_You_Need"><span class="nav-number">1.3.2.</span> <span class="nav-text">Only Ask for Permissions You Need</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Don_u2019t_Overwhelm_the_User"><span class="nav-number">1.3.3.</span> <span class="nav-text">Don’t Overwhelm the User</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Explain_Why_You_Need_Permissions"><span class="nav-number">1.3.4.</span> <span class="nav-text">Explain Why You Need Permissions</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test_for_Both_Permissions_Models"><span class="nav-number">1.3.5.</span> <span class="nav-text">Test for Both Permissions Models</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Building_Apps_with_Content_Sharing"><span class="nav-number">2.</span> <span class="nav-text">Building Apps with Content Sharing</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sharing_Simple_Data"><span class="nav-number">2.1.</span> <span class="nav-text">Sharing Simple Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sending_Simple_Data_to_Other_Apps"><span class="nav-number">2.1.1.</span> <span class="nav-text">Sending Simple Data to Other Apps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Receiving_Simple_Data_from_Other_Apps"><span class="nav-number">2.1.2.</span> <span class="nav-text">Receiving Simple Data from Other Apps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding_an_Easy_Share_Action"><span class="nav-number">2.1.3.</span> <span class="nav-text">Adding an Easy Share Action</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sharing_Files"><span class="nav-number">2.2.</span> <span class="nav-text">Sharing Files</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting_Up_File_Sharing"><span class="nav-number">2.2.1.</span> <span class="nav-text">Setting Up File Sharing</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Sharing_a_File"><span class="nav-number">2.2.2.</span> <span class="nav-text">Sharing a File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Requesting_a_Shared_File"><span class="nav-number">2.2.3.</span> <span class="nav-text">Requesting a Shared File</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retrieving_File_Information"><span class="nav-number">2.2.4.</span> <span class="nav-text">Retrieving File Information</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sharing_Files_with_NFC"><span class="nav-number">2.3.</span> <span class="nav-text">Sharing Files with NFC</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sending_Files_to_Another_Device"><span class="nav-number">2.3.1.</span> <span class="nav-text">Sending Files to Another Device</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Receiving_Files_from_Another_Device"><span class="nav-number">2.3.2.</span> <span class="nav-text">Receiving Files from Another Device</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Building_Apps_with_Multimedia_28_u591A_u5A92_u4F53_29"><span class="nav-number">3.</span> <span class="nav-text">Building Apps with Multimedia(多媒体)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Managing_Audio_Playback"><span class="nav-number">3.1.</span> <span class="nav-text">Managing Audio Playback</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Controlling_Your_App_u2019s_Volume_and_Playback"><span class="nav-number">3.1.1.</span> <span class="nav-text">Controlling Your App’s Volume and Playback</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Managing_Audio_Focus"><span class="nav-number">3.1.2.</span> <span class="nav-text">Managing Audio Focus</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Dealing_with_Audio_Output_Hardware"><span class="nav-number">3.1.3.</span> <span class="nav-text">Dealing with Audio Output Hardware</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Capturing_Photos"><span class="nav-number">3.2.</span> <span class="nav-text">Capturing Photos</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Taking_Photos_Simply"><span class="nav-number">3.2.1.</span> <span class="nav-text">Taking Photos Simply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Recording_Videos_Simply"><span class="nav-number">3.2.2.</span> <span class="nav-text">Recording Videos Simply</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Controlling_the_Camera"><span class="nav-number">3.2.3.</span> <span class="nav-text">Controlling the Camera</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Printing_Content"><span class="nav-number">3.3.</span> <span class="nav-text">Printing Content</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Photos"><span class="nav-number">3.3.1.</span> <span class="nav-text">Photos</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTML_Documents"><span class="nav-number">3.3.2.</span> <span class="nav-text">HTML Documents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Custom_Documents"><span class="nav-number">3.3.3.</span> <span class="nav-text">Custom Documents</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Building_Apps_with_Graphics__26amp_3B_Animation"><span class="nav-number">4.</span> <span class="nav-text">Building Apps with Graphics & Animation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Displaying_Bitmaps_Efficiently"><span class="nav-number">4.1.</span> <span class="nav-text">Displaying Bitmaps Efficiently</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Loading_Large_Bitmaps_Efficiently"><span class="nav-number">4.1.1.</span> <span class="nav-text">Loading Large Bitmaps Efficiently</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Processing_Bitmaps_Off_the_UI_Thread"><span class="nav-number">4.1.2.</span> <span class="nav-text">Processing Bitmaps Off the UI Thread</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Caching_Bitmaps"><span class="nav-number">4.1.3.</span> <span class="nav-text">Caching Bitmaps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Managing_Bitmap_Memory"><span class="nav-number">4.1.4.</span> <span class="nav-text">Managing Bitmap Memory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Displaying_Bitmaps_in_Your_UI"><span class="nav-number">4.1.5.</span> <span class="nav-text">Displaying Bitmaps in Your UI</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Displaying_Graphics_with_OpenGL_ES"><span class="nav-number">4.2.</span> <span class="nav-text">Displaying Graphics with OpenGL ES</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Building_an_OpenGL_ES_Environment"><span class="nav-number">4.2.1.</span> <span class="nav-text">Building an OpenGL ES Environment</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Defining_Shapes"><span class="nav-number">4.2.2.</span> <span class="nav-text">Defining Shapes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Drawing_Shapes"><span class="nav-number">4.2.3.</span> <span class="nav-text">Drawing Shapes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Applying_Projection_and_Camera_Views"><span class="nav-number">4.2.4.</span> <span class="nav-text">Applying Projection and Camera Views</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Adding_Motion"><span class="nav-number">4.2.5.</span> <span class="nav-text">Adding Motion</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Responding_to_Touch_Events"><span class="nav-number">4.2.6.</span> <span class="nav-text">Responding to Touch Events</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Animating_Views_Using_Scenes_and_Transitions"><span class="nav-number">4.3.</span> <span class="nav-text">Animating Views Using Scenes and Transitions</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#The_Transitions_Framework"><span class="nav-number">4.3.1.</span> <span class="nav-text">The Transitions Framework</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating_a_Scene"><span class="nav-number">4.3.2.</span> <span class="nav-text">Creating a Scene</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Applying_a_Transition"><span class="nav-number">4.3.3.</span> <span class="nav-text">Applying a Transition</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating_Custom_Transitions"><span class="nav-number">4.3.4.</span> <span class="nav-text">Creating Custom Transitions</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Building_Apps_with_Connectivity__26amp_3B_the_Cloud"><span class="nav-number">5.</span> <span class="nav-text">Building Apps with Connectivity & the Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Connecting_Devices_Wirelessly"><span class="nav-number">5.1.</span> <span class="nav-text">Connecting Devices Wirelessly</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Using_Network_Service_Discovery"><span class="nav-number">5.1.1.</span> <span class="nav-text">Using Network Service Discovery</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating_P2P_Connections_with_Wi-Fi"><span class="nav-number">5.1.2.</span> <span class="nav-text">Creating P2P Connections with Wi-Fi</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using_Wi-Fi_P2P_for_Service_Discovery"><span class="nav-number">5.1.3.</span> <span class="nav-text">Using Wi-Fi P2P for Service Discovery</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Performing_Network_Operations"><span class="nav-number">5.2.</span> <span class="nav-text">Performing Network Operations</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Connecting_to_the_Network"><span class="nav-number">5.2.1.</span> <span class="nav-text">Connecting to the Network</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Managing_Network_Usage"><span class="nav-number">5.2.2.</span> <span class="nav-text">Managing Network Usage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Parsing_XML_Data"><span class="nav-number">5.2.3.</span> <span class="nav-text">Parsing XML Data</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transferring_Data_Without_Draining_the_Battery"><span class="nav-number">5.3.</span> <span class="nav-text">Transferring Data Without Draining the Battery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Optimizing_Downloads_for_Efficient_Network_Access"><span class="nav-number">5.3.1.</span> <span class="nav-text">Optimizing Downloads for Efficient Network Access</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Minimizing_the_Effect_of_Regular_Updates"><span class="nav-number">5.3.2.</span> <span class="nav-text">Minimizing the Effect of Regular Updates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Redundant_Downloads_are_Redundant"><span class="nav-number">5.3.3.</span> <span class="nav-text">Redundant Downloads are Redundant</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modifying_Patterns_Based_on_the_Connectivity_Type"><span class="nav-number">5.3.4.</span> <span class="nav-text">Modifying Patterns Based on the Connectivity Type</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Syncing_to_the_Cloud"><span class="nav-number">5.4.</span> <span class="nav-text">Syncing to the Cloud</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Configuring_Auto_Backup"><span class="nav-number">5.4.1.</span> <span class="nav-text">Configuring Auto Backup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Using_the_Backup_API"><span class="nav-number">5.4.2.</span> <span class="nav-text">Using the Backup API</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Resolving_Cloud_Save_Conflicts"><span class="nav-number">5.5.</span> <span class="nav-text">Resolving Cloud Save Conflicts</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transferring_Data_Using_Sync_Adapters"><span class="nav-number">5.6.</span> <span class="nav-text">Transferring Data Using Sync Adapters</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating_a_Stub_Authenticator"><span class="nav-number">5.6.1.</span> <span class="nav-text">Creating a Stub Authenticator</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating_a_Stub_Content_Provider"><span class="nav-number">5.6.2.</span> <span class="nav-text">Creating a Stub Content Provider</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating_a_Sync_Adapter"><span class="nav-number">5.6.3.</span> <span class="nav-text">Creating a Sync Adapter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Running_a_Sync_Adapter"><span class="nav-number">5.6.4.</span> <span class="nav-text">Running a Sync Adapter</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Transmitting_Network_Data_Using_Volley"><span class="nav-number">5.7.</span> <span class="nav-text">Transmitting Network Data Using Volley</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Sending_a_Simple_Request"><span class="nav-number">5.7.1.</span> <span class="nav-text">Sending a Simple Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Setting_Up_a_RequestQueue"><span class="nav-number">5.7.2.</span> <span class="nav-text">Setting Up a RequestQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Making_a_Standard_Request"><span class="nav-number">5.7.3.</span> <span class="nav-text">Making a Standard Request</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implementing_a_Custom_Request"><span class="nav-number">5.7.4.</span> <span class="nav-text">Implementing a Custom Request</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Building_Apps_with_Location__26amp_3B_Maps"><span class="nav-number">6.</span> <span class="nav-text">Building Apps with Location & Maps</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Making_Your_App_Location-Aware"><span class="nav-number">6.1.</span> <span class="nav-text">Making Your App Location-Aware</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Getting_the_Last_Known_Location"><span class="nav-number">6.1.1.</span> <span class="nav-text">Getting the Last Known Location</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Changing_Location_Settings"><span class="nav-number">6.1.2.</span> <span class="nav-text">Changing Location Settings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Receiving_Location_Updates"><span class="nav-number">6.1.3.</span> <span class="nav-text">Receiving Location Updates</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Displaying_a_Location_Address"><span class="nav-number">6.1.4.</span> <span class="nav-text">Displaying a Location Address</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Creating_and_Monitoring_Geofences"><span class="nav-number">6.1.5.</span> <span class="nav-text">Creating and Monitoring Geofences</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding_Maps"><span class="nav-number">6.2.</span> <span class="nav-text">Adding Maps</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Building_Apps_with_Contacts__26amp_3B_Sign-In"><span class="nav-number">7.</span> <span class="nav-text">Building Apps with Contacts & Sign-In</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Accessing_Contacts_Data"><span class="nav-number">7.1.</span> <span class="nav-text">Accessing Contacts Data</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Retrieving_a_List_of_Contacts"><span class="nav-number">7.1.1.</span> <span class="nav-text">Retrieving a List of Contacts</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Retrieving_Details_for_a_Contact"><span class="nav-number">7.1.2.</span> <span class="nav-text">Retrieving Details for a Contact</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Modifying_Contacts_Using_Intents"><span class="nav-number">7.1.3.</span> <span class="nav-text">Modifying Contacts Using Intents</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Displaying_the_Quick_Contact_Badge"><span class="nav-number">7.1.4.</span> <span class="nav-text">Displaying the Quick Contact Badge</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Adding_Sign-In"><span class="nav-number">7.2.</span> <span class="nav-text">Adding Sign-In</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API_2CSDK_u7684_u7EC4_u6210"><span class="nav-number">7.3.</span> <span class="nav-text">API,SDK的组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java_u57FA_u7840"><span class="nav-number">7.4.</span> <span class="nav-text">Java基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java_Web"><span class="nav-number">7.5.</span> <span class="nav-text">Java Web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To_do_list"><span class="nav-number">7.6.</span> <span class="nav-text">To do list</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002"><span class="nav-number">7.6.1.</span> <span class="nav-text">等在博客中会显示为其他字符。可能受markdown语法的影响。</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lhy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+<a href="https://github.com/lhyhfut"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+</body>
+</html>

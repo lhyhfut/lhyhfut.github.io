@@ -1,0 +1,841 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="lhy的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="继续AndroidDeveloperTraining的练习
+Managing the Activity Lifecycle当用户使用,退出,返回你的app的时候,the Activity instances在它们的lifecycle中正在不通的states之间过度。比如当你的activity第一次启动(start),它就会到达foreground of the system,在这个过程中(proc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="AndroidDeveloperTraining2">
+<meta property="og:url" content="http://yoursite.com/2016/05/13/AndroidDeveloperTraining2/index.html">
+<meta property="og:site_name" content="lhy的博客">
+<meta property="og:description" content="继续AndroidDeveloperTraining的练习
+Managing the Activity Lifecycle当用户使用,退出,返回你的app的时候,the Activity instances在它们的lifecycle中正在不通的states之间过度。比如当你的activity第一次启动(start),它就会到达foreground of the system,在这个过程中(proc">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android33-basic-lifecycle.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android34.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android35basic-lifecycle-savestate.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android36.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android37.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android38intents-choice.png">
+<meta property="og:updated_time" content="2016-05-15T08:26:28.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="AndroidDeveloperTraining2">
+<meta name="twitter:description" content="继续AndroidDeveloperTraining的练习
+Managing the Activity Lifecycle当用户使用,退出,返回你的app的时候,the Activity instances在它们的lifecycle中正在不通的states之间过度。比如当你的activity第一次启动(start),它就会到达foreground of the system,在这个过程中(proc">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> AndroidDeveloperTraining2 | lhy的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">lhy的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Science technology and culture</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                AndroidDeveloperTraining2
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-13T23:17:45+08:00" content="2016-05-13">
+              2016-05-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><p>继续<a href="https://developer.android.com/training/index.html" target="_blank" rel="external">AndroidDeveloperTraining</a>的练习</p>
+<h1 id="Managing_the_Activity_Lifecycle"><a href="#Managing_the_Activity_Lifecycle" class="headerlink" title="Managing the Activity Lifecycle"></a><a href="https://developer.android.com/training/basics/activity-lifecycle/index.html" target="_blank" rel="external">Managing the Activity Lifecycle</a></h1><p>当用户使用,退出,返回你的app的时候,the Activity instances在它们的lifecycle中正在不通的states之间过度。比如当你的activity第一次启动(start),它就会到达foreground of the system,在这个过程中(process),Android system在activity上调用一套lifecycle methods,如果用户执行了一个操作(user performs an action)让app跳转到另一个activity或直接切换到另一个app(starts another activity or switches to another app)。Android system在activity上调用另一套lifecycle methods让它由foreground进入background。虽然activity不再可见,但是the instance and its state remains intact。</p>
+<p>在lifecycle callback methods内,你可以声明用户leaves and re-enters the activity时你的activity的表现行为。</p>
+<h2 id="Starting_an_Activity"><a href="#Starting_an_Activity" class="headerlink" title="Starting an Activity"></a>Starting an Activity</h2><p>在其它的编程范式中,app靠一个main()启动。但Android system中在一个Activity instance 中启动代码却是靠调用specific callback methods that correspond to specific stages of its lifecycle。</p>
+<p>There is a <code>sequence of callback methods</code> that start up (启动)an activity and a sequence of callback methods that tear down(拆除?) an activity.</p>
+<p>This lesson provides an overview of the <code>most important lifecycle methods</code> and shows you how to handle the first lifecycle callback that <code>creates a new instance</code> of your activity.</p>
+<h3 id="Understand_the_Lifecycle_Callbacks"><a href="#Understand_the_Lifecycle_Callbacks" class="headerlink" title="Understand the Lifecycle Callbacks"></a>Understand the Lifecycle Callbacks</h3><p>Activity的3个状态:<code>Resumed(running),Paused,Stopped</code>,<code>Created 和 Started</code>是2个瞬态(临时状态),Android system很快通过调用next lifecycle callback method而进入next state。即after the system calls <code>onCreate()</code>, it quickly calls <code>onStart()</code>, which is quickly followed by <code>onResume()</code>.</p>
+<p>当用户leave/switches to another app/returns to the activity的时候,Android system会调用一系列的lifecycle callback methods让activity在不同的state之间切换。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android33-basic-lifecycle.png" alt=""></p>
+<h3 id="Specify_Your_App_u2019s_Launcher_Activity"><a href="#Specify_Your_App_u2019s_Launcher_Activity" class="headerlink" title="Specify Your App’s Launcher Activity"></a>Specify Your App’s Launcher Activity</h3><p>当用户点击手机屏幕上的app图标,系统为Activity调用onCreate(),这个Activity就是<code>&quot;launcher&quot; (or &quot;main&quot;) activity</code>,这个Activity充当着 main entry point to your app’s user interface。</p>
+<p>你可以在 project根目录下的<code>AndroidManifest.xml</code>中来定义充当main activity的那个activity。这个main activity在<code>AndroidManifest.xml</code>中的标记有些特别,带有<code>&lt;intent-filter&gt;</code>,<code>MAIN</code>,<code>LAUNCHER</code>等。</p>
+<p>当你用SDK tools创建project的时候,default project files会包含一个Activity class that’s declared in the manifest with this filter,比如下图中的<code>MyActivity.java</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android34.png" alt=""></p>
+<h3 id="Create_a_New_Instance"><a href="#Create_a_New_Instance" class="headerlink" title="Create a New Instance"></a>Create a New Instance</h3><p>Most apps include several different activities that allow the user to perform different actions.当用户点击 app icon或是在其他应用中启动你的app的时候,system就会调用onCreate() creates every new instance of Activity.你必须完善onCreate()来执行一些basic application startup logic that should <code>happen only once</code> for the entire life of the activity. 比如应该定义一些the user interface and possibly instantiate some class-scope variables.</p>
+<p><strong>SDK_INT</strong></p>
+<p>onCreate()执行完之后会立即调用onStart(),onResume().Your activity never resides(驻留) in the Created or Started states. 即很快就调用onResume()而让activity常驻在Resumed state。</p>
+<p>The onCreate() method includes a parameter called <code>savedInstanceState</code> that’s discussed in the latter lesson about Recreating an Activity.</p>
+<h3 id="Destroy_the_Activity"><a href="#Destroy_the_Activity" class="headerlink" title="Destroy the Activity"></a>Destroy the Activity</h3><p>While the activity’s <code>first</code> lifecycle callback is onCreate(), its very <code>last</code> callback is onDestroy().与onPause() and onStop(),onCreate()的关系。有时候是不调用onDestroy()的。</p>
+<p>The system calls onDestroy() after it has already called onPause() and onStop() in all situations except one: when you call finish() from within the onCreate() method.</p>
+<h2 id="Pausing_and_Resuming_an_Activity_28_u6682_u505C/_u6062_u590D_29"><a href="#Pausing_and_Resuming_an_Activity_28_u6682_u505C/_u6062_u590D_29" class="headerlink" title="Pausing and Resuming an Activity(暂停/恢复)"></a>Pausing and Resuming an Activity(暂停/恢复)</h2><p>app在使用过程中,foreground activity经常会被其它的visual components打断。这样就会导致activity被暂停。当activity仍然是partially visible but currently not the activity in focus,他就维持暂停(paused)状态。当activity是fully-obstructed and not visible时,他就被停止(stop)了。</p>
+<p>As your activity enters the <code>paused state</code>,system calls the <code>onPause()</code> method on your Activity,If the user returns to your activity from the paused state, the system <code>resumes</code> it and calls the <code>onResume()</code> method.</p>
+<h3 id="Pause_Your_Activity"><a href="#Pause_Your_Activity" class="headerlink" title="Pause Your Activity"></a>Pause Your Activity</h3><p>通常应该在onPause() callback里面做这些事情:</p>
+<p>Stop animations or other ongoing actions that could consume CPU.</p>
+<p>Commit unsaved changes</p>
+<p>Release system resources</p>
+<p>you should not use onPause() to store user changes (such as personal information entered into a form) to permanent storage</p>
+<h3 id="Resume_Your_Activity"><a href="#Resume_Your_Activity" class="headerlink" title="Resume Your Activity"></a>Resume Your Activity</h3><p>When the user resumes your activity from the Paused state, the system calls the onResume() method.</p>
+<p>the system calls this method every time your activity comes into the foreground, including when it’s created for the first time.</p>
+<p>通常应该在onResume() callback里面做这些事情:</p>
+<p>initialize components that you release during onPause() and perform any other initializations that must occur each time the activity enters the Resumed state (such as begin animations and initialize components only used while the activity has user focus).</p>
+<h2 id="Stopping_and_Restarting_an_Activity_28_u505C_u6B62/_u91CD_u542F_29"><a href="#Stopping_and_Restarting_an_Activity_28_u505C_u6B62/_u91CD_u542F_29" class="headerlink" title="Stopping and Restarting an Activity(停止/重启)"></a>Stopping and Restarting an Activity(停止/重启)</h2><p>Activity停止/重启的几个应用场景:</p>
+<p><strong>见官方教程</strong></p>
+<p>The Activity class provides two lifecycle methods, <code>onStop() and onRestart()</code>, which allow you to specifically handle how your activity handles being stopped and restarted。Unlike the <code>paused state</code>, which identifies a <code>partial</code> UI obstruction, the <code>stopped state</code> guarantees that the UI is <code>no longer visible</code> and the user’s focus is in a separate activity (or an entirely separate app).</p>
+<p> Because the system retains your Activity instance in system memory when it is stopped, it’s possible that you <code>don&#39;t need to implement</code>the <code>onStop()</code> and <code>onRestart()</code> (or even onStart() methods at all.)</p>
+<h2 id="Stop_Your_Activity"><a href="#Stop_Your_Activity" class="headerlink" title="Stop Your Activity"></a>Stop Your Activity</h2><p><strong>见官方教程</strong></p>
+<h2 id="Start/Restart_Your_Activity"><a href="#Start/Restart_Your_Activity" class="headerlink" title="Start/Restart Your Activity"></a>Start/Restart Your Activity</h2><p>onStart(),onRestart()</p>
+<h2 id="Recreating_28_u91CD_u73B0_29_an_Activity"><a href="#Recreating_28_u91CD_u73B0_29_an_Activity" class="headerlink" title="Recreating(重现) an Activity"></a>Recreating(重现) an Activity</h2><p>By default, the system uses the <code>Bundle</code> instance state to save information about each View object in your activity layout (such as the text value entered into an EditText object)</p>
+<p><code>destroyed and recreated</code></p>
+<p>使用场景:用户点击返回键。</p>
+<p>In order for the Android system to restore the <code>state of the views</code> in your activity, each view must have a <code>unique ID</code>, supplied by the <code>android:id</code> attribute.</p>
+<p>onSaveInstanceState(),onRestoreInstanceState()</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android35basic-lifecycle-savestate.png" alt=""></p>
+<h2 id="Save_Your_Activity_State"><a href="#Save_Your_Activity_State" class="headerlink" title="Save Your Activity State"></a>Save Your Activity State</h2><p>在onSaveInstanceState()中用a collection of key-value pairs来save state information.</p>
+<p>Caution: Always call the <code>superclass</code> implementation of onSaveInstanceState() so the default implementation can save the state of the view hierarchy.  </p>
+<h2 id="Restore_Your_Activity_State"><a href="#Restore_Your_Activity_State" class="headerlink" title="Restore Your Activity State"></a>Restore Your Activity State</h2><p>When your activity is recreated after it was previously destroyed, you can <code>recover</code> your saved state from the <code>Bundle</code> that the system passes your activity. Both the <code>onCreate()</code> and <code>onRestoreInstanceState()</code> callback methods receive the <code>same</code> <code>Bundle</code> that contains the <code>instance state</code> information</p>
+<p>onRestoreInstanceState()</p>
+<h1 id="Building_a_Dynamic_UI_with_Fragments"><a href="#Building_a_Dynamic_UI_with_Fragments" class="headerlink" title="Building a Dynamic UI with Fragments"></a><a href="https://developer.android.com/training/basics/fragments/index.html" target="_blank" rel="external">Building a Dynamic UI with Fragments</a></h1><p>To create a dynamic and multi-pane user interface on Android, you need to encapsulate(封装) UI components and activity behaviors into modules that you can swap into and out of your activities. You can create these modules with the <code>Fragment class</code>, which behaves somewhat like a nested activity that can define its own layout and manage its own lifecycle.</p>
+<h2 id="Creating_a_Fragment"><a href="#Creating_a_Fragment" class="headerlink" title="Creating a Fragment"></a>Creating a Fragment</h2><p>You can think of a fragment as a <code>modular section of an activity</code>, which has its own lifecycle, receives its own input events, and which you can add or remove while the activity is running (sort of like a <code>&quot;sub activity&quot;</code> that you can reuse in different activities)</p>
+<p><strong>set up your Android project to use the Support Library</strong></p>
+<p>打开setting中的SDK界面</p>
+<p>launch standalone SDK manager</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android36.png" alt=""></p>
+<p>Extras folder</p>
+<p>Android Support Library(repository?)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android37.png" alt=""></p>
+<h3 id="Create_a_Fragment_Class"><a href="#Create_a_Fragment_Class" class="headerlink" title="Create a Fragment Class"></a>Create a Fragment Class</h3><p>(1)导入一些package</p>
+<p><code>import android.os.Bundle</code></p>
+<p><code>import android.support.v4.app.Fragment</code></p>
+<p>(2)extend the Fragment class</p>
+<p><code>public class ArticleFragment extend Fragment{</code></p>
+<p><code>}</code></p>
+<p>(3)与Create a Activity class不同的是,Create a Fragment Class时,需要use the <code>onCreateView()</code> callback to define the layout.In fact, this is the <code>only callback</code> you need in order to get a fragment running.</p>
+<p>(4)Just like an activity, a fragment should implement other lifecycle callbacks that allow you to manage its state as it is added or removed from the activity and as the activity transitions between its lifecycle states.</p>
+<h3 id="Add_a_Fragment_to_an_Activity_using_XML"><a href="#Add_a_Fragment_to_an_Activity_using_XML" class="headerlink" title="Add a Fragment to an Activity using XML"></a>Add a Fragment to an Activity using XML</h3><p>While fragments are reusable, modular UI components, each instance of a Fragment class must be associated with a parent <code>FragmentActivity</code>. You can achieve this association by defining each fragment within your <code>activity layout XML file</code>.</p>
+<p><code>FragmentActivity</code> is a <code>special activity</code> provided in the <code>Support Library</code> to handle fragments on system versions <code>older</code> than API level 11. If the lowest system version you support is API level 11 or higher, then you can use a <code>regular Activity</code>.</p>
+<p><strong>相关设置见官方教程</strong></p>
+<p>Then apply the layout to your activity</p>
+<p><code>public class MainActivity extends FragmentActivity {</code></p>
+<p>//此处引用</p>
+<p><code>}</code></p>
+<h2 id="Building_a_Flexible_UI"><a href="#Building_a_Flexible_UI" class="headerlink" title="Building a Flexible UI"></a>Building a Flexible UI</h2><p>The <code>FragmentManager</code> class provides <code>methods</code> that allow you to add, remove, and replace <code>fragments</code> to an <code>activity</code> at runtime in order to create a <code>dynamic</code> experience.</p>
+<h3 id="Add_a_Fragment_to_an_Activity_at_Runtime"><a href="#Add_a_Fragment_to_an_Activity_at_Runtime" class="headerlink" title="Add a Fragment to an Activity at Runtime"></a>Add a Fragment to an Activity at Runtime</h3><p>2种方式:</p>
+<p>Rather than defining the fragments for an activity in the <code>layout file</code>—as shown in the previous lesson with the <code>fragment element</code>—you can add a fragment to the activity during the activity runtime. This is necessary if you plan to change fragments during the life of the activity.</p>
+<p>(1)上一节中是在<code>res/layout-large/news_articles.xml</code>中设置,本节是在<code>res/layout/news_articles.xml</code>,可以看到二者文件名一样。只是所在的layout directory没有<code>large</code>前缀。</p>
+<p>(2)Inside your <code>activity</code>, call <code>getSupportFragmentManager()</code> to get a FragmentManager using the <code>Support Library APIs</code>. Then call <code>beginTransaction()</code> to <code>create a FragmentTransaction</code> and call <code>add()</code> to <code>add a fragment</code>.</p>
+<p>You can perform <code>multiple</code> fragment transaction for the activity using the same <code>FragmentTransaction</code>. When you’re ready to make the changes, you must call <code>commit()</code>.</p>
+<p>代码如下:</p>
+<p>import android.os.Bundle;<br>import android.support.v4.app.FragmentActivity;</p>
+<p>public class MainActivity extends FragmentActivity{</p>
+<p>  @Override  //表示重写,编译器可以给你验证@Override下面的方法名是否是你父类中所有的,如果没有则报错</p>
+<p>  public void onCreate(Bundle savedInstanceState){<br>      super.onCreate(savedInstanceState);<br>      setContentView(R.layout.news_articles);</p>
+<pre><code>if (findViewById(R.id.fragment_container) != null) {
+  if (savedInstanceState != null) {
+          return;
+      }
+  HeadlinesFragment firstFragment = new HeadlinesFragment();
+
+  firstFragment.setArguments(getIntent().getExtras());
+</code></pre><p>// Add the fragment to the ‘fragment_container’ FrameLayout</p>
+<pre><code>getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,firstFragment).commit();
+</code></pre><p>  }<br>}</p>
+<h3 id="Replace_One_Fragment_with_Another"><a href="#Replace_One_Fragment_with_Another" class="headerlink" title="Replace One Fragment with Another"></a>Replace One Fragment with Another</h3><p>The procedure to replace a fragment is similar to adding one, but requires the <code>replace()</code> method instead of <code>add()</code>.</p>
+<p>To allow the user to navigate backward through the fragment transactions, you must call <code>addToBackStack()</code> before you <code>commit</code> the FragmentTransaction.</p>
+<h2 id="Communicating_with_Other_Fragments"><a href="#Communicating_with_Other_Fragments" class="headerlink" title="Communicating with Other Fragments"></a>Communicating with Other Fragments</h2><p>Often you will want one Fragment to communicate with another, for example to change the content based on a user event. All Fragment-to-Fragment communication is done through the <code>associated Activity</code>. Two Fragments should <code>never communicate directly</code>.</p>
+<h3 id="Define_an_Interface"><a href="#Define_an_Interface" class="headerlink" title="Define an Interface"></a>Define an Interface</h3><p>To allow a Fragment to communicate up to its Activity, you can <code>define</code> an interface in the <code>Fragment class</code> and <code>implement</code> it within the <code>Activity</code>. The Fragment captures the interface implementation during its <code>onAttach()</code> lifecycle method and can then call the Interface methods in order to communicate with the Activity.</p>
+<p>在<code>Fragment class</code>内定义interface:</p>
+<p>public class HeadlinesFragment extends ListFragment {</p>
+<p>public interface OnHeadlineSelectedListener{<br>  public void onArticleSelected(int position);<br>}</p>
+<p>@Override</p>
+<p>public void onAttach(Activity activity) {<br>        super.onAttach(activity);<br>      //  …<br>      }<br>}</p>
+<p>Now the fragment can deliver messages to the activity by calling the onArticleSelected() method (or other methods in the interface) using the mCallback instance of the OnHeadlineSelectedListener interface.</p>
+<h3 id="Implement_the_Interface"><a href="#Implement_the_Interface" class="headerlink" title="Implement the Interface"></a>Implement the Interface</h3><p>在activity class中实现。</p>
+<p>In order to receive event callbacks from the fragment, the activity that hosts it must implement the interface defined in the fragment class.</p>
+<p>public static class MainActivity extends Activity implements HeadlinesFragment.OnHeadlineSelectedListener{</p>
+<p>public void onArticleSelected(int position) {</p>
+<p>}<br>}</p>
+<h3 id="Deliver_a_Message_to_a_Fragment"><a href="#Deliver_a_Message_to_a_Fragment" class="headerlink" title="Deliver a Message to a Fragment"></a>Deliver a Message to a Fragment</h3><p>在activity class中实现。</p>
+<p>The host activity can deliver messages to a fragment by capturing the Fragment instance with findFragmentById(), then directly call the fragment’s public methods.</p>
+<h1 id="Saving_Data"><a href="#Saving_Data" class="headerlink" title="Saving Data"></a>Saving Data</h1><h2 id="Saving_Key-Value_Sets"><a href="#Saving_Key-Value_Sets" class="headerlink" title="Saving Key-Value Sets"></a>Saving Key-Value Sets</h2><p>If you have a relatively small collection of <code>key-values</code> that you’d like to save, you should use the <code>SharedPreferences</code> APIs. The <code>SharedPreferences</code> APIs are only for reading and writing <code>key-value pairs</code> and you should not confuse them with the <code>Preference</code> APIs, which help you build a <code>user interface</code> for your app settings.</p>
+<h3 id="Get_a_Handle_to_a_SharedPreferences"><a href="#Get_a_Handle_to_a_SharedPreferences" class="headerlink" title="Get a Handle to a SharedPreferences"></a>Get a Handle to a SharedPreferences</h3><p>You can create a new shared preference file or access an existing one by calling one of two methods:<code>getSharedPreferences()</code>,<code>getPreferences()</code>.</p>
+<p>if you need just one shared preference file for your activity, you can use the <code>getPreferences()</code> method</p>
+<p>Caution: If you create a shared preferences file with <code>MODE_WORLD_READABLE</code> or <code>MODE_WORLD_WRITEABLE</code>, then <code>any other apps</code> that know the file identifier can access your data.</p>
+<h3 id="Write_to_Shared_Preferences"><a href="#Write_to_Shared_Preferences" class="headerlink" title="Write to Shared Preferences"></a>Write to Shared Preferences</h3><p><code>edit()</code></p>
+<p><code>putInt()</code></p>
+<p><code>putString()</code></p>
+<p><code>commit()</code></p>
+<h3 id="Read_from_Shared_Preferences"><a href="#Read_from_Shared_Preferences" class="headerlink" title="Read from Shared Preferences"></a>Read from Shared Preferences</h3><p><code>getInt()</code></p>
+<p><code>getString()</code></p>
+<h2 id="Saving_Files"><a href="#Saving_Files" class="headerlink" title="Saving Files"></a>Saving Files</h2><p><code>File</code> APIs</p>
+<p>A <code>File object</code> is suited to reading or writing <code>large</code>amounts of data in start-to-finish order without skipping around. For example, it’s good for <code>image</code> files or anything exchanged over a network.</p>
+<h3 id="Choose_Internal_or_External_Storage"><a href="#Choose_Internal_or_External_Storage" class="headerlink" title="Choose Internal or External Storage"></a>Choose Internal or External Storage</h3><p><strong>相关比较见官方教程</strong></p>
+<h3 id="Obtain_Permissions_for_External_Storage"><a href="#Obtain_Permissions_for_External_Storage" class="headerlink" title="Obtain Permissions for External Storage"></a>Obtain Permissions for External Storage</h3><p>To write to the <code>external</code> storage, you must request the <code>WRITE_EXTERNAL_STORAGE</code> permission in your <code>manifest file</code></p>
+<h3 id="Save_a_File_on_Internal_Storage"><a href="#Save_a_File_on_Internal_Storage" class="headerlink" title="Save a File on Internal Storage"></a>Save a File on Internal Storage</h3><p>When saving a file to internal storage, you can acquire the appropriate directory as a <code>File</code> by calling one of two methods:<code>getFilesDir()</code>,<code>getCacheDir()</code></p>
+<p><code>File()</code>:create a new file in one of these directories</p>
+<p><code>openFileOutput()</code>:get a <code>FileOutputStream</code> that writes to a file in your internal directory</p>
+<p><code>createTempFile()</code>:cache some files</p>
+<p>Your app’s <code>internal</code> storage directory is specified by your <code>app&#39;s package name</code> in a special location of the Android file system.</p>
+<p>as long as you use <code>MODE_PRIVATE</code> for your files on the internal storage, they are <code>never accessible</code> to other apps.</p>
+<h3 id="Save_a_File_on_External_Storage"><a href="#Save_a_File_on_External_Storage" class="headerlink" title="Save a File on External Storage"></a>Save a File on External Storage</h3><p>Because the <code>external</code> storage may be <code>unavailable</code>—such as when the user has mounted the storage to a PC or has removed the SD card that provides the external storage—you should always <code>verify</code> that the volume is <code>available</code> before <code>accessing</code> it.</p>
+<p>You can query the external storage state by calling <code>getExternalStorageState()</code>. If the returned state is equal to <code>MEDIA_MOUNTED</code>, then you can read and write your files.</p>
+<p>Although the external storage is <code>modifiable</code> by the user and other apps, there are two categories of files you might save here:<code>Public files</code>,<code>Private files</code></p>
+<p>If you want to save <code>public files</code> on the external storage, use the <code>getExternalStoragePublicDirectory()</code> method to get a File representing the appropriate directory on the external storage.</p>
+<p>If you want to save files that are <code>private</code> to your app, you can acquire the appropriate directory by calling <code>getExternalFilesDir()</code></p>
+<p>If none of the <code>pre-defined sub-directory names</code> suit your <code>files</code>, you can instead call <code>getExternalFilesDir()</code> and pass <code>null</code>. This returns the <code>root directory</code> for your app’s <code>private directory</code> on the <code>external storage</code>.</p>
+<p><code>getExternalStoragePublicDirectory()</code></p>
+<h3 id="Query_Free_Space"><a href="#Query_Free_Space" class="headerlink" title="Query Free Space"></a>Query Free Space</h3><p>If you know ahead of time how much data you’re saving, you can find out whether sufficient space is available without causing an <code>IOException</code> by calling <code>getFreeSpace()</code> or <code>getTotalSpace()</code>.</p>
+<h3 id="Delete_a_File"><a href="#Delete_a_File" class="headerlink" title="Delete a File"></a>Delete a File</h3><p>最直接的方式就是在file自身上调用<code>delete()</code></p>
+<p>If the file is saved on <code>internal</code> storage, you can also ask the <code>Context</code> to locate and delete a file by calling <code>deleteFile()</code></p>
+<h2 id="Saving_Data_in_SQL_Databases"><a href="#Saving_Data_in_SQL_Databases" class="headerlink" title="Saving Data in SQL Databases"></a>Saving Data in SQL Databases</h2><p>Saving data to a <code>database</code> is ideal for <code>repeating or structured</code> data, such as <code>contact information</code>. The APIs you’ll need to use a database on Android are available in the <code>android.database.sqlite</code> package.</p>
+<h3 id="Define_a_Schema_and_Contract"><a href="#Define_a_Schema_and_Contract" class="headerlink" title="Define a Schema and Contract"></a>Define a Schema and Contract</h3><p>One of the <code>main principles</code> of SQL databases is the <code>schema</code>: a formal declaration of how the database is organized. The schema is reflected in the SQL statements that you use to create your database.</p>
+<p>A <code>contract class</code> is a container for constants that define <code>names</code> for URIs, tables, and columns.</p>
+<p>A good way to <code>organize a contract class</code> is to put definitions that are <code>global</code> to your <code>whole database</code> in the <code>root level of the class</code>. Then create an <code>inner class</code> for each <code>table</code> that enumerates its columns.</p>
+<h3 id="Create_a_Database_Using_a_SQL_Helper"><a href="#Create_a_Database_Using_a_SQL_Helper" class="headerlink" title="Create a Database Using a SQL Helper"></a>Create a Database Using a SQL Helper</h3><p>Once you have <code>defined</code> how your database looks, you should <code>implement methods</code> that create and maintain the <code>database and tables</code>.</p>
+<p>A useful set of APIs is available in the <code>SQLiteOpenHelper</code> class</p>
+<p><code>getWritableDatabase()</code></p>
+<p><code>getReadableDatabase()</code></p>
+<h3 id="Put_Information_into_a_Database"><a href="#Put_Information_into_a_Database" class="headerlink" title="Put Information into a Database"></a>Put Information into a Database</h3><p>Insert data into the database by passing a <code>ContentValues</code> object to the <code>insert()</code> method:</p>
+<h3 id="Read_Information_from_a_Database"><a href="#Read_Information_from_a_Database" class="headerlink" title="Read Information from a Database"></a>Read Information from a Database</h3><p><code>query()</code>.The method combines elements of <code>insert()</code> and <code>update()</code>.The results of the query are returned to you in a <code>Cursor</code> object.</p>
+<p>To look at a row in the cursor, use one of the <code>Cursor move methods</code>,</p>
+<p><code>moveToFirst()</code></p>
+<p>For each <code>row</code>, you can read a column’s value by calling one of the Cursor get methods, such as <code>getString()</code> or <code>getLong()</code>.</p>
+<p>For each of the <code>get methods</code>, you must pass the index position of the column you desire, which you can get by calling <code>getColumnIndex()</code> or <code>getColumnIndexOrThrow()</code></p>
+<h3 id="Delete_Information_from_a_Database"><a href="#Delete_Information_from_a_Database" class="headerlink" title="Delete Information from a Database"></a>Delete Information from a Database</h3><p><code>delete()</code></p>
+<h3 id="Update_a_Database"><a href="#Update_a_Database" class="headerlink" title="Update a Database"></a>Update a Database</h3><p><code>update()</code></p>
+<p>Updating the table <code>combines</code> the content values syntax of <code>insert()</code> with the where syntax of <code>delete()</code>.</p>
+<h1 id="Interacting_with_Other_Apps"><a href="#Interacting_with_Other_Apps" class="headerlink" title="Interacting with Other Apps"></a>Interacting with Other Apps</h1><p>An Android app typically has <code>several activities</code>. <code>Each activity</code> displays <code>a user interface</code> that allows the user to perform a specific task (such as view a map or take a photo). To take the user from one activity to another, your app must use an <code>Intent</code> to define your app’s “intent” to do something.</p>
+<h2 id="Sending_the_User_to_Another_App"><a href="#Sending_the_User_to_Another_App" class="headerlink" title="Sending the User to Another App"></a>Sending the User to Another App</h2><p>One of Android’s <code>most important features</code> is an app’s <code>ability to send the user to another app</code> based on an “action” it would like to perform. For example, if your app has the address of a business that you’d like to show on a map, you <code>don&#39;t have to build an activity in your app that shows a map</code>. Instead, you can <code>create a request to view the address using an Intent</code>. The Android system then starts an <code>app</code> that’s able to show the address on a map.</p>
+<p>when you want to have a separate app perform an action, such as “view a map,” you must use an <code>implicit intent</code>.</p>
+<h3 id="Build_an_Implicit_Intent"><a href="#Build_an_Implicit_Intent" class="headerlink" title="Build an Implicit Intent"></a>Build an Implicit Intent</h3><p>Implicit intents do <code>not</code> declare the <code>class name</code> of the component to start, but instead declare an <code>action</code> to perform. The action specifies the thing you want to do, such as view, edit, send, or get something.</p>
+<p><code>Intent()</code> constructor</p>
+<p>some kinds of implicit intents require <code>&quot;extra&quot;</code> data that provide different data types, such as a <code>string</code>. You can add one or more pieces of extra data using the various <code>putExtra()</code> methods.</p>
+<p>It’s important that you define your <code>Intent</code> to be as <code>specific</code> as possible.</p>
+<h3 id="Verify_There_is_an_App_to_Receive_the_Intent"><a href="#Verify_There_is_an_App_to_Receive_the_Intent" class="headerlink" title="Verify There is an App to Receive the Intent"></a>Verify There is an App to Receive the Intent</h3><p>上面讲到了如何定义Intent,下面来说接收Intent的事情</p>
+<p><code>queryIntentActivities()</code></p>
+<h3 id="Start_an_Activity_with_the_Intent"><a href="#Start_an_Activity_with_the_Intent" class="headerlink" title="Start an Activity with the Intent"></a>Start an Activity with the Intent</h3><p>Once you have <code>created</code> your Intent and set the <code>extra</code> info, call <code>startActivity()</code> to send it to the system. If the system identifies more than one activity that can handle the intent, it displays a dialog for the user to select which app to use, as shown in figure. If there is only <code>one</code> activity that handles the intent, the system immediately <code>starts</code> it.</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android38intents-choice.png" alt=""></p>
+<p><code>startActivity(intent);</code></p>
+<h3 id="Show_an_App_Chooser"><a href="#Show_an_App_Chooser" class="headerlink" title="Show an App Chooser"></a>Show an App Chooser</h3><p>To show the chooser, create an Intent using <code>createChooser()</code> and pass it to <code>startActivity()</code></p>
+<h3 id="Getting_a_Result_from_an_Activity"><a href="#Getting_a_Result_from_an_Activity" class="headerlink" title="Getting a Result from an Activity"></a>Getting a Result from an Activity</h3><p><code>startActivityForResult()</code> (instead of <code>startActivity()</code>)</p>
+<h3 id="Start_the_Activity"><a href="#Start_the_Activity" class="headerlink" title="Start the Activity"></a>Start the Activity</h3><p><code>startActivityForResult()</code></p>
+<h3 id="Receive_the_Result"><a href="#Receive_the_Result" class="headerlink" title="Receive the Result"></a>Receive the Result</h3><p><code>onActivityResult()</code></p>
+<p><strong>3*个参数见官方教程</strong></p>
+<h2 id="Allowing_Other_Apps_to_Start_Your_Activity"><a href="#Allowing_Other_Apps_to_Start_Your_Activity" class="headerlink" title="Allowing Other Apps to Start Your Activity"></a>Allowing Other Apps to Start Your Activity</h2><p>To allow other apps to start your activity, you need to add an <code>intent-filter element</code> in your manifest file for the corresponding <code>activity element</code>.</p>
+<h3 id="Add_an_Intent_Filter"><a href="#Add_an_Intent_Filter" class="headerlink" title="Add an Intent Filter"></a>Add an Intent Filter</h3><p>几种intent filter:<code>Action</code>,<code>Data</code>,<code>Category</code></p>
+<p>both the <code>ACTION_SEND</code> and <code>ACTION_SENDTO</code> intents.</p>
+<p><code>Note</code>: In order to receive implicit intents, you must include the <code>CATEGORY_DEFAULT</code> category in the intent filter. The methods <code>startActivity()</code> and <code>startActivityForResult()</code> treat all intents as if they declared the CATEGORY_DEFAULT category. If you do not declare it in your intent filter, no implicit intents will resolve to your activity.</p>
+<h3 id="Handle_the_Intent_in_Your_Activity"><a href="#Handle_the_Intent_in_Your_Activity" class="headerlink" title="Handle the Intent in Your Activity"></a>Handle the Intent in Your Activity</h3><p>As your activity starts, call <code>getIntent()</code> to retrieve the Intent that started the activity.</p>
+<h3 id="Return_a_Result"><a href="#Return_a_Result" class="headerlink" title="Return a Result"></a>Return a Result</h3><p><code>setResult()</code></p>
+<p><code>finish()</code></p>
+<h2 id="API_2CSDK_u7684_u7EC4_u6210"><a href="#API_2CSDK_u7684_u7EC4_u6210" class="headerlink" title="API,SDK的组成"></a>API,SDK的组成</h2><h2 id="Java_u57FA_u7840"><a href="#Java_u57FA_u7840" class="headerlink" title="Java基础"></a>Java基础</h2><h2 id="Java_Web"><a href="#Java_Web" class="headerlink" title="Java Web"></a>Java Web</h2><p><a href="https://www.raywenderlich.com/78576/android-tutorial-for-beginners-part-2" target="_blank" rel="external">raywenderlich android教程</a></p>
+<p><a href="http://blog.csdn.net/mynameishuangshuai/article/details/51332790" target="_blank" rel="external">最全面的AndroidStudio配置指南总结-包括护眼模式</a></p>
+<h2 id="To_do_list"><a href="#To_do_list" class="headerlink" title="To do list"></a>To do list</h2><h3 id="u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002"><a href="#u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002" class="headerlink" title="等在博客中会显示为其他字符。可能受markdown语法的影响。"></a><relativelayout>等在博客中会显示为其他字符。可能受markdown语法的影响。</relativelayout></h3></span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/04/AndroidDeveloperTraining1/" rel="next" title="AndroidDeveloperTraining1">
+                <i class="fa fa-chevron-left"></i> AndroidDeveloperTraining1
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/15/AndroidDeveloperTraining3/" rel="prev" title="AndroidDeveloperTraining3">
+                AndroidDeveloperTraining3 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="lhy" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">lhy</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Science technology and culture</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">15</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">1</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Managing_the_Activity_Lifecycle"><span class="nav-number">1.</span> <span class="nav-text">Managing the Activity Lifecycle</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Starting_an_Activity"><span class="nav-number">1.1.</span> <span class="nav-text">Starting an Activity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Understand_the_Lifecycle_Callbacks"><span class="nav-number">1.1.1.</span> <span class="nav-text">Understand the Lifecycle Callbacks</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Specify_Your_App_u2019s_Launcher_Activity"><span class="nav-number">1.1.2.</span> <span class="nav-text">Specify Your App’s Launcher Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create_a_New_Instance"><span class="nav-number">1.1.3.</span> <span class="nav-text">Create a New Instance</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Destroy_the_Activity"><span class="nav-number">1.1.4.</span> <span class="nav-text">Destroy the Activity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pausing_and_Resuming_an_Activity_28_u6682_u505C/_u6062_u590D_29"><span class="nav-number">1.2.</span> <span class="nav-text">Pausing and Resuming an Activity(暂停/恢复)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Pause_Your_Activity"><span class="nav-number">1.2.1.</span> <span class="nav-text">Pause Your Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resume_Your_Activity"><span class="nav-number">1.2.2.</span> <span class="nav-text">Resume Your Activity</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stopping_and_Restarting_an_Activity_28_u505C_u6B62/_u91CD_u542F_29"><span class="nav-number">1.3.</span> <span class="nav-text">Stopping and Restarting an Activity(停止/重启)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Stop_Your_Activity"><span class="nav-number">1.4.</span> <span class="nav-text">Stop Your Activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Start/Restart_Your_Activity"><span class="nav-number">1.5.</span> <span class="nav-text">Start/Restart Your Activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Recreating_28_u91CD_u73B0_29_an_Activity"><span class="nav-number">1.6.</span> <span class="nav-text">Recreating(重现) an Activity</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Save_Your_Activity_State"><span class="nav-number">1.7.</span> <span class="nav-text">Save Your Activity State</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Restore_Your_Activity_State"><span class="nav-number">1.8.</span> <span class="nav-text">Restore Your Activity State</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Building_a_Dynamic_UI_with_Fragments"><span class="nav-number">2.</span> <span class="nav-text">Building a Dynamic UI with Fragments</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating_a_Fragment"><span class="nav-number">2.1.</span> <span class="nav-text">Creating a Fragment</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create_a_Fragment_Class"><span class="nav-number">2.1.1.</span> <span class="nav-text">Create a Fragment Class</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Add_a_Fragment_to_an_Activity_using_XML"><span class="nav-number">2.1.2.</span> <span class="nav-text">Add a Fragment to an Activity using XML</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building_a_Flexible_UI"><span class="nav-number">2.2.</span> <span class="nav-text">Building a Flexible UI</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Add_a_Fragment_to_an_Activity_at_Runtime"><span class="nav-number">2.2.1.</span> <span class="nav-text">Add a Fragment to an Activity at Runtime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Replace_One_Fragment_with_Another"><span class="nav-number">2.2.2.</span> <span class="nav-text">Replace One Fragment with Another</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Communicating_with_Other_Fragments"><span class="nav-number">2.3.</span> <span class="nav-text">Communicating with Other Fragments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Define_an_Interface"><span class="nav-number">2.3.1.</span> <span class="nav-text">Define an Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Implement_the_Interface"><span class="nav-number">2.3.2.</span> <span class="nav-text">Implement the Interface</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deliver_a_Message_to_a_Fragment"><span class="nav-number">2.3.3.</span> <span class="nav-text">Deliver a Message to a Fragment</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Saving_Data"><span class="nav-number">3.</span> <span class="nav-text">Saving Data</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Saving_Key-Value_Sets"><span class="nav-number">3.1.</span> <span class="nav-text">Saving Key-Value Sets</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Get_a_Handle_to_a_SharedPreferences"><span class="nav-number">3.1.1.</span> <span class="nav-text">Get a Handle to a SharedPreferences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Write_to_Shared_Preferences"><span class="nav-number">3.1.2.</span> <span class="nav-text">Write to Shared Preferences</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read_from_Shared_Preferences"><span class="nav-number">3.1.3.</span> <span class="nav-text">Read from Shared Preferences</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Saving_Files"><span class="nav-number">3.2.</span> <span class="nav-text">Saving Files</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Choose_Internal_or_External_Storage"><span class="nav-number">3.2.1.</span> <span class="nav-text">Choose Internal or External Storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Obtain_Permissions_for_External_Storage"><span class="nav-number">3.2.2.</span> <span class="nav-text">Obtain Permissions for External Storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Save_a_File_on_Internal_Storage"><span class="nav-number">3.2.3.</span> <span class="nav-text">Save a File on Internal Storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Save_a_File_on_External_Storage"><span class="nav-number">3.2.4.</span> <span class="nav-text">Save a File on External Storage</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Query_Free_Space"><span class="nav-number">3.2.5.</span> <span class="nav-text">Query Free Space</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete_a_File"><span class="nav-number">3.2.6.</span> <span class="nav-text">Delete a File</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Saving_Data_in_SQL_Databases"><span class="nav-number">3.3.</span> <span class="nav-text">Saving Data in SQL Databases</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Define_a_Schema_and_Contract"><span class="nav-number">3.3.1.</span> <span class="nav-text">Define a Schema and Contract</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Create_a_Database_Using_a_SQL_Helper"><span class="nav-number">3.3.2.</span> <span class="nav-text">Create a Database Using a SQL Helper</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Put_Information_into_a_Database"><span class="nav-number">3.3.3.</span> <span class="nav-text">Put Information into a Database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Read_Information_from_a_Database"><span class="nav-number">3.3.4.</span> <span class="nav-text">Read Information from a Database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Delete_Information_from_a_Database"><span class="nav-number">3.3.5.</span> <span class="nav-text">Delete Information from a Database</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Update_a_Database"><span class="nav-number">3.3.6.</span> <span class="nav-text">Update a Database</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Interacting_with_Other_Apps"><span class="nav-number">4.</span> <span class="nav-text">Interacting with Other Apps</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Sending_the_User_to_Another_App"><span class="nav-number">4.1.</span> <span class="nav-text">Sending the User to Another App</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Build_an_Implicit_Intent"><span class="nav-number">4.1.1.</span> <span class="nav-text">Build an Implicit Intent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Verify_There_is_an_App_to_Receive_the_Intent"><span class="nav-number">4.1.2.</span> <span class="nav-text">Verify There is an App to Receive the Intent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Start_an_Activity_with_the_Intent"><span class="nav-number">4.1.3.</span> <span class="nav-text">Start an Activity with the Intent</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Show_an_App_Chooser"><span class="nav-number">4.1.4.</span> <span class="nav-text">Show an App Chooser</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Getting_a_Result_from_an_Activity"><span class="nav-number">4.1.5.</span> <span class="nav-text">Getting a Result from an Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Start_the_Activity"><span class="nav-number">4.1.6.</span> <span class="nav-text">Start the Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Receive_the_Result"><span class="nav-number">4.1.7.</span> <span class="nav-text">Receive the Result</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Allowing_Other_Apps_to_Start_Your_Activity"><span class="nav-number">4.2.</span> <span class="nav-text">Allowing Other Apps to Start Your Activity</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Add_an_Intent_Filter"><span class="nav-number">4.2.1.</span> <span class="nav-text">Add an Intent Filter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Handle_the_Intent_in_Your_Activity"><span class="nav-number">4.2.2.</span> <span class="nav-text">Handle the Intent in Your Activity</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Return_a_Result"><span class="nav-number">4.2.3.</span> <span class="nav-text">Return a Result</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API_2CSDK_u7684_u7EC4_u6210"><span class="nav-number">4.3.</span> <span class="nav-text">API,SDK的组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java_u57FA_u7840"><span class="nav-number">4.4.</span> <span class="nav-text">Java基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java_Web"><span class="nav-number">4.5.</span> <span class="nav-text">Java Web</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To_do_list"><span class="nav-number">4.6.</span> <span class="nav-text">To do list</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002"><span class="nav-number">4.6.1.</span> <span class="nav-text">等在博客中会显示为其他字符。可能受markdown语法的影响。</span></a></li></ol></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lhy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+<a href="https://github.com/lhyhfut"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+</body>
+</html>
