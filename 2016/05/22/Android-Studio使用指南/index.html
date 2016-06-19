@@ -1,0 +1,934 @@
+<!doctype html>
+<html class="theme-next   use-motion ">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Android," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="lhy的博客" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.4.5.2" />
+
+
+
+
+
+
+<meta name="description" content="Android Studio下载安装SDKSDK的安装目录可以和Android Studio的安装目录分开。
+DNKNDK也是如此。
+ant可以通过brew install ant 来安装.在android/SDK/android-sdk-macosx/tools/ant中也有相关的一些文件
+gradleadb在文档：adb简介中有它的介绍。adb在SDK的platform-tools目录。用Al">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Android Studio使用指南">
+<meta property="og:url" content="http://yoursite.com/2016/05/22/Android-Studio使用指南/index.html">
+<meta property="og:site_name" content="lhy的博客">
+<meta property="og:description" content="Android Studio下载安装SDKSDK的安装目录可以和Android Studio的安装目录分开。
+DNKNDK也是如此。
+ant可以通过brew install ant 来安装.在android/SDK/android-sdk-macosx/tools/ant中也有相关的一些文件
+gradleadb在文档：adb简介中有它的介绍。adb在SDK的platform-tools目录。用Al">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android48.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android35.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android35.1.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android36-1.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android38.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android39.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android40.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android41.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android41.1.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android42.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android43.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android44.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android45.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android36.1.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android46.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android47.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android49.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android50.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android51.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android52.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android54.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android55.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android56.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android57.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android58.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android59.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android60.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android61.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android62.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android63.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android64.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android65.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android66.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android67.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android68.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android69.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android53.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android55.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android70.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android71.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android72.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android73.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android74.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android75.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android76.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android77.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android78.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android79.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android80.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android81.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android82.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android83.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android87.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android95.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android84.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android85.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android86.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android88.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android89.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android90.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android91.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android101.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android102.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android104.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android105.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android92.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android93.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android94.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android96.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android97.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android98.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android99.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android100.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/Android103.png">
+<meta property="og:updated_time" content="2016-05-29T22:43:47.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Android Studio使用指南">
+<meta name="twitter:description" content="Android Studio下载安装SDKSDK的安装目录可以和Android Studio的安装目录分开。
+DNKNDK也是如此。
+ant可以通过brew install ant 来安装.在android/SDK/android-sdk-macosx/tools/ant中也有相关的一些文件
+gradleadb在文档：adb简介中有它的介绍。adb在SDK的platform-tools目录。用Al">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mist',
+    sidebar: 'post',
+    motion: true
+  };
+</script>
+
+  <title> Android Studio使用指南 | lhy的博客 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">lhy的博客</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Science technology and culture</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-user fa-fw"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-th fa-fw"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content">
+          
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Android Studio使用指南
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-22T18:43:24+08:00" content="2016-05-22">
+              2016-05-22
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h1 id="Android_Studio_u4E0B_u8F7D_u5B89_u88C5"><a href="#Android_Studio_u4E0B_u8F7D_u5B89_u88C5" class="headerlink" title="Android Studio下载安装"></a>Android Studio下载安装</h1><h2 id="SDK"><a href="#SDK" class="headerlink" title="SDK"></a>SDK</h2><p>SDK的安装目录可以和Android Studio的安装目录分开。</p>
+<h2 id="DNK"><a href="#DNK" class="headerlink" title="DNK"></a>DNK</h2><p>NDK也是如此。</p>
+<h2 id="ant"><a href="#ant" class="headerlink" title="ant"></a>ant</h2><p>可以通过<code>brew install ant</code> 来安装.<br>在<code>android/SDK/android-sdk-macosx/tools/ant</code>中也有相关的一些文件</p>
+<h2 id="gradle"><a href="#gradle" class="headerlink" title="gradle"></a>gradle</h2><h2 id="adb"><a href="#adb" class="headerlink" title="adb"></a>adb</h2><p>在<a href="https://wiki.cyanogenmod.org/w/Doc:_adb_intro/zh-cn" target="_blank" rel="external">文档：adb简介</a>中有它的介绍。adb在SDK的platform-tools目录。用Alfred搜索<code>platform-tools</code>，就可以找到它在<br><code>/Users/liuhongyu/Desktop/liu/workspace/mobile/android/intellij_idea/android/SDK/android-sdk-macosx/platform-tools/adb</code>中找到。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android48.png" alt=""></p>
+<p>把环境变量添加到~/.bash_profile中,然后就可以在终端使用了:</p>
+<p><code>if [ -d &quot;&lt;path-to-sdk&gt;/platform-tools&quot; ] ; then
+  export PATH=&quot;&lt;path-to-sdk&gt;/platform-tools:$PATH&quot;
+fi</code></p>
+<h1 id="AVD"><a href="#AVD" class="headerlink" title="AVD"></a>AVD</h1><h2 id="google_u81EA_u5E26_u7684AVD"><a href="#google_u81EA_u5E26_u7684AVD" class="headerlink" title="google自带的AVD"></a>google自带的AVD</h2><h2 id="Genymotion"><a href="#Genymotion" class="headerlink" title="Genymotion"></a>Genymotion</h2><p>在setting中输入plugin进行搜索:</p>
+<p>在<a href="https://www.genymotion.com/download/" target="_blank" rel="external">Genymotion官网</a>下载Genymotion。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android35.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android35.1.png" alt=""></p>
+<p>安装好之后重启就能在右上角看见插件了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android36-1.png" alt=""></p>
+<p>打开Genymotion，需要登录帐号才能够使用虚拟设备:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android38.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android39.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android40.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android41.png" alt=""></p>
+<p>到底下载到了哪里？在settings中可以找到：<br>/Users/liuhongyu/.Genymobile/Genymotion/deployed/Custom\ Phone\ -\ 6.0.0\ -\ API\ 23\ -\ 768x1280</p>
+<p>还有就是下载了VitualBox貌似并不需要怎么配置，甚至不需要打开(默认打开了?)就能够使用Genymotion的虚拟设备了</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android41.1.png" alt=""></p>
+<p>点击start，就弹出来虚拟机了</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android42.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android43.png" alt=""></p>
+<p>运行helloword<br>需要先在右上角启动genymotion的虚拟机，然后再点击运行:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android44.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android45.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android36.1.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android46.png" alt=""></p>
+<p>在<a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="external">VitualBox官网</a>下载安装VitualBox。一路next安装就可以了。不需要特别的设置就可以使用Genymotion。</p>
+<h3 id="VitualBox"><a href="#VitualBox" class="headerlink" title="VitualBox"></a>VitualBox</h3><h1 id="u5FEB_u6377_u952E"><a href="#u5FEB_u6377_u952E" class="headerlink" title="快捷键"></a>快捷键</h1><h1 id="u63D2_u4EF6"><a href="#u63D2_u4EF6" class="headerlink" title="插件"></a>插件</h1><h1 id="u4F7F_u7528gradle_u8FDB_u884C_u6784_u5EFA"><a href="#u4F7F_u7528gradle_u8FDB_u884C_u6784_u5EFA" class="headerlink" title="使用gradle进行构建"></a>使用gradle进行构建</h1><h2 id="build-gradle_u5206_u6790"><a href="#build-gradle_u5206_u6790" class="headerlink" title="build.gradle分析"></a>build.gradle分析</h2><p>以新建的helloworld为例进行分析。这个工程。会有2个build.gradle: project下的build.gradle,module下的build.gradle。</p>
+<h3 id="project_u4E0B_u7684build-gradle"><a href="#project_u4E0B_u7684build-gradle" class="headerlink" title="project下的build.gradle"></a>project下的build.gradle</h3><p><code>buildscript {</code></p>
+<pre><code>repositories {
+    jcenter()  //远程仓库,以前使用maven
+}
+dependencies {
+    classpath &apos;com.android.tools.build:gradle:2.1.0&apos;
+</code></pre><p>//gradle插件。要换成自己的版本。从安装目录里看到   com.android.tools.build是包名</p>
+<pre><code>    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+}
+</code></pre><p>}</p>
+<p>allprojects {</p>
+<pre><code>repositories {
+    jcenter()
+}
+</code></pre><p>}</p>
+<p>task clean(type: Delete) {</p>
+<pre><code>delete rootProject.buildDir
+</code></pre><p>}</p>
+<p>project下的build.gradle里面会配置一个gradle插件的目录。这个插件在本地的:<code>/Applications/Android\ Studio.app/Contents/gradle/m2repository/com/android/tools/build/gradle</code>中</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android47.png" alt=""></p>
+<p>关于gradle还有一个目录:<code>/Users/liuhongyu/.gradle/wrapper/dists/gradle-2.8-all</code>。这个是本地的,上面是从远程仓库中下载的。</p>
+<p>在<code>preferences</code>中搜索<code>gradle</code>:<br><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android49.png" alt=""></p>
+<p>在<code>project structure——project</code>中也可以看到:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android50.png" alt=""></p>
+<p>在项目的<code>HelloWorld/gradle/wrapper/gradle-wrapper.properties</code>文件中也是有的:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android51.png" alt=""></p>
+<p><strong>注:有时候AS会提醒你升级gradle,因为项目可能是别人的,使用到了不同版本的gradle,下载之后不仅需要指定相应的gradle目录,还要修改相关配置文件</strong></p>
+<p><strong>注:每次修改完build.gradle文件之后需要重新sync project with gradle files(以gradle方式构建项目),或者make project(以ant方式构建项目)</strong></p>
+<p><strong>注</strong> project下的build.gradle中不能有如下配置:</p>
+<p>compileSdkVersion 23</p>
+<p>buildToolsVersion “23.0.3”</p>
+<p>SDK版本的配置应该在module的build.gradle文件中</p>
+<h3 id="module_u4E0B_u7684build-gradle"><a href="#module_u4E0B_u7684build-gradle" class="headerlink" title="module下的build.gradle"></a>module下的build.gradle</h3><p>apply plugin: ‘com.android.application’  //应用程序</p>
+<p>//android自身的配置</p>
+<p>android {//点击project structure可以查看</p>
+<pre><code>compileSdkVersion 23
+buildToolsVersion &quot;23.0.3&quot;
+
+defaultConfig {
+    applicationId &quot;com.example.liuhongyu.helloworld&quot;//应用程序包名
+    minSdkVersion 8
+    targetSdkVersion 23
+    versionCode 1
+    versionName &quot;1.0&quot;
+}
+buildTypes {
+    release {
+        minifyEnabled false  //设置混淆
+        proguardFiles getDefaultProguardFile(&apos;proguard-android.txt&apos;), &apos;proguard-rules.pro&apos; //proguard-android.txt指定混淆文件,系统指定的规则
+    }
+}
+</code></pre><p>}</p>
+<p>//依赖的配置</p>
+<p>dependencies {</p>
+<pre><code>compile fileTree(`dir: &apos;libs&apos;, include: [&apos;*.jar&apos;]`) // jar包和库都会在这里进行编译
+testCompile &apos;junit:junit:4.12&apos;
+compile &apos;com.android.support:appcompat-v7:23.3.0&apos;
+compile &apos;com.android.support:design:23.3.0&apos;
+</code></pre><p>}</p>
+<p><strong>注:最上面的compileSdkVersion 23和buildToolsVersion “23.0.3”在project structure中可以查看得到</strong></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android52.png" alt=""></p>
+<h2 id="jcenter_u4E2D_u592E_u4ED3_u5E93_u53CA_u4F9D_u8D56_28dependency_29_u7BA1_u7406"><a href="#jcenter_u4E2D_u592E_u4ED3_u5E93_u53CA_u4F9D_u8D56_28dependency_29_u7BA1_u7406" class="headerlink" title="jcenter中央仓库及依赖(dependency)管理"></a>jcenter中央仓库及依赖(dependency)管理</h2><p>比如上面的dependencies中<code>compile &#39;com.android.support:design:23.3.0&#39;</code><br>如果在jcenter中央仓库下载，就会被解析为<br><a href="http://jcenter.bintray.com/com/android/support/design/23.3.0,把逗号变成分号" target="_blank" rel="external">http://jcenter.bintray.com/com/android/support/design/23.3.0,把逗号变成分号</a>.</p>
+<h3 id="jcenter_u548CmavenCentral"><a href="#jcenter_u548CmavenCentral" class="headerlink" title="jcenter和mavenCentral"></a>jcenter和mavenCentral</h3><h3 id="gradle_u662F_u5982_u4F55_u4ECE_u4ED3_u5E93_u83B7_u53D6library"><a href="#gradle_u662F_u5982_u4F55_u4ECE_u4ED3_u5E93_u83B7_u53D6library" class="headerlink" title="gradle是如何从仓库获取library"></a>gradle是如何从仓库获取library</h3><h3 id="u4F9D_u8D56_u7BA1_u7406_28_u5BFC_u5165jar_u6216_u4F9D_u8D56_29"><a href="#u4F9D_u8D56_u7BA1_u7406_28_u5BFC_u5165jar_u6216_u4F9D_u8D56_29" class="headerlink" title="依赖管理(导入jar或依赖)"></a>依赖管理(导入jar或依赖)</h3><h2 id="u5BFC_u5165_u5916_u90E8_u9879_u76EE_u5E76_u8FDB_u884C_u6784_u5EFA"><a href="#u5BFC_u5165_u5916_u90E8_u9879_u76EE_u5E76_u8FDB_u884C_u6784_u5EFA" class="headerlink" title="导入外部项目并进行构建"></a>导入外部项目并进行构建</h2><h3 id="u5BFC_u5165Eclipse_u5DE5_u7A0B"><a href="#u5BFC_u5165Eclipse_u5DE5_u7A0B" class="headerlink" title="导入Eclipse工程"></a>导入Eclipse工程</h3><p>导入外部项目(eclipse项目)的时候,有2种构建方式:ant构建方式(与用eclipse一样了)和gradle构建方式。</p>
+<h4 id="u65B9_u5F0F_u4E00_uFF1A_u5BFC_u5165_u540E_u4EE5gradle_u6784_u5EFA_28_u542B_u4F9D_u8D56_u5E93_29"><a href="#u65B9_u5F0F_u4E00_uFF1A_u5BFC_u5165_u540E_u4EE5gradle_u6784_u5EFA_28_u542B_u4F9D_u8D56_u5E93_29" class="headerlink" title="方式一：导入后以gradle构建(含依赖库)"></a>方式一：导入后以gradle构建(含依赖库)</h4><p>假设要导入的项目<code>PhoneSafe</code>目录结构如下,有一个依赖的外部库<code>XUtilsLibrary</code>:</p>
+<p>直接导入上面的<code>PhoneSafe</code>项目:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android54.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android55.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android56.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android57.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android58.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android59.png" alt=""></p>
+<p>错误原因:项目的<code>project.properties</code>文件中,已经设置了外部库,把这一行删除再重新导入一次就行了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android60.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android61.png" alt=""></p>
+<p>将XUtilsLibrary以外部module方式导入进来:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android62.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android63.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android64.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android65.png" alt=""></p>
+<p>把<code>XUtilsLibrary</code>设置为<code>PhoneSafe</code> APP的依赖,在<code>project structure</code>中</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android66.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android67.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android68.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android69.png" alt=""></p>
+<p><strong>注:会报一些错误,大多是2个build.gradle的配置问题</strong></p>
+<h4 id="u65B9_u5F0F_u4E8C_uFF1A_u5BFC_u5165_u540E_u4EE5Ant_u6784_u5EFA_28_u542B_u4F9D_u8D56_u5E93_29"><a href="#u65B9_u5F0F_u4E8C_uFF1A_u5BFC_u5165_u540E_u4EE5Ant_u6784_u5EFA_28_u542B_u4F9D_u8D56_u5E93_29" class="headerlink" title="方式二：导入后以Ant构建(含依赖库)"></a>方式二：导入后以Ant构建(含依赖库)</h4><p>把<code>PhoneSafe</code>和外部库<code>XUtilsLibrary</code>放在外层的<code>PhoneSafe</code>目录下导入:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android53.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android55.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android70.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android71.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android72.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android73.png" alt=""></p>
+<p>bin目录要去勾选:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android74.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android75.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android76.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android77.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android78.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android79.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android80.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android81.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android82.png" alt=""></p>
+<p><strong>2者之间的区别</strong></p>
+<p>(1)导入时是否有外部目录</p>
+<p>(2)导入时gradle构建方式会出现gradle构建的对话框</p>
+<p>(3)由于(2)的缘故。gradle构建方式会出现build.gradle,ant构建方式则没有。</p>
+<p>(4)修改了配置文件的同步:一个用<code>make project</code>,一个用<code>sync project with gradle files</code></p>
+<h1 id="AS_u8C03_u8BD5"><a href="#AS_u8C03_u8BD5" class="headerlink" title="AS调试"></a>AS调试</h1><h2 id="u5355_u5143_u6D4B_u8BD5"><a href="#u5355_u5143_u6D4B_u8BD5" class="headerlink" title="单元测试"></a>单元测试</h2><h1 id="u7B7E_u540D_u6DF7_u6DC6_u6253_u5305"><a href="#u7B7E_u540D_u6DF7_u6DC6_u6253_u5305" class="headerlink" title="签名混淆打包"></a>签名混淆打包</h1><h2 id="u591A_u6E20_u9053_u6253_u5305"><a href="#u591A_u6E20_u9053_u6253_u5305" class="headerlink" title="多渠道打包"></a>多渠道打包</h2><h1 id="AS_u7248_u672C_u63A7_u5236_28VCS_29"><a href="#AS_u7248_u672C_u63A7_u5236_28VCS_29" class="headerlink" title="AS版本控制(VCS)"></a>AS版本控制(VCS)</h1><h2 id="SVN_28_u9ED8_u8BA4_29"><a href="#SVN_28_u9ED8_u8BA4_29" class="headerlink" title="SVN(默认)"></a>SVN(默认)</h2><p>用AS新建好项目后,在项目的<code>.idea/vcs.xml</code>文件中有VCS相关配置。默认使用SVN,AS也默认安装了SVN?和相应的插件?(<strong>这个默认安装的subversion貌似是mac安装的,不是AS安装的</strong>)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android83.png" alt=""></p>
+<p>在<a href="https://www.jetbrains.com/help/idea/15.0/authenticating-to-subversion.html" target="_blank" rel="external">Authenticating to Subversion</a>提到了<br><code>/Users/liuhongyu/.subversion</code>这个目录,应该是默认安装了的。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android87.png" alt=""></p>
+<p>在项目中也有相应的SVN目录:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android95.png" alt=""></p>
+<p>点击上传按钮:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android84.png" alt=""></p>
+<p>点击下载按钮:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android85.png" alt=""></p>
+<p>会卡在认证这一步:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android86.png" alt=""></p>
+<p>点击<code>cancel</code>之后会报错</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android88.png" alt=""></p>
+<p>在preference-VCS中有SVN相关配置:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android89.png" alt=""></p>
+<p>google <code>android studio authentication realm svn</code><br><a href="http://stackoverflow.com/questions/21323421/android-studio-cant-authenticate-with-svn" target="_blank" rel="external">Android Studio can’t authenticate with SVN</a>中提到了把上面2项去勾选就可以了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android90.png" alt=""></p>
+<p>还是会报错:<code>android studio commit failed with error: svn E175002:unknown host</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android91.png" alt=""></p>
+<p><a href="http://blog.csdn.net/zhouzme/article/details/22790395" target="_blank" rel="external">【AndroidStudio】关于SVN的相关配置简介</a></p>
+<p>终端能用svn说明可以使用:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android101.png" alt=""></p>
+<p>勾选下面2项:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android102.png" alt=""></p>
+<p><code>brew install subversion</code>安装subversion,把<code>export PATH=/usr/local/Cellar/subversion/1.8.13/bin</code>添加到<code>.bash_profile</code>,还是会包这个错误</p>
+<p><a href="http://stackoverflow.com/questions/14509251/svn-error-e175002" target="_blank" rel="external">SVN Error E175002</a>  </p>
+<p>在系统中搜索svn或apache但搜索不到。用spotlight搜索也是。用Alfred搜索发现apache在自己安装的MAMP中。但这个并非系统默认安装的。可能是Alfred搜索不到隐藏文件?</p>
+<p>修改Apache下的<code>httpd.conf</code>,把<code>Directory</code>字段下改为<code>allow from all</code>或<code>require all granted</code>,还是会报错</p>
+<p>打开MAMP,还是会报错。</p>
+<p>但用brew安装新的subversion会引起新的问题:终端中node等很多命令不能用了,如下图:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android104.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android105.png" alt=""></p>
+<p>解决:把<code>export PATH=/usr/local/Cellar/subversion/1.8.13/bin</code>从<code>.bash_profile</code>中删除,重启终端就可以了。看来mac默认安装的一些软件还不能乱改。</p>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><p>首先用<code>brew insatll git</code>安装git</p>
+<p>然后在AS中安装git插件。默认安装了的</p>
+<p>在AS中配置git插件：File-&gt;Setting-&gt;Version Control-&gt;Git, 然后选择你本地的Git安装路径:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android92.png" alt=""></p>
+<p>将项目初始化git项目(git init)，操作如下：VCS-&gt;Enable Control Integration-&gt;Select “Git”.（当然也可以使用git命令，自行选择）</p>
+<p>这个选项自己的项目没有。</p>
+<p><a href="https://www.jetbrains.com/help/idea/2016.1/enable-version-control-integration-dialog.html" target="_blank" rel="external">Enable Version Control Integration Dialog</a>中提示只有在项目没有使用任何Version Control System的时候才会出现。</p>
+<p><strong>注:没有界面让你选择版本控制工具,但可以在<code>.idea/vcs.xml</code>文件中配置</strong></p>
+<p><a href="http://www.cnblogs.com/lao-liang/p/5019549.html" target="_blank" rel="external">Android Studio配置Git及Git文件状态说明</a></p>
+<p>将现有项目创建为本地git仓库。在工具栏依次选择VCS-&gt;Import into Version Control-&gt;Create Git Repository</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android93.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android94.png" alt=""></p>
+<p>不久之后项目的<code>.idea/vcs.xml</code>文件就改为git了:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android96.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android97.png" alt=""></p>
+<p>在<code>PhoneSafe/PhoneSafe/src/cn/itcast/phonesafe/.git</code>中就多了<code>.git</code>文件夹</p>
+<p>在配置界面其实可以看到所有的版本控制工具:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android98.png" alt=""></p>
+<p>可以添加:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android99.png" alt=""></p>
+<p>也可以选中一个进行编辑:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android100.png" alt=""></p>
+<p>在项目的<code>.idea/vcs.xml</code>文件中把版本控制工具再修改为svn:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android103.png" alt=""></p>
+<h3 id="Github"><a href="#Github" class="headerlink" title="Github"></a>Github</h3><h2 id="references_3A"><a href="#references_3A" class="headerlink" title="references:"></a>references:</h2><p><a href="http://ask.android-studio.org/?/article/23" target="_blank" rel="external">Android Studio 常用功能介绍</a></p>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Android/" rel="tag">#Android</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/05/15/AndroidDeveloperTraining4/" rel="next" title="AndroidDeveloperTraining4">
+                <i class="fa fa-chevron-left"></i> AndroidDeveloperTraining4
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/05/22/使用Android-Studio进行Android开发/" rel="prev" title="使用Android Studio进行Android开发">
+                使用Android Studio进行Android开发 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+        </div>
+
+        
+
+
+        
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+      </div>
+
+      
+        
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/default_avatar.jpg" alt="lhy" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">lhy</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Science technology and culture</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">19</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-name">分类</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Android_Studio_u4E0B_u8F7D_u5B89_u88C5"><span class="nav-number">1.</span> <span class="nav-text">Android Studio下载安装</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SDK"><span class="nav-number">1.1.</span> <span class="nav-text">SDK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNK"><span class="nav-number">1.2.</span> <span class="nav-text">DNK</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ant"><span class="nav-number">1.3.</span> <span class="nav-text">ant</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#gradle"><span class="nav-number">1.4.</span> <span class="nav-text">gradle</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#adb"><span class="nav-number">1.5.</span> <span class="nav-text">adb</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AVD"><span class="nav-number">2.</span> <span class="nav-text">AVD</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#google_u81EA_u5E26_u7684AVD"><span class="nav-number">2.1.</span> <span class="nav-text">google自带的AVD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Genymotion"><span class="nav-number">2.2.</span> <span class="nav-text">Genymotion</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VitualBox"><span class="nav-number">2.2.1.</span> <span class="nav-text">VitualBox</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u5FEB_u6377_u952E"><span class="nav-number">3.</span> <span class="nav-text">快捷键</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u63D2_u4EF6"><span class="nav-number">4.</span> <span class="nav-text">插件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u4F7F_u7528gradle_u8FDB_u884C_u6784_u5EFA"><span class="nav-number">5.</span> <span class="nav-text">使用gradle进行构建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#build-gradle_u5206_u6790"><span class="nav-number">5.1.</span> <span class="nav-text">build.gradle分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#project_u4E0B_u7684build-gradle"><span class="nav-number">5.1.1.</span> <span class="nav-text">project下的build.gradle</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#module_u4E0B_u7684build-gradle"><span class="nav-number">5.1.2.</span> <span class="nav-text">module下的build.gradle</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#jcenter_u4E2D_u592E_u4ED3_u5E93_u53CA_u4F9D_u8D56_28dependency_29_u7BA1_u7406"><span class="nav-number">5.2.</span> <span class="nav-text">jcenter中央仓库及依赖(dependency)管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#jcenter_u548CmavenCentral"><span class="nav-number">5.2.1.</span> <span class="nav-text">jcenter和mavenCentral</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#gradle_u662F_u5982_u4F55_u4ECE_u4ED3_u5E93_u83B7_u53D6library"><span class="nav-number">5.2.2.</span> <span class="nav-text">gradle是如何从仓库获取library</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u4F9D_u8D56_u7BA1_u7406_28_u5BFC_u5165jar_u6216_u4F9D_u8D56_29"><span class="nav-number">5.2.3.</span> <span class="nav-text">依赖管理(导入jar或依赖)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5BFC_u5165_u5916_u90E8_u9879_u76EE_u5E76_u8FDB_u884C_u6784_u5EFA"><span class="nav-number">5.3.</span> <span class="nav-text">导入外部项目并进行构建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#u5BFC_u5165Eclipse_u5DE5_u7A0B"><span class="nav-number">5.3.1.</span> <span class="nav-text">导入Eclipse工程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#u65B9_u5F0F_u4E00_uFF1A_u5BFC_u5165_u540E_u4EE5gradle_u6784_u5EFA_28_u542B_u4F9D_u8D56_u5E93_29"><span class="nav-number">5.3.1.1.</span> <span class="nav-text">方式一：导入后以gradle构建(含依赖库)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#u65B9_u5F0F_u4E8C_uFF1A_u5BFC_u5165_u540E_u4EE5Ant_u6784_u5EFA_28_u542B_u4F9D_u8D56_u5E93_29"><span class="nav-number">5.3.1.2.</span> <span class="nav-text">方式二：导入后以Ant构建(含依赖库)</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AS_u8C03_u8BD5"><span class="nav-number">6.</span> <span class="nav-text">AS调试</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u5355_u5143_u6D4B_u8BD5"><span class="nav-number">6.1.</span> <span class="nav-text">单元测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#u7B7E_u540D_u6DF7_u6DC6_u6253_u5305"><span class="nav-number">7.</span> <span class="nav-text">签名混淆打包</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#u591A_u6E20_u9053_u6253_u5305"><span class="nav-number">7.1.</span> <span class="nav-text">多渠道打包</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#AS_u7248_u672C_u63A7_u5236_28VCS_29"><span class="nav-number">8.</span> <span class="nav-text">AS版本控制(VCS)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN_28_u9ED8_u8BA4_29"><span class="nav-number">8.1.</span> <span class="nav-text">SVN(默认)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git"><span class="nav-number">8.2.</span> <span class="nav-text">Git</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Github"><span class="nav-number">8.2.1.</span> <span class="nav-text">Github</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#references_3A"><span class="nav-number">8.3.</span> <span class="nav-text">references:</span></a></li></ol></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+      
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">lhy</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+
+  
+    
+    
+
+  
+
+
+  
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.2"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.2"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+<script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+<script type="text/javascript" src="/js/motion.js?v=0.4.5.2" id="motion.global"></script>
+
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.2" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    motionMiddleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  <script type="text/javascript" src="/js/bootstrap.js"></script>
+
+  
+  
+
+  
+  
+<a href="https://github.com/lhyhfut"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/52760788cde945287fbb584134c4cbc2bc36f904/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_white_ffffff.png"></a>
+</body>
+</html>
