@@ -35,7 +35,7 @@
 <link href="/css/main.css?v=0.4.5.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="C语言," />
 
 
 
@@ -53,16 +53,40 @@
 
 
 
-<meta name="description" content="Science technology and culture">
+<meta name="description" content="函数,数组,指针,字符串,结构体,共用体函数数组指针初始化指针变量在使用之前必须进行初始化:
+int num = 100;
+int *p;
+printf(“%d”,*p); //error,未初始化
+指针未初始化可能会出现意外的后果。系统中有一些垃圾数据。未初始化时系统可能赋值给指针p一个垃圾数据当作地址。这个地址可能不该访问。
+下面这样赋值会把100当成地址:
+p = num;
+printf(“">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言小结3">
 <meta property="og:url" content="http://yoursite.com/2016/06/20/C语言小结3/index.html">
 <meta property="og:site_name" content="lhy的博客">
-<meta property="og:description" content="Science technology and culture">
-<meta property="og:updated_time" content="2016-06-20T10:48:26.000Z">
+<meta property="og:description" content="函数,数组,指针,字符串,结构体,共用体函数数组指针初始化指针变量在使用之前必须进行初始化:
+int num = 100;
+int *p;
+printf(“%d”,*p); //error,未初始化
+指针未初始化可能会出现意外的后果。系统中有一些垃圾数据。未初始化时系统可能赋值给指针p一个垃圾数据当作地址。这个地址可能不该访问。
+下面这样赋值会把100当成地址:
+p = num;
+printf(“">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88-1.png">
+<meta property="og:updated_time" content="2016-06-20T11:13:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言小结3">
-<meta name="twitter:description" content="Science technology and culture">
+<meta name="twitter:description" content="函数,数组,指针,字符串,结构体,共用体函数数组指针初始化指针变量在使用之前必须进行初始化:
+int num = 100;
+int *p;
+printf(“%d”,*p); //error,未初始化
+指针未初始化可能会出现意外的后果。系统中有一些垃圾数据。未初始化时系统可能赋值给指针p一个垃圾数据当作地址。这个地址可能不该访问。
+下面这样赋值会把100当成地址:
+p = num;
+printf(“">
+<meta name="twitter:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88.png">
 
 
 
@@ -219,6 +243,21 @@
           </span>
 
           
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
 
           
             
@@ -237,11 +276,97 @@
       
 
       
-        <span itemprop="articleBody"></span>
+        <span itemprop="articleBody"><h1 id="函数-数组-指针-字符串-结构体-共用体"><a href="#函数-数组-指针-字符串-结构体-共用体" class="headerlink" title="函数,数组,指针,字符串,结构体,共用体"></a>函数,数组,指针,字符串,结构体,共用体</h1><h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h2 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h2><h2 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h2><h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>指针变量在使用之前必须进行初始化:</p>
+<p>int num = 100;</p>
+<p>int *p;</p>
+<p>printf(“%d”,*p); //error,未初始化</p>
+<p>指针未初始化可能会出现意外的后果。系统中有一些垃圾数据。未初始化时系统可能赋值给指针p一个垃圾数据当作地址。这个地址可能不该访问。</p>
+<p>下面这样赋值会把100当成地址:</p>
+<p>p = num;</p>
+<p>printf(“%d”,*p); //可能会报错。因为地址为100的内存区域可能是系统的。这样可能会造成非法访问。</p>
+<p>像上面这样赋值还会有类型问题。左边是int *类型,右边是int类型</p>
+<p>p = \&num;  //这样赋值以后p就指向了num</p>
+<p>一般在声明的时候就初始化:</p>
+<p>int *p = \&num;</p>
+<h3 id="取地址运算符-amp-，-间接运算符"><a href="#取地址运算符-amp-，-间接运算符" class="headerlink" title="取地址运算符&amp;， 间接运算符*"></a>取地址运算符&amp;， 间接运算符*</h3><p>\&amp;运算符:  取地址运算符，\&amp;m即是变量m在内存中的实际地址。</p>
+<p>*运算符： 指针运算符 (通常称为间接引用运算符),它返回其操作数 (即一个指针)所指向的对象的值.这种方式访问变量称为间接访问。直接访问是直接使用变量名来访问。</p>
+<p>打印指针,地址格式符:%p , %x</p>
+<p>%x:   按照十六进制打印，无意义的0就不打印</p>
+<p>%p:   显示地址的位数，32位，8个十六进制，2^4=16,32位<br>      显示地址的位数，64位，16个十六进制位，64个二进制位</p>
+<h3 id="指向指针的指针-二级指针"><a href="#指向指针的指针-二级指针" class="headerlink" title="指向指针的指针,二级指针"></a>指向指针的指针,二级指针</h3><p>通过**声明一个二级指针</p>
+<p>int num;</p>
+<p>int *a = \&num;</p>
+<p>int **b = \&a;</p>
+<p>指针作为函数形参:</p>
+<p>函数形式参数，除了数组以外，传递的任何数据，变量，都会新建一个变量接收传入的变量的值。不影响原来的变量，如果是一个数据，传递数据的地址（指针），如果是一个指针，传递指针的地址。</p>
+<p><strong> 注: </strong> 声明的时候 int *p = \&num;  <em> 与 int在一起表示指针类型(int \</em>)。右边直接赋值为地址。</p>
+<p>但声明后使用则不能 *p = \&num;  因为此时*p表示p指向的那个值。应该用 p = \&num;</p>
+<p>所谓指针类型，指的是声明指针变量时位于变量名前的“类型*”，而所谓指针所指向的类型，指的是为指针初始化或赋值的变量类型。</p>
+<p>不是同一类型的指针，不可以任意赋值。不同的数据类型，大小不一样（如果强制赋值的话，就会少读取或多读取，内存有很多垃圾0,1），解析方式不一样.</p>
+<p>注:指针不同类型之间的赋值和数据不同类型之间的赋值还有所不同。后者只是数据有溢出或截短，但前者可能找到另外一个指针去了，指向的就不再是以前的那个数据了。</p>
+<p>同类型指针的赋值.这是最常见的一种情况，如所示，pN1和pN2是两个相同类型的指针，执行“pN2=pN1;”这样一个赋值操作后，pN1和pN2指向同样的地址，也就是说，两个指针指向同一个内存单元，对<em>pN2的任何改动都会影响</em>pN1的值，反之亦然。</p>
+<h3 id="指针的类型和指针所指向的类型"><a href="#指针的类型和指针所指向的类型" class="headerlink" title="指针的类型和指针所指向的类型"></a>指针的类型和指针所指向的类型</h3><p>指针除了地址以外还有类型，类型决定了指向的数据大小，决定了数据的解析方式。指针的类型必须要与指针指向的类型一致。</p>
+<p>指向内存字节数大于指针类型占据的字节数</p>
+<p>指向内存字节数小于指针类型占据的字节数</p>
+<h3 id="指针变量的值"><a href="#指针变量的值" class="headerlink" title="指针变量的值"></a>指针变量的值</h3><p>指针变量的值是指针本身存储的数值，这个值将被编译器当作一个地址，而不是<br>一个一般的数值。在32位程序里，所有类型的指针的值都是一个32位整数，因为32位程序里内存地址长度都为32位。</p>
+<p>指针所指向的内存区就是从指针的值所代表的那个内存地址开始，长度为sizeof(指针所指向的类型)的一片内存区。</p>
+<p>指针存储的是地址，地址是首地址，从哪里开始，从哪里结束，由类型决定，类型决定长度，决定如何解析。</p>
+<h3 id="指针的运算"><a href="#指针的运算" class="headerlink" title="指针的运算"></a>指针的运算</h3><p>int a = 5;</p>
+<p>int *p = a;</p>
+<p>*p = 3;</p>
+<p>把a的值5作为地址 0x00000005赋值给*p是发生访问冲突。整数与指针最好不要直接运算。</p>
+<h3 id="指向数组的指针"><a href="#指向数组的指针" class="headerlink" title="指向数组的指针"></a>指向数组的指针</h3><p>指向数组的指针被编译器解析为数组的首地址</p>
+<p>数组的遍历:</p>
+<p>通过下标循环进行遍历</p>
+<p>a[i]和*(a + i)等价</p>
+<p>通过dll注入的方式修改另一个进程的数据</p>
+<p>int a[3] = {1,2,3};</p>
+<p>int *p = a;</p>
+<p>printf(“%d,%x,%x”,*p,a,&amp;p);</p>
+<p>通过定义并初始化二级指针p(下面给*<em>p赋的值是读到的上面\</em>p的地址&amp;p),使其改变另一个程序的指针p的指向，从而改变它的值。</p>
+<p>_declspec(dllexport) void go()<br>{</p>
+<p>int *<em>p = (int *</em>)0x1bf734;   //注意左右两边的类型要匹配</p>
+<p>*p = (int *)(0x1bf740 + 36);  //注意左右两边的类型要匹配</p>
+<p>}</p>
+<h3 id="指针的算术运算"><a href="#指针的算术运算" class="headerlink" title="指针的算术运算"></a>指针的算术运算</h3><p>指针++就是按照指针类型的大小，前进一个类型(不是一个字节)的大小，如int,前进四个字节。</p>
+<p>指针++就是按照指针类型的大小，前进一个类型(不是一个字节)的大小，int,前进四个字节。</p>
+<p>指针++  就是 指针每次向前移动sizeof(指针类型)个字节。</p>
+<p>通过指针循环(以前是下标循环)的方式初始化数组a的每一个元素（从头到尾扫描数组）:</p>
+<p>int a[5];</p>
+<p>int i = 0;</p>
+<p>for(int *p = a;p &lt; a + 5;p++) //在数组内部用p++才有意义,移动的是sizeof(*p)个字节</p>
+<p>{</p>
+<p>  *p = i++;</p>
+<p>}</p>
+<p>注:i(下标循环)和p(指针循环)的效果是一样的。注意指针p++只能用于数组内部</p>
+<p>指针加上2,在数组内部等价于向后移动两个元素的大小,指针减去3，等价于数组内部，向前移动3个元素(和p++是一致的)的大小</p>
+<p>求指针的具体地址</p>
+<p>double   *p=0x300400;<br>p=p+2   ; //p=0x300416=p+2<em>sizeof(double)<br>p=p-5;    //p=0x300416-sizeof(double)\</em>5=0x300376</p>
+<h3 id="指针之间的比较"><a href="#指针之间的比较" class="headerlink" title="指针之间的比较"></a>指针之间的比较</h3><p>对两个毫无关联的指针比较大小是没有意义的，因为指针只代表了“位置”这么一个信息， 但是， 如果两个指针所指向的元素位于同一个数组（或同一块动态申请的内存中）， 指针的大小比较反映了元素在数组中的先后关系。</p>
+<p>注：指针往往和数组联系在一起。要么就像游戏外挂那样，直接赋值为一个地址。</p>
+<h3 id="指针运算"><a href="#指针运算" class="headerlink" title="指针运算"></a>指针运算</h3><p>*p++ 与<em>(p++)一样，相当于a[i++]<br>\</em>(++p)，相当于a[++i]<br>(*p)++ 表示p所指向的元素值加1，而非指针值加1</p>
+<p>num[i]与*（num+i）等价    &amp;num[i]等价于  num+i<br>num是第一个元素的首地址，指向int 类型<br>每次指针相加，相加指针指向的类型的大小</p>
+<h3 id="指向元素的指针与指向数组的指针"><a href="#指向元素的指针与指向数组的指针" class="headerlink" title="指向元素的指针与指向数组的指针"></a>指向元素的指针与指向数组的指针</h3><p>若有定义int(*p)[3];则定义了一个名为p的指针变量，表示p是一个指针变量，它可以指向每行有三个整数（即int型）元素的二维数组.</p>
+<p>p指针每一次加1就相当于把p中存的地址加6（前提是int类型占2个字节，在VC中是占4个字节）。</p>
+<p>例子：</p>
+<p>int a[3][3];</p>
+<p>int(*p)[3];</p>
+<p>p = a; //p=a的意思是把数组a的首地址存放到p中那么p[1]就是a[1][0]的地址，p[1][0]就等于a[1][0]，而p[1][2]就等于a[1][2].</p>
+<p>a通常表示一维数组首地址,&amp;a通常表示二维数组首地址。但在二维数组中a和&amp;a的值是相等的。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88.png" alt=""></p>
+<p>注:赋值的时候要注意类型匹配。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88-1.png" alt=""></p>
+</span>
       
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/C语言/" rel="tag">#C语言</a>
+          
+        </div>
       
 
       
@@ -255,10 +380,6 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/06/20/C语言小结4/" rel="prev" title="C语言小结4">
-                C语言小结4 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -326,14 +447,14 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
@@ -379,7 +500,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#函数-数组-指针-字符串-结构体-共用体"><span class="nav-number">1.</span> <span class="nav-text">函数,数组,指针,字符串,结构体,共用体</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">1.1.</span> <span class="nav-text">函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数组"><span class="nav-number">1.2.</span> <span class="nav-text">数组</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指针"><span class="nav-number">1.3.</span> <span class="nav-text">指针</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">1.3.1.</span> <span class="nav-text">初始化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#取地址运算符-amp-，-间接运算符"><span class="nav-number">1.3.2.</span> <span class="nav-text">取地址运算符&， 间接运算符*</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指向指针的指针-二级指针"><span class="nav-number">1.3.3.</span> <span class="nav-text">指向指针的指针,二级指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针的类型和指针所指向的类型"><span class="nav-number">1.3.4.</span> <span class="nav-text">指针的类型和指针所指向的类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针变量的值"><span class="nav-number">1.3.5.</span> <span class="nav-text">指针变量的值</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针的运算"><span class="nav-number">1.3.6.</span> <span class="nav-text">指针的运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指向数组的指针"><span class="nav-number">1.3.7.</span> <span class="nav-text">指向数组的指针</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针的算术运算"><span class="nav-number">1.3.8.</span> <span class="nav-text">指针的算术运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针之间的比较"><span class="nav-number">1.3.9.</span> <span class="nav-text">指针之间的比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指针运算"><span class="nav-number">1.3.10.</span> <span class="nav-text">指针运算</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#指向元素的指针与指向数组的指针"><span class="nav-number">1.3.11.</span> <span class="nav-text">指向元素的指针与指向数组的指针</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

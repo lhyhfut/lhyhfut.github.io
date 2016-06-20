@@ -156,6 +156,7 @@
 由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：
 步骤见远程仓库
 (1)第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Gi">
+<meta name="twitter:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github30.png">
 
 
 
@@ -345,7 +346,7 @@
       
 
       
-        <span itemprop="articleBody"><h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><h3 id="2-1_github_u4F7F_u7528"><a href="#2-1_github_u4F7F_u7528" class="headerlink" title="2.1 github使用"></a>2.1 github使用</h3><p>注册GitHub账号。</p>
+        <span itemprop="articleBody"><h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><h3 id="2-1-github使用"><a href="#2-1-github使用" class="headerlink" title="2.1 github使用"></a>2.1 github使用</h3><p>注册GitHub账号。</p>
 <p>由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：</p>
 <p>步骤见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" target="_blank" rel="external">远程仓库</a></p>
 <p>(1)第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>
@@ -360,7 +361,7 @@
 <p>当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
 <p>最后友情提示，在GitHub上免费托管的Git仓库，任何人都可以看到喔（但只有你自己才能改）。所以，不要把敏感信息放进去。</p>
 <p>如果你不想让别人看到Git库，有两个办法，一个是交点保护费，让GitHub把公开的仓库变成私有的，这样别人就看不见了（不可读更不可写）。另一个办法是自己动手，搭一个Git服务器，因为是你自己的Git服务器，所以别人也是看不见的。这个方法我们后面会讲到的，相当简单，公司内部开发必备。</p>
-<h2 id="2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93"><a href="#2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93" class="headerlink" title="2.2 添加远程库"></a>2.2 添加远程库</h2><p>现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。</p>
+<h2 id="2-2-添加远程库"><a href="#2-2-添加远程库" class="headerlink" title="2.2 添加远程库"></a>2.2 添加远程库</h2><p>现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。</p>
 <p>(1)首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库<br>(2)在Repository name填入learngit，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库<br>(3)目前，在GitHub上的这个learngit仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。<br>(4)现在，我们根据GitHub的提示:</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github31.png" alt=""></p>
 <p>在本地的learngit仓库下运行命令：(上图中有)</p>
@@ -411,9 +412,9 @@ and the repository exists.</code></p>
 <p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</p>
 <p>(2)要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</p>
 <p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
-<h2 id="2-3__u5206_u652F_u7BA1_u7406"><a href="#2-3__u5206_u652F_u7BA1_u7406" class="headerlink" title="2.3 分支管理"></a>2.3 分支管理</h2><p>应用场景:假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
+<h2 id="2-3-分支管理"><a href="#2-3-分支管理" class="headerlink" title="2.3 分支管理"></a>2.3 分支管理</h2><p>应用场景:假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
 <p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到(如果你commit的话,别人还是可以看的到的吧?比如github上面很多开源项目你都可以看得到它的分支。只是你可以先不commit,你提交的是能够稳定运行的master分支,新的分支只是做实验)，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上(因为新的分支是在master分支的基础上进行修改的。会替换掉以前的matser分支。这个合并到底是怎么合并的?如果同时有多个分支,合并的时候是否会造成冲突呢?在Bug分支章节提到了stash功能)，这样，既安全，又不影响别人工作(还是从协作,安全角度来考虑的)。</p>
-<h3 id="2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F"><a href="#2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F" class="headerlink" title="2.3.1 创建与合并分支"></a>2.3.1 创建与合并分支</h3><p>原理本分见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="external">廖雪峰的本节教程</a>,上面有图示,很清晰。</p>
+<h3 id="2-3-1-创建与合并分支"><a href="#2-3-1-创建与合并分支" class="headerlink" title="2.3.1 创建与合并分支"></a>2.3.1 创建与合并分支</h3><p>原理本分见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="external">廖雪峰的本节教程</a>,上面有图示,很清晰。</p>
 <p><strong>关键词:matser指针,master分支,dev指针,dev分支(dev只是分支的名字),Head指针</strong></p>
 <p>(1)每次提交(commit)，Git都把它们串成一条时间线，这条时间线就是一个分支(branch)。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。</p>
 <p>(2)初始没有其余分支的时候。master分支是一条线,master指针指向最新的提交,HEAD指针指向master分支,这样就确定了当前分支,以及当前分支的提交点。每次提交，master分支都会向前移动一步。</p>
@@ -455,7 +456,7 @@ and the repository exists.</code></p>
 <p>创建+切换分支：<code>git checkout -b &lt;name&gt;</code></p>
 <p>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
 <p>删除分支：<code>git branch -d &lt;name&gt;</code></p>
-<h3 id="2-3-2_u89E3_u51B3_u51B2_u7A81"><a href="#2-3-2_u89E3_u51B3_u51B2_u7A81" class="headerlink" title="2.3.2解决冲突"></a>2.3.2解决冲突</h3><p>出现场景:master分支和feature1分支各自都分别有新的提交.这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。</p>
+<h3 id="2-3-2解决冲突"><a href="#2-3-2解决冲突" class="headerlink" title="2.3.2解决冲突"></a>2.3.2解决冲突</h3><p>出现场景:master分支和feature1分支各自都分别有新的提交.这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。</p>
 <p>新建feature1分支</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github48.png" alt=""></p>
 <p>修改readme.txt最后一行，改为：</p>
@@ -489,7 +490,7 @@ and the repository exists.</code></p>
 <p><strong>小结</strong></p>
 <p>当Git无法自动合并分支时，就必须首先解决冲突(手动修改?)。解决冲突后，再提交，合并完成。</p>
 <p>用git log –graph命令可以看到分支合并图。</p>
-<h3 id="2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565"><a href="#2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565" class="headerlink" title="2.3.3分支管理策略"></a>2.3.3分支管理策略</h3><p>通常，合并分支时，如果可能，Git会用 <strong>Fast forward</strong> 模式，但这种模式下，<strong>删除分支后，会丢掉分支信息</strong> 。</p>
+<h3 id="2-3-3分支管理策略"><a href="#2-3-3分支管理策略" class="headerlink" title="2.3.3分支管理策略"></a>2.3.3分支管理策略</h3><p>通常，合并分支时，如果可能，Git会用 <strong>Fast forward</strong> 模式，但这种模式下，<strong>删除分支后，会丢掉分支信息</strong> 。</p>
 <p>如果要强制 <strong>禁用Fast forward</strong> 模式，Git就会 <strong>在merge时生成一个新的commit</strong> ，这样，从 <strong>分支历史上就可以看出分支信息</strong>。</p>
 <p><strong>注:</strong> 2.3.2中<code>git log --graph --pretty=oneline --abbrev-commit</code>就没有看见2.3.1中创建并删除的dev分支的信息。</p>
 <p>下面我们实战一下<code>--no-ff</code>方式的<code>git merge</code>：</p>
@@ -517,7 +518,7 @@ and the repository exists.</code></p>
 <p><strong>小结</strong></p>
 <p>Git分支十分强大，在团队开发中应该充分应用。</p>
 <p>合并分支时，加上–no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
-<h3 id="2-3-4Bug_u5206_u652F"><a href="#2-3-4Bug_u5206_u652F" class="headerlink" title="2.3.4Bug分支"></a>2.3.4Bug分支</h3><p>软件开发中，bug很常见。在Git中每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。</p>
+<h3 id="2-3-4Bug分支"><a href="#2-3-4Bug分支" class="headerlink" title="2.3.4Bug分支"></a>2.3.4Bug分支</h3><p>软件开发中，bug很常见。在Git中每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。</p>
 <p>切换到dev分支,修改readme.txt(先不add,commit)</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github67.png" alt=""></p>
 <p><code>测试BUG分支。初始dev上的修改。</code></p>
@@ -551,7 +552,7 @@ and the repository exists.</code></p>
 <p>我们现在还是在dev分支,readme.txt中的修改还在(不然就修复不了BUG了),仅仅是用<code>git stash pop</code>之后再用用<code>git stash list</code>看不到任何修改痕迹。但具体的修改内容还在,确实是修复BUG了。</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github77.png" alt=""></p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github78.png" alt=""></p>
-<h3 id="2-3-4Feature_u5206_u652F"><a href="#2-3-4Feature_u5206_u652F" class="headerlink" title="2.3.4Feature分支"></a>2.3.4Feature分支</h3><p>软件开发中，总有无穷无尽的新的功能要不断添加进来。</p>
+<h3 id="2-3-4Feature分支"><a href="#2-3-4Feature分支" class="headerlink" title="2.3.4Feature分支"></a>2.3.4Feature分支</h3><p>软件开发中，总有无穷无尽的新的功能要不断添加进来。</p>
 <p>添加一个新功能时，你肯定不希望因为一些实验性质的代码，把主分支搞乱了，所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支。</p>
 <p>现在，你终于接到了一个新任务：开发代号为Vulcan的新功能，该功能计划用于下一代星际飞船。</p>
 <p>修改readme.txt:</p>
@@ -572,7 +573,7 @@ and the repository exists.</code></p>
 <p>小结</p>
 <p>开发一个新feature，最好新建一个分支；</p>
 <p>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。(自己这里用git branch -d <name>就直接删除了)</name></p>
-<h3 id="2-3-5_u591A_u4EBA_u534F_u4F5C"><a href="#2-3-5_u591A_u4EBA_u534F_u4F5C" class="headerlink" title="2.3.5多人协作"></a>2.3.5多人协作</h3><p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。</p>
+<h3 id="2-3-5多人协作"><a href="#2-3-5多人协作" class="headerlink" title="2.3.5多人协作"></a>2.3.5多人协作</h3><p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。</p>
 <p>要查看远程库的信息，用<code>git remote</code>,或者，用<code>git remote -v</code>显示更详细的信息.会显示可以抓取(fetch)和推送(push)的origin的地址。如果没有推送权限，就看不到push的地址。</p>
 <p><strong>推送分支</strong></p>
 <p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
@@ -644,9 +645,9 @@ and the repository exists.</code></p>
 <p>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</p>
 <p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream-to branch-name origin/branch-name</code>；</p>
 <p>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突(<strong>手动处理成想要的样子</strong>)。</p>
-<h2 id="2-4_u6807_u7B7E_u7BA1_u7406"><a href="#2-4_u6807_u7B7E_u7BA1_u7406" class="headerlink" title="2.4标签管理"></a>2.4标签管理</h2><p>发布一个版本时，我们通常先在版本库中打一个标签(如v1.0之类的)，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。</p>
+<h2 id="2-4标签管理"><a href="#2-4标签管理" class="headerlink" title="2.4标签管理"></a>2.4标签管理</h2><p>发布一个版本时，我们通常先在版本库中打一个标签(如v1.0之类的)，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。</p>
 <p>Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。</p>
-<h3 id="2-4-1_u521B_u5EFA_u6807_u7B7E"><a href="#2-4-1_u521B_u5EFA_u6807_u7B7E" class="headerlink" title="2.4.1创建标签"></a>2.4.1创建标签</h3><p>在Git中打标签非常简单，首先，切换到需要打标签的分支上：</p>
+<h3 id="2-4-1创建标签"><a href="#2-4-1创建标签" class="headerlink" title="2.4.1创建标签"></a>2.4.1创建标签</h3><p>在Git中打标签非常简单，首先，切换到需要打标签的分支上：</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github98.png" alt=""></p>
 <p>然后，敲命令git tag <name>就可以打一个新标签：</name></p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github99.png" alt=""></p>
@@ -677,7 +678,7 @@ and the repository exists.</code></p>
 <p><code>git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以指定标签信息；</p>
 <p><code>git tag -s &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以用PGP签名标签；</p>
 <p>命令<code>git tag</code>可以查看所有标签。</p>
-<h3 id="2-4-2_u64CD_u4F5C_u6807_u7B7E"><a href="#2-4-2_u64CD_u4F5C_u6807_u7B7E" class="headerlink" title="2.4.2操作标签"></a>2.4.2操作标签</h3><p>如果标签打错了，也可以删除：</p>
+<h3 id="2-4-2操作标签"><a href="#2-4-2操作标签" class="headerlink" title="2.4.2操作标签"></a>2.4.2操作标签</h3><p>如果标签打错了，也可以删除：</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github107.png" alt=""></p>
 <p>因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。</p>
 <p>如果要推送某个标签到远程，使用命令<code>git push origin &lt;tagname&gt;</code>：</p>
@@ -696,7 +697,7 @@ and the repository exists.</code></p>
 <p>命令<code>git push origin --tags</code>可以推送全部未推送过的本地标签；</p>
 <p>命令<code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</p>
 <p>命令<code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。</p>
-<h2 id="2-5_u4F7F_u7528GitHub"><a href="#2-5_u4F7F_u7528GitHub" class="headerlink" title="2.5使用GitHub"></a>2.5使用GitHub</h2><p>我们一直用GitHub作为免费的远程仓库，如果是个人的开源项目，放到GitHub上是完全没有问题的。其实GitHub还是一个开源协作社区，通过GitHub，<strong>既可以让别人参与你的开源项目，也可以参与别人的开源项目</strong>。</p>
+<h2 id="2-5使用GitHub"><a href="#2-5使用GitHub" class="headerlink" title="2.5使用GitHub"></a>2.5使用GitHub</h2><p>我们一直用GitHub作为免费的远程仓库，如果是个人的开源项目，放到GitHub上是完全没有问题的。其实GitHub还是一个开源协作社区，通过GitHub，<strong>既可以让别人参与你的开源项目，也可以参与别人的开源项目</strong>。</p>
 <p><strong>如何参与一个开源项目呢？</strong></p>
 <p>(1)fork别人的仓库</p>
 <p>(2)从自己的账号下clone刚才你fork的仓库，这样你才能推送修改。如果从作者的仓库地址clone，因为没有权限，你将 <strong>不能推送修改</strong>。</p>
@@ -708,10 +709,10 @@ and the repository exists.</code></p>
 <p>可以推送pull request给官方仓库来贡献代码。</p>
 <p>#自定义Git</p>
 <p><strong>这部分内容参考教程</strong></p>
-<h2 id="Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879"><a href="#Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879" class="headerlink" title="Git的其它可配置项"></a>Git的其它可配置项</h2><h2 id="u5FFD_u7565_u7279_u6B8A_u6587_u4EF6"><a href="#u5FFD_u7565_u7279_u6B8A_u6587_u4EF6" class="headerlink" title="忽略特殊文件"></a>忽略特殊文件</h2><p>忽略某些文件时，需要编写.gitignore；</p>
+<h2 id="Git的其它可配置项"><a href="#Git的其它可配置项" class="headerlink" title="Git的其它可配置项"></a>Git的其它可配置项</h2><h2 id="忽略特殊文件"><a href="#忽略特殊文件" class="headerlink" title="忽略特殊文件"></a>忽略特殊文件</h2><p>忽略某些文件时，需要编写.gitignore；</p>
 <p>.gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！</p>
 <p>不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。所有配置文件可以直接在线浏览：<a href="https://github.com/github/gitignore" target="_blank" rel="external">github的gitignore配置</a></p>
-<h2 id="u914D_u7F6E_u522B_u540D"><a href="#u914D_u7F6E_u522B_u540D" class="headerlink" title="配置别名"></a>配置别名</h2><h2 id="u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29"><a href="#u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29" class="headerlink" title="搭建Git服务器(局域网,Web)"></a>搭建Git服务器(局域网,Web)</h2><p>GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。</p>
+<h2 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h2><h2 id="搭建Git服务器-局域网-Web"><a href="#搭建Git服务器-局域网-Web" class="headerlink" title="搭建Git服务器(局域网,Web)"></a>搭建Git服务器(局域网,Web)</h2><p>GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。</p>
 <p>搭建Git服务器需要准备一台运行<code>Linux的机器</code>，强烈推荐用<code>Ubuntu或Debian</code>，这样，通过几条简单的<code>apt命令</code>就可以完成安装。</p>
 <p>(1)安装git</p>
 <p>(2)创建一个git用户，用来运行git服务</p>
@@ -725,7 +726,7 @@ and the repository exists.</code></p>
 <p>搭建Git服务器非常简单，通常10分钟即可完成；</p>
 <p>要方便管理公钥，用<code>Gitosis</code>；</p>
 <p>要像SVN那样变态地控制权限，用<code>Gitolite</code>。</p>
-<h1 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h1><h3 id="GitHub__u6F2B_u6E38_u6307_u5357"><a href="#GitHub__u6F2B_u6E38_u6307_u5357" class="headerlink" title="GitHub 漫游指南"></a><a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h3><h3 id="u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B"><a href="#u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B" class="headerlink" title="廖雪峰的Git教程"></a><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h3><h3 id="u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355"><a href="#u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355" class="headerlink" title="常用 Git 命令清单"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h3><h3 id="git-recipes"><a href="#git-recipes" class="headerlink" title="git-recipes"></a><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h3><h3 id="u56FE_u89E3git"><a href="#u56FE_u89E3git" class="headerlink" title="图解git"></a><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h3><h3 id="u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8"><a href="#u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8" class="headerlink" title="猴子都能懂的Git入门"></a><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h3><h3 id="u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9"><a href="#u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9" class="headerlink" title="《走进git时代系列一》 你该怎么玩"></a><a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h3><h3 id="Pro_Git_v2__u4E2D_u6587_u7248"><a href="#Pro_Git_v2__u4E2D_u6587_u7248" class="headerlink" title="Pro Git v2 中文版"></a><a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h3><h3 id="Git_u7684_u5B98_u65B9_u7F51_u7AD9"><a href="#Git_u7684_u5B98_u65B9_u7F51_u7AD9" class="headerlink" title="Git的官方网站"></a><a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h3><h1 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h1><h3 id="1-gitlab_2Ccoding"><a href="#1-gitlab_2Ccoding" class="headerlink" title="1.gitlab,coding"></a>1.gitlab,coding</h3><h3 id="2-git_flow_2Cgitlab_flow_2Cgithub_flow"><a href="#2-git_flow_2Cgitlab_flow_2Cgithub_flow" class="headerlink" title="2.git flow,gitlab flow,github flow"></a>2.git flow,gitlab flow,github flow</h3><h3 id="3-Git_u4E0E_u534F_u4F5C"><a href="#3-Git_u4E0E_u534F_u4F5C" class="headerlink" title="3.Git与协作"></a>3.Git与协作</h3></span>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h1><h3 id="GitHub-漫游指南"><a href="#GitHub-漫游指南" class="headerlink" title="GitHub 漫游指南"></a><a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h3><h3 id="廖雪峰的Git教程"><a href="#廖雪峰的Git教程" class="headerlink" title="廖雪峰的Git教程"></a><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h3><h3 id="常用-Git-命令清单"><a href="#常用-Git-命令清单" class="headerlink" title="常用 Git 命令清单"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h3><h3 id="git-recipes"><a href="#git-recipes" class="headerlink" title="git-recipes"></a><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h3><h3 id="图解git"><a href="#图解git" class="headerlink" title="图解git"></a><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h3><h3 id="猴子都能懂的Git入门"><a href="#猴子都能懂的Git入门" class="headerlink" title="猴子都能懂的Git入门"></a><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h3><h3 id="《走进git时代系列一》-你该怎么玩"><a href="#《走进git时代系列一》-你该怎么玩" class="headerlink" title="《走进git时代系列一》 你该怎么玩"></a><a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h3><h3 id="Pro-Git-v2-中文版"><a href="#Pro-Git-v2-中文版" class="headerlink" title="Pro Git v2 中文版"></a><a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h3><h3 id="Git的官方网站"><a href="#Git的官方网站" class="headerlink" title="Git的官方网站"></a><a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h3><h1 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list:"></a>To do list:</h1><h3 id="1-gitlab-coding"><a href="#1-gitlab-coding" class="headerlink" title="1.gitlab,coding"></a>1.gitlab,coding</h3><h3 id="2-git-flow-gitlab-flow-github-flow"><a href="#2-git-flow-gitlab-flow-github-flow" class="headerlink" title="2.git flow,gitlab flow,github flow"></a>2.git flow,gitlab flow,github flow</h3><h3 id="3-Git与协作"><a href="#3-Git与协作" class="headerlink" title="3.Git与协作"></a>3.Git与协作</h3></span>
       
     </div>
 
@@ -820,14 +821,14 @@ and the repository exists.</code></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
@@ -873,7 +874,7 @@ and the repository exists.</code></p>
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">1.</span> <span class="nav-text">github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1_github_u4F7F_u7528"><span class="nav-number">1.0.1.</span> <span class="nav-text">2.1 github使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93"><span class="nav-number">1.1.</span> <span class="nav-text">2.2 添加远程库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3__u5206_u652F_u7BA1_u7406"><span class="nav-number">1.2.</span> <span class="nav-text">2.3 分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.3.1 创建与合并分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2_u89E3_u51B3_u51B2_u7A81"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.3.2解决冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3.3分支管理策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4Bug_u5206_u652F"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.3.4Bug分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4Feature_u5206_u652F"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.3.4Feature分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-5_u591A_u4EBA_u534F_u4F5C"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.3.5多人协作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4_u6807_u7B7E_u7BA1_u7406"><span class="nav-number">1.3.</span> <span class="nav-text">2.4标签管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1_u521B_u5EFA_u6807_u7B7E"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.4.1创建标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2_u64CD_u4F5C_u6807_u7B7E"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.4.2操作标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5_u4F7F_u7528GitHub"><span class="nav-number">1.4.</span> <span class="nav-text">2.5使用GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879"><span class="nav-number">1.5.</span> <span class="nav-text">Git的其它可配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u5FFD_u7565_u7279_u6B8A_u6587_u4EF6"><span class="nav-number">1.6.</span> <span class="nav-text">忽略特殊文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u914D_u7F6E_u522B_u540D"><span class="nav-number">1.7.</span> <span class="nav-text">配置别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29"><span class="nav-number">1.8.</span> <span class="nav-text">搭建Git服务器(局域网,Web)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference_3A"><span class="nav-number">2.</span> <span class="nav-text">reference:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub__u6F2B_u6E38_u6307_u5357"><span class="nav-number">2.0.1.</span> <span class="nav-text">GitHub 漫游指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B"><span class="nav-number">2.0.2.</span> <span class="nav-text">廖雪峰的Git教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355"><span class="nav-number">2.0.3.</span> <span class="nav-text">常用 Git 命令清单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-recipes"><span class="nav-number">2.0.4.</span> <span class="nav-text">git-recipes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u56FE_u89E3git"><span class="nav-number">2.0.5.</span> <span class="nav-text">图解git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8"><span class="nav-number">2.0.6.</span> <span class="nav-text">猴子都能懂的Git入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9"><span class="nav-number">2.0.7.</span> <span class="nav-text">《走进git时代系列一》 你该怎么玩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pro_Git_v2__u4E2D_u6587_u7248"><span class="nav-number">2.0.8.</span> <span class="nav-text">Pro Git v2 中文版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git_u7684_u5B98_u65B9_u7F51_u7AD9"><span class="nav-number">2.0.9.</span> <span class="nav-text">Git的官方网站</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#To_do_list_3A"><span class="nav-number">3.</span> <span class="nav-text">To do list:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-gitlab_2Ccoding"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.gitlab,coding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-git_flow_2Cgitlab_flow_2Cgithub_flow"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.git flow,gitlab flow,github flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Git_u4E0E_u534F_u4F5C"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.Git与协作</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#github"><span class="nav-number">1.</span> <span class="nav-text">github</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-github使用"><span class="nav-number">1.0.1.</span> <span class="nav-text">2.1 github使用</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-添加远程库"><span class="nav-number">1.1.</span> <span class="nav-text">2.2 添加远程库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-分支管理"><span class="nav-number">1.2.</span> <span class="nav-text">2.3 分支管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-1-创建与合并分支"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.3.1 创建与合并分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-2解决冲突"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.3.2解决冲突</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-3分支管理策略"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3.3分支管理策略</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4Bug分支"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.3.4Bug分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-4Feature分支"><span class="nav-number">1.2.5.</span> <span class="nav-text">2.3.4Feature分支</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-5多人协作"><span class="nav-number">1.2.6.</span> <span class="nav-text">2.3.5多人协作</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-4标签管理"><span class="nav-number">1.3.</span> <span class="nav-text">2.4标签管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-1创建标签"><span class="nav-number">1.3.1.</span> <span class="nav-text">2.4.1创建标签</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-2操作标签"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.4.2操作标签</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-5使用GitHub"><span class="nav-number">1.4.</span> <span class="nav-text">2.5使用GitHub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git的其它可配置项"><span class="nav-number">1.5.</span> <span class="nav-text">Git的其它可配置项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#忽略特殊文件"><span class="nav-number">1.6.</span> <span class="nav-text">忽略特殊文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置别名"><span class="nav-number">1.7.</span> <span class="nav-text">配置别名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#搭建Git服务器-局域网-Web"><span class="nav-number">1.8.</span> <span class="nav-text">搭建Git服务器(局域网,Web)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#reference"><span class="nav-number">2.</span> <span class="nav-text">reference:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#GitHub-漫游指南"><span class="nav-number">2.0.1.</span> <span class="nav-text">GitHub 漫游指南</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#廖雪峰的Git教程"><span class="nav-number">2.0.2.</span> <span class="nav-text">廖雪峰的Git教程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#常用-Git-命令清单"><span class="nav-number">2.0.3.</span> <span class="nav-text">常用 Git 命令清单</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#git-recipes"><span class="nav-number">2.0.4.</span> <span class="nav-text">git-recipes</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#图解git"><span class="nav-number">2.0.5.</span> <span class="nav-text">图解git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#猴子都能懂的Git入门"><span class="nav-number">2.0.6.</span> <span class="nav-text">猴子都能懂的Git入门</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《走进git时代系列一》-你该怎么玩"><span class="nav-number">2.0.7.</span> <span class="nav-text">《走进git时代系列一》 你该怎么玩</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pro-Git-v2-中文版"><span class="nav-number">2.0.8.</span> <span class="nav-text">Pro Git v2 中文版</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Git的官方网站"><span class="nav-number">2.0.9.</span> <span class="nav-text">Git的官方网站</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#To-do-list"><span class="nav-number">3.</span> <span class="nav-text">To do list:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-gitlab-coding"><span class="nav-number">3.0.1.</span> <span class="nav-text">1.gitlab,coding</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-git-flow-gitlab-flow-github-flow"><span class="nav-number">3.0.2.</span> <span class="nav-text">2.git flow,gitlab flow,github flow</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Git与协作"><span class="nav-number">3.0.3.</span> <span class="nav-text">3.Git与协作</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

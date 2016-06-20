@@ -212,831 +212,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/05/13/AndroidDeveloperTraining2/" itemprop="url">
-                  AndroidDeveloperTraining2
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-05-13T23:17:45+08:00" content="2016-05-13">
-              2016-05-13
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Technology/" itemprop="url" rel="index">
-                    <span itemprop="name">Technology</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <p>继续<a href="https://developer.android.com/training/index.html" target="_blank" rel="external">AndroidDeveloperTraining</a>的练习</p>
-<h1 id="Managing_the_Activity_Lifecycle"><a href="#Managing_the_Activity_Lifecycle" class="headerlink" title="Managing the Activity Lifecycle"></a><a href="https://developer.android.com/training/basics/activity-lifecycle/index.html" target="_blank" rel="external">Managing the Activity Lifecycle</a></h1><p>当用户使用,退出,返回你的app的时候,the Activity instances在它们的lifecycle中正在不通的states之间过度。比如当你的activity第一次启动(start),它就会到达foreground of the system,在这个过程中(process),Android system在activity上调用一套lifecycle methods,如果用户执行了一个操作(user performs an action)让app跳转到另一个activity或直接切换到另一个app(starts another activity or switches to another app)。Android system在activity上调用另一套lifecycle methods让它由foreground进入background。虽然activity不再可见,但是the instance and its state remains intact。</p>
-<p>在lifecycle callback methods内,你可以声明用户leaves and re-enters the activity时你的activity的表现行为。</p>
-<h2 id="Starting_an_Activity"><a href="#Starting_an_Activity" class="headerlink" title="Starting an Activity"></a>Starting an Activity</h2><p>在其它的编程范式中,app靠一个main()启动。但Android system中在一个Activity instance 中启动代码却是靠调用specific callback methods that correspond to specific stages of its lifecycle。</p>
-<p>There is a <code>sequence of callback methods</code> that start up (启动)an activity and a sequence of callback methods that tear down(拆除?) an activity.</p>
-<p>This lesson provides an overview of the <code>most important lifecycle methods</code> and shows you how to handle the first lifecycle callback that <code>creates a new instance</code> of your activity.</p>
-<h3 id="Understand_the_Lifecycle_Callbacks"><a href="#Understand_the_Lifecycle_Callbacks" class="headerlink" title="Understand the Lifecycle Callbacks"></a>Understand the Lifecycle Callbacks</h3><p>Activity的3个状态:<code>Resumed(running),Paused,Stopped</code>,<code>Created 和 Started</code>是2个瞬态(临时状态),Android system很快通过调用next lifecycle callback method而进入next state。即after the system calls <code>onCreate()</code>, it quickly calls <code>onStart()</code>, which is quickly followed by <code>onResume()</code>.</p>
-<p>当用户leave/switches to another app/returns to the activity的时候,Android system会调用一系列的lifecycle callback methods让activity在不同的state之间切换。</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android33-basic-lifecycle.png" alt=""></p>
-<h3 id="Specify_Your_App_u2019s_Launcher_Activity"><a href="#Specify_Your_App_u2019s_Launcher_Activity" class="headerlink" title="Specify Your App’s Launcher Activity"></a>Specify Your App’s Launcher Activity</h3><p>当用户点击手机屏幕上的app图标,系统为Activity调用onCreate(),这个Activity就是<code>&quot;launcher&quot; (or &quot;main&quot;) activity</code>,这个Activity充当着 main entry point to your app’s user interface。</p>
-<p>你可以在 project根目录下的<code>AndroidManifest.xml</code>中来定义充当main activity的那个activity。这个main activity在<code>AndroidManifest.xml</code>中的标记有些特别,带有<code>&lt;intent-filter&gt;</code>,<code>MAIN</code>,<code>LAUNCHER</code>等。</p>
-<p>当你用SDK tools创建project的时候,default project files会包含一个Activity class that’s declared in the manifest with this filter,比如下图中的<code>MyActivity.java</code></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android34.png" alt=""></p>
-<h3 id="Create_a_New_Instance"><a href="#Create_a_New_Instance" class="headerlink" title="Create a New Instance"></a>Create a New Instance</h3><p>Most apps include several different activities that allow the user to perform different actions.当用户点击 app icon或是在其他应用中启动你的app的时候,system就会调用onCreate() creates every new instance of Activity.你必须完善onCreate()来执行一些basic application startup logic that should <code>happen only once</code> for the entire life of the activity. 比如应该定义一些the user interface and possibly instantiate some class-scope variables.</p>
-<p><strong>SDK_INT</strong></p>
-<p>onCreate()执行完之后会立即调用onStart(),onResume().Your activity never resides(驻留) in the Created or Started states. 即很快就调用onResume()而让activity常驻在Resumed state。</p>
-<p>The onCreate() method includes a parameter called <code>savedInstanceState</code> that’s discussed in the latter lesson about Recreating an Activity.</p>
-<h3 id="Destroy_the_Activity"><a href="#Destroy_the_Activity" class="headerlink" title="Destroy the Activity"></a>Destroy the Activity</h3><p>While the activity’s <code>first</code> lifecycle callback is onCreate(), its very <code>last</code> callback is onDestroy().与onPause() and onStop(),onCreate()的关系。有时候是不调用onDestroy()的。</p>
-<p>The system calls onDestroy() after it has already called onPause() and onStop() in all situations except one: when you call finish() from within the onCreate() method.</p>
-<h2 id="Pausing_and_Resuming_an_Activity_28_u6682_u505C/_u6062_u590D_29"><a href="#Pausing_and_Resuming_an_Activity_28_u6682_u505C/_u6062_u590D_29" class="headerlink" title="Pausing and Resuming an Activity(暂停/恢复)"></a>Pausing and Resuming an Activity(暂停/恢复)</h2><p>app在使用过程中,foreground activity经常会被其它的visual components打断。这样就会导致activity被暂停。当activity仍然是partially visible but currently not the activity in focus,他就维持暂停(paused)状态。当activity是fully-obstructed and not visible时,他就被停止(stop)了。</p>
-<p>As your activity enters the <code>paused state</code>,system calls the <code>onPause()</code> method on your Activity,If the user returns to your activity from the paused state, the system <code>resumes</code> it and calls the <code>onResume()</code> method.</p>
-<h3 id="Pause_Your_Activity"><a href="#Pause_Your_Activity" class="headerlink" title="Pause Your Activity"></a>Pause Your Activity</h3><p>通常应该在onPause() callback里面做这些事情:</p>
-<p>Stop animations or other ongoing actions that could consume CPU.</p>
-<p>Commit unsaved changes</p>
-<p>Release system resources</p>
-<p>you should not use onPause() to store user changes (such as personal information entered into a form) to permanent storage</p>
-<h3 id="Resume_Your_Activity"><a href="#Resume_Your_Activity" class="headerlink" title="Resume Your Activity"></a>Resume Your Activity</h3><p>When the user resumes your activity from the Paused state, the system calls the onResume() method.</p>
-<p>the system calls this method every time your activity comes into the foreground, including when it’s created for the first time.</p>
-<p>通常应该在onResume() callback里面做这些事情:</p>
-<p>initialize components that you release during onPause() and perform any other initializations that must occur each time the activity enters the Resumed state (such as begin animations and initialize components only used while the activity has user focus).</p>
-<h2 id="Stopping_and_Restarting_an_Activity_28_u505C_u6B62/_u91CD_u542F_29"><a href="#Stopping_and_Restarting_an_Activity_28_u505C_u6B62/_u91CD_u542F_29" class="headerlink" title="Stopping and Restarting an Activity(停止/重启)"></a>Stopping and Restarting an Activity(停止/重启)</h2><p>Activity停止/重启的几个应用场景:</p>
-<p><strong>见官方教程</strong></p>
-<p>The Activity class provides two lifecycle methods, <code>onStop() and onRestart()</code>, which allow you to specifically handle how your activity handles being stopped and restarted。Unlike the <code>paused state</code>, which identifies a <code>partial</code> UI obstruction, the <code>stopped state</code> guarantees that the UI is <code>no longer visible</code> and the user’s focus is in a separate activity (or an entirely separate app).</p>
-<p> Because the system retains your Activity instance in system memory when it is stopped, it’s possible that you <code>don&#39;t need to implement</code>the <code>onStop()</code> and <code>onRestart()</code> (or even onStart() methods at all.)</p>
-<h2 id="Stop_Your_Activity"><a href="#Stop_Your_Activity" class="headerlink" title="Stop Your Activity"></a>Stop Your Activity</h2><p><strong>见官方教程</strong></p>
-<h2 id="Start/Restart_Your_Activity"><a href="#Start/Restart_Your_Activity" class="headerlink" title="Start/Restart Your Activity"></a>Start/Restart Your Activity</h2><p>onStart(),onRestart()</p>
-<h2 id="Recreating_28_u91CD_u73B0_29_an_Activity"><a href="#Recreating_28_u91CD_u73B0_29_an_Activity" class="headerlink" title="Recreating(重现) an Activity"></a>Recreating(重现) an Activity</h2><p>By default, the system uses the <code>Bundle</code> instance state to save information about each View object in your activity layout (such as the text value entered into an EditText object)</p>
-<p><code>destroyed and recreated</code></p>
-<p>使用场景:用户点击返回键。</p>
-<p>In order for the Android system to restore the <code>state of the views</code> in your activity, each view must have a <code>unique ID</code>, supplied by the <code>android:id</code> attribute.</p>
-<p>onSaveInstanceState(),onRestoreInstanceState()</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android35basic-lifecycle-savestate.png" alt=""></p>
-<h2 id="Save_Your_Activity_State"><a href="#Save_Your_Activity_State" class="headerlink" title="Save Your Activity State"></a>Save Your Activity State</h2><p>在onSaveInstanceState()中用a collection of key-value pairs来save state information.</p>
-<p>Caution: Always call the <code>superclass</code> implementation of onSaveInstanceState() so the default implementation can save the state of the view hierarchy.  </p>
-<h2 id="Restore_Your_Activity_State"><a href="#Restore_Your_Activity_State" class="headerlink" title="Restore Your Activity State"></a>Restore Your Activity State</h2><p>When your activity is recreated after it was previously destroyed, you can <code>recover</code> your saved state from the <code>Bundle</code> that the system passes your activity. Both the <code>onCreate()</code> and <code>onRestoreInstanceState()</code> callback methods receive the <code>same</code> <code>Bundle</code> that contains the <code>instance state</code> information</p>
-<p>onRestoreInstanceState()</p>
-<h1 id="Building_a_Dynamic_UI_with_Fragments"><a href="#Building_a_Dynamic_UI_with_Fragments" class="headerlink" title="Building a Dynamic UI with Fragments"></a><a href="https://developer.android.com/training/basics/fragments/index.html" target="_blank" rel="external">Building a Dynamic UI with Fragments</a></h1><p>To create a dynamic and multi-pane user interface on Android, you need to encapsulate(封装) UI components and activity behaviors into modules that you can swap into and out of your activities. You can create these modules with the <code>Fragment class</code>, which behaves somewhat like a nested activity that can define its own layout and manage its own lifecycle.</p>
-<h2 id="Creating_a_Fragment"><a href="#Creating_a_Fragment" class="headerlink" title="Creating a Fragment"></a>Creating a Fragment</h2><p>You can think of a fragment as a <code>modular section of an activity</code>, which has its own lifecycle, receives its own input events, and which you can add or remove while the activity is running (sort of like a <code>&quot;sub activity&quot;</code> that you can reuse in different activities)</p>
-<p><strong>set up your Android project to use the Support Library</strong></p>
-<p>打开setting中的SDK界面</p>
-<p>launch standalone SDK manager</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android36.png" alt=""></p>
-<p>Extras folder</p>
-<p>Android Support Library(repository?)</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android37.png" alt=""></p>
-<h3 id="Create_a_Fragment_Class"><a href="#Create_a_Fragment_Class" class="headerlink" title="Create a Fragment Class"></a>Create a Fragment Class</h3><p>(1)导入一些package</p>
-<p><code>import android.os.Bundle</code></p>
-<p><code>import android.support.v4.app.Fragment</code></p>
-<p>(2)extend the Fragment class</p>
-<p><code>public class ArticleFragment extend Fragment{</code></p>
-<p><code>}</code></p>
-<p>(3)与Create a Activity class不同的是,Create a Fragment Class时,需要use the <code>onCreateView()</code> callback to define the layout.In fact, this is the <code>only callback</code> you need in order to get a fragment running.</p>
-<p>(4)Just like an activity, a fragment should implement other lifecycle callbacks that allow you to manage its state as it is added or removed from the activity and as the activity transitions between its lifecycle states.</p>
-<h3 id="Add_a_Fragment_to_an_Activity_using_XML"><a href="#Add_a_Fragment_to_an_Activity_using_XML" class="headerlink" title="Add a Fragment to an Activity using XML"></a>Add a Fragment to an Activity using XML</h3><p>While fragments are reusable, modular UI components, each instance of a Fragment class must be associated with a parent <code>FragmentActivity</code>. You can achieve this association by defining each fragment within your <code>activity layout XML file</code>.</p>
-<p><code>FragmentActivity</code> is a <code>special activity</code> provided in the <code>Support Library</code> to handle fragments on system versions <code>older</code> than API level 11. If the lowest system version you support is API level 11 or higher, then you can use a <code>regular Activity</code>.</p>
-<p><strong>相关设置见官方教程</strong></p>
-<p>Then apply the layout to your activity</p>
-<p><code>public class MainActivity extends FragmentActivity {</code></p>
-<p>//此处引用</p>
-<p><code>}</code></p>
-<h2 id="Building_a_Flexible_UI"><a href="#Building_a_Flexible_UI" class="headerlink" title="Building a Flexible UI"></a>Building a Flexible UI</h2><p>The <code>FragmentManager</code> class provides <code>methods</code> that allow you to add, remove, and replace <code>fragments</code> to an <code>activity</code> at runtime in order to create a <code>dynamic</code> experience.</p>
-<h3 id="Add_a_Fragment_to_an_Activity_at_Runtime"><a href="#Add_a_Fragment_to_an_Activity_at_Runtime" class="headerlink" title="Add a Fragment to an Activity at Runtime"></a>Add a Fragment to an Activity at Runtime</h3><p>2种方式:</p>
-<p>Rather than defining the fragments for an activity in the <code>layout file</code>—as shown in the previous lesson with the <code>fragment element</code>—you can add a fragment to the activity during the activity runtime. This is necessary if you plan to change fragments during the life of the activity.</p>
-<p>(1)上一节中是在<code>res/layout-large/news_articles.xml</code>中设置,本节是在<code>res/layout/news_articles.xml</code>,可以看到二者文件名一样。只是所在的layout directory没有<code>large</code>前缀。</p>
-<p>(2)Inside your <code>activity</code>, call <code>getSupportFragmentManager()</code> to get a FragmentManager using the <code>Support Library APIs</code>. Then call <code>beginTransaction()</code> to <code>create a FragmentTransaction</code> and call <code>add()</code> to <code>add a fragment</code>.</p>
-<p>You can perform <code>multiple</code> fragment transaction for the activity using the same <code>FragmentTransaction</code>. When you’re ready to make the changes, you must call <code>commit()</code>.</p>
-<p>代码如下:</p>
-<p>import android.os.Bundle;<br>import android.support.v4.app.FragmentActivity;</p>
-<p>public class MainActivity extends FragmentActivity{</p>
-<p>  @Override  //表示重写,编译器可以给你验证@Override下面的方法名是否是你父类中所有的,如果没有则报错</p>
-<p>  public void onCreate(Bundle savedInstanceState){<br>      super.onCreate(savedInstanceState);<br>      setContentView(R.layout.news_articles);</p>
-<pre><code>if (findViewById(R.id.fragment_container) != null) {
-  if (savedInstanceState != null) {
-          return;
-      }
-  HeadlinesFragment firstFragment = new HeadlinesFragment();
-
-  firstFragment.setArguments(getIntent().getExtras());
-</code></pre><p>// Add the fragment to the ‘fragment_container’ FrameLayout</p>
-<pre><code>getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,firstFragment).commit();
-</code></pre><p>  }<br>}</p>
-<h3 id="Replace_One_Fragment_with_Another"><a href="#Replace_One_Fragment_with_Another" class="headerlink" title="Replace One Fragment with Another"></a>Replace One Fragment with Another</h3><p>The procedure to replace a fragment is similar to adding one, but requires the <code>replace()</code> method instead of <code>add()</code>.</p>
-<p>To allow the user to navigate backward through the fragment transactions, you must call <code>addToBackStack()</code> before you <code>commit</code> the FragmentTransaction.</p>
-<h2 id="Communicating_with_Other_Fragments"><a href="#Communicating_with_Other_Fragments" class="headerlink" title="Communicating with Other Fragments"></a>Communicating with Other Fragments</h2><p>Often you will want one Fragment to communicate with another, for example to change the content based on a user event. All Fragment-to-Fragment communication is done through the <code>associated Activity</code>. Two Fragments should <code>never communicate directly</code>.</p>
-<h3 id="Define_an_Interface"><a href="#Define_an_Interface" class="headerlink" title="Define an Interface"></a>Define an Interface</h3><p>To allow a Fragment to communicate up to its Activity, you can <code>define</code> an interface in the <code>Fragment class</code> and <code>implement</code> it within the <code>Activity</code>. The Fragment captures the interface implementation during its <code>onAttach()</code> lifecycle method and can then call the Interface methods in order to communicate with the Activity.</p>
-<p>在<code>Fragment class</code>内定义interface:</p>
-<p>public class HeadlinesFragment extends ListFragment {</p>
-<p>public interface OnHeadlineSelectedListener{<br>  public void onArticleSelected(int position);<br>}</p>
-<p>@Override</p>
-<p>public void onAttach(Activity activity) {<br>        super.onAttach(activity);<br>      //  …<br>      }<br>}</p>
-<p>Now the fragment can deliver messages to the activity by calling the onArticleSelected() method (or other methods in the interface) using the mCallback instance of the OnHeadlineSelectedListener interface.</p>
-<h3 id="Implement_the_Interface"><a href="#Implement_the_Interface" class="headerlink" title="Implement the Interface"></a>Implement the Interface</h3><p>在activity class中实现。</p>
-<p>In order to receive event callbacks from the fragment, the activity that hosts it must implement the interface defined in the fragment class.</p>
-<p>public static class MainActivity extends Activity implements HeadlinesFragment.OnHeadlineSelectedListener{</p>
-<p>public void onArticleSelected(int position) {</p>
-<p>}<br>}</p>
-<h3 id="Deliver_a_Message_to_a_Fragment"><a href="#Deliver_a_Message_to_a_Fragment" class="headerlink" title="Deliver a Message to a Fragment"></a>Deliver a Message to a Fragment</h3><p>在activity class中实现。</p>
-<p>The host activity can deliver messages to a fragment by capturing the Fragment instance with findFragmentById(), then directly call the fragment’s public methods.</p>
-<h1 id="Saving_Data"><a href="#Saving_Data" class="headerlink" title="Saving Data"></a>Saving Data</h1><h2 id="Saving_Key-Value_Sets"><a href="#Saving_Key-Value_Sets" class="headerlink" title="Saving Key-Value Sets"></a>Saving Key-Value Sets</h2><p>If you have a relatively small collection of <code>key-values</code> that you’d like to save, you should use the <code>SharedPreferences</code> APIs. The <code>SharedPreferences</code> APIs are only for reading and writing <code>key-value pairs</code> and you should not confuse them with the <code>Preference</code> APIs, which help you build a <code>user interface</code> for your app settings.</p>
-<h3 id="Get_a_Handle_to_a_SharedPreferences"><a href="#Get_a_Handle_to_a_SharedPreferences" class="headerlink" title="Get a Handle to a SharedPreferences"></a>Get a Handle to a SharedPreferences</h3><p>You can create a new shared preference file or access an existing one by calling one of two methods:<code>getSharedPreferences()</code>,<code>getPreferences()</code>.</p>
-<p>if you need just one shared preference file for your activity, you can use the <code>getPreferences()</code> method</p>
-<p>Caution: If you create a shared preferences file with <code>MODE_WORLD_READABLE</code> or <code>MODE_WORLD_WRITEABLE</code>, then <code>any other apps</code> that know the file identifier can access your data.</p>
-<h3 id="Write_to_Shared_Preferences"><a href="#Write_to_Shared_Preferences" class="headerlink" title="Write to Shared Preferences"></a>Write to Shared Preferences</h3><p><code>edit()</code></p>
-<p><code>putInt()</code></p>
-<p><code>putString()</code></p>
-<p><code>commit()</code></p>
-<h3 id="Read_from_Shared_Preferences"><a href="#Read_from_Shared_Preferences" class="headerlink" title="Read from Shared Preferences"></a>Read from Shared Preferences</h3><p><code>getInt()</code></p>
-<p><code>getString()</code></p>
-<h2 id="Saving_Files"><a href="#Saving_Files" class="headerlink" title="Saving Files"></a>Saving Files</h2><p><code>File</code> APIs</p>
-<p>A <code>File object</code> is suited to reading or writing <code>large</code>amounts of data in start-to-finish order without skipping around. For example, it’s good for <code>image</code> files or anything exchanged over a network.</p>
-<h3 id="Choose_Internal_or_External_Storage"><a href="#Choose_Internal_or_External_Storage" class="headerlink" title="Choose Internal or External Storage"></a>Choose Internal or External Storage</h3><p><strong>相关比较见官方教程</strong></p>
-<h3 id="Obtain_Permissions_for_External_Storage"><a href="#Obtain_Permissions_for_External_Storage" class="headerlink" title="Obtain Permissions for External Storage"></a>Obtain Permissions for External Storage</h3><p>To write to the <code>external</code> storage, you must request the <code>WRITE_EXTERNAL_STORAGE</code> permission in your <code>manifest file</code></p>
-<h3 id="Save_a_File_on_Internal_Storage"><a href="#Save_a_File_on_Internal_Storage" class="headerlink" title="Save a File on Internal Storage"></a>Save a File on Internal Storage</h3><p>When saving a file to internal storage, you can acquire the appropriate directory as a <code>File</code> by calling one of two methods:<code>getFilesDir()</code>,<code>getCacheDir()</code></p>
-<p><code>File()</code>:create a new file in one of these directories</p>
-<p><code>openFileOutput()</code>:get a <code>FileOutputStream</code> that writes to a file in your internal directory</p>
-<p><code>createTempFile()</code>:cache some files</p>
-<p>Your app’s <code>internal</code> storage directory is specified by your <code>app&#39;s package name</code> in a special location of the Android file system.</p>
-<p>as long as you use <code>MODE_PRIVATE</code> for your files on the internal storage, they are <code>never accessible</code> to other apps.</p>
-<h3 id="Save_a_File_on_External_Storage"><a href="#Save_a_File_on_External_Storage" class="headerlink" title="Save a File on External Storage"></a>Save a File on External Storage</h3><p>Because the <code>external</code> storage may be <code>unavailable</code>—such as when the user has mounted the storage to a PC or has removed the SD card that provides the external storage—you should always <code>verify</code> that the volume is <code>available</code> before <code>accessing</code> it.</p>
-<p>You can query the external storage state by calling <code>getExternalStorageState()</code>. If the returned state is equal to <code>MEDIA_MOUNTED</code>, then you can read and write your files.</p>
-<p>Although the external storage is <code>modifiable</code> by the user and other apps, there are two categories of files you might save here:<code>Public files</code>,<code>Private files</code></p>
-<p>If you want to save <code>public files</code> on the external storage, use the <code>getExternalStoragePublicDirectory()</code> method to get a File representing the appropriate directory on the external storage.</p>
-<p>If you want to save files that are <code>private</code> to your app, you can acquire the appropriate directory by calling <code>getExternalFilesDir()</code></p>
-<p>If none of the <code>pre-defined sub-directory names</code> suit your <code>files</code>, you can instead call <code>getExternalFilesDir()</code> and pass <code>null</code>. This returns the <code>root directory</code> for your app’s <code>private directory</code> on the <code>external storage</code>.</p>
-<p><code>getExternalStoragePublicDirectory()</code></p>
-<h3 id="Query_Free_Space"><a href="#Query_Free_Space" class="headerlink" title="Query Free Space"></a>Query Free Space</h3><p>If you know ahead of time how much data you’re saving, you can find out whether sufficient space is available without causing an <code>IOException</code> by calling <code>getFreeSpace()</code> or <code>getTotalSpace()</code>.</p>
-<h3 id="Delete_a_File"><a href="#Delete_a_File" class="headerlink" title="Delete a File"></a>Delete a File</h3><p>最直接的方式就是在file自身上调用<code>delete()</code></p>
-<p>If the file is saved on <code>internal</code> storage, you can also ask the <code>Context</code> to locate and delete a file by calling <code>deleteFile()</code></p>
-<h2 id="Saving_Data_in_SQL_Databases"><a href="#Saving_Data_in_SQL_Databases" class="headerlink" title="Saving Data in SQL Databases"></a>Saving Data in SQL Databases</h2><p>Saving data to a <code>database</code> is ideal for <code>repeating or structured</code> data, such as <code>contact information</code>. The APIs you’ll need to use a database on Android are available in the <code>android.database.sqlite</code> package.</p>
-<h3 id="Define_a_Schema_and_Contract"><a href="#Define_a_Schema_and_Contract" class="headerlink" title="Define a Schema and Contract"></a>Define a Schema and Contract</h3><p>One of the <code>main principles</code> of SQL databases is the <code>schema</code>: a formal declaration of how the database is organized. The schema is reflected in the SQL statements that you use to create your database.</p>
-<p>A <code>contract class</code> is a container for constants that define <code>names</code> for URIs, tables, and columns.</p>
-<p>A good way to <code>organize a contract class</code> is to put definitions that are <code>global</code> to your <code>whole database</code> in the <code>root level of the class</code>. Then create an <code>inner class</code> for each <code>table</code> that enumerates its columns.</p>
-<h3 id="Create_a_Database_Using_a_SQL_Helper"><a href="#Create_a_Database_Using_a_SQL_Helper" class="headerlink" title="Create a Database Using a SQL Helper"></a>Create a Database Using a SQL Helper</h3><p>Once you have <code>defined</code> how your database looks, you should <code>implement methods</code> that create and maintain the <code>database and tables</code>.</p>
-<p>A useful set of APIs is available in the <code>SQLiteOpenHelper</code> class</p>
-<p><code>getWritableDatabase()</code></p>
-<p><code>getReadableDatabase()</code></p>
-<h3 id="Put_Information_into_a_Database"><a href="#Put_Information_into_a_Database" class="headerlink" title="Put Information into a Database"></a>Put Information into a Database</h3><p>Insert data into the database by passing a <code>ContentValues</code> object to the <code>insert()</code> method:</p>
-<h3 id="Read_Information_from_a_Database"><a href="#Read_Information_from_a_Database" class="headerlink" title="Read Information from a Database"></a>Read Information from a Database</h3><p><code>query()</code>.The method combines elements of <code>insert()</code> and <code>update()</code>.The results of the query are returned to you in a <code>Cursor</code> object.</p>
-<p>To look at a row in the cursor, use one of the <code>Cursor move methods</code>,</p>
-<p><code>moveToFirst()</code></p>
-<p>For each <code>row</code>, you can read a column’s value by calling one of the Cursor get methods, such as <code>getString()</code> or <code>getLong()</code>.</p>
-<p>For each of the <code>get methods</code>, you must pass the index position of the column you desire, which you can get by calling <code>getColumnIndex()</code> or <code>getColumnIndexOrThrow()</code></p>
-<h3 id="Delete_Information_from_a_Database"><a href="#Delete_Information_from_a_Database" class="headerlink" title="Delete Information from a Database"></a>Delete Information from a Database</h3><p><code>delete()</code></p>
-<h3 id="Update_a_Database"><a href="#Update_a_Database" class="headerlink" title="Update a Database"></a>Update a Database</h3><p><code>update()</code></p>
-<p>Updating the table <code>combines</code> the content values syntax of <code>insert()</code> with the where syntax of <code>delete()</code>.</p>
-<h1 id="Interacting_with_Other_Apps"><a href="#Interacting_with_Other_Apps" class="headerlink" title="Interacting with Other Apps"></a>Interacting with Other Apps</h1><p>An Android app typically has <code>several activities</code>. <code>Each activity</code> displays <code>a user interface</code> that allows the user to perform a specific task (such as view a map or take a photo). To take the user from one activity to another, your app must use an <code>Intent</code> to define your app’s “intent” to do something.</p>
-<h2 id="Sending_the_User_to_Another_App"><a href="#Sending_the_User_to_Another_App" class="headerlink" title="Sending the User to Another App"></a>Sending the User to Another App</h2><p>One of Android’s <code>most important features</code> is an app’s <code>ability to send the user to another app</code> based on an “action” it would like to perform. For example, if your app has the address of a business that you’d like to show on a map, you <code>don&#39;t have to build an activity in your app that shows a map</code>. Instead, you can <code>create a request to view the address using an Intent</code>. The Android system then starts an <code>app</code> that’s able to show the address on a map.</p>
-<p>when you want to have a separate app perform an action, such as “view a map,” you must use an <code>implicit intent</code>.</p>
-<h3 id="Build_an_Implicit_Intent"><a href="#Build_an_Implicit_Intent" class="headerlink" title="Build an Implicit Intent"></a>Build an Implicit Intent</h3><p>Implicit intents do <code>not</code> declare the <code>class name</code> of the component to start, but instead declare an <code>action</code> to perform. The action specifies the thing you want to do, such as view, edit, send, or get something.</p>
-<p><code>Intent()</code> constructor</p>
-<p>some kinds of implicit intents require <code>&quot;extra&quot;</code> data that provide different data types, such as a <code>string</code>. You can add one or more pieces of extra data using the various <code>putExtra()</code> methods.</p>
-<p>It’s important that you define your <code>Intent</code> to be as <code>specific</code> as possible.</p>
-<h3 id="Verify_There_is_an_App_to_Receive_the_Intent"><a href="#Verify_There_is_an_App_to_Receive_the_Intent" class="headerlink" title="Verify There is an App to Receive the Intent"></a>Verify There is an App to Receive the Intent</h3><p>上面讲到了如何定义Intent,下面来说接收Intent的事情</p>
-<p><code>queryIntentActivities()</code></p>
-<h3 id="Start_an_Activity_with_the_Intent"><a href="#Start_an_Activity_with_the_Intent" class="headerlink" title="Start an Activity with the Intent"></a>Start an Activity with the Intent</h3><p>Once you have <code>created</code> your Intent and set the <code>extra</code> info, call <code>startActivity()</code> to send it to the system. If the system identifies more than one activity that can handle the intent, it displays a dialog for the user to select which app to use, as shown in figure. If there is only <code>one</code> activity that handles the intent, the system immediately <code>starts</code> it.</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android38intents-choice.png" alt=""></p>
-<p><code>startActivity(intent);</code></p>
-<h3 id="Show_an_App_Chooser"><a href="#Show_an_App_Chooser" class="headerlink" title="Show an App Chooser"></a>Show an App Chooser</h3><p>To show the chooser, create an Intent using <code>createChooser()</code> and pass it to <code>startActivity()</code></p>
-<h3 id="Getting_a_Result_from_an_Activity"><a href="#Getting_a_Result_from_an_Activity" class="headerlink" title="Getting a Result from an Activity"></a>Getting a Result from an Activity</h3><p><code>startActivityForResult()</code> (instead of <code>startActivity()</code>)</p>
-<h3 id="Start_the_Activity"><a href="#Start_the_Activity" class="headerlink" title="Start the Activity"></a>Start the Activity</h3><p><code>startActivityForResult()</code></p>
-<h3 id="Receive_the_Result"><a href="#Receive_the_Result" class="headerlink" title="Receive the Result"></a>Receive the Result</h3><p><code>onActivityResult()</code></p>
-<p><strong>3*个参数见官方教程</strong></p>
-<h2 id="Allowing_Other_Apps_to_Start_Your_Activity"><a href="#Allowing_Other_Apps_to_Start_Your_Activity" class="headerlink" title="Allowing Other Apps to Start Your Activity"></a>Allowing Other Apps to Start Your Activity</h2><p>To allow other apps to start your activity, you need to add an <code>intent-filter element</code> in your manifest file for the corresponding <code>activity element</code>.</p>
-<h3 id="Add_an_Intent_Filter"><a href="#Add_an_Intent_Filter" class="headerlink" title="Add an Intent Filter"></a>Add an Intent Filter</h3><p>几种intent filter:<code>Action</code>,<code>Data</code>,<code>Category</code></p>
-<p>both the <code>ACTION_SEND</code> and <code>ACTION_SENDTO</code> intents.</p>
-<p><code>Note</code>: In order to receive implicit intents, you must include the <code>CATEGORY_DEFAULT</code> category in the intent filter. The methods <code>startActivity()</code> and <code>startActivityForResult()</code> treat all intents as if they declared the CATEGORY_DEFAULT category. If you do not declare it in your intent filter, no implicit intents will resolve to your activity.</p>
-<h3 id="Handle_the_Intent_in_Your_Activity"><a href="#Handle_the_Intent_in_Your_Activity" class="headerlink" title="Handle the Intent in Your Activity"></a>Handle the Intent in Your Activity</h3><p>As your activity starts, call <code>getIntent()</code> to retrieve the Intent that started the activity.</p>
-<h3 id="Return_a_Result"><a href="#Return_a_Result" class="headerlink" title="Return a Result"></a>Return a Result</h3><p><code>setResult()</code></p>
-<p><code>finish()</code></p>
-<h2 id="API_2CSDK_u7684_u7EC4_u6210"><a href="#API_2CSDK_u7684_u7EC4_u6210" class="headerlink" title="API,SDK的组成"></a>API,SDK的组成</h2><h2 id="Java_u57FA_u7840"><a href="#Java_u57FA_u7840" class="headerlink" title="Java基础"></a>Java基础</h2><h2 id="Java_Web"><a href="#Java_Web" class="headerlink" title="Java Web"></a>Java Web</h2><p><a href="https://www.raywenderlich.com/78576/android-tutorial-for-beginners-part-2" target="_blank" rel="external">raywenderlich android教程</a></p>
-<p><a href="http://blog.csdn.net/mynameishuangshuai/article/details/51332790" target="_blank" rel="external">最全面的AndroidStudio配置指南总结-包括护眼模式</a></p>
-<h2 id="To_do_list"><a href="#To_do_list" class="headerlink" title="To do list"></a>To do list</h2><h3 id="u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002"><a href="#u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002" class="headerlink" title="等在博客中会显示为其他字符。可能受markdown语法的影响。"></a><relativelayout>等在博客中会显示为其他字符。可能受markdown语法的影响。</relativelayout></h3>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/04/AndroidDeveloperTraining1/" itemprop="url">
-                  AndroidDeveloperTraining1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-05-04T19:01:30+08:00" content="2016-05-04">
-              2016-05-04
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Technology/" itemprop="url" rel="index">
-                    <span itemprop="name">Technology</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h1 id="Android_Studio"><a href="#Android_Studio" class="headerlink" title="Android Studio"></a>Android Studio</h1><h2 id="u5B89_u88C5"><a href="#u5B89_u88C5" class="headerlink" title="安装"></a>安装</h2><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android122.png" alt=""></p>
-<p>与eclipse和intelligent idea相比。Android Studio的ADT及Android SDK的安装要方便些。</p>
-<h2 id="u914D_u7F6E"><a href="#u914D_u7F6E" class="headerlink" title="配置"></a>配置</h2><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android123.png" alt=""></p>
-<p>选择你需要安装的SDK版本:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android124.png" alt=""></p>
-<h2 id="u5F00_u53D1"><a href="#u5F00_u53D1" class="headerlink" title="开发"></a>开发</h2><h2 id="Building_Your_First_App"><a href="#Building_Your_First_App" class="headerlink" title="Building Your First App"></a>Building Your First App</h2><p>在<a href="https://developer.android.com" target="_blank" rel="external">android开发者</a>上面有一些入门教程。</p>
-<p>教程内容如下:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/AndroidAndroidDeveloperTraining.jpeg" alt=""></p>
-<p>大部分步骤见教程,下面只是一些截图:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android126.png" alt=""></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android127.png" alt=""></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android128.png" alt=""></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android129.png" alt=""></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android130.png" alt=""></p>
-<h3 id="u6587_u4EF6_u7ED3_u6784_3A"><a href="#u6587_u4EF6_u7ED3_u6784_3A" class="headerlink" title="文件结构:"></a>文件结构:</h3><p>有几个比较重要的:</p>
-<p>(1)app/src/main</p>
-<p>(2)app/src/main/res  包含工程的一些资源。</p>
-<p>(3)app/build.gradle</p>
-<p>Android Studio uses Gradle to compile and build your app</p>
-<h3 id="u8FD0_u884C_u7A0B_u5E8F"><a href="#u8FD0_u884C_u7A0B_u5E8F" class="headerlink" title="运行程序"></a>运行程序</h3><h4 id="u771F_u673A_u8C03_u8BD5"><a href="#u771F_u673A_u8C03_u8BD5" class="headerlink" title="真机调试"></a>真机调试</h4><p>在手机——设置——开发者选项——勾选USB调试</p>
-<p><strong>Error:the selected device is incompatible</strong></p>
-<p>开始的时候还以为是API level设置错了。state上显示的是unauthored。猜想估计是手机和电脑没有相互识别。</p>
-<p>后来的解决办法:</p>
-<p>在手机——设置——开发者选项——去勾选USB调试,然后再勾选。这时候会弹出一个是否允许的选项。勾选就可以了。所以还是没有识别的原因。</p>
-<p>然后state就变成online了</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android131.png" alt=""></p>
-<p>点击RUN,这是在你手机上会弹出应用程序许可。点击”确认”。就可以了。然后就会弹出helloworld,证明OK了。</p>
-<h4 id="u865A_u62DF_u673A_u8C03_u8BD5"><a href="#u865A_u62DF_u673A_u8C03_u8BD5" class="headerlink" title="虚拟机调试"></a>虚拟机调试</h4><p>在运行设置里面是可以选的。也需要下载相应的SDK。然后再让你选择,配置设备。</p>
-<p><strong>virtual device failed to load android studio mac</strong></p>
-<p>重启android studio就行了</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android132.png" alt=""></p>
-<p><strong>WIN10上先是出现Android studio启动的时候报错:找不到64 bit的java。这个原因是自己装的是32bit的。下载64 bit安装不上,原因是自己找错目录了(其实已经安装上了)。C盘是WIN10的,D盘是WIN8的,找错找到D盘去了</strong></p>
-<p>BW:虚拟机比较慢</p>
-<h2 id="Building_a_Simple_User_Interface"><a href="#Building_a_Simple_User_Interface" class="headerlink" title="Building a Simple User Interface"></a>Building a Simple User Interface</h2><h3 id="create_a_layout_in_XML_that_includes_a_text_field_and_a_button"><a href="#create_a_layout_in_XML_that_includes_a_text_field_and_a_button" class="headerlink" title="create a layout in XML that includes a text field and a button"></a>create a layout in XML that includes a text field and a button</h3><p>Android应用的用户界面由View和ViewGroup对象组成。它们之间靠XML表来联系。</p>
-<p>Layouts are subclasses of the ViewGroup。</p>
-<p>Create a Linear Layout</p>
-<p>res/layout directory, open the content_my.xml file</p>
-<p>中间区域选择text面板:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android2.png" alt=""></p>
-<p>中间区域选择design面板:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android3.png" alt=""></p>
-<p>在Preview pane中点击elements会打开Design pane中的WYSIWYG tools。</p>
-<p>(1)Delete the <textview> element.  (可以咋component tree或者Preview pane中删除)</textview></p>
-<p>(2)Change the <relativelayout> element to <linearlayout></linearlayout></relativelayout></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android4.png" alt=""></p>
-<p>Press Next and select <code>LinearLayout</code> as Root Element and give File Name</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android5.png" alt=""></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android6.png" alt=""></p>
-<p>(3)Add the android:orientation attribute and set it to “horizontal”</p>
-<p>(4)Remove the android:padding attributes and the tools:context attribute.</p>
-<p>可以点击text,直接在layout.xml中修改:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android7.png" alt=""></p>
-<p>可以看到.xml中就是一组 <strong>键值对</strong></p>
-<p>也可以点击design,在右侧的properties中修改(但这样要麻烦一些):</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android8.png" alt=""></p>
-<p>在.xml中直接替换成教程中的内容即可:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android9.png" alt=""></p>
-<p><strong>LinearLayout:a view group (a subclass of ViewGroup) </strong></p>
-<p><strong>属性android:layout_width</strong></p>
-<p><strong>属性android:layout_height</strong></p>
-<p><strong>但上面这样修改是错的,与教程不一致,上面是new一个LinearLayout,而教程上是Change the RelativeLayout element to LinearLayout</strong></p>
-<p>直接把<code>content_my.xml</code>内容</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android10.png" alt=""></p>
-<p>改为:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android11.png" alt=""></p>
-<h3 id="Add_a_Text_Field"><a href="#Add_a_Text_Field" class="headerlink" title="Add a Text Field"></a>Add a Text Field</h3><p>(1)继续在content_my.xml file里。在<linearlayout>元素内定义一个<edittext>元素。并把它的<code>id</code>属性<code>@+id/edit_message</code></edittext></linearlayout></p>
-<p>(2)再定义几个属性,最终content_my.xml file。<edittext>元素内容就变成了:</edittext></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android12.png" alt=""></p>
-<p><strong>报错:cannot resolve symbol @string/edit_message,下面修改res/values/strings.xml就行了</strong></p>
-<h3 id="Add_String_Resources"><a href="#Add_String_Resources" class="headerlink" title="Add String Resources"></a>Add String Resources</h3><p>By default, your Android project includes a string resource file at res/values/strings.xml. Here, you’ll add a new string named “edit_message” and set the value to “Enter a message.”</p>
-<p>需要修改<code>res/values/strings.xml</code></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android13.png" alt=""></p>
-<p><strong>content_my.xml中最下面<edittext>处报错就消失了</edittext></strong></p>
-<h3 id="Add_a_Button"><a href="#Add_a_Button" class="headerlink" title="Add a Button"></a>Add a Button</h3><p>修改<code>content_my.xml</code>内容,定义一个<code>&lt;Button&gt;</code>元素,最终<code>&lt;LinearLayout&gt;</code>变成了下面这样:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android14.png" alt=""></p>
-<p><strong>button 元素不包含 android:id 属性</strong></p>
-<p>design面板就变成了下面这样:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android15.png" alt=""></p>
-<h3 id="Make_the_Input_Box_Fill_in_the_Screen_Width"><a href="#Make_the_Input_Box_Fill_in_the_Screen_Width" class="headerlink" title="Make the Input Box Fill in the Screen Width"></a>Make the Input Box Fill in the Screen Width</h3><p>在右侧会做出相应的改变:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android16.png" alt=""></p>
-<h3 id="Run_Your_App"><a href="#Run_Your_App" class="headerlink" title="Run Your App"></a>Run Your App</h3><p>安装ant</p>
-<p><code>brew install ant</code></p>
-<p>(1) android studio上点击RUN</p>
-<p>(2) 终端<code>ant debug adb install -r app/build/outputs/apk/app-debug.apk</code></p>
-<p><strong>报错:adb: command not found</strong></p>
-<h3 id="Starting_Another_Activity"><a href="#Starting_Another_Activity" class="headerlink" title="Starting Another Activity"></a>Starting Another Activity</h3><p>经过上面的学习,我们已经有了一个activity (a single screen) with a text field and a button。本节add some code to MyActivity that starts a new activity when the user clicks the Send button.也就是说另外添加一个界面,当用户点击send按钮的时候跳转到这个界面。</p>
-<h4 id="Respond_to_the_Send_Button"><a href="#Respond_to_the_Send_Button" class="headerlink" title="Respond to the Send Button"></a>Respond to the Send Button</h4><p>(1)修改 res/layout/content_my.xml文件。添加android:onClick 属性到 <code>&lt;Button&gt;</code>元素.</p>
-<p><code>android:onClick=&quot;sendMessage&quot;</code></p>
-<p><code>android:onClick</code>的值<code>sendMessage</code>就是你的activity里的方法名。当用户点击这个button的时候就会跳转到这个activity。</p>
-<p>(2)修改<code>app/src/main/java/com/example/liuhongyu/helloworld/MyActivity.java</code></p>
-<p>在<code>MyActivity</code> class内,添加<code>sendMessage()</code> method。</p>
-<p><code>public void sendMessage(View view){</code><br>    <code>}</code></p>
-<p>注意里面的<code>View view</code>参数。保证了点击的是<code>View</code></p>
-<h4 id="Build_an_Intent"><a href="#Build_an_Intent" class="headerlink" title="Build an Intent"></a>Build an Intent</h4><p>(1)在上面的<code>sendMessage</code> method内创建一个Intent 来开启一个名为<code>DisplayMessageActivity</code>的:</p>
-<p><code>Intent intent = new Intent(this, DisplayMessageActivity.class);</code></p>
-<p><strong>The reference to DisplayMessageActivity will raise an error if you’re using an IDE such as Android Studio because the class doesn’t exist yet. Ignore the error for now; you’ll create the class soon.即暂时会因为没有DisplayMessageActivity而报错,待会创建它</strong></p>
-<p><strong>An Intent is an object that provides runtime binding between separate components (such as two activities). The Intent represents an app’s “intent to do something.” You can use intents for a wide variety of tasks, but most often they’re used to start another activity 即Intent常用来启动另一个activity</strong></p>
-<p><strong>上面构造函数的2个参数:</strong></p>
-<p><strong>A Context as its first parameter (this is used because the Activity class is a subclass of Context)</strong></p>
-<p><strong>The Class of the app component to which the system should deliver the Intent (in this case, the activity that should be started)</strong></p>
-<p>(2)在MyActivity.java顶部import  Intent class</p>
-<p><strong>报错:Android studio不能够resolve symbol Intent。你必须import the Intent class:</strong></p>
-<p><code>import android.content.Intent;</code></p>
-<p><strong>小技巧:</strong> In Android Studio, press <strong>Alt + Enter</strong> (<strong>option + return on Mac</strong>) to import missing classes.</p>
-<p>(3)Inside the sendMessage() method, use findViewById() to get the EditText element.</p>
-<p>(4)在MyActivity.java顶部import the EditText class</p>
-<p>(5)Assign the text to a local message variable, and use the putExtra() method to add its text value to the intent.</p>
-<p>(6)在MyActivity class,添加EXTRA_MESSAGE的定义</p>
-<p>(7)在sendMessage()方法内,调用startActivity()方法,传入(1)中的indent参数。</p>
-<p>The system receives this call and starts an instance of the Activity specified by the Intent. Now you need to create the <code>DisplayMessageActivity</code> class in order for this to work.</p>
-<h3 id="Create_the_Second_Activity"><a href="#Create_the_Second_Activity" class="headerlink" title="Create the Second Activity"></a>Create the Second Activity</h3><p><strong>onCreate()</strong></p>
-<p><strong>setContentView()</strong></p>
-<h4 id="Create_a_new_activity_using_Android_Studio"><a href="#Create_a_new_activity_using_Android_Studio" class="headerlink" title="Create a new activity using Android Studio"></a>Create a new activity using Android Studio</h4><p>(1)右键<code>com.mycompany.myfirstapp</code>,New &gt; Activity &gt; Blank Activity</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android17.png" alt=""></p>
-<p>可以看到src/main/res/layout中生成了<code>activity_display_message.xml</code>,<code>content_display_message.xml</code>文件。</p>
-<p>(2)下面的Hierarchical Parent,你只需要选择默认的<code>com.mycompany.myfirstapp.MyActivity</code>就行了。</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android18.png" alt=""></p>
-<p>(3)src/main/java中打开<code>DisplayMessageActivity.java</code>,这个class里面包含了所需的onCreate()方法的实现。你只需要去补充完善它就行了。</p>
-<p>(4)现在你运行这个app,点击按钮,开启第二个activity。but it uses a default “Hello world” layout provided by the template. You’ll soon update the activity to instead display a custom text view.</p>
-<h4 id="Create_the_activity_without_Android_Studio"><a href="#Create_the_activity_without_Android_Studio" class="headerlink" title="Create the activity without Android Studio"></a>Create the activity without Android Studio</h4><p>(1)如果你用的IDE不是Android Studio,或者使用终端命令行。可以在<code>MyActivity.java</code>文件所在的文件夹手动创建<code>DisplayMessageActivity.java</code>。</p>
-<p>(2)在<code>DisplayMessageActivity.java</code>中添加代码</p>
-<p>(3)src/main/res/values/<code>strings.xml</code>中添加新的activity’的标题</p>
-<p>(4)在你的manifest file:<code>AndroidManifest.xml</code>中,<code>在Application</code> element内,add the <code>&lt;activity&gt;</code> element for your <code>DisplayMessageActivity</code> class</p>
-<p><code>android:parentActivityName attribute</code></p>
-<h4 id="Receive_the_Intent"><a href="#Receive_the_Intent" class="headerlink" title="Receive the Intent"></a>Receive the Intent</h4><p>Every <code>Activity</code> is invoked by an <code>Intent</code>, regardless of how the user navigated there. You can get the <code>Intent</code> that started your <code>activity</code> by calling <code>getIntent()</code> and retrieve(检索) the data contained within the intent.</p>
-<p>(1)编辑java/com.mycompany.myfirstapp 目录中的<code>DisplayMessageActivity.java</code>.</p>
-<p>In Android Studio, press Alt + Enter (<code>option + return</code> on Mac) to import missing classes.</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android19.png" alt=""></p>
-<h4 id="Display_the_Message"><a href="#Display_the_Message" class="headerlink" title="Display the Message"></a>Display the Message</h4><p>(1)在<code>res/layout</code> directory, 编辑 <code>content_display_message.xml</code></p>
-<p>给<code>RelativeLayout</code> 添加 <code>android:id</code> 属性。</p>
-<p>(2)编辑 <code>DisplayMessageActivity.java</code></p>
-<p>完善<code>onCreate()</code>方法。</p>
-<p><strong>报错:</strong> <code>DisplayMessageActivity.java</code>显示<code>cannot resolve symbol content</code>, <code>content_display_message.xml</code>中显示<code>unexpected text found in layout file “android:id=&quot;@+id/content&quot;&gt;”</code></p>
-<p><strong>原因:</strong> 上面已经有了一个 <strong>“&gt;”</strong>,应该在上面的 <strong>“&gt;”</strong> 之内写一个。</p>
-<p>(3)运行app,在弹出的对话框内填上信息,点击send.The second activity replaces the first one on the screen, showing the message you entered in the first activity.</p>
-<p>一个基本的app就这样完成了</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android20.png" alt=""></p>
-<p><code>running an x86 based android virtual device is 10x faster</code></p>
-<p><a href="http://stackoverflow.com/questions/1554099/why-is-the-android-emulator-so-slow-how-can-we-speed-up-the-android-emulator" target="_blank" rel="external">stackoverflow上的回答</a></p>
-<p><strong>需要下载x86 Atom System Images and the Intel Hardware Accelerated Execution Manager Driver</strong></p>
-<p>在Android SDK的SDK Tools里面可以看到应该是下载了,但下载的是6.0的,可能导致5.x版本不能用?</p>
-<p>选择一个android5.0的虚拟机,</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android28.png" alt=""></p>
-<p>android5.0右侧点击<code>change</code></p>
-<p>勾选<code>show downloadable system images</code>下载<code>5.0的x86的systerm images</code></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android29.png" alt=""></p>
-<p>点击finish,返回刚才的界面,名称变成了<code>android 5.0 x86</code></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android30.png" alt=""></p>
-<p>myavd1设备右侧的<code>Repair Device</code>黄色感叹号没有了</p>
-<p><strong>双击该虚拟机,运行app,运行速度确实要快一些。</strong></p>
-<p>在消息框中输入<code>3333</code>,点击send,就能正确跳转到第2个activity了,反应也挺快的:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android32.png" alt=""></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android31.png" alt=""></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android27.png" alt=""></p>
-<p>自带的虚拟机非常的慢:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android21.png" alt=""></p>
-<p>进入后点击<code>hellword</code> app,输入message,点击send:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android22.png" alt=""></p>
-<p>等了很久,也不会弹出第2个activity。在真机上测试一遍,也是不能弹出。说明是代码的问题,而非虚拟机的问题。</p>
-<p>可能的原因:在新建activity的时候有误。从错误结果来看,弹不出第2个activity,也很可能是这个原因。问题在 <strong>Starting Another Activity</strong> 章节。</p>
-<p><strong>为了追踪改动,使用git&amp;github</strong></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android23.png" alt=""></p>
-<p><strong>可以看到git忽略了HelloWorld.iml,build,local.properties一些文件,这可能会导致你clone这个仓库到本地的时候会因为少了一些文件而导致app不能运行</strong></p>
-<p><strong>但上面也提示了可以用git add -f来手动添加这些文件</strong></p>
-<p>在github上新建一个仓库Create a new repo: <code>AndroidDeveloperTraining</code>,添加一个README</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android24.png" alt=""></p>
-<p>从上面找到远程仓库的SSH</p>
-<p>终端把本地的含有<code>.git</code>文件见的仓库和github上的远程仓库联系起来:<code>git remote add origin git@github.com:lhyhfut/AndroidDeveloperTraining.git</code></p>
-<p>然后把本地内容推送到远程仓库: <code>git push -u origin master</code></p>
-<p><strong>报错:Updates were rejected because the remote contains work that you do not have locally.</strong></p>
-<p><strong>原因:远程仓库中有README,本地仓库没有,这样不能推送</strong></p>
-<p>在<code>settings——Delete this repository</code>中删除刚才的远程仓库。新建一个不含README的仓库。</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android25.png" alt=""></p>
-<p>不需要重新用git add remote origin SSH建立联系了。因为2个仓库的SSH是一样的。只需要重新git push -u origin推送就行了。</p>
-<p>在github上看每次commit的代码修改就比较方便:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android26.png" alt=""></p>
-<p><strong>解决点击按钮之后不能够弹出对话框的问题。原因是在Respond to the Send Button章节Add the android:onClick attribute to the Button element的时候少了android:onClick=”sendMessage”这个属性,sendMessage是MyActivity.java中的方法,点击按钮时跳转到第2个activity时会调用这个方法,补上这个方法,就可以了</strong></p>
-<p>然后上传到远程仓库中:</p>
-<p><code>git add *</code></p>
-<p><code>git commit -m &quot;solve cannot run second activity&quot;</code></p>
-<p><code>git push -u origin master</code></p>
-<h2 id="Supporting_Different_Devices"><a href="#Supporting_Different_Devices" class="headerlink" title="Supporting Different Devices"></a>Supporting Different Devices</h2><p>android有很多种不同屏幕尺寸的机型。这意味着你需要适配很多种。Some of the important variations that you should consider include different languages, screen sizes, and versions of the Android platform.</p>
-<h3 id="Supporting_Different_Languages"><a href="#Supporting_Different_Languages" class="headerlink" title="Supporting Different Languages"></a>Supporting Different Languages</h3><p>为了便于管理<code>UI strings</code>,android在每一个project里都有一个resources 目录。如果你用<code>Android SDK Tools</code>创建project。则这个tools会在项目顶层创建一个<code>res/</code>目录。它里面有很多子目录用于处理不同的资源类型。还有一些默认的资源文件如<code>res/values/strings.xml</code>,用于存储<code>string values</code>.</p>
-<h4 id="Create_Locale_Directories_and_String_Files"><a href="#Create_Locale_Directories_and_String_Files" class="headerlink" title="Create Locale Directories and String Files"></a>Create Locale Directories and String Files</h4><p>android studio 在<code>res/</code>中添加了不同的<code>values</code>目录,用于支持更多类型的语言。里面都有各自的<code>strings.xml</code></p>
-<h4 id="Use_the_String_Resources"><a href="#Use_the_String_Resources" class="headerlink" title="Use the String Resources"></a>Use the String Resources</h4><p>你可以通过使用<code>resource name defined by the &lt;string&gt; element&#39;s name attribute</code>在源码中引用<code>string resources</code>或者其他的<code>XML files</code>。在源码中,可以使用<code>R.string.&lt;string_name&gt;</code>类似语法来引用<code>string resource</code>。</p>
-<h3 id="Supporting_Different_Screens"><a href="#Supporting_Different_Screens" class="headerlink" title="Supporting Different Screens"></a>Supporting Different Screens</h3><p><strong>BW:该节内容查阅即可</strong></p>
-<h3 id="Supporting_Different_Platform_Versions"><a href="#Supporting_Different_Platform_Versions" class="headerlink" title="Supporting Different Platform Versions"></a>Supporting Different Platform Versions</h3><p><strong>BW:该节内容查阅即可</strong></p>
-<h2 id="API_2CSDK_u7684_u7EC4_u6210"><a href="#API_2CSDK_u7684_u7EC4_u6210" class="headerlink" title="API,SDK的组成"></a>API,SDK的组成</h2><h2 id="Java_u57FA_u7840"><a href="#Java_u57FA_u7840" class="headerlink" title="Java基础"></a>Java基础</h2><h2 id="Java_Web"><a href="#Java_Web" class="headerlink" title="Java Web"></a>Java Web</h2><p><a href="https://www.raywenderlich.com/78576/android-tutorial-for-beginners-part-2" target="_blank" rel="external">raywenderlich android教程</a></p>
-<p><a href="http://blog.csdn.net/mynameishuangshuai/article/details/51332790" target="_blank" rel="external">最全面的AndroidStudio配置指南总结-包括护眼模式</a></p>
-<h2 id="To_do_list"><a href="#To_do_list" class="headerlink" title="To do list"></a>To do list</h2><h3 id="u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002"><a href="#u7B49_u5728_u535A_u5BA2_u4E2D_u4F1A_u663E_u793A_u4E3A_u5176_u4ED6_u5B57_u7B26_u3002_u53EF_u80FD_u53D7markdown_u8BED_u6CD5_u7684_u5F71_u54CD_u3002" class="headerlink" title="等在博客中会显示为其他字符。可能受markdown语法的影响。"></a><relativelayout>等在博客中会显示为其他字符。可能受markdown语法的影响。</relativelayout></h3>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/02/简历/" itemprop="url">
-                  简历
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-05-02T18:02:15+08:00" content="2016-05-02">
-              2016-05-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/02/Resourcelist/" itemprop="url">
-                  Resourcelist
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-05-02T17:55:41+08:00" content="2016-05-02">
-              2016-05-02
-            </time>
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/02/Nodeclub源码分析/" itemprop="url">
-                  Nodeclub源码分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-05-02T17:36:51+08:00" content="2016-05-02">
-              2016-05-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Technology/" itemprop="url" rel="index">
-                    <span itemprop="name">Technology</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h1 id="u7F18_u8D77"><a href="#u7F18_u8D77" class="headerlink" title="缘起"></a>缘起</h1><h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h1><p><strong>这部分内容可以独立出来另外写一篇博客</strong></p>
-<h2 id="u5B89_u88C5nodejs"><a href="#u5B89_u88C5nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><h3 id="u5B89_u88C5nvm"><a href="#u5B89_u88C5nvm" class="headerlink" title="安装nvm"></a>安装nvm</h3><h3 id="u5B89_u88C5node_2Cnpm"><a href="#u5B89_u88C5node_2Cnpm" class="headerlink" title="安装node,npm"></a>安装node,npm</h3><h1 id="express"><a href="#express" class="headerlink" title="express"></a>express</h1><h2 id="express_u6784_u5EFA_u9879_u76EE_u76842_u79CD_u65B9_u5F0F"><a href="#express_u6784_u5EFA_u9879_u76EE_u76842_u79CD_u65B9_u5F0F" class="headerlink" title="express构建项目的2种方式"></a>express构建项目的2种方式</h2><h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h1><h1 id="mongoose"><a href="#mongoose" class="headerlink" title="mongoose"></a>mongoose</h1><h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><h1 id="angular-js"><a href="#angular-js" class="headerlink" title="angular.js"></a>angular.js</h1><h1 id="Nodeclub"><a href="#Nodeclub" class="headerlink" title="Nodeclub"></a>Nodeclub</h1><h2 id="fork_Nodeclub_2Cclone_u5230_u672C_u5730"><a href="#fork_Nodeclub_2Cclone_u5230_u672C_u5730" class="headerlink" title="fork Nodeclub,clone到本地"></a>fork Nodeclub,clone到本地</h2><h2 id="u5EFA_u7ACBexercise_branch"><a href="#u5EFA_u7ACBexercise_branch" class="headerlink" title="建立exercise branch"></a>建立exercise branch</h2><h2 id="u8FD0_u884CNodeclub"><a href="#u8FD0_u884CNodeclub" class="headerlink" title="运行Nodeclub"></a>运行Nodeclub</h2><p>按照<a href="https://github.com/cnodejs/nodeclub" target="_blank" rel="external">Nodeclub README</a>上的说明。<br>终端输入以下命令:</p>
-<p><code>redis-server</code></p>
-<p><code>redis-cli</code></p>
-<p><code>mongod</code></p>
-<p><code>mongo</code></p>
-<p><code>npm install</code> (切换到package.json所在目录,因为这个是在本地安装,而非全局安装)</p>
-<p><code>sudo supervisor app.js</code> //需用npm安装supervisor,否则用<code>node app.js</code>也可以.注意加上sudo,否则有时会报错</p>
-<p>浏览器中打开<a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodejs121.png" alt=""></p>
-<h2 id="u90AE_u7BB1_u9A8C_u8BC1"><a href="#u90AE_u7BB1_u9A8C_u8BC1" class="headerlink" title="邮箱验证"></a>邮箱验证</h2><h2 id="u6E90_u7801_u5206_u6790"><a href="#u6E90_u7801_u5206_u6790" class="headerlink" title="源码分析"></a>源码分析</h2><h2 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h2><h3 id="N-blog"><a href="#N-blog" class="headerlink" title="N-blog"></a><a href="https://github.com/nswbmw/N-blog/wiki/_pages" target="_blank" rel="external">N-blog</a></h3><h3 id="u300Anodejs_u5B9E_u6218_u300B"><a href="#u300Anodejs_u5B9E_u6218_u300B" class="headerlink" title="《nodejs实战》"></a>《nodejs实战》</h3><h3 id="u300Anodejs_u5B9E_u6218_u300B_u7B2C2_u5B63"><a href="#u300Anodejs_u5B9E_u6218_u300B_u7B2C2_u5B63" class="headerlink" title="《nodejs实战》第2季"></a>《nodejs实战》第2季</h3><h2 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h2>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/05/02/Skilllist/" itemprop="url">
                   Skilllist
                 </a>
@@ -1090,16 +265,16 @@
         
           <span itemprop="articleBody">
             
-              <h1 id="C_u8BED_u8A00"><a href="#C_u8BED_u8A00" class="headerlink" title="C语言"></a>C语言</h1><p>鉴于自己的工作很大一部分是嵌入式开发。C语言还是要好好掌握。并且现在嵌入式开发应用还是很广泛的。比如用arduino做个无人机等也是挺不错的。</p>
-<h1 id="C++"><a href="#C++" class="headerlink" title="C++"></a>C++</h1><p>前年在工作中好像还用MFC写过一个上位机。但太久没用了。很多都忘记了。还是有需求时再学。刻意去学也得看时间。再则微软貌似已经不太关注MFC,重心在.NET和C#,可能一些公司(比如我们公司)内部的一些部门还在用MFC开发一些软件供调试使用。有做桌面应用的话可以尝试QT。这个也是个跨平台的工具。</p>
+              <h1 id="C语言"><a href="#C语言" class="headerlink" title="C语言"></a>C语言</h1><p>鉴于自己的工作很大一部分是嵌入式开发。C语言还是要好好掌握。并且现在嵌入式开发应用还是很广泛的。比如用arduino做个无人机等也是挺不错的。</p>
+<h1 id="C"><a href="#C" class="headerlink" title="C++"></a>C++</h1><p>前年在工作中好像还用MFC写过一个上位机。但太久没用了。很多都忘记了。还是有需求时再学。刻意去学也得看时间。再则微软貌似已经不太关注MFC,重心在.NET和C#,可能一些公司(比如我们公司)内部的一些部门还在用MFC开发一些软件供调试使用。有做桌面应用的话可以尝试QT。这个也是个跨平台的工具。</p>
 <h1 id="java"><a href="#java" class="headerlink" title="java"></a>java</h1><p>java,python,javascript这三门语言能做的事情还是很多的。js是全栈语言。java和python接近全栈(前端貌似不能用它们做)。软件工程领域的很多实践及概念都是基于java的:它是一门很成熟完备的语言。但鉴于业余时间较少。大多放在了JS上。所以对JAVA也是有需求再学。</p>
 <h1 id="python"><a href="#python" class="headerlink" title="python"></a>python</h1><p>上一次写python应该是近3年前了。在python和JS之间还是选择了JS。虽然python通熟易懂,上手快,能干的活也很多,但还是JS更能干一些。那就暂时放一放了。</p>
 <h1 id="android"><a href="#android" class="headerlink" title="android"></a>android</h1><p>Android的内核是Linux，它上面应用程序的主流是Java的，跑在Google实现的一个Java虚拟机Dalvik上（不是标准的Java虚拟机).不过觉得移动端开发没有web开发应用广,现在也有很多js框架支持移动端的开发。</p>
 <h1 id="ios"><a href="#ios" class="headerlink" title="ios"></a>ios</h1><p>在OC还没有完全退下来的时候,swift也难以达到java之于Android的地步。不知apple还能火几年。</p>
-<h1 id="cocos2d-x_2Ccocos2d-js"><a href="#cocos2d-x_2Ccocos2d-js" class="headerlink" title="cocos2d-x,cocos2d-js"></a>cocos2d-x,cocos2d-js</h1><p>当初工作刚来的时候业余时间几乎都是在折腾它。因为当时游戏很流行,媒体上也都在说游戏开发很赚钱。但最终还是没坚持下去。</p>
+<h1 id="cocos2d-x-cocos2d-js"><a href="#cocos2d-x-cocos2d-js" class="headerlink" title="cocos2d-x,cocos2d-js"></a>cocos2d-x,cocos2d-js</h1><p>当初工作刚来的时候业余时间几乎都是在折腾它。因为当时游戏很流行,媒体上也都在说游戏开发很赚钱。但最终还是没坚持下去。</p>
 <h1 id="javascript"><a href="#javascript" class="headerlink" title="javascript"></a>javascript</h1><p>jquery,nodejs,angular.js,react.js,vue.js,express,koa,Electron…<br>(1)跨平台,前端,服务器,桌面,移动端,貌似都可以做嵌入式了。<br>(2)动态语言,类型判断在运行阶段,不需要写非常多的与类型有关的代码,阅读比较方便。调试可能要困难一些。<br>(3)开源社区很活跃。看github上star数目多的开源项目,很多都是JS的。</p>
-<h1 id="u7B97_u6CD5"><a href="#u7B97_u6CD5" class="headerlink" title="算法"></a>算法</h1><p>网上以及算法书籍上整理的那些算法在实际工作中貌似用的机会比较少。面试用的到是挺多。况且在汽车公司用的基本上是一些工业算法如PID,自适应逆控制算法,控制算法要多一些。要么就是对一些物理信号进行滤波,对数据处理一下。但算法基础还是要有的。</p>
-<h1 id="u5C0F_u7ED3"><a href="#u5C0F_u7ED3" class="headerlink" title="小结"></a>小结</h1><p>(1)工作中也就是C语言嵌入式开发。然后就是机械,控制(分为开环控制和闭环控制,这里会涉及到一些算法),电子电路。其实汽车是一个很好的智能终端。但在汽车上做人工智能的都是一些互联网公司。估计大部分传统的汽车公司所谓的”车联网”还需要很长一路要走。<br>(2)业余时间折腾各种互联网技术。时间较少,中断较多,但难以坚持到底,不用很快就忘记了。由于没有工作需求也难以深入。当然去年开始已经逐渐放弃了很多技术。专注于web(而非移动端),JS全栈(而非java和python)</p>
+<h1 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h1><p>网上以及算法书籍上整理的那些算法在实际工作中貌似用的机会比较少。面试用的到是挺多。况且在汽车公司用的基本上是一些工业算法如PID,自适应逆控制算法,控制算法要多一些。要么就是对一些物理信号进行滤波,对数据处理一下。但算法基础还是要有的。</p>
+<h1 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h1><p>(1)工作中也就是C语言嵌入式开发。然后就是机械,控制(分为开环控制和闭环控制,这里会涉及到一些算法),电子电路。其实汽车是一个很好的智能终端。但在汽车上做人工智能的都是一些互联网公司。估计大部分传统的汽车公司所谓的”车联网”还需要很长一路要走。<br>(2)业余时间折腾各种互联网技术。时间较少,中断较多,但难以坚持到底,不用很快就忘记了。由于没有工作需求也难以深入。当然去年开始已经逐渐放弃了很多技术。专注于web(而非移动端),JS全栈(而非java和python)</p>
 
             
           </span>
@@ -1291,7 +466,7 @@
         
           <span itemprop="articleBody">
             
-              <h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><h3 id="2-1_github_u4F7F_u7528"><a href="#2-1_github_u4F7F_u7528" class="headerlink" title="2.1 github使用"></a>2.1 github使用</h3><p>注册GitHub账号。</p>
+              <h1 id="github"><a href="#github" class="headerlink" title="github"></a>github</h1><h3 id="2-1-github使用"><a href="#2-1-github使用" class="headerlink" title="2.1 github使用"></a>2.1 github使用</h3><p>注册GitHub账号。</p>
 <p>由于你的本地Git仓库和GitHub仓库之间的传输是通过SSH加密的，所以，需要一点设置：</p>
 <p>步骤见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001374385852170d9c7adf13c30429b9660d0eb689dd43a000" target="_blank" rel="external">远程仓库</a></p>
 <p>(1)第1步：创建SSH Key。在用户主目录下，看看有没有.ssh目录，如果有，再看看这个目录下有没有id_rsa和id_rsa.pub这两个文件，如果已经有了，可直接跳到下一步。如果没有，打开Shell（Windows下打开Git Bash），创建SSH Key：</p>
@@ -1306,7 +481,7 @@
 <p>当然，GitHub允许你添加多个Key。假定你有若干电脑，你一会儿在公司提交，一会儿在家里提交，只要把每台电脑的Key都添加到GitHub，就可以在每台电脑上往GitHub推送了。</p>
 <p>最后友情提示，在GitHub上免费托管的Git仓库，任何人都可以看到喔（但只有你自己才能改）。所以，不要把敏感信息放进去。</p>
 <p>如果你不想让别人看到Git库，有两个办法，一个是交点保护费，让GitHub把公开的仓库变成私有的，这样别人就看不见了（不可读更不可写）。另一个办法是自己动手，搭一个Git服务器，因为是你自己的Git服务器，所以别人也是看不见的。这个方法我们后面会讲到的，相当简单，公司内部开发必备。</p>
-<h2 id="2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93"><a href="#2-2__u6DFB_u52A0_u8FDC_u7A0B_u5E93" class="headerlink" title="2.2 添加远程库"></a>2.2 添加远程库</h2><p>现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。</p>
+<h2 id="2-2-添加远程库"><a href="#2-2-添加远程库" class="headerlink" title="2.2 添加远程库"></a>2.2 添加远程库</h2><p>现在的情景是，你已经在本地创建了一个Git仓库后，又想在GitHub创建一个Git仓库，并且让这两个仓库进行远程同步，这样，GitHub上的仓库既可以作为备份，又可以让其他人通过该仓库来协作，真是一举多得。</p>
 <p>(1)首先，登陆GitHub，然后，在右上角找到“Create a new repo”按钮，创建一个新的仓库<br>(2)在Repository name填入learngit，其他保持默认设置，点击“Create repository”按钮，就成功地创建了一个新的Git仓库<br>(3)目前，在GitHub上的这个learngit仓库还是空的，GitHub告诉我们，可以从这个仓库克隆出新的仓库，也可以把一个已有的本地仓库与之关联，然后，把本地仓库的内容推送到GitHub仓库。<br>(4)现在，我们根据GitHub的提示:</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github31.png" alt=""></p>
 <p>在本地的learngit仓库下运行命令：(上图中有)</p>
@@ -1357,9 +532,9 @@ and the repository exists.</code></p>
 <p>此后，每次本地提交后，只要有必要，就可以使用命令git push origin master推送最新修改；</p>
 <p>(2)要克隆一个仓库，首先必须知道仓库的地址，然后使用git clone命令克隆。</p>
 <p>Git支持多种协议，包括https，但通过ssh支持的原生git协议速度最快。</p>
-<h2 id="2-3__u5206_u652F_u7BA1_u7406"><a href="#2-3__u5206_u652F_u7BA1_u7406" class="headerlink" title="2.3 分支管理"></a>2.3 分支管理</h2><p>应用场景:假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
+<h2 id="2-3-分支管理"><a href="#2-3-分支管理" class="headerlink" title="2.3 分支管理"></a>2.3 分支管理</h2><p>应用场景:假设你准备开发一个新功能，但是需要两周才能完成，第一周你写了50%的代码，如果立刻提交，由于代码还没写完，不完整的代码库会导致别人不能干活了。如果等代码全部写完再一次提交，又存在丢失每天进度的巨大风险。</p>
 <p>现在有了分支，就不用怕了。你创建了一个属于你自己的分支，别人看不到(如果你commit的话,别人还是可以看的到的吧?比如github上面很多开源项目你都可以看得到它的分支。只是你可以先不commit,你提交的是能够稳定运行的master分支,新的分支只是做实验)，还继续在原来的分支上正常工作，而你在自己的分支上干活，想提交就提交，直到开发完毕后，再一次性合并到原来的分支上(因为新的分支是在master分支的基础上进行修改的。会替换掉以前的matser分支。这个合并到底是怎么合并的?如果同时有多个分支,合并的时候是否会造成冲突呢?在Bug分支章节提到了stash功能)，这样，既安全，又不影响别人工作(还是从协作,安全角度来考虑的)。</p>
-<h3 id="2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F"><a href="#2-3-1__u521B_u5EFA_u4E0E_u5408_u5E76_u5206_u652F" class="headerlink" title="2.3.1 创建与合并分支"></a>2.3.1 创建与合并分支</h3><p>原理本分见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="external">廖雪峰的本节教程</a>,上面有图示,很清晰。</p>
+<h3 id="2-3-1-创建与合并分支"><a href="#2-3-1-创建与合并分支" class="headerlink" title="2.3.1 创建与合并分支"></a>2.3.1 创建与合并分支</h3><p>原理本分见<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/001375840038939c291467cc7c747b1810aab2fb8863508000" target="_blank" rel="external">廖雪峰的本节教程</a>,上面有图示,很清晰。</p>
 <p><strong>关键词:matser指针,master分支,dev指针,dev分支(dev只是分支的名字),Head指针</strong></p>
 <p>(1)每次提交(commit)，Git都把它们串成一条时间线，这条时间线就是一个分支(branch)。截止到目前，只有一条时间线，在Git里，这个分支叫主分支，即master分支。HEAD严格来说不是指向提交，而是指向master，master才是指向提交的，所以，HEAD指向的就是当前分支。</p>
 <p>(2)初始没有其余分支的时候。master分支是一条线,master指针指向最新的提交,HEAD指针指向master分支,这样就确定了当前分支,以及当前分支的提交点。每次提交，master分支都会向前移动一步。</p>
@@ -1401,7 +576,7 @@ and the repository exists.</code></p>
 <p>创建+切换分支：<code>git checkout -b &lt;name&gt;</code></p>
 <p>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
 <p>删除分支：<code>git branch -d &lt;name&gt;</code></p>
-<h3 id="2-3-2_u89E3_u51B3_u51B2_u7A81"><a href="#2-3-2_u89E3_u51B3_u51B2_u7A81" class="headerlink" title="2.3.2解决冲突"></a>2.3.2解决冲突</h3><p>出现场景:master分支和feature1分支各自都分别有新的提交.这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。</p>
+<h3 id="2-3-2解决冲突"><a href="#2-3-2解决冲突" class="headerlink" title="2.3.2解决冲突"></a>2.3.2解决冲突</h3><p>出现场景:master分支和feature1分支各自都分别有新的提交.这种情况下，Git无法执行“快速合并”，只能试图把各自的修改合并起来，但这种合并就可能会有冲突。</p>
 <p>新建feature1分支</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github48.png" alt=""></p>
 <p>修改readme.txt最后一行，改为：</p>
@@ -1435,7 +610,7 @@ and the repository exists.</code></p>
 <p><strong>小结</strong></p>
 <p>当Git无法自动合并分支时，就必须首先解决冲突(手动修改?)。解决冲突后，再提交，合并完成。</p>
 <p>用git log –graph命令可以看到分支合并图。</p>
-<h3 id="2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565"><a href="#2-3-3_u5206_u652F_u7BA1_u7406_u7B56_u7565" class="headerlink" title="2.3.3分支管理策略"></a>2.3.3分支管理策略</h3><p>通常，合并分支时，如果可能，Git会用 <strong>Fast forward</strong> 模式，但这种模式下，<strong>删除分支后，会丢掉分支信息</strong> 。</p>
+<h3 id="2-3-3分支管理策略"><a href="#2-3-3分支管理策略" class="headerlink" title="2.3.3分支管理策略"></a>2.3.3分支管理策略</h3><p>通常，合并分支时，如果可能，Git会用 <strong>Fast forward</strong> 模式，但这种模式下，<strong>删除分支后，会丢掉分支信息</strong> 。</p>
 <p>如果要强制 <strong>禁用Fast forward</strong> 模式，Git就会 <strong>在merge时生成一个新的commit</strong> ，这样，从 <strong>分支历史上就可以看出分支信息</strong>。</p>
 <p><strong>注:</strong> 2.3.2中<code>git log --graph --pretty=oneline --abbrev-commit</code>就没有看见2.3.1中创建并删除的dev分支的信息。</p>
 <p>下面我们实战一下<code>--no-ff</code>方式的<code>git merge</code>：</p>
@@ -1463,7 +638,7 @@ and the repository exists.</code></p>
 <p><strong>小结</strong></p>
 <p>Git分支十分强大，在团队开发中应该充分应用。</p>
 <p>合并分支时，加上–no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。</p>
-<h3 id="2-3-4Bug_u5206_u652F"><a href="#2-3-4Bug_u5206_u652F" class="headerlink" title="2.3.4Bug分支"></a>2.3.4Bug分支</h3><p>软件开发中，bug很常见。在Git中每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。</p>
+<h3 id="2-3-4Bug分支"><a href="#2-3-4Bug分支" class="headerlink" title="2.3.4Bug分支"></a>2.3.4Bug分支</h3><p>软件开发中，bug很常见。在Git中每个bug都可以通过一个新的临时分支来修复，修复后，合并分支，然后将临时分支删除。</p>
 <p>切换到dev分支,修改readme.txt(先不add,commit)</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github67.png" alt=""></p>
 <p><code>测试BUG分支。初始dev上的修改。</code></p>
@@ -1497,7 +672,7 @@ and the repository exists.</code></p>
 <p>我们现在还是在dev分支,readme.txt中的修改还在(不然就修复不了BUG了),仅仅是用<code>git stash pop</code>之后再用用<code>git stash list</code>看不到任何修改痕迹。但具体的修改内容还在,确实是修复BUG了。</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github77.png" alt=""></p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github78.png" alt=""></p>
-<h3 id="2-3-4Feature_u5206_u652F"><a href="#2-3-4Feature_u5206_u652F" class="headerlink" title="2.3.4Feature分支"></a>2.3.4Feature分支</h3><p>软件开发中，总有无穷无尽的新的功能要不断添加进来。</p>
+<h3 id="2-3-4Feature分支"><a href="#2-3-4Feature分支" class="headerlink" title="2.3.4Feature分支"></a>2.3.4Feature分支</h3><p>软件开发中，总有无穷无尽的新的功能要不断添加进来。</p>
 <p>添加一个新功能时，你肯定不希望因为一些实验性质的代码，把主分支搞乱了，所以，每添加一个新功能，最好新建一个feature分支，在上面开发，完成后，合并，最后，删除该feature分支。</p>
 <p>现在，你终于接到了一个新任务：开发代号为Vulcan的新功能，该功能计划用于下一代星际飞船。</p>
 <p>修改readme.txt:</p>
@@ -1518,7 +693,7 @@ and the repository exists.</code></p>
 <p>小结</p>
 <p>开发一个新feature，最好新建一个分支；</p>
 <p>如果要丢弃一个没有被合并过的分支，可以通过<code>git branch -D &lt;name&gt;</code>强行删除。(自己这里用git branch -d <name>就直接删除了)</name></p>
-<h3 id="2-3-5_u591A_u4EBA_u534F_u4F5C"><a href="#2-3-5_u591A_u4EBA_u534F_u4F5C" class="headerlink" title="2.3.5多人协作"></a>2.3.5多人协作</h3><p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。</p>
+<h3 id="2-3-5多人协作"><a href="#2-3-5多人协作" class="headerlink" title="2.3.5多人协作"></a>2.3.5多人协作</h3><p>当你从远程仓库克隆时，实际上Git自动把本地的master分支和远程的master分支对应起来了，并且，远程仓库的默认名称是origin。</p>
 <p>要查看远程库的信息，用<code>git remote</code>,或者，用<code>git remote -v</code>显示更详细的信息.会显示可以抓取(fetch)和推送(push)的origin的地址。如果没有推送权限，就看不到push的地址。</p>
 <p><strong>推送分支</strong></p>
 <p>推送分支，就是把该分支上的所有本地提交推送到远程库。推送时，要指定本地分支，这样，Git就会把该分支推送到远程库对应的远程分支上：</p>
@@ -1590,9 +765,9 @@ and the repository exists.</code></p>
 <p>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</p>
 <p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream-to branch-name origin/branch-name</code>；</p>
 <p>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突(<strong>手动处理成想要的样子</strong>)。</p>
-<h2 id="2-4_u6807_u7B7E_u7BA1_u7406"><a href="#2-4_u6807_u7B7E_u7BA1_u7406" class="headerlink" title="2.4标签管理"></a>2.4标签管理</h2><p>发布一个版本时，我们通常先在版本库中打一个标签(如v1.0之类的)，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。</p>
+<h2 id="2-4标签管理"><a href="#2-4标签管理" class="headerlink" title="2.4标签管理"></a>2.4标签管理</h2><p>发布一个版本时，我们通常先在版本库中打一个标签(如v1.0之类的)，这样，就唯一确定了打标签时刻的版本。将来无论什么时候，取某个标签的版本，就是把那个打标签的时刻的历史版本取出来。所以，标签也是版本库的一个快照。</p>
 <p>Git的标签虽然是版本库的快照，但其实它就是指向某个commit的指针（跟分支很像对不对？但是分支可以移动，标签不能移动），所以，创建和删除标签都是瞬间完成的。</p>
-<h3 id="2-4-1_u521B_u5EFA_u6807_u7B7E"><a href="#2-4-1_u521B_u5EFA_u6807_u7B7E" class="headerlink" title="2.4.1创建标签"></a>2.4.1创建标签</h3><p>在Git中打标签非常简单，首先，切换到需要打标签的分支上：</p>
+<h3 id="2-4-1创建标签"><a href="#2-4-1创建标签" class="headerlink" title="2.4.1创建标签"></a>2.4.1创建标签</h3><p>在Git中打标签非常简单，首先，切换到需要打标签的分支上：</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github98.png" alt=""></p>
 <p>然后，敲命令git tag <name>就可以打一个新标签：</name></p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github99.png" alt=""></p>
@@ -1623,7 +798,7 @@ and the repository exists.</code></p>
 <p><code>git tag -a &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以指定标签信息；</p>
 <p><code>git tag -s &lt;tagname&gt; -m &quot;blablabla...&quot;</code>可以用PGP签名标签；</p>
 <p>命令<code>git tag</code>可以查看所有标签。</p>
-<h3 id="2-4-2_u64CD_u4F5C_u6807_u7B7E"><a href="#2-4-2_u64CD_u4F5C_u6807_u7B7E" class="headerlink" title="2.4.2操作标签"></a>2.4.2操作标签</h3><p>如果标签打错了，也可以删除：</p>
+<h3 id="2-4-2操作标签"><a href="#2-4-2操作标签" class="headerlink" title="2.4.2操作标签"></a>2.4.2操作标签</h3><p>如果标签打错了，也可以删除：</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github107.png" alt=""></p>
 <p>因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。</p>
 <p>如果要推送某个标签到远程，使用命令<code>git push origin &lt;tagname&gt;</code>：</p>
@@ -1642,7 +817,7 @@ and the repository exists.</code></p>
 <p>命令<code>git push origin --tags</code>可以推送全部未推送过的本地标签；</p>
 <p>命令<code>git tag -d &lt;tagname&gt;</code>可以删除一个本地标签；</p>
 <p>命令<code>git push origin :refs/tags/&lt;tagname&gt;</code>可以删除一个远程标签。</p>
-<h2 id="2-5_u4F7F_u7528GitHub"><a href="#2-5_u4F7F_u7528GitHub" class="headerlink" title="2.5使用GitHub"></a>2.5使用GitHub</h2><p>我们一直用GitHub作为免费的远程仓库，如果是个人的开源项目，放到GitHub上是完全没有问题的。其实GitHub还是一个开源协作社区，通过GitHub，<strong>既可以让别人参与你的开源项目，也可以参与别人的开源项目</strong>。</p>
+<h2 id="2-5使用GitHub"><a href="#2-5使用GitHub" class="headerlink" title="2.5使用GitHub"></a>2.5使用GitHub</h2><p>我们一直用GitHub作为免费的远程仓库，如果是个人的开源项目，放到GitHub上是完全没有问题的。其实GitHub还是一个开源协作社区，通过GitHub，<strong>既可以让别人参与你的开源项目，也可以参与别人的开源项目</strong>。</p>
 <p><strong>如何参与一个开源项目呢？</strong></p>
 <p>(1)fork别人的仓库</p>
 <p>(2)从自己的账号下clone刚才你fork的仓库，这样你才能推送修改。如果从作者的仓库地址clone，因为没有权限，你将 <strong>不能推送修改</strong>。</p>
@@ -1654,10 +829,10 @@ and the repository exists.</code></p>
 <p>可以推送pull request给官方仓库来贡献代码。</p>
 <p>#自定义Git</p>
 <p><strong>这部分内容参考教程</strong></p>
-<h2 id="Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879"><a href="#Git_u7684_u5176_u5B83_u53EF_u914D_u7F6E_u9879" class="headerlink" title="Git的其它可配置项"></a>Git的其它可配置项</h2><h2 id="u5FFD_u7565_u7279_u6B8A_u6587_u4EF6"><a href="#u5FFD_u7565_u7279_u6B8A_u6587_u4EF6" class="headerlink" title="忽略特殊文件"></a>忽略特殊文件</h2><p>忽略某些文件时，需要编写.gitignore；</p>
+<h2 id="Git的其它可配置项"><a href="#Git的其它可配置项" class="headerlink" title="Git的其它可配置项"></a>Git的其它可配置项</h2><h2 id="忽略特殊文件"><a href="#忽略特殊文件" class="headerlink" title="忽略特殊文件"></a>忽略特殊文件</h2><p>忽略某些文件时，需要编写.gitignore；</p>
 <p>.gitignore文件本身要放到版本库里，并且可以对.gitignore做版本管理！</p>
 <p>不需要从头写.gitignore文件，GitHub已经为我们准备了各种配置文件，只需要组合一下就可以使用了。所有配置文件可以直接在线浏览：<a href="https://github.com/github/gitignore" target="_blank" rel="external">github的gitignore配置</a></p>
-<h2 id="u914D_u7F6E_u522B_u540D"><a href="#u914D_u7F6E_u522B_u540D" class="headerlink" title="配置别名"></a>配置别名</h2><h2 id="u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29"><a href="#u642D_u5EFAGit_u670D_u52A1_u5668_28_u5C40_u57DF_u7F51_2CWeb_29" class="headerlink" title="搭建Git服务器(局域网,Web)"></a>搭建Git服务器(局域网,Web)</h2><p>GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。</p>
+<h2 id="配置别名"><a href="#配置别名" class="headerlink" title="配置别名"></a>配置别名</h2><h2 id="搭建Git服务器-局域网-Web"><a href="#搭建Git服务器-局域网-Web" class="headerlink" title="搭建Git服务器(局域网,Web)"></a>搭建Git服务器(局域网,Web)</h2><p>GitHub就是一个免费托管开源代码的远程仓库。但是对于某些视源代码如生命的商业公司来说，既不想公开源代码，又舍不得给GitHub交保护费，那就只能自己搭建一台Git服务器作为私有仓库使用。</p>
 <p>搭建Git服务器需要准备一台运行<code>Linux的机器</code>，强烈推荐用<code>Ubuntu或Debian</code>，这样，通过几条简单的<code>apt命令</code>就可以完成安装。</p>
 <p>(1)安装git</p>
 <p>(2)创建一个git用户，用来运行git服务</p>
@@ -1671,7 +846,7 @@ and the repository exists.</code></p>
 <p>搭建Git服务器非常简单，通常10分钟即可完成；</p>
 <p>要方便管理公钥，用<code>Gitosis</code>；</p>
 <p>要像SVN那样变态地控制权限，用<code>Gitolite</code>。</p>
-<h1 id="reference_3A"><a href="#reference_3A" class="headerlink" title="reference:"></a>reference:</h1><h3 id="GitHub__u6F2B_u6E38_u6307_u5357"><a href="#GitHub__u6F2B_u6E38_u6307_u5357" class="headerlink" title="GitHub 漫游指南"></a><a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h3><h3 id="u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B"><a href="#u5ED6_u96EA_u5CF0_u7684Git_u6559_u7A0B" class="headerlink" title="廖雪峰的Git教程"></a><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h3><h3 id="u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355"><a href="#u5E38_u7528_Git__u547D_u4EE4_u6E05_u5355" class="headerlink" title="常用 Git 命令清单"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h3><h3 id="git-recipes"><a href="#git-recipes" class="headerlink" title="git-recipes"></a><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h3><h3 id="u56FE_u89E3git"><a href="#u56FE_u89E3git" class="headerlink" title="图解git"></a><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h3><h3 id="u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8"><a href="#u7334_u5B50_u90FD_u80FD_u61C2_u7684Git_u5165_u95E8" class="headerlink" title="猴子都能懂的Git入门"></a><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h3><h3 id="u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9"><a href="#u300A_u8D70_u8FDBgit_u65F6_u4EE3_u7CFB_u5217_u4E00_u300B__u4F60_u8BE5_u600E_u4E48_u73A9" class="headerlink" title="《走进git时代系列一》 你该怎么玩"></a><a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h3><h3 id="Pro_Git_v2__u4E2D_u6587_u7248"><a href="#Pro_Git_v2__u4E2D_u6587_u7248" class="headerlink" title="Pro Git v2 中文版"></a><a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h3><h3 id="Git_u7684_u5B98_u65B9_u7F51_u7AD9"><a href="#Git_u7684_u5B98_u65B9_u7F51_u7AD9" class="headerlink" title="Git的官方网站"></a><a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h3><h1 id="To_do_list_3A"><a href="#To_do_list_3A" class="headerlink" title="To do list:"></a>To do list:</h1><h3 id="1-gitlab_2Ccoding"><a href="#1-gitlab_2Ccoding" class="headerlink" title="1.gitlab,coding"></a>1.gitlab,coding</h3><h3 id="2-git_flow_2Cgitlab_flow_2Cgithub_flow"><a href="#2-git_flow_2Cgitlab_flow_2Cgithub_flow" class="headerlink" title="2.git flow,gitlab flow,github flow"></a>2.git flow,gitlab flow,github flow</h3><h3 id="3-Git_u4E0E_u534F_u4F5C"><a href="#3-Git_u4E0E_u534F_u4F5C" class="headerlink" title="3.Git与协作"></a>3.Git与协作</h3>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h1><h3 id="GitHub-漫游指南"><a href="#GitHub-漫游指南" class="headerlink" title="GitHub 漫游指南"></a><a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h3><h3 id="廖雪峰的Git教程"><a href="#廖雪峰的Git教程" class="headerlink" title="廖雪峰的Git教程"></a><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h3><h3 id="常用-Git-命令清单"><a href="#常用-Git-命令清单" class="headerlink" title="常用 Git 命令清单"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h3><h3 id="git-recipes"><a href="#git-recipes" class="headerlink" title="git-recipes"></a><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h3><h3 id="图解git"><a href="#图解git" class="headerlink" title="图解git"></a><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h3><h3 id="猴子都能懂的Git入门"><a href="#猴子都能懂的Git入门" class="headerlink" title="猴子都能懂的Git入门"></a><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h3><h3 id="《走进git时代系列一》-你该怎么玩"><a href="#《走进git时代系列一》-你该怎么玩" class="headerlink" title="《走进git时代系列一》 你该怎么玩"></a><a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h3><h3 id="Pro-Git-v2-中文版"><a href="#Pro-Git-v2-中文版" class="headerlink" title="Pro Git v2 中文版"></a><a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h3><h3 id="Git的官方网站"><a href="#Git的官方网站" class="headerlink" title="Git的官方网站"></a><a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h3><h1 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list:"></a>To do list:</h1><h3 id="1-gitlab-coding"><a href="#1-gitlab-coding" class="headerlink" title="1.gitlab,coding"></a>1.gitlab,coding</h3><h3 id="2-git-flow-gitlab-flow-github-flow"><a href="#2-git-flow-gitlab-flow-github-flow" class="headerlink" title="2.git flow,gitlab flow,github flow"></a>2.git flow,gitlab flow,github flow</h3><h3 id="3-Git与协作"><a href="#3-Git与协作" class="headerlink" title="3.Git与协作"></a>3.Git与协作</h3>
             
           </span>
         
@@ -1872,12 +1047,613 @@ and the repository exists.</code></p>
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/24/git-github使用指南1/" itemprop="url">
+                  git&github使用指南1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-04-24T14:05:23+08:00" content="2016-04-24">
+              2016-04-24
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>鉴于git,github已经成为程序员的基础技能,有必要总结一下。本文主要参考了<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a> ,该文深入浅出,很适合入门。</p>
+<h1 id="git的安装和使用"><a href="#git的安装和使用" class="headerlink" title="git的安装和使用"></a>git的安装和使用</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>MAC下采用brew安装。具体方法请参考<a href="http://brew.sh/" target="_blank" rel="external">homebrew的文档</a>。</p>
+<p><code>brew install git</code></p>
+<p>查看git软件包安装的详细路径和安装内容:</p>
+<p><code>brew list git</code></p>
+<h2 id="2-设置"><a href="#2-设置" class="headerlink" title="2.设置"></a>2.设置</h2><p>安装之后需要设置邮箱和用户名:</p>
+<p><code>git config --global user.name &quot;Your Name&quot;</code></p>
+<p><code>git config --global user.email &quot;email@example.com&quot;</code></p>
+<p>因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。</p>
+<h1 id="git的原理"><a href="#git的原理" class="headerlink" title="git的原理"></a>git的原理</h1><h2 id="1-集中式VS分布式"><a href="#1-集中式VS分布式" class="headerlink" title="1.集中式VS分布式"></a>1.集中式VS分布式</h2><p>集中式版本控制系统有一个“中央服务器”,用户端都是它的离线拷贝。所有提交最终都要汇总到中央服务器，并且可以影响全部离线拷贝。它必须在联网的时候才能够正常工作。</p>
+<p>分布式版本控制系统根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。所有代码库能够自由的从一个用户端分发到另一个用户端。分布式版本控制系统通常也有一台充当“中央服务器”的电脑(但其实也相当于一个用户端,不是像集中式版本控制系统那样的意义)，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家也一样干活，只是交换修改不方便而已。</p>
+<h2 id="2-工作区-暂存区-版本库"><a href="#2-工作区-暂存区-版本库" class="headerlink" title="2.工作区,暂存区,版本库"></a>2.工作区,暂存区,版本库</h2><p>在 Git 中，存在三个工作区域：</p>
+<p>工作区(working directory)</p>
+<p>暂存区(staging area)</p>
+<p>版本库(git directory)</p>
+<p>同时，文件有三种状态：</p>
+<p>已提交（committed）：该文件被安全地保存在了本地数据库</p>
+<p>已修改（modified）：修改了某个文件，但还没有保存</p>
+<p>已暂存（staged）：把已修改的文件放下下次保存的清单中</p>
+<p>下图说明了这三个区域和文件状态的差别：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github1.png" alt=""></p>
+<p>所以，在Git中，你可以暂存部分文件，甚至一个文件中的部分内容，你的本地可以将版本管理玩的非常复杂和有趣。 这也是为什么 SVN 用户最常疑问 Git 为什么每次都要TM的 git add 才能再 commit 的原因</p>
+<h1 id="git的命令"><a href="#git的命令" class="headerlink" title="git的命令"></a>git的命令</h1><h2 id="1-git-init"><a href="#1-git-init" class="headerlink" title="1.git init"></a>1.git init</h2><p>在本地创建版本库(仓库,repository)。</p>
+<h2 id="1-1-在你的工作目录新建learngit文件夹。"><a href="#1-1-在你的工作目录新建learngit文件夹。" class="headerlink" title="1.1 在你的工作目录新建learngit文件夹。"></a>1.1 在你的工作目录新建learngit文件夹。</h2><p><code>mdkir learngit</code></p>
+<p><code>cd learngit</code></p>
+<p><code>pwd</code>   //用于显示当前目录</p>
+<h2 id="1-2-通过git-init命令把这个目录变成Git可以管理的仓库"><a href="#1-2-通过git-init命令把这个目录变成Git可以管理的仓库" class="headerlink" title="1.2 通过git init命令把这个目录变成Git可以管理的仓库"></a>1.2 通过git init命令把这个目录变成Git可以管理的仓库</h2><p><code>git init</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github2.png" alt=""></p>
+<p>这样就把git仓库建立好了。并且是一个初始化了的空的repository。可以看到learngit中有个空的.git文件夹。这个目录默认是隐藏的，用<code>ls -ah</code>命令就可以看见。</p>
+<p>在learngit目录下新建readme.txt文件,内容如下:</p>
+<p><code>Git is a version control system.</code></p>
+<p><code>Git is free software.</code></p>
+<h2 id="1-3-git-add"><a href="#1-3-git-add" class="headerlink" title="1.3 git add"></a>1.3 git add</h2><p>用命令git add告诉Git，把文件添加到仓库:</p>
+<p><code>git add readme.txt</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github3.png" alt=""></p>
+<p>没有任何显示。这是对的。</p>
+<h2 id="1-4-git-commit"><a href="#1-4-git-commit" class="headerlink" title="1.4 git commit"></a>1.4 git commit</h2><p>用命令git commit告诉Git，把文件提交到仓库：</p>
+<p><code>git commit -m &#39;wrote a readme file&#39;</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github4.png" alt=""></p>
+<p>git commit命令执行成功后会告诉你，1个文件被改动（我们新添加的readme.txt文件），插入了两行内容（readme.txt有两行内容）。</p>
+<p>为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件,如</p>
+<p><code>git add file1.txt</code></p>
+<p><code>git add file2.txt file3.txt</code></p>
+<p><code>git commit -m &#39;add 3 files&#39;</code></p>
+<p>在你新建readme.txt时,它是在工作区(working directory),用git add命令是把它提交到暂存区(staging area),也就是说需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
+<p>然后用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支(master)。</p>
+<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</p>
+<h2 id="1-5-git-status"><a href="#1-5-git-status" class="headerlink" title="1.5 git status"></a>1.5 git status</h2><p>运行<code>git status</code>命令看看结果：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github5.png" alt=""></p>
+<p>说明暂存区的代码已经提交完了。没有需要提交的了。</p>
+<p>修改readme.txt文件，改成如下内容：</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software.</code></p>
+<p>运行<code>git status</code>命令看看结果：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github6.png" alt=""></p>
+<p>readme.txt被修改过了(工作区(working directory))，但还没有准备提交的修改(由于还没有git add,暂存区(staging area)内还没有要提交的修改)。</p>
+<p>从上面可以看出暂存区的作用。同时通过<code>git status</code>命令我们可以清楚的知道我们修改的代码到底到哪了。是在工作区?还是在暂存区?还是在本地仓库?</p>
+<h2 id="1-6-git-diff"><a href="#1-6-git-diff" class="headerlink" title="1.6 git diff"></a>1.6 git diff</h2><p>虽然Git告诉我们readme.txt被修改了，但如果能看看具体修改了什么内容(这是在工作区的操作)，自然是很好的。<code>git diff</code>命令能满足这个需求。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github7.png" alt=""></p>
+<p>git diff顾名思义就是查看difference，显示的格式正是Unix通用的diff格式，可以从上面的命令输出看到，我们在第一行添加了一个“distributed”单词。</p>
+<p>知道了对readme.txt作了什么修改后，再把它提交到仓库就放心多了，</p>
+<p>提交新文件:<code>git add readme.txt</code>,这个命令没有任何输出</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github8.png" alt=""></p>
+<p>通过<code>git status</code>命令我们可以看出将要被提交的修改包括readme.txt，下一步，就可以放心地提交了：</p>
+<p>提交修改:<code>git commit -m &quot;add distributed&quot;</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github9.png" alt=""></p>
+<p><code>git diff readme.txt</code>命令是没有输出的。原因是<code>git diff</code>是针对工作区的。通过<code>git status</code>命令我们可以看出(暂存区)当前没有需要提交的修改，而且工作目录是干净（working directory clean）的。所以<code>git diff</code>命令没输出。</p>
+<h2 id="1-7-git-log"><a href="#1-7-git-log" class="headerlink" title="1.7 git log"></a>1.7 git log</h2><p>现在，你已经学会了修改文件，然后把修改提交到Git版本库，现在，再练习一次，修改readme.txt文件如下：</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p>然后尝试提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github10.png" alt=""></p>
+<p>像这样，你不断对文件进行修改，然后不断提交修改到版本库里，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。</p>
+<p>现在，我们回顾一下readme.txt文件一共有几个版本被提交到Git仓库里了：</p>
+<p>版本1：<code>wrote a readme file</code></p>
+<p><code>Git is a version control system.</code></p>
+<p><code>Git is free software.</code></p>
+<p>版本2：<code>add distributed</code></p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software.</code></p>
+<p>版本3：<code>append GPL</code></p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p>当然了，在实际工作中，我们脑子里怎么可能记得一个几千行的文件每次都改了什么内容，不然要版本控制系统干什么。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用<code>git log</code>命令查看：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github11.png" alt=""></p>
+<p>从上面看到了你在前面配置的邮箱和用户名。因为分布式管理系统是端对端的。不同的用户端需要自报姓名。</p>
+<p>git log命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是<code>append GPL</code>，上一次是<code>add distributed</code>，最早的一次是<code>wrote a readme file</code>。<br>如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github12.png" alt=""></p>
+<p>你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，而且你看到的commit id和我的肯定不一样，以你自己的为准。为什么commit id需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。</p>
+<p>每提交一个新版本，实际上Git就会把它们自动串成一条时间线。如果使用可视化工具查看Git历史，就可以更清楚地看到提交历史的时间线：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github13.jpeg" alt=""></p>
+<p><code>git log</code>主要是针对<code>git commit</code>和版本库(git directory)的。</p>
+<h2 id="1-8-git-reset"><a href="#1-8-git-reset" class="headerlink" title="1.8 git reset"></a>1.8 git reset</h2><p>准备把readme.txt回退到上一个版本，也就是“add distributed”的那个版本，怎么做呢？</p>
+<p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交3628164…882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。</p>
+<p>现在，我们要把当前版本<code>“append GPL”</code>回退到上一个版本<code>“add distributed”</code>，就可以使用<code>git reset</code>命令：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github14.png" alt=""></p>
+<p><code>hard</code>参数下面会用到。跟一个commit id。<code>HEAD</code>现在指向了上一个版本 <code>add distributed</code>,上面还给出了它的commit id:20fcdfe。对照一下前面的commit id,确实是这样的。</p>
+<p>看看readme.txt的内容确实是版本<code>add distributed</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github15.png" alt=""></p>
+<p>用<code>git log</code>再看看现在版本库的状态：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github16.png" alt=""></p>
+<p>最新的那个版本append GPL已经看不到了！</p>
+<p>只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个<code>append GPL</code>的commit id是3628164…，于是就可以指定回到未来的某个版本：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github17.png" alt=""></p>
+<p>前面<code>git reset --hard HEAD^</code>可以恢复到上一版本。因为HEAD指向当前版本。但这种表示方法只能表示上面的版本。如果是时间线上下一个版本。只能用你的commit id了。版本号(commit id)没必要写全，前7位就可以了.</p>
+<p>Git的版本回退速度非常快，因为Git在内部有个指向当前版本的<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是把<code>HEAD</code>从指向<code>append GPL</code>。</p>
+<h2 id="1-9-git-reflog"><a href="#1-9-git-reflog" class="headerlink" title="1.9 git reflog"></a>1.9 git reflog</h2><p>找不到版本号(commit id)怎么办?当你用<code>git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>append GPL</code>，就必须找到<code>append GPL</code>的commit id。Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github18.png" alt=""></p>
+<p>第三行显示<code>append GPL</code>的commit id是d9c87a6,这样就可以回到<code>append GPL</code>版本了。</p>
+<p><code>HEAD</code>指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令<code>git reset --hard commit_id</code>。</p>
+<p>穿梭前，用<code>git log</code>可以查看提交历史，以便确定要回退到哪个版本。</p>
+<p>要重返未来，用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本。</p>
+<h2 id="1-10-管理修改"><a href="#1-10-管理修改" class="headerlink" title="1.10 管理修改"></a>1.10 管理修改</h2><p>现在把readme.txt由</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes.</code></p>
+<p>改为:</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes of files.</code></p>
+<p>假设有下面的操作流程:<br>第一次修改-&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git commit</code></p>
+<p>当你用git add命令后，在工作区的第一次修改被放入暂存区，准备提交，但是，在工作区的第二次修改并没有放入暂存区，所以，git commit只负责把暂存区的修改提交了，也就是第一次的修改被提交了，第二次的修改不会被提交。</p>
+<p>提交后，用<code>git diff HEAD -- readme.txt</code>(中间要有空格,<code>git diff</code>本来就针对工作区,所以用<code>git diff</code>,<code>git diff HEAD</code>都可以)命令可以查看工作区和版本库里面最新版本的区别。可以看到第二次修改确实没有被提交。</p>
+<p>下面的流程可以提交第二次修改(方法不止一种,但需要在commit之前把第二次修改add到暂存区):<br>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git add</code> -&gt; <code>git commit</code></p>
+<p>所以,每次修改，如果不add到暂存区，那就不会加入到commit中。</p>
+<h2 id="1-11-撤销修改-git-checkout-file"><a href="#1-11-撤销修改-git-checkout-file" class="headerlink" title="1.11 撤销修改(git checkout -- file)"></a>1.11 撤销修改(<code>git checkout -- file</code>)</h2><p>这个命令主要针对下面的应用场景:</p>
+<p>工作区修改了文件(还没有add到暂存区),发现修改的有错误,想纠正它。这时候用<code>git status</code>查看的话,git会提示你用<code>git add</code>把它提交到暂存区或者用<code>git checkout -- file</code>撤销你刚才的修改。总的来说,<code>git checkout -- file</code>针对工作区的文件修改。即<code>git checkout -- file</code>可以丢弃工作区的修改。</p>
+<p>当然,你也可以手动修改文件,把它手动恢复到上一个版本的状态。</p>
+<p>延续1.10的修改,用<code>git status</code>查看:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github19.png" alt=""></p>
+<p>会提示你有一次对工作区文件readme.txt的修改(modified)没有提交到暂存区(modified, not staged for commit)。</p>
+<p>会有下面2种场景:</p>
+<p>(1)一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库(commit)一模一样的状态；<br>比如上图的情况:已经commit到版本库一次,又修改了一次(modified),但是还没有放到暂存区(not staged)<br>这种情况下用<code>git checkout -- file</code>可以丢弃工作区的修改。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github20.png" alt=""></p>
+<p>现在就撤销了工作去的修改,返回到了版本库的状态。</p>
+<p>(2)另一种情况就是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
+<p>现在依然把readme.txt由</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes.</code></p>
+<p>改为:</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes of files.</code></p>
+<p><code>git add -- readme.txt</code>之后再修改为:</p>
+<p><code>Git is a distributed version control system.</code></p>
+<p><code>Git is free software distributed under the GPL.</code></p>
+<p><code>Git has a mutable index called stage.</code></p>
+<p><code>Git tracks changes.</code></p>
+<p> 然后再<code>git checkout -- readme.txt</code>,恢复成了add时候的状态。<br><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github22.png" alt=""></p>
+<h2 id="1-12-git-reset-HEAD-file"><a href="#1-12-git-reset-HEAD-file" class="headerlink" title="1.12 git reset HEAD file"></a>1.12 git reset HEAD file</h2><p>撤销修改</p>
+<p>把暂存区的修改撤销掉（unstage），重新放回工作区：</p>
+<p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</p>
+<p>reset命令不仅可用于版本库,还可以用于暂存区。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github23.png" alt=""></p>
+<p>(1)丢弃工作区的修改:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github24.png" alt=""></p>
+<p>BW:如果想撤销刚才的撤销怎么办?git log貌似只能查询commit的id。对于add和modified好像没办法。</p>
+<p>(2)现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退一节吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。</p>
+<h2 id="1-13-git-rm"><a href="#1-13-git-rm" class="headerlink" title="1.13 git rm"></a>1.13 git rm</h2><p>删除文件</p>
+<p>在git中,删除也是一个修改操作，我们实战一下，先添加一个新文件test.txt到Git并且提交：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github25.png" alt=""></p>
+<p>一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用rm命令删了,这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻告诉你哪些文件被删除了：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github26.png" alt=""></p>
+<p>下面就有2种情况:</p>
+<p>(1)一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github27.png" alt=""></p>
+<p>现在，文件就从版本库中被删除了。</p>
+<p>即使你不手动删除工作区的test.txt,仅仅是git rm版本库的test.txt,则工作区的test.txt也讲会被删除。</p>
+<p>(2)另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本</p>
+<p>由于(1)中删除了test.txt,现在再重来一遍,新建test.txt</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github28.png" alt=""></p>
+<p>注意上面第三步不是<code>git rm test.txt</code>,而是’rm test.txt’,前者会同时删除版本库和工作区的文件。后者只会删除工作区文件。如果用前者,你后来的<code>git checkout</code>就没用了。因为它也是按照版本库恢复工作区的文件。既然版本库的文件都被你删除了。那么也恢复不了了。</p>
+<p>小结</p>
+<p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容(它依然版本库的内容恢复工作区的文件)。</p>
+<h2 id="1-14-远程仓库"><a href="#1-14-远程仓库" class="headerlink" title="1.14 远程仓库"></a>1.14 远程仓库</h2><p>我们已经掌握了如何在Git仓库里对一个文件进行时光穿梭，你再也不用担心文件备份或者丢失的问题了。这些功能在SVN里早就有了。</p>
+<p>如果只是在一个仓库里管理文件历史，Git和SVN真没啥区别。</p>
+<p>Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。</p>
+<p>至少需要两台机器才能玩远程库。其实一台电脑上也是可以克隆多个版本库的，只要不在同一个目录下。但一般不建议这样玩。没有意义,硬盘挂掉了全都没了。所以也不折腾在一台电脑上怎么克隆多个仓库。</p>
+<p>实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。</p>
+<p>也就是说:虽然是分布式的软件,但仍然需要一个服务器。</p>
+<p>你可以自己搭建一台运行Git的服务器，不过现阶段，为了学Git先搭个服务器绝对是小题大作。</p>
+<p>还可以用现成的:<a href="https://github.com/" target="_blank" rel="external">Github</a>,这个网站就是提供Git仓库托管服务的，所以，只要注册一个GitHub账号，就可以免费获得Git远程仓库。</p>
+<h1 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h1><h3 id="GitHub-漫游指南"><a href="#GitHub-漫游指南" class="headerlink" title="GitHub 漫游指南"></a><a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h3><h3 id="廖雪峰的Git教程"><a href="#廖雪峰的Git教程" class="headerlink" title="廖雪峰的Git教程"></a><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h3><h3 id="常用-Git-命令清单"><a href="#常用-Git-命令清单" class="headerlink" title="常用 Git 命令清单"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h3><h3 id="git-recipes"><a href="#git-recipes" class="headerlink" title="git-recipes"></a><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h3><h3 id="图解git"><a href="#图解git" class="headerlink" title="图解git"></a><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h3><h3 id="猴子都能懂的Git入门"><a href="#猴子都能懂的Git入门" class="headerlink" title="猴子都能懂的Git入门"></a><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h3><h3 id="《走进git时代系列一》-你该怎么玩"><a href="#《走进git时代系列一》-你该怎么玩" class="headerlink" title="《走进git时代系列一》 你该怎么玩"></a><a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h3><h3 id="Pro-Git-v2-中文版"><a href="#Pro-Git-v2-中文版" class="headerlink" title="Pro Git v2 中文版"></a><a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h3><h3 id="Git的官方网站"><a href="#Git的官方网站" class="headerlink" title="Git的官方网站"></a><a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h3><h1 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list:"></a>To do list:</h1><h3 id="gitlab-coding"><a href="#gitlab-coding" class="headerlink" title="gitlab,coding"></a>gitlab,coding</h3><h3 id="git-flow-gitlab-flow-github-flow"><a href="#git-flow-gitlab-flow-github-flow" class="headerlink" title="git flow,gitlab flow,github flow"></a>git flow,gitlab flow,github flow</h3><h3 id="Git与协作"><a href="#Git与协作" class="headerlink" title="Git与协作"></a>Git与协作</h3>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/04/20/使用githubpages-hexo-atom写博客/" itemprop="url">
+                  使用githubpages+hexo+atom写博客
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-04-20T07:18:14+08:00" content="2016-04-20">
+              2016-04-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="一-git-客户端-github-pages-配置连接与取消"><a href="#一-git-客户端-github-pages-配置连接与取消" class="headerlink" title="一.git(客户端)github pages 配置连接与取消"></a>一.git(客户端)github pages 配置连接与取消</h1><h2 id="1-1-git方面自己是用的是mac上的github客户端。省略了一些命令操作。"><a href="#1-1-git方面自己是用的是mac上的github客户端。省略了一些命令操作。" class="headerlink" title="1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。"></a>1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。</h2><h2 id="1-2-githubpages的使用。"><a href="#1-2-githubpages的使用。" class="headerlink" title="1.2.githubpages的使用。"></a>1.2.githubpages的使用。</h2><h3 id="1-2-1首先要注册一个github帐号。点击new-repository。建立名为username-github-io这样的用户-amp-组织页（站）"><a href="#1-2-1首先要注册一个github帐号。点击new-repository。建立名为username-github-io这样的用户-amp-组织页（站）" class="headerlink" title="1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）"></a>1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;组织页（站）</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages1.png" alt=""></p>
+<p>添加相应的说明文字</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages2.png" alt=""></p>
+<h3 id="1-2-2点击上图lhyhfut-github-io仓库右上角的settings-点击launch-Automatic-page-generator，Github将会自动替你创建出一个github-pages的页面。"><a href="#1-2-2点击上图lhyhfut-github-io仓库右上角的settings-点击launch-Automatic-page-generator，Github将会自动替你创建出一个github-pages的页面。" class="headerlink" title="1.2.2点击上图lhyhfut.github.io仓库右上角的settings.点击launch Automatic page generator，Github将会自动替你创建出一个github-pages的页面。"></a>1.2.2点击上图lhyhfut.github.io仓库右上角的settings.点击launch Automatic page generator，Github将会自动替你创建出一个github-pages的页面。</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages3.png" alt=""></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages4.png" alt=""></p>
+<p>点击右下角的按钮</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages5.png" alt=""></p>
+<p>选择一个主题，点击publish</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages6.png" alt=""></p>
+<p>成功后会有提示，并且可以看到仓库里多了一些文件:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages7.png" alt=""></p>
+<p>等待15分钟，在浏览器browser的URL中输入<a href="http://lhyhfut.github.io/" target="_blank" rel="external">http://lhyhfut.github.io/</a>  这样就可以看到githubpages的页面了。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages8.png" alt=""></p>
+<h1 id="二-hexo的安装与设置"><a href="#二-hexo的安装与设置" class="headerlink" title="二.hexo的安装与设置"></a>二.hexo的安装与设置</h1><p>上面只是githubpages默认的页面。下面采用的是hexo</p>
+<h2 id="2-1-hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后-终端用如下命令"><a href="#2-1-hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后-终端用如下命令" class="headerlink" title="2.1.hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后,终端用如下命令:"></a>2.1.hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后,终端用如下命令:</h2><p><code>sudo npm install -g hexo</code></p>
+<p>默认被安装在了node的包目录下。可以使用<code>hexo -h</code>查看帮助</p>
+<p>然后切换到想安装的目录:</p>
+<p><code>hexo init</code></p>
+<p><code>npm istall //安装hexo package.json中默认的包</code></p>
+<p><code>hexo g  //hexo generate</code></p>
+<p><code>hexo s //hexo server</code></p>
+<p>这时在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ,可以看到本地的效果</p>
+<h2 id="2-2-npm安装插件"><a href="#2-2-npm安装插件" class="headerlink" title="2.2.npm安装插件"></a>2.2.npm安装插件</h2><p>`npm install hexo-generator-index –save   </p>
+<p>npm install hexo-generator-archive –save   </p>
+<p>npm install hexo-generator-category –save  </p>
+<p>npm install hexo-generator-tag –save    </p>
+<p>npm install hexo-server –save   </p>
+<p>npm install hexo-deployer-git –save   安装时有错误  </p>
+<p>npm install hexo-deployer-heroku –save  </p>
+<p>npm install hexo-deployer-rsync –save  </p>
+<p>npm install hexo-deployer-openshift –save  </p>
+<p>npm install hexo-renderer-marked@0.2 –save  </p>
+<p>npm install hexo-renderer-stylus@0.2 –save  </p>
+<p>npm install hexo-generator-feed@1 –save     </p>
+<p>npm install hexo-generator-sitemap@1 –save`</p>
+<p>然后再<br><code>hexo s //hexo server</code></p>
+<p>这时在浏览器中输入<a href="http://localhost:4000,可以看到本地的效果" target="_blank" rel="external">http://localhost:4000,可以看到本地的效果</a></p>
+<h2 id="2-3-更换主题"><a href="#2-3-更换主题" class="headerlink" title="2.3.更换主题"></a>2.3.更换主题</h2><p>hexo默认的主题不好看,在知乎上的推荐中选了一个投票较高的:NexT 主题</p>
+<p><a href="http://theme-next.iissnan.com" target="_blank" rel="external">Next主题官网</a></p>
+<h3 id="2-3-1复制主题"><a href="#2-3-1复制主题" class="headerlink" title="2.3.1复制主题:"></a>2.3.1复制主题:</h3><p>在终端窗口下，定位到 Hexo 站点目录下。使用 Git checkout 代码：</p>
+<p><code>cd your-hexo-site</code></p>
+<p><code>git clone https://github.com/iissnan/hexo-theme-next themes/next</code></p>
+<h3 id="2-3-2-启用主题"><a href="#2-3-2-启用主题" class="headerlink" title="2.3.2 启用主题"></a>2.3.2 启用主题</h3><p>打开站点配置文件(在Hexo 站点目录下的_config.yml中)， 找</p>
+<p>到theme字段，并将其值更改为 next</p>
+<p>下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 <code>hexo clean</code> 来清除 Hexo 的缓存。</p>
+<h3 id="2-3-3-验证主题"><a href="#2-3-3-验证主题" class="headerlink" title="2.3.3 验证主题"></a>2.3.3 验证主题</h3><p>启动 Hexo 本地站点，并开启调试模式（即加上 –debug），整<br>个命令是 <code>hexo s --debug</code></p>
+<p>在浏览器中输入<a href="http://localhost:4000,可以看到本地的效果" target="_blank" rel="external">http://localhost:4000,可以看到本地的效果</a></p>
+<h3 id="2-3-3-1选择-Scheme"><a href="#2-3-3-1选择-Scheme" class="headerlink" title="2.3.3.1选择 Scheme"></a>2.3.3.1选择 Scheme</h3><p>在themes\next目录中的_config.yml中</p>
+<p><code>scheme: Mist</code></p>
+<h3 id="2-3-3-2设置为简体中文"><a href="#2-3-3-2设置为简体中文" class="headerlink" title="2.3.3.2设置为简体中文"></a>2.3.3.2设置为简体中文</h3><p>在Hexo 站点目录下的_config.yml中</p>
+<p><code>language: zh-Hans</code></p>
+<p>还有许多配置(比如菜单设置)详见<a href="http://theme-next.iissnan.com/five-minutes-setup.html" target="_blank" rel="external">Next主题官网</a></p>
+<h3 id="2-3-3-3设置分类与标签文"><a href="#2-3-3-3设置分类与标签文" class="headerlink" title="2.3.3.3设置分类与标签文"></a>2.3.3.3设置分类与标签文</h3><p>参考<a href="https://hexo.io/zh-cn/docs/front-matter.html#分类和标签" target="_blank" rel="external">Hexo 的分类与标签文档</a></p>
+<p>在Hexo 站点目录下的_config.yml中:</p>
+<p>把</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages113.png" alt=""></p>
+<p>修改为:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages114.png" alt=""></p>
+<p>在博文的页头(Front-matter 是文件最上方以 — 分隔的区域)添加相应的配置:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages115.png" alt=""></p>
+<p><code>hexo clean</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo s</code></p>
+<p><code>hexo d</code></p>
+<p>将在网站上的博客页头看到分类和写作时间:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages116.png" alt=""></p>
+<p>点击能够进入相关分类:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages117.png" alt=""></p>
+<p>在博客页末能够看到标签和下一篇文章链接:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages118.png" alt=""></p>
+<p>右上角的 <strong>标签</strong> 和 <strong>分类</strong> 页面参考<a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">添加「分类」页面</a>。</p>
+<p><code>终端切换到你的hexo站点目录</code></p>
+<p><code>hexo new page categories</code></p>
+<p><code>hexo new page tags</code>  </p>
+<p><code>hexo new page about</code></p>
+<p><code>hexo new page title</code> //没用,右上角没这个</p>
+<p>与</p>
+<p><a href="http://localhost:4000/about/" target="_blank" rel="external"></a></p>
+<p><a href="http://localhost:4000/tags/" target="_blank" rel="external"></a></p>
+<p><a href="http://localhost:4000/categories/" target="_blank" rel="external"></a></p>
+<p>是对应的</p>
+<p>点击进入,由于你还 <strong>没在生成的页面中添加内容</strong>,网站上相应页面也都还是一片空白:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github119.png" alt=""></p>
+<h3 id="2-3-4将本地文件部署到-GitHub"><a href="#2-3-4将本地文件部署到-GitHub" class="headerlink" title="2.3.4将本地文件部署到 GitHub"></a>2.3.4将本地文件部署到 GitHub</h3><p>修改 Hexo 中的_config.yml 文件,找到deploy字段,如下设置:<br>(注:冒号后面要加上一个空格，否则会报错)</p>
+<p><code>deploy:</code></p>
+<p>  <code>type: git</code></p>
+<p>  <code>repository:
+   https://github.com/lhyhfut/lhyhfut.github.io.git</code></p>
+<p>  <code>branch: master</code></p>
+<p>  将其 deploy 到仓库中:</p>
+<p>  <code>npm install hexo-deployer-git --save</code></p>
+<p>  <code>hexo clean</code></p>
+<p>  <code>hexo generate</code></p>
+<p>  <code>hexo deploy</code></p>
+<p>  到这一步，个人博客就已经部署到 GitHub 上了，你可以到你的GitHub仓库查看是否已经更新.在浏览器browser的URL中输入<a href="http://lhyhfut.github.io/" target="_blank" rel="external">http://lhyhfut.github.io/</a>  这样就可以看到githubpages的页面了。</p>
+<h1 id="三-发表博文"><a href="#三-发表博文" class="headerlink" title="三.发表博文"></a>三.发表博文</h1><h2 id="3-1新建博文"><a href="#3-1新建博文" class="headerlink" title="3.1新建博文"></a>3.1新建博文</h2><p>终端中进入hexo站点目录:</p>
+<p><code>hexo new &quot;文章题目&quot;</code></p>
+<p>会生成相应的.md文件。也可以手动再Hexo\source_posts 目录中下新建md文件</p>
+<h2 id="3-2新建页面"><a href="#3-2新建页面" class="headerlink" title="3.2新建页面"></a>3.2新建页面</h2><p>上面新建的博文是显示在单个文章界面，这里新建的页面是作为单个页面显示的，比如下图的分类、标签、归档和关于我，你点击后都是显示为单个页面。</p>
+<p><code>hexo new page &quot;页面名称&quot;</code></p>
+<p>命令执行完后，就会发现在在 Hexo\source 目录中多了一个文件夹，里面还有一个index.md,这就代表我们新建了一个页面。</p>
+<h2 id="3-3写博文"><a href="#3-3写博文" class="headerlink" title="3.3写博文"></a>3.3写博文</h2><h3 id="3-3-1-atom编辑器和markdown-prew插件就可以使用markdow来编辑博客"><a href="#3-3-1-atom编辑器和markdown-prew插件就可以使用markdow来编辑博客" class="headerlink" title="3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客"></a>3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客</h3><p><a href="http://www.jianshu.com/p/1e402922ee32/" target="_blank" rel="external">Markdown——入门指南</a>中推荐了MouMarkdown 编辑器.但个人还是觉得atom编辑器和</p>
+<p>markdown-prew插件可以把写代码和写博客统一起来。并且也支持实时预览，既左边是你编辑 Markdown 语言，右边会实时的生成预览效果。在atom中</p>
+<p>使用快捷键command + shift + p，弹出包搜索框，输入markdown Preview，然后点击确定即可。</p>
+<h3 id="3-3-3-markdown语法"><a href="#3-3-3-markdown语法" class="headerlink" title="3.3.3 markdown语法"></a>3.3.3 markdown语法</h3><p><a href="http://www.jianshu.com/p/1e402922ee32/" target="_blank" rel="external">Markdown——入门指南</a></p>
+<p><a href="http://www.cnblogs.com/hnrainll/p/3514637.html" target="_blank" rel="external">Markdown 11种基本语法</a></p>
+<p>记住几个常用的如:标题,代码快,插入图片,插入链接</p>
+<h3 id="3-3-4-用七牛图床来保存博客中所需要的图片"><a href="#3-3-4-用七牛图床来保存博客中所需要的图片" class="headerlink" title="3.3.4 用七牛图床来保存博客中所需要的图片"></a>3.3.4 用七牛图床来保存博客中所需要的图片</h3><p>把本地的图片上传到<a href="https://portal.qiniu.com/" target="_blank" rel="external">七牛云服务</a>,七牛会给你的图片生成相应的外链,在博客中插入这个图片外链就可以了</p>
+<p><a href="https://portal.qiniu.com/tutorial/index" target="_blank" rel="external">新手上路</a>中有详细的教程。总的步骤如下:</p>
+<p>新建空间——内容管理——上传文件——复制外链到博客    </p>
+<h3 id="3-3-5最终效果"><a href="#3-3-5最终效果" class="headerlink" title="3.3.5最终效果"></a>3.3.5最终效果</h3><p>在终端切换到你的hexo站点目录</p>
+<p><code>hexo clean</code></p>
+<p><code>hexo s</code></p>
+<p><code>hexo g</code></p>
+<p><code>hexo d</code></p>
+<p>在浏览器中输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a> ,可以看到本地的效果</p>
+<p>在浏览器browser的URL中输入<a href="http://lhyhfut.github.io/" target="_blank" rel="external">http://lhyhfut.github.io/</a>  ,这样就可以看到githubpages的页面了。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/githubpages9.png" alt=""></p>
+<h1 id="给博客添加github-star链接"><a href="#给博客添加github-star链接" class="headerlink" title="给博客添加github star链接"></a>给博客添加github star链接</h1><p>参考<a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="external">Hexo搭建Github静态博客</a></p>
+<p>给blog主页添加一个“Fork me on Github”的绶带（ribbon），比如选择了红色的ribbon，将下面链接中提供的相应代码复制到Hexo正在使用的theme下_layout.swig中。比如我使用的next theme，那么将下面的代码（注意将you改为你自己的github上的注册名）</p>
+<p>代码在<a href="https://github.com/blog/273-github-ribbons" target="_blank" rel="external">GitHub Ribbons</a>上挑选你喜欢的样式</p>
+<p>粘贴到 themes\next\layout\layout.swig中，放置在 最后，标签之前即可。</p>
+<p>效果:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github120.png" alt=""></p>
+<h2 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h2><p><a href="http://www.jianshu.com/p/05289a4bc8b2" target="_blank" rel="external">如何搭建一个独立博客——简明Github Pages与Hexo教程</a>   </p>
+<p><a href="http://www.cnblogs.com/Leo_wl/p/3608794.html" target="_blank" rel="external">给你的博客加上“Fork me on Github”彩带</a>   </p>
+<p><a href="http://www.cnblogs.com/zhcncn/p/4097881.html" target="_blank" rel="external">Hexo搭建Github静态博客</a>   </p>
+<h2 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list:"></a>To do list:</h2><p>1.博客上只有”归档”等够使用,”关于,分类,标签”都不能打开。可能仅仅新建了博文,没有新建页面</p>
+<p>2.插入外链时<a href=""></a>这样会不起作用。直接写反倒是可以的。需要写入名字。相反,插入图片的时候不需要写入名字就可以直接显示图片。</p>
+<p>3.hexo配置的继续折腾。比如菜单等设置。</p>
+<p><a href="http://theme-next.iissnan.com/theme-settings.html" target="_blank" rel="external">主题配置</a></p>
+<p><a href="https://hexo.io/zh-cn/docs/front-matter.html#分类和标签" target="_blank" rel="external">Hexo 的分类与标签文档</a></p>
+<p><a href="http://theme-next.iissnan.com/third-party-services.html" target="_blank" rel="external">第三方服务</a></p>
+<p>4.图片在博客中的位置还不够美观。显得比较乱。</p>
+<p>5.向标签和分类页面添加内容。</p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/01/10/hello-world/" itemprop="url">
+                  Hello World
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-01-10T09:58:08+08:00" content="2016-01-10">
+              2016-01-10
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 
@@ -1918,14 +1694,14 @@ and the repository exists.</code></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">23</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
 
           <div class="site-state-item site-state-categories">
             <a href="/categories">
-              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-count">2</span>
               <span class="site-state-item-name">分类</span>
               </a>
           </div>
