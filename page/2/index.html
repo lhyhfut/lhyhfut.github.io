@@ -316,6 +316,29 @@
 <h3 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95.png" alt=""></p>
 <h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><h4 id="入口程序app-js"><a href="#入口程序app-js" class="headerlink" title="入口程序app.js"></a>入口程序app.js</h4><p>require(./config)</p>
 <p>require(‘./models’)</p>
+<h4 id="配置文件-config-js"><a href="#配置文件-config-js" class="headerlink" title="配置文件 config.js"></a>配置文件 config.js</h4><p>应用全局数据配置</p>
+<p>数据库连接配置</p>
+<p>session，auth 相关配置</p>
+<p>rss配置</p>
+<p>mail配置</p>
+<p>第三方连接相关配置， github， weibo</p>
+<p>7牛的access信息，用于文件上传</p>
+<p>版块配置</p>
+<p>极光推送</p>
+<h4 id="调用链"><a href="#调用链" class="headerlink" title="调用链"></a>调用链</h4><p>从require的模块可以看出:</p>
+<p><code>app.js</code></p>
+<p>var config = require(‘./config’);</p>
+<p>var webRouter = require(‘./web_router’);</p>
+<p>var apiRouterV1 = require(‘./api_router_v1’);</p>
+<p>var logger = require(‘./common/logger’);</p>
+<p>var proxyMiddleware = require(‘./middlewares/proxy’);</p>
+<p>app.js还require了一些node_modules中的模块。但没有require  controllers和models中的模块。那路由处理是怎么进行的呢?</p>
+<p>是在下面2个模块中进行的:</p>
+<p><code>web_router.js</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubroute.png" alt=""></p>
+<p><code>api_router_v1.js</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubroute-1.png" alt=""></p>
+<p>由于app.js require了这2个路由文件。所以程序就这样调用起来了。从用户操作,http请求,路由处理,数据库操作…程序就这么运行起来了</p>
 <h3 id="models"><a href="#models" class="headerlink" title="models"></a>models</h3><h4 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h4><p>里面的<code>require</code>和<code>module.exports</code>类似于C语言中的<code>#include(针对文件模块)</code>和<code>extern(针对变量)</code>。</p>
 <p>index.js大概完成了这几件事情:</p>
 <p>require models中其它的一些模块。</p>
@@ -325,7 +348,7 @@
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmodel-index.png" alt=""></p>
 <p>models中有这些model的schema设计:user(基本用户信息),topic话题,tag标签系统,关系,消息(回复消息,关注和@消息)</p>
 <p>以消息model为例,在<code>models/message.js</code>中，可以知道消息大概有这几种:</p>
-<p>*</p>
+<p>/*</p>
 <ul>
 <li>type:</li>
 <li>reply: xx 回复了你的话题</li>
@@ -401,10 +424,30 @@
 <p>在controllers/message.js中:</p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubeventproxy.png" alt=""></p>
 <p>//待完成</p>
-<h4 id="EventProxy源码"><a href="#EventProxy源码" class="headerlink" title="EventProxy源码"></a>EventProxy源码</h4><p>//待完成</p>
-<h3 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h3><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p>###</p>
-<p><a href="https://github.com/nswbmw/N-blog/wiki/_pages" target="_blank" rel="external">N-blog</a></p>
-<p><a href="https://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="external">Mongoose学习参考文档——基础篇</a></p>
+<h4 id="EventProxy源码"><a href="#EventProxy源码" class="headerlink" title="EventProxy源码"></a>EventProxy源码</h4><p>主要分为注册和回调(包括错误处理)</p>
+<p>//待完成</p>
+<p><code>ep.all()</code></p>
+<p>all()调用内部函数_assign()  绑定多个事件,等到所有事件都触发了,callback才会执行一次</p>
+<p>assign()等价于all()</p>
+<p>assignAll() = assignAlways () = tail()</p>
+<p>after()事件被触发N次以后callback才会执行</p>
+<p><code>ep.emit()</code></p>
+<p><code>ep.done()</code></p>
+<p>ep.done(‘tpl’);<br>// 等价于<br>function (err, content) {</p>
+<p>  if (err) {</p>
+<pre><code>// 一旦发生异常，一律交给error事件的handler处理
+
+return ep.emit(&apos;error&apos;, err);
+</code></pre><p>  }</p>
+<p>  ep.emit(‘tpl’, content);</p>
+<p>}</p>
+<p><code>ep.fail()</code></p>
+<p>ep.fail(callback)等价于</p>
+<p>ep.bind(‘error’,function(err){   //注册和绑定</p>
+<p>ep.unbind();   </p>
+<p>callback(err);</p>
+<p>})</p>
+<h3 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h3><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><h3 id="N-blog"><a href="#N-blog" class="headerlink" title="N-blog"></a><a href="https://github.com/nswbmw/N-blog/wiki/_pages" target="_blank" rel="external">N-blog</a></h3><p><a href="https://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="external">Mongoose学习参考文档——基础篇</a></p>
 <h3 id="《nodejs实战》"><a href="#《nodejs实战》" class="headerlink" title="《nodejs实战》"></a>《nodejs实战》</h3><h3 id="《nodejs实战》第2季"><a href="#《nodejs实战》第2季" class="headerlink" title="《nodejs实战》第2季"></a>《nodejs实战》第2季</h3><h3 id="《深入浅出nodejs》"><a href="#《深入浅出nodejs》" class="headerlink" title="《深入浅出nodejs》"></a>《深入浅出nodejs》</h3><h3 id="《node与express开发》"><a href="#《node与express开发》" class="headerlink" title="《node与express开发》"></a>《node与express开发》</h3><h2 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list:"></a>To do list:</h2>
             
           </span>

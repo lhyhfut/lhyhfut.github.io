@@ -1100,7 +1100,7 @@ compile &amp;apos;com.android.support:design:23.3.0&amp;apos;
     <link href="http://yoursite.com/2016/05/02/Nodeclub%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2016/05/02/Nodeclub源码分析/</id>
     <published>2016-05-02T09:36:51.000Z</published>
-    <updated>2016-06-21T13:02:30.000Z</updated>
+    <updated>2016-06-21T13:50:07.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;h1 id=&quot;nodejs&quot;&gt;&lt;a href=&quot;#nodejs&quot; class=&quot;headerlink&quot; title=&quot;nodejs&quot;&gt;&lt;/a&gt;nodejs&lt;/h1&gt;&lt;p&gt;&lt;strong&gt; 这部分内容可以独立出来另外写一篇博客 &lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&quot;安装nodejs&quot;&gt;&lt;a href=&quot;#安装nodejs&quot; class=&quot;headerlink&quot; title=&quot;安装nodejs&quot;&gt;&lt;/a&gt;安装nodejs&lt;/h2&gt;&lt;h3 id=&quot;安装nvm&quot;&gt;&lt;a href=&quot;#安装nvm&quot; class=&quot;headerlink&quot; title=&quot;安装nvm&quot;&gt;&lt;/a&gt;安装nvm&lt;/h3&gt;&lt;h3 id=&quot;安装node-npm&quot;&gt;&lt;a href=&quot;#安装node-npm&quot; class=&quot;headerlink&quot; title=&quot;安装node,npm&quot;&gt;&lt;/a&gt;安装node,npm&lt;/h3&gt;&lt;h1 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h1&gt;&lt;h2 id=&quot;express构建项目的2种方式&quot;&gt;&lt;a href=&quot;#express构建项目的2种方式&quot; class=&quot;headerlink&quot; title=&quot;express构建项目的2种方式&quot;&gt;&lt;/a&gt;express构建项目的2种方式&lt;/h2&gt;&lt;h1 id=&quot;mongodb&quot;&gt;&lt;a href=&quot;#mongodb&quot; class=&quot;headerlink&quot; title=&quot;mongodb&quot;&gt;&lt;/a&gt;mongodb&lt;/h1&gt;&lt;h1 id=&quot;mongoose&quot;&gt;&lt;a href=&quot;#mongoose&quot; class=&quot;headerlink&quot; title=&quot;mongoose&quot;&gt;&lt;/a&gt;mongoose&lt;/h1&gt;&lt;h1 id=&quot;redis&quot;&gt;&lt;a href=&quot;#redis&quot; class=&quot;headerlink&quot; title=&quot;redis&quot;&gt;&lt;/a&gt;redis&lt;/h1&gt;&lt;h1 id=&quot;angular-js&quot;&gt;&lt;a href=&quot;#angular-js&quot; class=&quot;headerlink&quot; title=&quot;angular.js&quot;&gt;&lt;/a&gt;angular.js&lt;/h1&gt;&lt;p&gt;上述的这些部分在《nodejs环境搭建》中。&lt;/p&gt;
@@ -1153,6 +1153,29 @@ compile &amp;apos;com.android.support:design:23.3.0&amp;apos;
 &lt;h3 id=&quot;工程目录&quot;&gt;&lt;a href=&quot;#工程目录&quot; class=&quot;headerlink&quot; title=&quot;工程目录&quot;&gt;&lt;/a&gt;工程目录&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;h3 id=&quot;执行流程&quot;&gt;&lt;a href=&quot;#执行流程&quot; class=&quot;headerlink&quot; title=&quot;执行流程&quot;&gt;&lt;/a&gt;执行流程&lt;/h3&gt;&lt;h4 id=&quot;入口程序app-js&quot;&gt;&lt;a href=&quot;#入口程序app-js&quot; class=&quot;headerlink&quot; title=&quot;入口程序app.js&quot;&gt;&lt;/a&gt;入口程序app.js&lt;/h4&gt;&lt;p&gt;require(./config)&lt;/p&gt;
 &lt;p&gt;require(‘./models’)&lt;/p&gt;
+&lt;h4 id=&quot;配置文件-config-js&quot;&gt;&lt;a href=&quot;#配置文件-config-js&quot; class=&quot;headerlink&quot; title=&quot;配置文件 config.js&quot;&gt;&lt;/a&gt;配置文件 config.js&lt;/h4&gt;&lt;p&gt;应用全局数据配置&lt;/p&gt;
+&lt;p&gt;数据库连接配置&lt;/p&gt;
+&lt;p&gt;session，auth 相关配置&lt;/p&gt;
+&lt;p&gt;rss配置&lt;/p&gt;
+&lt;p&gt;mail配置&lt;/p&gt;
+&lt;p&gt;第三方连接相关配置， github， weibo&lt;/p&gt;
+&lt;p&gt;7牛的access信息，用于文件上传&lt;/p&gt;
+&lt;p&gt;版块配置&lt;/p&gt;
+&lt;p&gt;极光推送&lt;/p&gt;
+&lt;h4 id=&quot;调用链&quot;&gt;&lt;a href=&quot;#调用链&quot; class=&quot;headerlink&quot; title=&quot;调用链&quot;&gt;&lt;/a&gt;调用链&lt;/h4&gt;&lt;p&gt;从require的模块可以看出:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;app.js&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;var config = require(‘./config’);&lt;/p&gt;
+&lt;p&gt;var webRouter = require(‘./web_router’);&lt;/p&gt;
+&lt;p&gt;var apiRouterV1 = require(‘./api_router_v1’);&lt;/p&gt;
+&lt;p&gt;var logger = require(‘./common/logger’);&lt;/p&gt;
+&lt;p&gt;var proxyMiddleware = require(‘./middlewares/proxy’);&lt;/p&gt;
+&lt;p&gt;app.js还require了一些node_modules中的模块。但没有require  controllers和models中的模块。那路由处理是怎么进行的呢?&lt;/p&gt;
+&lt;p&gt;是在下面2个模块中进行的:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;web_router.js&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubroute.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;api_router_v1.js&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubroute-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;由于app.js require了这2个路由文件。所以程序就这样调用起来了。从用户操作,http请求,路由处理,数据库操作…程序就这么运行起来了&lt;/p&gt;
 &lt;h3 id=&quot;models&quot;&gt;&lt;a href=&quot;#models&quot; class=&quot;headerlink&quot; title=&quot;models&quot;&gt;&lt;/a&gt;models&lt;/h3&gt;&lt;h4 id=&quot;index-js&quot;&gt;&lt;a href=&quot;#index-js&quot; class=&quot;headerlink&quot; title=&quot;index.js&quot;&gt;&lt;/a&gt;index.js&lt;/h4&gt;&lt;p&gt;里面的&lt;code&gt;require&lt;/code&gt;和&lt;code&gt;module.exports&lt;/code&gt;类似于C语言中的&lt;code&gt;#include(针对文件模块)&lt;/code&gt;和&lt;code&gt;extern(针对变量)&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;index.js大概完成了这几件事情:&lt;/p&gt;
 &lt;p&gt;require models中其它的一些模块。&lt;/p&gt;
@@ -1162,7 +1185,7 @@ compile &amp;apos;com.android.support:design:23.3.0&amp;apos;
 &lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmodel-index.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;models中有这些model的schema设计:user(基本用户信息),topic话题,tag标签系统,关系,消息(回复消息,关注和@消息)&lt;/p&gt;
 &lt;p&gt;以消息model为例,在&lt;code&gt;models/message.js&lt;/code&gt;中，可以知道消息大概有这几种:&lt;/p&gt;
-&lt;p&gt;*&lt;/p&gt;
+&lt;p&gt;/*&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;type:&lt;/li&gt;
 &lt;li&gt;reply: xx 回复了你的话题&lt;/li&gt;
@@ -1238,10 +1261,30 @@ compile &amp;apos;com.android.support:design:23.3.0&amp;apos;
 &lt;p&gt;在controllers/message.js中:&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubeventproxy.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
 &lt;p&gt;//待完成&lt;/p&gt;
-&lt;h4 id=&quot;EventProxy源码&quot;&gt;&lt;a href=&quot;#EventProxy源码&quot; class=&quot;headerlink&quot; title=&quot;EventProxy源码&quot;&gt;&lt;/a&gt;EventProxy源码&lt;/h4&gt;&lt;p&gt;//待完成&lt;/p&gt;
-&lt;h3 id=&quot;消息&quot;&gt;&lt;a href=&quot;#消息&quot; class=&quot;headerlink&quot; title=&quot;消息&quot;&gt;&lt;/a&gt;消息&lt;/h3&gt;&lt;h3 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h3&gt;&lt;h2 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference:&quot;&gt;&lt;/a&gt;Reference:&lt;/h2&gt;&lt;p&gt;###&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/nswbmw/N-blog/wiki/_pages&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;N-blog&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/topic/504b4924e2b84515770103dd&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mongoose学习参考文档——基础篇&lt;/a&gt;&lt;/p&gt;
+&lt;h4 id=&quot;EventProxy源码&quot;&gt;&lt;a href=&quot;#EventProxy源码&quot; class=&quot;headerlink&quot; title=&quot;EventProxy源码&quot;&gt;&lt;/a&gt;EventProxy源码&lt;/h4&gt;&lt;p&gt;主要分为注册和回调(包括错误处理)&lt;/p&gt;
+&lt;p&gt;//待完成&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ep.all()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;all()调用内部函数_assign()  绑定多个事件,等到所有事件都触发了,callback才会执行一次&lt;/p&gt;
+&lt;p&gt;assign()等价于all()&lt;/p&gt;
+&lt;p&gt;assignAll() = assignAlways () = tail()&lt;/p&gt;
+&lt;p&gt;after()事件被触发N次以后callback才会执行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ep.emit()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ep.done()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;ep.done(‘tpl’);&lt;br&gt;// 等价于&lt;br&gt;function (err, content) {&lt;/p&gt;
+&lt;p&gt;  if (err) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 一旦发生异常，一律交给error事件的handler处理
+
+return ep.emit(&amp;apos;error&amp;apos;, err);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  }&lt;/p&gt;
+&lt;p&gt;  ep.emit(‘tpl’, content);&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ep.fail()&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;ep.fail(callback)等价于&lt;/p&gt;
+&lt;p&gt;ep.bind(‘error’,function(err){   //注册和绑定&lt;/p&gt;
+&lt;p&gt;ep.unbind();   &lt;/p&gt;
+&lt;p&gt;callback(err);&lt;/p&gt;
+&lt;p&gt;})&lt;/p&gt;
+&lt;h3 id=&quot;消息&quot;&gt;&lt;a href=&quot;#消息&quot; class=&quot;headerlink&quot; title=&quot;消息&quot;&gt;&lt;/a&gt;消息&lt;/h3&gt;&lt;h3 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h3&gt;&lt;h2 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference:&quot;&gt;&lt;/a&gt;Reference:&lt;/h2&gt;&lt;h3 id=&quot;N-blog&quot;&gt;&lt;a href=&quot;#N-blog&quot; class=&quot;headerlink&quot; title=&quot;N-blog&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/nswbmw/N-blog/wiki/_pages&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;N-blog&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/topic/504b4924e2b84515770103dd&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mongoose学习参考文档——基础篇&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&quot;《nodejs实战》&quot;&gt;&lt;a href=&quot;#《nodejs实战》&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》&quot;&gt;&lt;/a&gt;《nodejs实战》&lt;/h3&gt;&lt;h3 id=&quot;《nodejs实战》第2季&quot;&gt;&lt;a href=&quot;#《nodejs实战》第2季&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》第2季&quot;&gt;&lt;/a&gt;《nodejs实战》第2季&lt;/h3&gt;&lt;h3 id=&quot;《深入浅出nodejs》&quot;&gt;&lt;a href=&quot;#《深入浅出nodejs》&quot; class=&quot;headerlink&quot; title=&quot;《深入浅出nodejs》&quot;&gt;&lt;/a&gt;《深入浅出nodejs》&lt;/h3&gt;&lt;h3 id=&quot;《node与express开发》&quot;&gt;&lt;a href=&quot;#《node与express开发》&quot; class=&quot;headerlink&quot; title=&quot;《node与express开发》&quot;&gt;&lt;/a&gt;《node与express开发》&lt;/h3&gt;&lt;h2 id=&quot;To-do-list&quot;&gt;&lt;a href=&quot;#To-do-list&quot; class=&quot;headerlink&quot; title=&quot;To do list:&quot;&gt;&lt;/a&gt;To do list:&lt;/h2&gt;</content>
     
     <summary type="html">
