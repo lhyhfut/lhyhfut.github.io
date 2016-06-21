@@ -53,23 +53,38 @@
 
 
 
-<meta name="description" content="缘起nodejs这部分内容可以独立出来另外写一篇博客
-安装nodejs安装nvm安装node,npmexpressexpress构建项目的2种方式mongodbmongooseredisangular.jsNodeclubfork Nodeclub,clone到本地建立exercise branch运行Nodeclub按照Nodeclub README上的说明。终端输入以下命令:
-redis-se">
+<meta name="description" content="缘起nodejs 这部分内容可以独立出来另外写一篇博客 
+安装nodejs安装nvm安装node,npmexpressexpress构建项目的2种方式mongodbmongooseredisangular.js上述的这些部分在《nodejs环境搭建》中。
+Nodeclubfork Nodeclub,clone到本地建立exercise branch运行Nodeclub按照Nodeclub READ">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Nodeclub源码分析">
 <meta property="og:url" content="http://yoursite.com/2016/05/02/Nodeclub源码分析/index.html">
 <meta property="og:site_name" content="lhy的博客">
-<meta property="og:description" content="缘起nodejs这部分内容可以独立出来另外写一篇博客
-安装nodejs安装nvm安装node,npmexpressexpress构建项目的2种方式mongodbmongooseredisangular.jsNodeclubfork Nodeclub,clone到本地建立exercise branch运行Nodeclub按照Nodeclub README上的说明。终端输入以下命令:
-redis-se">
+<meta property="og:description" content="缘起nodejs 这部分内容可以独立出来另外写一篇博客 
+安装nodejs安装nvm安装node,npmexpressexpress构建项目的2种方式mongodbmongooseredisangular.js上述的这些部分在《nodejs环境搭建》中。
+Nodeclubfork Nodeclub,clone到本地建立exercise branch运行Nodeclub按照Nodeclub READ">
 <meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodejs121.png">
-<meta property="og:updated_time" content="2016-06-21T05:31:46.000Z">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-1.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-2.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-3.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-4.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-5.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-6.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-7.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-8.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmodel-index.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubsite.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubsite-1.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmiddleware-1.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmiddleware-2.png">
+<meta property="og:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubeventproxy.png">
+<meta property="og:updated_time" content="2016-06-21T13:02:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Nodeclub源码分析">
-<meta name="twitter:description" content="缘起nodejs这部分内容可以独立出来另外写一篇博客
-安装nodejs安装nvm安装node,npmexpressexpress构建项目的2种方式mongodbmongooseredisangular.jsNodeclubfork Nodeclub,clone到本地建立exercise branch运行Nodeclub按照Nodeclub README上的说明。终端输入以下命令:
-redis-se">
+<meta name="twitter:description" content="缘起nodejs 这部分内容可以独立出来另外写一篇博客 
+安装nodejs安装nvm安装node,npmexpressexpress构建项目的2种方式mongodbmongooseredisangular.js上述的这些部分在《nodejs环境搭建》中。
+Nodeclubfork Nodeclub,clone到本地建立exercise branch运行Nodeclub按照Nodeclub READ">
 <meta name="twitter:image" content="http://7xpy7l.com1.z0.glb.clouddn.com/nodejs121.png">
 
 
@@ -260,8 +275,9 @@ redis-se">
       
 
       
-        <span itemprop="articleBody"><h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h1><p><strong>这部分内容可以独立出来另外写一篇博客</strong></p>
-<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><h3 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h3><h3 id="安装node-npm"><a href="#安装node-npm" class="headerlink" title="安装node,npm"></a>安装node,npm</h3><h1 id="express"><a href="#express" class="headerlink" title="express"></a>express</h1><h2 id="express构建项目的2种方式"><a href="#express构建项目的2种方式" class="headerlink" title="express构建项目的2种方式"></a>express构建项目的2种方式</h2><h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h1><h1 id="mongoose"><a href="#mongoose" class="headerlink" title="mongoose"></a>mongoose</h1><h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><h1 id="angular-js"><a href="#angular-js" class="headerlink" title="angular.js"></a>angular.js</h1><h1 id="Nodeclub"><a href="#Nodeclub" class="headerlink" title="Nodeclub"></a>Nodeclub</h1><h2 id="fork-Nodeclub-clone到本地"><a href="#fork-Nodeclub-clone到本地" class="headerlink" title="fork Nodeclub,clone到本地"></a>fork Nodeclub,clone到本地</h2><h2 id="建立exercise-branch"><a href="#建立exercise-branch" class="headerlink" title="建立exercise branch"></a>建立exercise branch</h2><h2 id="运行Nodeclub"><a href="#运行Nodeclub" class="headerlink" title="运行Nodeclub"></a>运行Nodeclub</h2><p>按照<a href="https://github.com/cnodejs/nodeclub" target="_blank" rel="external">Nodeclub README</a>上的说明。<br>终端输入以下命令:</p>
+        <span itemprop="articleBody"><h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h1><p><strong> 这部分内容可以独立出来另外写一篇博客 </strong></p>
+<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><h3 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h3><h3 id="安装node-npm"><a href="#安装node-npm" class="headerlink" title="安装node,npm"></a>安装node,npm</h3><h1 id="express"><a href="#express" class="headerlink" title="express"></a>express</h1><h2 id="express构建项目的2种方式"><a href="#express构建项目的2种方式" class="headerlink" title="express构建项目的2种方式"></a>express构建项目的2种方式</h2><h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h1><h1 id="mongoose"><a href="#mongoose" class="headerlink" title="mongoose"></a>mongoose</h1><h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><h1 id="angular-js"><a href="#angular-js" class="headerlink" title="angular.js"></a>angular.js</h1><p>上述的这些部分在《nodejs环境搭建》中。</p>
+<h1 id="Nodeclub"><a href="#Nodeclub" class="headerlink" title="Nodeclub"></a>Nodeclub</h1><h2 id="fork-Nodeclub-clone到本地"><a href="#fork-Nodeclub-clone到本地" class="headerlink" title="fork Nodeclub,clone到本地"></a>fork Nodeclub,clone到本地</h2><h2 id="建立exercise-branch"><a href="#建立exercise-branch" class="headerlink" title="建立exercise branch"></a>建立exercise branch</h2><h2 id="运行Nodeclub"><a href="#运行Nodeclub" class="headerlink" title="运行Nodeclub"></a>运行Nodeclub</h2><p>按照<a href="https://github.com/cnodejs/nodeclub" target="_blank" rel="external">Nodeclub README</a>上的说明。<br>终端输入以下命令:</p>
 <p><code>redis-server</code></p>
 <p><code>redis-cli</code></p>
 <p><code>mongod</code></p>
@@ -270,7 +286,136 @@ redis-se">
 <p><code>sudo supervisor app.js</code> //需用npm安装supervisor,否则用<code>node app.js</code>也可以.注意加上sudo,否则有时会报错</p>
 <p>浏览器中打开<a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a></p>
 <p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodejs121.png" alt=""></p>
-<h2 id="邮箱验证"><a href="#邮箱验证" class="headerlink" title="邮箱验证"></a>邮箱验证</h2><h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><h3 id="N-blog"><a href="#N-blog" class="headerlink" title="N-blog"></a><a href="https://github.com/nswbmw/N-blog/wiki/_pages" target="_blank" rel="external">N-blog</a></h3><h3 id="《nodejs实战》"><a href="#《nodejs实战》" class="headerlink" title="《nodejs实战》"></a>《nodejs实战》</h3><h3 id="《nodejs实战》第2季"><a href="#《nodejs实战》第2季" class="headerlink" title="《nodejs实战》第2季"></a>《nodejs实战》第2季</h3><h2 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list:"></a>To do list:</h2></span>
+<h2 id="注册账户"><a href="#注册账户" class="headerlink" title="注册账户"></a>注册账户</h2><h3 id="邮箱验证"><a href="#邮箱验证" class="headerlink" title="邮箱验证"></a>邮箱验证</h3><p>debug 模式不会发邮件.</p>
+<p>debug false则打不开网页。</p>
+<p>models/user.js中把<br>  active: { type: Boolean, default: true },//把false改为true，但没用</p>
+<p>虽然验证不了邮箱,但可以通过修改mongodb中model配置来让注册的用户名能够登录。</p>
+<h3 id="使用robomongo"><a href="#使用robomongo" class="headerlink" title="使用robomongo"></a>使用robomongo</h3><p>在robomongo里面容易看出model的信息。当然在终端敲mongodb的一些命令也是可以的,麻烦一些。</p>
+<p>下载robomongo,运行nodeclub项目(上面要按照nodeclub项目说明敲几个命令),打开robomongo之后选择要连接的数据库。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-1.png" alt=""></p>
+<p>用 robomongo查了一下数据库，里面都是网站有一部分用户信息是nodeclub自带的。还有一部分则是自己放注册的。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-2.png" alt=""></p>
+<p>也可以直接删除。也可以直接修改:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-3.png" alt=""></p>
+<p>把下面的false改为true。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-4.png" alt=""></p>
+<p>登录,OK。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-5.png" alt=""></p>
+<p>点击右侧的123qwe账户图标:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-6.png" alt=""></p>
+<p>进入<a href="http://localhost:3000/user/123qwe" target="_blank" rel="external">http://localhost:3000/user/123qwe</a> :</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-7.png" alt=""></p>
+<p><code>注册一个admin用户，密码也是admin,admin账户和普通账户的权限要多一些</code></p>
+<p>进入<a href="http://localhost:3000/user/admin" target="_blank" rel="external">http://localhost:3000/user/admin</a> :</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-8.png" alt=""></p>
+<h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h3 id="package-json"><a href="#package-json" class="headerlink" title="package.json"></a>package.json</h3><p><code>package.json</code>中包含了Nodejs项目的依赖。从<code>package.json</code>大致可以看出nodeclub的架构。</p>
+<p>如比:</p>
+<p><code>express</code>:基本的web框架</p>
+<p><code>mongodb</code>:数据库</p>
+<p><code>mongoose</code>: orm</p>
+<p><code>EventProxy</code>:事件管理</p>
+<p><code>connect-mongo</code>: session</p>
+<p><code>nodemailer</code>：邮件</p>
+<p><code>mocha, should</code>:测试</p>
+<p>……</p>
+<h3 id="nodejs自带模块"><a href="#nodejs自带模块" class="headerlink" title="nodejs自带模块"></a>nodejs自带模块</h3><p>package.json中都是从npm上下载的模块。但项目中不可避免要用到nodejs自带的模块,比如用于加密解密的<code>crypto</code>,用于路径处理的<code>Path</code>.这些对象的用法可以在<a href="https://nodejs.org/en/" target="_blank" rel="external">nodejs官网</a>上查询。</p>
+<h3 id="MVC架构"><a href="#MVC架构" class="headerlink" title="MVC架构"></a>MVC架构</h3><p>nodeclub 以 express + mongodb + mongoose 作为基本框架。这个在它的工程目录里也可以看出:</p>
+<p><code>Model</code>: 对应mongoose orm， models目录</p>
+<p><code>view：</code> ejs模板， views目录</p>
+<p><code>controler</code>：express middleware , contollers目录</p>
+<h3 id="工程目录"><a href="#工程目录" class="headerlink" title="工程目录"></a>工程目录</h3><p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95.png" alt=""></p>
+<h3 id="执行流程"><a href="#执行流程" class="headerlink" title="执行流程"></a>执行流程</h3><h4 id="入口程序app-js"><a href="#入口程序app-js" class="headerlink" title="入口程序app.js"></a>入口程序app.js</h4><p>require(./config)</p>
+<p>require(‘./models’)</p>
+<h3 id="models"><a href="#models" class="headerlink" title="models"></a>models</h3><h4 id="index-js"><a href="#index-js" class="headerlink" title="index.js"></a>index.js</h4><p>里面的<code>require</code>和<code>module.exports</code>类似于C语言中的<code>#include(针对文件模块)</code>和<code>extern(针对变量)</code>。</p>
+<p>index.js大概完成了这几件事情:</p>
+<p>require models中其它的一些模块。</p>
+<p>connect mongoose</p>
+<p>exports models中的对象供其他模块使用。</p>
+<p>代码比较一致,如下:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmodel-index.png" alt=""></p>
+<p>models中有这些model的schema设计:user(基本用户信息),topic话题,tag标签系统,关系,消息(回复消息,关注和@消息)</p>
+<p>以消息model为例,在<code>models/message.js</code>中，可以知道消息大概有这几种:</p>
+<p>*</p>
+<ul>
+<li>type:</li>
+<li>reply: xx 回复了你的话题</li>
+<li>reply2: xx 在话题中回复了你</li>
+<li>follow: xx 关注了你</li>
+<li>at: xx ＠了你<br>*/</li>
+</ul>
+<p>controllers/message.js至少要承担起这个任务:用户在view中处理消息，你要响应。你还得从models中读取消息列表。controllers/message.js做的事情就是综合view 的用户输入以及models的数据库设计和记录来做出响应。主要是做这些逻辑。</p>
+<p>根据事件分类，这里面采用异步来处理，具体使用eventproxy。<br>可以看到controllers，models，proxy等文件夹中有些模块是同名的。</p>
+<p>也就是说这里把数据，功能等分开了。即使是功能，也还有分类。<br>所以最基础的是model的设计。</p>
+<h3 id="controllers"><a href="#controllers" class="headerlink" title="controllers"></a>controllers</h3><p>controllers/message.js是对已读消息/未读消息，已读消息/未读消息列表进行处理。</p>
+<p>回复models/reply.js也是这样的。controllers/reply.js是对消息进行回复，这里的消息包括了所有消息种类。</p>
+<p>用户里接触到的是view,与view交互产生http请求。我们的controller就是处理这些请求的方法。期间要对数据库进行增删查改的操作。</p>
+<p>比如我们点击账户名进入:<a href="http://localhost:3000/user/1234qwer,可以观察终端到底发生了什么" target="_blank" rel="external">http://localhost:3000/user/1234qwer,可以观察终端到底发生了什么</a>:</p>
+<p>…</p>
+<p>MONGO users.findOne {“conditions”:{“_id”:”56469eb62acb60901340ad91”},”options”:{},”collectionName”:”users”} 3ms</p>
+<p>  MONGO replies.findOne {“conditions”:{“_id”:”5668b2de531540c8155eeae7”},”options”:{},”collectionName”:”replies”} 4ms</p>
+<p>  MONGO users.findOne {“conditions”:{“_id”:”5641287b423cb5aa0c48bf23”},”options”:{},”collectionName”:”users”} 1ms</p>
+<p>  Render view user/index (46ms)</p>
+<p>Completed 200 (132ms)</p>
+<p>前面还有很多，省略了.</p>
+<p>从这里可以看出在浏览器中点击(view用户操作)之后程序的执行流程。上面终端看到的主要是数据库操作(model)，和页面渲染(view)。</p>
+<p>比如在页面上(view)点击删除按钮: (这条记录是用户1234qwer回复alsotang的reply  message，关于reply  message的区别可以看models中的模块中的数据库设计，它们里面都有reply_id)</p>
+<p>  MONGO replies.findOne {“conditions”:{“_id”:”565acb03e473433f209e7ea6”},”options”:{},”collectionName”:”replies”} 1ms</p>
+<p>  MONGO users.findOne {“conditions”:{“_id”:”565ac983e473433f209e7ea5”},”options”:{},”collectionName”:”users”} 1ms<br>Completed 200 (62ms)</p>
+<p>  MONGO topics.findOne {“conditions”:{“_id”:”56469eb62acb60901340ad94”},”options”:{},”collectionName”:”topics”} 2ms</p>
+<p>  MONGO replies.find {“conditions”:{“deleted”:false,”topic_id”:”56469eb62acb60901340ad94”},”options”:{“sort”:{“create_at”:-1},”limit”:1,”fields”:{“_id”:1}},”collectionName”:”replies”} 2ms</p>
+<p>然后再去对照controllers/reply.js中的代码：删除回复信息<br>exports.delete = function (req, res, next) { …}</p>
+<p><code>其他的还有:</code></p>
+<p>controllers/rss.js   订阅处理</p>
+<p>controllers/search.js   搜索处理<br>res.redirect(‘<a href="https://www.google.com.hk/#hl=zh-CN&amp;q=site:cnodejs.org+" target="_blank" rel="external">https://www.google.com.hk/#hl=zh-CN&amp;q=site:cnodejs.org+</a>‘ + q);//用的是Google</p>
+<p>controllers/sign.js   注册和登录</p>
+<p>controllers/site.js    主要显示页面的一些分块内容</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubsite.png" alt=""></p>
+<p>controllers/static.js</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubsite-1.png" alt=""></p>
+<p>common中大部分都是在处理消息传递的。</p>
+<p>store.js分为<br>store_qn.js(7牛)和store_local.js(本地)</p>
+<h4 id="exports和module-exports-js-引用和复制-传值和传址"><a href="#exports和module-exports-js-引用和复制-传值和传址" class="headerlink" title="exports和module.exports,js- 引用和复制(传值和传址)"></a>exports和module.exports,js- 引用和复制(传值和传址)</h4><p>js中几种数据类型分别传的什么</p>
+<p>引用：对象、数组、函数</p>
+<p>复制：数字、布尔</p>
+<h3 id="express的中间件-middleware"><a href="#express的中间件-middleware" class="headerlink" title="express的中间件(middleware)"></a>express的中间件(middleware)</h3><p><a href="https://cnodejs.org/topic/535601a20d7d0faf140303d8" target="_blank" rel="external">通过 nodeclub 项目源码来讲解如何做一个 nodejs + express + mongodb 项目</a></p>
+<p>express 的基础是 middleware，或者说 express 的基础是 connect，connect 的基础是 middleware。middleware 模式 相当于一个加工流水线（大家叫 middleware stack），每一个 middleware 相当于一个加工步骤，当出现一个 http 请求的时候，http 请求会挨着每个 middleware 执行下去。<br>express 里处理一个请求的过程基本上就是请求通过 middleware stack 的过程：  * -&gt; middlewares -&gt; 路由 -&gt; controllers -&gt; errorhandlering。</p>
+<p>middleware 怎样做到异步的方法呢？ middleware 使用 promise 的方式来处理异步，所有每个 middleware 都有三个参数 req, res, next, 对于异步的情况， 必须要调用 next() 方法。不然后续的 middleware 就无法执行。 ps: debug 的时候没调用 next() 还不会报错，一定注意.</p>
+<p><code>auth.js</code> exports 出来的函数全部都是中间件.</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmiddleware-1.png" alt=""></p>
+<p>在<code>web_router.js</code>中处理get或post请求的时候会调用这些中间件:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmiddleware-2.png" alt=""></p>
+<h3 id="EventProxy"><a href="#EventProxy" class="headerlink" title="EventProxy"></a>EventProxy</h3><p>eventProxy是一款非常好用的javascript事件管理系统</p>
+<p>事件与回调</p>
+<h4 id="HTML-DOM事件-前端"><a href="#HTML-DOM事件-前端" class="headerlink" title="HTML DOM事件(前端)"></a>HTML DOM事件(前端)</h4><p>HTML DOM 使 JavaScript 有能力对 HTML 事件做出反应。我们可以在事件发生时执行 JavaScript，比如当用户在 HTML 元素上点击时。HTML有一些事件,比如常见的鼠标和键盘事件。事件通常与函数配合使用，这样就可以通过发生的事件来驱动函数执行。</p>
+<p>在<a href="http://www.w3school.com.cn/js/js_htmldom_events.asp" target="_blank" rel="external">JavaScript HTML DOM 事件</a>上介绍了常见的一些HTML事件例子如:<code>当用户点击鼠标时</code>,<code>当网页已加载时</code>,<code>当提交 HTML 表单时</code>。</p>
+<h4 id="Nodejs的事件机制-后端"><a href="#Nodejs的事件机制-后端" class="headerlink" title="Nodejs的事件机制(后端)"></a>Nodejs的事件机制(后端)</h4><p><a href="http://www.infoq.com/cn/articles/tyq-nodejs-event" target="_blank" rel="external">深入浅出Node.js（四）：Node.js的事件机制</a></p>
+<p>前端中,DOM上的各种事件是异步的。在Ajax大规模应用之后，异步请求更得到广泛的认同，而Ajax亦是基于事件机制的。在Rhino中，文件读取等操作，均是同步操作进行的。这在性能上并没有明显的优势。而nodejs充分利用用异步IO突破单线程编程模型的性能瓶颈，使得JavaScript在后端达到实用价值。同时也统一了前后端JavaScript的编程模型。Node.js通过异步机制使请求之间无阻塞，达到并行请求的目的，但对于多个事件响应结果的协调并非被Node.js原生优雅地支持。为此,《深入浅出nodejs》的作者朴灵写了EventProxy模块来实现多事件协作。nodeclub也是朴灵写的,用的事件管理系统也是EventProxy模块。</p>
+<p>Node Club涉及到的异步操作不多，这部分内容大部分都被eventProxy代劳，只有在图片上传文件移动中有涉及。</p>
+<p>原理与Nodejs的Event模块类似。使用了事件侦听器模式和回调。例如:(摘自<a href="http://www.infoq.com/cn/articles/tyq-nodejs-event" target="_blank" rel="external">深入浅出Node.js（四）：Node.js的事件机制</a>)</p>
+<p>var proxy = new EventProxy();</p>
+<p>proxy.all(“profile”, “timeline”, “skin”, function<br> (profile, timeline, skin) {</p>
+<pre><code>// TODO
+</code></pre><p>});</p>
+<p>api.getUser(“username”, function (profile) {</p>
+<pre><code>proxy.emit(&quot;profile&quot;, profile);
+</code></pre><p>});</p>
+<p>api.getTimeline(“username”, function (timeline) {</p>
+<pre><code>proxy.emit(&quot;timeline&quot;, timeline);
+</code></pre><p>});</p>
+<p>api.getSkin(“username”, function (skin) {</p>
+<pre><code>proxy.emit(&quot;skin&quot;, skin);
+</code></pre><p>});</p>
+<p>all方法侦听完profile、timeline、skin三个方法后，执行回调函数，并将侦听接收到的数据传入。</p>
+<p>EventProxy还利用事件队列解决雪崩问题。所谓雪崩问题，是在缓存失效的情景下，大并发高访问量同时涌入数据库中查询，数据库无法同时承受如此大的查询请求，进而往前影响到网站整体响应缓慢。EventProxy对象的once方法，将所有请求的回调都压入事件队列中，并利用其执行一次就会将监视器移除的特点，保证每一个回调只会被执行一次。</p>
+<h4 id="EventProxy在nodeclub中的使用"><a href="#EventProxy在nodeclub中的使用" class="headerlink" title="EventProxy在nodeclub中的使用"></a>EventProxy在nodeclub中的使用</h4><p>依然以消息(message)的处理为例:</p>
+<p>在controllers/message.js中:</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubeventproxy.png" alt=""></p>
+<p>//待完成</p>
+<h4 id="EventProxy源码"><a href="#EventProxy源码" class="headerlink" title="EventProxy源码"></a>EventProxy源码</h4><p>//待完成</p>
+<h3 id="消息"><a href="#消息" class="headerlink" title="消息"></a>消息</h3><h3 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h3><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference:"></a>Reference:</h2><p>###</p>
+<p><a href="https://github.com/nswbmw/N-blog/wiki/_pages" target="_blank" rel="external">N-blog</a></p>
+<p><a href="https://cnodejs.org/topic/504b4924e2b84515770103dd" target="_blank" rel="external">Mongoose学习参考文档——基础篇</a></p>
+<h3 id="《nodejs实战》"><a href="#《nodejs实战》" class="headerlink" title="《nodejs实战》"></a>《nodejs实战》</h3><h3 id="《nodejs实战》第2季"><a href="#《nodejs实战》第2季" class="headerlink" title="《nodejs实战》第2季"></a>《nodejs实战》第2季</h3><h3 id="《深入浅出nodejs》"><a href="#《深入浅出nodejs》" class="headerlink" title="《深入浅出nodejs》"></a>《深入浅出nodejs》</h3><h3 id="《node与express开发》"><a href="#《node与express开发》" class="headerlink" title="《node与express开发》"></a>《node与express开发》</h3><h2 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list:"></a>To do list:</h2></span>
       
     </div>
 
@@ -418,7 +563,7 @@ redis-se">
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs"><span class="nav-number">2.</span> <span class="nav-text">nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装nodejs"><span class="nav-number">2.1.</span> <span class="nav-text">安装nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装nvm"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装nvm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-npm"><span class="nav-number">2.1.2.</span> <span class="nav-text">安装node,npm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#express"><span class="nav-number">3.</span> <span class="nav-text">express</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#express构建项目的2种方式"><span class="nav-number">3.1.</span> <span class="nav-text">express构建项目的2种方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongodb"><span class="nav-number">4.</span> <span class="nav-text">mongodb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongoose"><span class="nav-number">5.</span> <span class="nav-text">mongoose</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis"><span class="nav-number">6.</span> <span class="nav-text">redis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#angular-js"><span class="nav-number">7.</span> <span class="nav-text">angular.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nodeclub"><span class="nav-number">8.</span> <span class="nav-text">Nodeclub</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fork-Nodeclub-clone到本地"><span class="nav-number">8.1.</span> <span class="nav-text">fork Nodeclub,clone到本地</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立exercise-branch"><span class="nav-number">8.2.</span> <span class="nav-text">建立exercise branch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行Nodeclub"><span class="nav-number">8.3.</span> <span class="nav-text">运行Nodeclub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#邮箱验证"><span class="nav-number">8.4.</span> <span class="nav-text">邮箱验证</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码分析"><span class="nav-number">8.5.</span> <span class="nav-text">源码分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">8.6.</span> <span class="nav-text">Reference:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#N-blog"><span class="nav-number">8.6.1.</span> <span class="nav-text">N-blog</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《nodejs实战》"><span class="nav-number">8.6.2.</span> <span class="nav-text">《nodejs实战》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《nodejs实战》第2季"><span class="nav-number">8.6.3.</span> <span class="nav-text">《nodejs实战》第2季</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To-do-list"><span class="nav-number">8.7.</span> <span class="nav-text">To do list:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#缘起"><span class="nav-number">1.</span> <span class="nav-text">缘起</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#nodejs"><span class="nav-number">2.</span> <span class="nav-text">nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装nodejs"><span class="nav-number">2.1.</span> <span class="nav-text">安装nodejs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装nvm"><span class="nav-number">2.1.1.</span> <span class="nav-text">安装nvm</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安装node-npm"><span class="nav-number">2.1.2.</span> <span class="nav-text">安装node,npm</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#express"><span class="nav-number">3.</span> <span class="nav-text">express</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#express构建项目的2种方式"><span class="nav-number">3.1.</span> <span class="nav-text">express构建项目的2种方式</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongodb"><span class="nav-number">4.</span> <span class="nav-text">mongodb</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#mongoose"><span class="nav-number">5.</span> <span class="nav-text">mongoose</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis"><span class="nav-number">6.</span> <span class="nav-text">redis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#angular-js"><span class="nav-number">7.</span> <span class="nav-text">angular.js</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Nodeclub"><span class="nav-number">8.</span> <span class="nav-text">Nodeclub</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#fork-Nodeclub-clone到本地"><span class="nav-number">8.1.</span> <span class="nav-text">fork Nodeclub,clone到本地</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立exercise-branch"><span class="nav-number">8.2.</span> <span class="nav-text">建立exercise branch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#运行Nodeclub"><span class="nav-number">8.3.</span> <span class="nav-text">运行Nodeclub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注册账户"><span class="nav-number">8.4.</span> <span class="nav-text">注册账户</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#邮箱验证"><span class="nav-number">8.4.1.</span> <span class="nav-text">邮箱验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用robomongo"><span class="nav-number">8.4.2.</span> <span class="nav-text">使用robomongo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#源码分析"><span class="nav-number">8.5.</span> <span class="nav-text">源码分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#package-json"><span class="nav-number">8.5.1.</span> <span class="nav-text">package.json</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nodejs自带模块"><span class="nav-number">8.5.2.</span> <span class="nav-text">nodejs自带模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#MVC架构"><span class="nav-number">8.5.3.</span> <span class="nav-text">MVC架构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#工程目录"><span class="nav-number">8.5.4.</span> <span class="nav-text">工程目录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#执行流程"><span class="nav-number">8.5.5.</span> <span class="nav-text">执行流程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#入口程序app-js"><span class="nav-number">8.5.5.1.</span> <span class="nav-text">入口程序app.js</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#models"><span class="nav-number">8.5.6.</span> <span class="nav-text">models</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#index-js"><span class="nav-number">8.5.6.1.</span> <span class="nav-text">index.js</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#controllers"><span class="nav-number">8.5.7.</span> <span class="nav-text">controllers</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#exports和module-exports-js-引用和复制-传值和传址"><span class="nav-number">8.5.7.1.</span> <span class="nav-text">exports和module.exports,js- 引用和复制(传值和传址)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#express的中间件-middleware"><span class="nav-number">8.5.8.</span> <span class="nav-text">express的中间件(middleware)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#EventProxy"><span class="nav-number">8.5.9.</span> <span class="nav-text">EventProxy</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#HTML-DOM事件-前端"><span class="nav-number">8.5.9.1.</span> <span class="nav-text">HTML DOM事件(前端)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Nodejs的事件机制-后端"><span class="nav-number">8.5.9.2.</span> <span class="nav-text">Nodejs的事件机制(后端)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EventProxy在nodeclub中的使用"><span class="nav-number">8.5.9.3.</span> <span class="nav-text">EventProxy在nodeclub中的使用</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#EventProxy源码"><span class="nav-number">8.5.9.4.</span> <span class="nav-text">EventProxy源码</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#消息"><span class="nav-number">8.5.10.</span> <span class="nav-text">消息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#测试"><span class="nav-number">8.5.11.</span> <span class="nav-text">测试</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">8.6.</span> <span class="nav-text">Reference:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#《nodejs实战》"><span class="nav-number">8.6.1.</span> <span class="nav-text">《nodejs实战》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《nodejs实战》第2季"><span class="nav-number">8.6.2.</span> <span class="nav-text">《nodejs实战》第2季</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《深入浅出nodejs》"><span class="nav-number">8.6.3.</span> <span class="nav-text">《深入浅出nodejs》</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#《node与express开发》"><span class="nav-number">8.6.4.</span> <span class="nav-text">《node与express开发》</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#To-do-list"><span class="nav-number">8.7.</span> <span class="nav-text">To do list:</span></a></li></ol></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

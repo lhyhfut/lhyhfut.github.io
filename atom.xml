@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-21T07:20:32.000Z</updated>
+  <updated>2016-06-21T10:47:16.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,15 +16,16 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>node入门</title>
-    <link href="http://yoursite.com/2016/06/21/node%E5%85%A5%E9%97%A8/"/>
-    <id>http://yoursite.com/2016/06/21/node入门/</id>
+    <title>node环境搭建</title>
+    <link href="http://yoursite.com/2016/06/21/node%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2016/06/21/node环境搭建/</id>
     <published>2016-06-21T04:33:01.000Z</published>
-    <updated>2016-06-21T07:20:32.000Z</updated>
+    <updated>2016-06-21T10:47:16.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这里总结一下。&lt;/p&gt;
-&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;h2 id=&quot;官方安装node&quot;&gt;&lt;a href=&quot;#官方安装node&quot; class=&quot;headerlink&quot; title=&quot;官方安装node&quot;&gt;&lt;/a&gt;官方安装node&lt;/h2&gt;&lt;p&gt;可以在&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网&lt;/a&gt;上下载pkg文件安装。node和npm的执行文件都在/usr/local/bin/里。 /usr/local/lib/node_modules/npm/usr/local/lib/node_modules/n/bin 则是实际上存放npm和n的地方。n是一个用来管理nodejs版本的包。但不用这个,下面会用到nvm,更方便一些。&lt;/p&gt;
-&lt;h2 id=&quot;官方删除node&quot;&gt;&lt;a href=&quot;#官方删除node&quot; class=&quot;headerlink&quot; title=&quot;官方删除node&quot;&gt;&lt;/a&gt;官方删除node&lt;/h2&gt;&lt;p&gt;MAC下卸载软件很多直接删除安装包就行了。但node的一些文件在系统目录和用户目录里都有,你得找到全部,逐一删除。比较麻烦。这也是推荐用nvm的一个原因。你可以用nvm卸载node。nvm自身的删除也比较简单,nvm及它安装的node都在用户目录下的.nvm文件夹,删除,升级都很方便。&lt;/p&gt;
+    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这里总结一下。具体的项目分析见另外一篇文章《nodeclub源码分析》。&lt;/p&gt;
+&lt;h2 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h2&gt;&lt;p&gt;MACOS + webstorm&lt;/p&gt;
+&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;h2 id=&quot;官方安装node&quot;&gt;&lt;a href=&quot;#官方安装node&quot; class=&quot;headerlink&quot; title=&quot;官方安装node&quot;&gt;&lt;/a&gt;官方安装node&lt;/h2&gt;&lt;p&gt;可以在&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nodejs官网&lt;/a&gt;上下载pkg文件安装。node和npm的执行文件都在/usr/local/bin/里。 /usr/local/lib/node_modules/npm/usr/local/lib/node_modules/n/bin 则是实际上存放npm和n的地方。n是一个用来管理nodejs版本的包。但不用这个,下面会用到nvm,更方便一些。&lt;/p&gt;
+&lt;h2 id=&quot;卸载node&quot;&gt;&lt;a href=&quot;#卸载node&quot; class=&quot;headerlink&quot; title=&quot;卸载node&quot;&gt;&lt;/a&gt;卸载node&lt;/h2&gt;&lt;p&gt;MAC下卸载软件很多直接删除安装包就行了。但node的一些文件在系统目录和用户目录里都有,你得找到全部,逐一删除。比较麻烦。这也是推荐用nvm的一个原因。你可以用nvm卸载node。nvm自身的删除也比较简单,nvm及它安装的node都在用户目录下的.nvm文件夹,删除,升级都很方便。&lt;/p&gt;
 &lt;p&gt;终端：&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom | while read f; do  sudo rm /usr/local/${f}; done&lt;/code&gt;&lt;br&gt;会删除一部分&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*&lt;/code&gt;&lt;br&gt;又会删除一部分&lt;/p&gt;
@@ -60,13 +61,20 @@
 &lt;p&gt;这样express的信息就被记录在了&lt;code&gt;package.json&lt;/code&gt;里,下次如果你要安装很多个包,就不需要一个一个安装了。直接&lt;code&gt;npm install&lt;/code&gt;就行了。&lt;/p&gt;
 &lt;h2 id=&quot;node使用&quot;&gt;&lt;a href=&quot;#node使用&quot; class=&quot;headerlink&quot; title=&quot;node使用&quot;&gt;&lt;/a&gt;node使用&lt;/h2&gt;&lt;p&gt;node的文档在&lt;a href=&quot;https://nodejs.org/en/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;node官网&lt;/a&gt;上。可以先练习一下相关的API。但了解一下即可。具体有项目需求自取查阅,这样学的快一些。&lt;/p&gt;
 &lt;h2 id=&quot;基于node的框架&quot;&gt;&lt;a href=&quot;#基于node的框架&quot; class=&quot;headerlink&quot; title=&quot;基于node的框架&quot;&gt;&lt;/a&gt;基于node的框架&lt;/h2&gt;&lt;p&gt;直接用node原生进行开发的项目应该是比较少的了。一般采用基于node的一些web框架如express和koa&lt;/p&gt;
-&lt;h3 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h3&gt;&lt;h3 id=&quot;koa&quot;&gt;&lt;a href=&quot;#koa&quot; class=&quot;headerlink&quot; title=&quot;koa&quot;&gt;&lt;/a&gt;koa&lt;/h3&gt;&lt;h2 id=&quot;MEAN快速构建网站&quot;&gt;&lt;a href=&quot;#MEAN快速构建网站&quot; class=&quot;headerlink&quot; title=&quot;MEAN快速构建网站&quot;&gt;&lt;/a&gt;MEAN快速构建网站&lt;/h2&gt;&lt;p&gt;&lt;code&gt;MEAN&lt;/code&gt;:mongodb,express,angularjs,node&lt;/p&gt;
+&lt;h3 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://expressjs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;express官网&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;koa&quot;&gt;&lt;a href=&quot;#koa&quot; class=&quot;headerlink&quot; title=&quot;koa&quot;&gt;&lt;/a&gt;koa&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://koajs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;koa官网&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;MEAN快速构建网站&quot;&gt;&lt;a href=&quot;#MEAN快速构建网站&quot; class=&quot;headerlink&quot; title=&quot;MEAN快速构建网站&quot;&gt;&lt;/a&gt;MEAN快速构建网站&lt;/h2&gt;&lt;p&gt;&lt;code&gt;MEAN&lt;/code&gt;:mongodb,express,angularjs,node&lt;/p&gt;
 &lt;h2 id=&quot;2个现成的&quot;&gt;&lt;a href=&quot;#2个现成的&quot; class=&quot;headerlink&quot; title=&quot;2个现成的&quot;&gt;&lt;/a&gt;2个现成的&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/linnovate/mean&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;linnovate/mean&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/meanjs/mean&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;meanjs/mean&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;手工拼接&quot;&gt;&lt;a href=&quot;#手工拼接&quot; class=&quot;headerlink&quot; title=&quot;手工拼接&quot;&gt;&lt;/a&gt;手工拼接&lt;/h2&gt;&lt;p&gt;大多数情况下,并不用上面2个现成的项目。而是自己用MEAN各个部分进行开发。这有分为2部分:&lt;/p&gt;
-&lt;h3 id=&quot;重前端&quot;&gt;&lt;a href=&quot;#重前端&quot; class=&quot;headerlink&quot; title=&quot;重前端&quot;&gt;&lt;/a&gt;重前端&lt;/h3&gt;&lt;p&gt;以angular为主。虽然还是用到了node等,但业务逻辑什么的大多数由类似angular,react,vue这样的前端框架来完成。当然还有mongodb,但项目中mongoose用的多。&lt;/p&gt;
-&lt;h3 id=&quot;重后端&quot;&gt;&lt;a href=&quot;#重后端&quot; class=&quot;headerlink&quot; title=&quot;重后端&quot;&gt;&lt;/a&gt;重后端&lt;/h3&gt;&lt;p&gt;直接用node+express或node+koa就行了。不用前端框架。比如&lt;a href=&quot;https://github.com/cnodejs/nodeclub&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnode社区源码&lt;/a&gt;就是直接用Node.js 和 MongoDB 开发的社区系统。也被很多人拿来做二次开发。&lt;/p&gt;
-&lt;h1 id=&quot;打包构建工具&quot;&gt;&lt;a href=&quot;#打包构建工具&quot; class=&quot;headerlink&quot; title=&quot;打包构建工具&quot;&gt;&lt;/a&gt;打包构建工具&lt;/h1&gt;&lt;h2 id=&quot;Grunt-vs-Gulp&quot;&gt;&lt;a href=&quot;#Grunt-vs-Gulp&quot; class=&quot;headerlink&quot; title=&quot;Grunt vs Gulp&quot;&gt;&lt;/a&gt;Grunt vs Gulp&lt;/h2&gt;&lt;h2 id=&quot;Browserify-vs-Webpack&quot;&gt;&lt;a href=&quot;#Browserify-vs-Webpack&quot; class=&quot;headerlink&quot; title=&quot;Browserify vs Webpack&quot;&gt;&lt;/a&gt;Browserify vs Webpack&lt;/h2&gt;&lt;h1 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h1&gt;&lt;h2 id=&quot;AWS&quot;&gt;&lt;a href=&quot;#AWS&quot; class=&quot;headerlink&quot; title=&quot;AWS&quot;&gt;&lt;/a&gt;AWS&lt;/h2&gt;&lt;h2 id=&quot;阿里云&quot;&gt;&lt;a href=&quot;#阿里云&quot; class=&quot;headerlink&quot; title=&quot;阿里云&quot;&gt;&lt;/a&gt;阿里云&lt;/h2&gt;&lt;h2 id=&quot;coding&quot;&gt;&lt;a href=&quot;#coding&quot; class=&quot;headerlink&quot; title=&quot;coding&quot;&gt;&lt;/a&gt;coding&lt;/h2&gt;&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/getstart&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnode社区新手入门&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;重前端&quot;&gt;&lt;a href=&quot;#重前端&quot; class=&quot;headerlink&quot; title=&quot;重前端&quot;&gt;&lt;/a&gt;重前端&lt;/h3&gt;&lt;p&gt;以angular为主。虽然还是用到了node等,但业务逻辑什么的大多数由类似&lt;code&gt;angular,react,vue&lt;/code&gt;这样的前端框架来完成。当然还有mongodb,但项目中mongoose用的多。&lt;/p&gt;
+&lt;h3 id=&quot;重后端&quot;&gt;&lt;a href=&quot;#重后端&quot; class=&quot;headerlink&quot; title=&quot;重后端&quot;&gt;&lt;/a&gt;重后端&lt;/h3&gt;&lt;p&gt;直接用node+express或node+koa就行了。不用前端框架。比如&lt;a href=&quot;https://github.com/cnodejs/nodeclub&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnode社区源码&lt;/a&gt;就是直接用Node.js 和 MongoDB 开发的社区系统。也被很多人拿来做二次开发。在github上搜索cnode可以搜到很多。&lt;/p&gt;
+&lt;h3 id=&quot;Restful-API&quot;&gt;&lt;a href=&quot;#Restful-API&quot; class=&quot;headerlink&quot; title=&quot;Restful API&quot;&gt;&lt;/a&gt;Restful API&lt;/h3&gt;&lt;h1 id=&quot;打包构建工具&quot;&gt;&lt;a href=&quot;#打包构建工具&quot; class=&quot;headerlink&quot; title=&quot;打包构建工具&quot;&gt;&lt;/a&gt;打包构建工具&lt;/h1&gt;&lt;p&gt;不用这些工具,应用也能正常运行。但用了更好。就像嵌入式里用UCOS-II操作系统。也是这样。&lt;/p&gt;
+&lt;h2 id=&quot;Grunt-vs-Gulp&quot;&gt;&lt;a href=&quot;#Grunt-vs-Gulp&quot; class=&quot;headerlink&quot; title=&quot;Grunt vs Gulp&quot;&gt;&lt;/a&gt;Grunt vs Gulp&lt;/h2&gt;&lt;h2 id=&quot;Browserify-vs-Webpack&quot;&gt;&lt;a href=&quot;#Browserify-vs-Webpack&quot; class=&quot;headerlink&quot; title=&quot;Browserify vs Webpack&quot;&gt;&lt;/a&gt;Browserify vs Webpack&lt;/h2&gt;&lt;h1 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h1&gt;&lt;h2 id=&quot;AWS&quot;&gt;&lt;a href=&quot;#AWS&quot; class=&quot;headerlink&quot; title=&quot;AWS&quot;&gt;&lt;/a&gt;AWS&lt;/h2&gt;&lt;h2 id=&quot;阿里云&quot;&gt;&lt;a href=&quot;#阿里云&quot; class=&quot;headerlink&quot; title=&quot;阿里云&quot;&gt;&lt;/a&gt;阿里云&lt;/h2&gt;&lt;h2 id=&quot;leancloud&quot;&gt;&lt;a href=&quot;#leancloud&quot; class=&quot;headerlink&quot; title=&quot;leancloud&quot;&gt;&lt;/a&gt;leancloud&lt;/h2&gt;&lt;h2 id=&quot;coding&quot;&gt;&lt;a href=&quot;#coding&quot; class=&quot;headerlink&quot; title=&quot;coding&quot;&gt;&lt;/a&gt;coding&lt;/h2&gt;&lt;h1 id=&quot;移动端&quot;&gt;&lt;a href=&quot;#移动端&quot; class=&quot;headerlink&quot; title=&quot;移动端&quot;&gt;&lt;/a&gt;移动端&lt;/h1&gt;&lt;p&gt;不得不说JS全栈的好处。能干的活非常多。对于讲究开发效率的互联网产品来说,这是非常重要的。JS能够这么流行的一个重要原因在于:强大的开源社区。人多了,解决方案自然也多了。JS刚出道的时候还只能写一些网页脚本,现在已经无处不在。&lt;/p&gt;
+&lt;h2 id=&quot;reactjs&quot;&gt;&lt;a href=&quot;#reactjs&quot; class=&quot;headerlink&quot; title=&quot;reactjs&quot;&gt;&lt;/a&gt;reactjs&lt;/h2&gt;&lt;h2 id=&quot;ionic&quot;&gt;&lt;a href=&quot;#ionic&quot; class=&quot;headerlink&quot; title=&quot;ionic&quot;&gt;&lt;/a&gt;ionic&lt;/h2&gt;&lt;h1 id=&quot;客户端&quot;&gt;&lt;a href=&quot;#客户端&quot; class=&quot;headerlink&quot; title=&quot;客户端&quot;&gt;&lt;/a&gt;客户端&lt;/h1&gt;&lt;h2 id=&quot;Electron&quot;&gt;&lt;a href=&quot;#Electron&quot; class=&quot;headerlink&quot; title=&quot;Electron&quot;&gt;&lt;/a&gt;Electron&lt;/h2&gt;&lt;h1 id=&quot;嵌入式&quot;&gt;&lt;a href=&quot;#嵌入式&quot; class=&quot;headerlink&quot; title=&quot;嵌入式&quot;&gt;&lt;/a&gt;嵌入式&lt;/h1&gt;&lt;h2 id=&quot;Tessel&quot;&gt;&lt;a href=&quot;#Tessel&quot; class=&quot;headerlink&quot; title=&quot;Tessel&quot;&gt;&lt;/a&gt;Tessel&lt;/h2&gt;&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/getstart&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnode社区新手入门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;《node与express开发》&lt;/p&gt;
+&lt;p&gt;《Nodejs实战》&lt;/p&gt;
+&lt;p&gt;《Nodejs实战》第2季&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -1092,10 +1100,11 @@ compile &amp;apos;com.android.support:design:23.3.0&amp;apos;
     <link href="http://yoursite.com/2016/05/02/Nodeclub%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2016/05/02/Nodeclub源码分析/</id>
     <published>2016-05-02T09:36:51.000Z</published>
-    <updated>2016-06-21T05:31:46.000Z</updated>
+    <updated>2016-06-21T13:02:30.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;h1 id=&quot;nodejs&quot;&gt;&lt;a href=&quot;#nodejs&quot; class=&quot;headerlink&quot; title=&quot;nodejs&quot;&gt;&lt;/a&gt;nodejs&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;这部分内容可以独立出来另外写一篇博客&lt;/strong&gt;&lt;/p&gt;
-&lt;h2 id=&quot;安装nodejs&quot;&gt;&lt;a href=&quot;#安装nodejs&quot; class=&quot;headerlink&quot; title=&quot;安装nodejs&quot;&gt;&lt;/a&gt;安装nodejs&lt;/h2&gt;&lt;h3 id=&quot;安装nvm&quot;&gt;&lt;a href=&quot;#安装nvm&quot; class=&quot;headerlink&quot; title=&quot;安装nvm&quot;&gt;&lt;/a&gt;安装nvm&lt;/h3&gt;&lt;h3 id=&quot;安装node-npm&quot;&gt;&lt;a href=&quot;#安装node-npm&quot; class=&quot;headerlink&quot; title=&quot;安装node,npm&quot;&gt;&lt;/a&gt;安装node,npm&lt;/h3&gt;&lt;h1 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h1&gt;&lt;h2 id=&quot;express构建项目的2种方式&quot;&gt;&lt;a href=&quot;#express构建项目的2种方式&quot; class=&quot;headerlink&quot; title=&quot;express构建项目的2种方式&quot;&gt;&lt;/a&gt;express构建项目的2种方式&lt;/h2&gt;&lt;h1 id=&quot;mongodb&quot;&gt;&lt;a href=&quot;#mongodb&quot; class=&quot;headerlink&quot; title=&quot;mongodb&quot;&gt;&lt;/a&gt;mongodb&lt;/h1&gt;&lt;h1 id=&quot;mongoose&quot;&gt;&lt;a href=&quot;#mongoose&quot; class=&quot;headerlink&quot; title=&quot;mongoose&quot;&gt;&lt;/a&gt;mongoose&lt;/h1&gt;&lt;h1 id=&quot;redis&quot;&gt;&lt;a href=&quot;#redis&quot; class=&quot;headerlink&quot; title=&quot;redis&quot;&gt;&lt;/a&gt;redis&lt;/h1&gt;&lt;h1 id=&quot;angular-js&quot;&gt;&lt;a href=&quot;#angular-js&quot; class=&quot;headerlink&quot; title=&quot;angular.js&quot;&gt;&lt;/a&gt;angular.js&lt;/h1&gt;&lt;h1 id=&quot;Nodeclub&quot;&gt;&lt;a href=&quot;#Nodeclub&quot; class=&quot;headerlink&quot; title=&quot;Nodeclub&quot;&gt;&lt;/a&gt;Nodeclub&lt;/h1&gt;&lt;h2 id=&quot;fork-Nodeclub-clone到本地&quot;&gt;&lt;a href=&quot;#fork-Nodeclub-clone到本地&quot; class=&quot;headerlink&quot; title=&quot;fork Nodeclub,clone到本地&quot;&gt;&lt;/a&gt;fork Nodeclub,clone到本地&lt;/h2&gt;&lt;h2 id=&quot;建立exercise-branch&quot;&gt;&lt;a href=&quot;#建立exercise-branch&quot; class=&quot;headerlink&quot; title=&quot;建立exercise branch&quot;&gt;&lt;/a&gt;建立exercise branch&lt;/h2&gt;&lt;h2 id=&quot;运行Nodeclub&quot;&gt;&lt;a href=&quot;#运行Nodeclub&quot; class=&quot;headerlink&quot; title=&quot;运行Nodeclub&quot;&gt;&lt;/a&gt;运行Nodeclub&lt;/h2&gt;&lt;p&gt;按照&lt;a href=&quot;https://github.com/cnodejs/nodeclub&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Nodeclub README&lt;/a&gt;上的说明。&lt;br&gt;终端输入以下命令:&lt;/p&gt;
+    <content type="html">&lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;h1 id=&quot;nodejs&quot;&gt;&lt;a href=&quot;#nodejs&quot; class=&quot;headerlink&quot; title=&quot;nodejs&quot;&gt;&lt;/a&gt;nodejs&lt;/h1&gt;&lt;p&gt;&lt;strong&gt; 这部分内容可以独立出来另外写一篇博客 &lt;/strong&gt;&lt;/p&gt;
+&lt;h2 id=&quot;安装nodejs&quot;&gt;&lt;a href=&quot;#安装nodejs&quot; class=&quot;headerlink&quot; title=&quot;安装nodejs&quot;&gt;&lt;/a&gt;安装nodejs&lt;/h2&gt;&lt;h3 id=&quot;安装nvm&quot;&gt;&lt;a href=&quot;#安装nvm&quot; class=&quot;headerlink&quot; title=&quot;安装nvm&quot;&gt;&lt;/a&gt;安装nvm&lt;/h3&gt;&lt;h3 id=&quot;安装node-npm&quot;&gt;&lt;a href=&quot;#安装node-npm&quot; class=&quot;headerlink&quot; title=&quot;安装node,npm&quot;&gt;&lt;/a&gt;安装node,npm&lt;/h3&gt;&lt;h1 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h1&gt;&lt;h2 id=&quot;express构建项目的2种方式&quot;&gt;&lt;a href=&quot;#express构建项目的2种方式&quot; class=&quot;headerlink&quot; title=&quot;express构建项目的2种方式&quot;&gt;&lt;/a&gt;express构建项目的2种方式&lt;/h2&gt;&lt;h1 id=&quot;mongodb&quot;&gt;&lt;a href=&quot;#mongodb&quot; class=&quot;headerlink&quot; title=&quot;mongodb&quot;&gt;&lt;/a&gt;mongodb&lt;/h1&gt;&lt;h1 id=&quot;mongoose&quot;&gt;&lt;a href=&quot;#mongoose&quot; class=&quot;headerlink&quot; title=&quot;mongoose&quot;&gt;&lt;/a&gt;mongoose&lt;/h1&gt;&lt;h1 id=&quot;redis&quot;&gt;&lt;a href=&quot;#redis&quot; class=&quot;headerlink&quot; title=&quot;redis&quot;&gt;&lt;/a&gt;redis&lt;/h1&gt;&lt;h1 id=&quot;angular-js&quot;&gt;&lt;a href=&quot;#angular-js&quot; class=&quot;headerlink&quot; title=&quot;angular.js&quot;&gt;&lt;/a&gt;angular.js&lt;/h1&gt;&lt;p&gt;上述的这些部分在《nodejs环境搭建》中。&lt;/p&gt;
+&lt;h1 id=&quot;Nodeclub&quot;&gt;&lt;a href=&quot;#Nodeclub&quot; class=&quot;headerlink&quot; title=&quot;Nodeclub&quot;&gt;&lt;/a&gt;Nodeclub&lt;/h1&gt;&lt;h2 id=&quot;fork-Nodeclub-clone到本地&quot;&gt;&lt;a href=&quot;#fork-Nodeclub-clone到本地&quot; class=&quot;headerlink&quot; title=&quot;fork Nodeclub,clone到本地&quot;&gt;&lt;/a&gt;fork Nodeclub,clone到本地&lt;/h2&gt;&lt;h2 id=&quot;建立exercise-branch&quot;&gt;&lt;a href=&quot;#建立exercise-branch&quot; class=&quot;headerlink&quot; title=&quot;建立exercise branch&quot;&gt;&lt;/a&gt;建立exercise branch&lt;/h2&gt;&lt;h2 id=&quot;运行Nodeclub&quot;&gt;&lt;a href=&quot;#运行Nodeclub&quot; class=&quot;headerlink&quot; title=&quot;运行Nodeclub&quot;&gt;&lt;/a&gt;运行Nodeclub&lt;/h2&gt;&lt;p&gt;按照&lt;a href=&quot;https://github.com/cnodejs/nodeclub&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Nodeclub README&lt;/a&gt;上的说明。&lt;br&gt;终端输入以下命令:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;redis-server&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;redis-cli&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;mongod&lt;/code&gt;&lt;/p&gt;
@@ -1104,7 +1113,136 @@ compile &amp;apos;com.android.support:design:23.3.0&amp;apos;
 &lt;p&gt;&lt;code&gt;sudo supervisor app.js&lt;/code&gt; //需用npm安装supervisor,否则用&lt;code&gt;node app.js&lt;/code&gt;也可以.注意加上sudo,否则有时会报错&lt;/p&gt;
 &lt;p&gt;浏览器中打开&lt;a href=&quot;http://localhost:3000/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:3000/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodejs121.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;邮箱验证&quot;&gt;&lt;a href=&quot;#邮箱验证&quot; class=&quot;headerlink&quot; title=&quot;邮箱验证&quot;&gt;&lt;/a&gt;邮箱验证&lt;/h2&gt;&lt;h2 id=&quot;源码分析&quot;&gt;&lt;a href=&quot;#源码分析&quot; class=&quot;headerlink&quot; title=&quot;源码分析&quot;&gt;&lt;/a&gt;源码分析&lt;/h2&gt;&lt;h2 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference:&quot;&gt;&lt;/a&gt;Reference:&lt;/h2&gt;&lt;h3 id=&quot;N-blog&quot;&gt;&lt;a href=&quot;#N-blog&quot; class=&quot;headerlink&quot; title=&quot;N-blog&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/nswbmw/N-blog/wiki/_pages&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;N-blog&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;《nodejs实战》&quot;&gt;&lt;a href=&quot;#《nodejs实战》&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》&quot;&gt;&lt;/a&gt;《nodejs实战》&lt;/h3&gt;&lt;h3 id=&quot;《nodejs实战》第2季&quot;&gt;&lt;a href=&quot;#《nodejs实战》第2季&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》第2季&quot;&gt;&lt;/a&gt;《nodejs实战》第2季&lt;/h3&gt;&lt;h2 id=&quot;To-do-list&quot;&gt;&lt;a href=&quot;#To-do-list&quot; class=&quot;headerlink&quot; title=&quot;To do list:&quot;&gt;&lt;/a&gt;To do list:&lt;/h2&gt;</content>
+&lt;h2 id=&quot;注册账户&quot;&gt;&lt;a href=&quot;#注册账户&quot; class=&quot;headerlink&quot; title=&quot;注册账户&quot;&gt;&lt;/a&gt;注册账户&lt;/h2&gt;&lt;h3 id=&quot;邮箱验证&quot;&gt;&lt;a href=&quot;#邮箱验证&quot; class=&quot;headerlink&quot; title=&quot;邮箱验证&quot;&gt;&lt;/a&gt;邮箱验证&lt;/h3&gt;&lt;p&gt;debug 模式不会发邮件.&lt;/p&gt;
+&lt;p&gt;debug false则打不开网页。&lt;/p&gt;
+&lt;p&gt;models/user.js中把&lt;br&gt;  active: { type: Boolean, default: true },//把false改为true，但没用&lt;/p&gt;
+&lt;p&gt;虽然验证不了邮箱,但可以通过修改mongodb中model配置来让注册的用户名能够登录。&lt;/p&gt;
+&lt;h3 id=&quot;使用robomongo&quot;&gt;&lt;a href=&quot;#使用robomongo&quot; class=&quot;headerlink&quot; title=&quot;使用robomongo&quot;&gt;&lt;/a&gt;使用robomongo&lt;/h3&gt;&lt;p&gt;在robomongo里面容易看出model的信息。当然在终端敲mongodb的一些命令也是可以的,麻烦一些。&lt;/p&gt;
+&lt;p&gt;下载robomongo,运行nodeclub项目(上面要按照nodeclub项目说明敲几个命令),打开robomongo之后选择要连接的数据库。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;用 robomongo查了一下数据库，里面都是网站有一部分用户信息是nodeclub自带的。还有一部分则是自己放注册的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;也可以直接删除。也可以直接修改:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;把下面的false改为true。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;登录,OK。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-5.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;点击右侧的123qwe账户图标:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-6.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;进入&lt;a href=&quot;http://localhost:3000/user/123qwe&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:3000/user/123qwe&lt;/a&gt; :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-7.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;注册一个admin用户，密码也是admin,admin账户和普通账户的权限要多一些&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;进入&lt;a href=&quot;http://localhost:3000/user/admin&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:3000/user/admin&lt;/a&gt; :&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E4%BD%BF%E7%94%A8robomongo-8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;源码分析&quot;&gt;&lt;a href=&quot;#源码分析&quot; class=&quot;headerlink&quot; title=&quot;源码分析&quot;&gt;&lt;/a&gt;源码分析&lt;/h2&gt;&lt;h3 id=&quot;package-json&quot;&gt;&lt;a href=&quot;#package-json&quot; class=&quot;headerlink&quot; title=&quot;package.json&quot;&gt;&lt;/a&gt;package.json&lt;/h3&gt;&lt;p&gt;&lt;code&gt;package.json&lt;/code&gt;中包含了Nodejs项目的依赖。从&lt;code&gt;package.json&lt;/code&gt;大致可以看出nodeclub的架构。&lt;/p&gt;
+&lt;p&gt;如比:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;express&lt;/code&gt;:基本的web框架&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mongodb&lt;/code&gt;:数据库&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mongoose&lt;/code&gt;: orm&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;EventProxy&lt;/code&gt;:事件管理&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;connect-mongo&lt;/code&gt;: session&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nodemailer&lt;/code&gt;：邮件&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;mocha, should&lt;/code&gt;:测试&lt;/p&gt;
+&lt;p&gt;……&lt;/p&gt;
+&lt;h3 id=&quot;nodejs自带模块&quot;&gt;&lt;a href=&quot;#nodejs自带模块&quot; class=&quot;headerlink&quot; title=&quot;nodejs自带模块&quot;&gt;&lt;/a&gt;nodejs自带模块&lt;/h3&gt;&lt;p&gt;package.json中都是从npm上下载的模块。但项目中不可避免要用到nodejs自带的模块,比如用于加密解密的&lt;code&gt;crypto&lt;/code&gt;,用于路径处理的&lt;code&gt;Path&lt;/code&gt;.这些对象的用法可以在&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nodejs官网&lt;/a&gt;上查询。&lt;/p&gt;
+&lt;h3 id=&quot;MVC架构&quot;&gt;&lt;a href=&quot;#MVC架构&quot; class=&quot;headerlink&quot; title=&quot;MVC架构&quot;&gt;&lt;/a&gt;MVC架构&lt;/h3&gt;&lt;p&gt;nodeclub 以 express + mongodb + mongoose 作为基本框架。这个在它的工程目录里也可以看出:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Model&lt;/code&gt;: 对应mongoose orm， models目录&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;view：&lt;/code&gt; ejs模板， views目录&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;controler&lt;/code&gt;：express middleware , contollers目录&lt;/p&gt;
+&lt;h3 id=&quot;工程目录&quot;&gt;&lt;a href=&quot;#工程目录&quot; class=&quot;headerlink&quot; title=&quot;工程目录&quot;&gt;&lt;/a&gt;工程目录&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclub%E5%B7%A5%E7%A8%8B%E7%9B%AE%E5%BD%95.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;执行流程&quot;&gt;&lt;a href=&quot;#执行流程&quot; class=&quot;headerlink&quot; title=&quot;执行流程&quot;&gt;&lt;/a&gt;执行流程&lt;/h3&gt;&lt;h4 id=&quot;入口程序app-js&quot;&gt;&lt;a href=&quot;#入口程序app-js&quot; class=&quot;headerlink&quot; title=&quot;入口程序app.js&quot;&gt;&lt;/a&gt;入口程序app.js&lt;/h4&gt;&lt;p&gt;require(./config)&lt;/p&gt;
+&lt;p&gt;require(‘./models’)&lt;/p&gt;
+&lt;h3 id=&quot;models&quot;&gt;&lt;a href=&quot;#models&quot; class=&quot;headerlink&quot; title=&quot;models&quot;&gt;&lt;/a&gt;models&lt;/h3&gt;&lt;h4 id=&quot;index-js&quot;&gt;&lt;a href=&quot;#index-js&quot; class=&quot;headerlink&quot; title=&quot;index.js&quot;&gt;&lt;/a&gt;index.js&lt;/h4&gt;&lt;p&gt;里面的&lt;code&gt;require&lt;/code&gt;和&lt;code&gt;module.exports&lt;/code&gt;类似于C语言中的&lt;code&gt;#include(针对文件模块)&lt;/code&gt;和&lt;code&gt;extern(针对变量)&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;index.js大概完成了这几件事情:&lt;/p&gt;
+&lt;p&gt;require models中其它的一些模块。&lt;/p&gt;
+&lt;p&gt;connect mongoose&lt;/p&gt;
+&lt;p&gt;exports models中的对象供其他模块使用。&lt;/p&gt;
+&lt;p&gt;代码比较一致,如下:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmodel-index.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;models中有这些model的schema设计:user(基本用户信息),topic话题,tag标签系统,关系,消息(回复消息,关注和@消息)&lt;/p&gt;
+&lt;p&gt;以消息model为例,在&lt;code&gt;models/message.js&lt;/code&gt;中，可以知道消息大概有这几种:&lt;/p&gt;
+&lt;p&gt;*&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;type:&lt;/li&gt;
+&lt;li&gt;reply: xx 回复了你的话题&lt;/li&gt;
+&lt;li&gt;reply2: xx 在话题中回复了你&lt;/li&gt;
+&lt;li&gt;follow: xx 关注了你&lt;/li&gt;
+&lt;li&gt;at: xx ＠了你&lt;br&gt;*/&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;controllers/message.js至少要承担起这个任务:用户在view中处理消息，你要响应。你还得从models中读取消息列表。controllers/message.js做的事情就是综合view 的用户输入以及models的数据库设计和记录来做出响应。主要是做这些逻辑。&lt;/p&gt;
+&lt;p&gt;根据事件分类，这里面采用异步来处理，具体使用eventproxy。&lt;br&gt;可以看到controllers，models，proxy等文件夹中有些模块是同名的。&lt;/p&gt;
+&lt;p&gt;也就是说这里把数据，功能等分开了。即使是功能，也还有分类。&lt;br&gt;所以最基础的是model的设计。&lt;/p&gt;
+&lt;h3 id=&quot;controllers&quot;&gt;&lt;a href=&quot;#controllers&quot; class=&quot;headerlink&quot; title=&quot;controllers&quot;&gt;&lt;/a&gt;controllers&lt;/h3&gt;&lt;p&gt;controllers/message.js是对已读消息/未读消息，已读消息/未读消息列表进行处理。&lt;/p&gt;
+&lt;p&gt;回复models/reply.js也是这样的。controllers/reply.js是对消息进行回复，这里的消息包括了所有消息种类。&lt;/p&gt;
+&lt;p&gt;用户里接触到的是view,与view交互产生http请求。我们的controller就是处理这些请求的方法。期间要对数据库进行增删查改的操作。&lt;/p&gt;
+&lt;p&gt;比如我们点击账户名进入:&lt;a href=&quot;http://localhost:3000/user/1234qwer,可以观察终端到底发生了什么&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:3000/user/1234qwer,可以观察终端到底发生了什么&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;…&lt;/p&gt;
+&lt;p&gt;MONGO users.findOne {“conditions”:{“_id”:”56469eb62acb60901340ad91”},”options”:{},”collectionName”:”users”} 3ms&lt;/p&gt;
+&lt;p&gt;  MONGO replies.findOne {“conditions”:{“_id”:”5668b2de531540c8155eeae7”},”options”:{},”collectionName”:”replies”} 4ms&lt;/p&gt;
+&lt;p&gt;  MONGO users.findOne {“conditions”:{“_id”:”5641287b423cb5aa0c48bf23”},”options”:{},”collectionName”:”users”} 1ms&lt;/p&gt;
+&lt;p&gt;  Render view user/index (46ms)&lt;/p&gt;
+&lt;p&gt;Completed 200 (132ms)&lt;/p&gt;
+&lt;p&gt;前面还有很多，省略了.&lt;/p&gt;
+&lt;p&gt;从这里可以看出在浏览器中点击(view用户操作)之后程序的执行流程。上面终端看到的主要是数据库操作(model)，和页面渲染(view)。&lt;/p&gt;
+&lt;p&gt;比如在页面上(view)点击删除按钮: (这条记录是用户1234qwer回复alsotang的reply  message，关于reply  message的区别可以看models中的模块中的数据库设计，它们里面都有reply_id)&lt;/p&gt;
+&lt;p&gt;  MONGO replies.findOne {“conditions”:{“_id”:”565acb03e473433f209e7ea6”},”options”:{},”collectionName”:”replies”} 1ms&lt;/p&gt;
+&lt;p&gt;  MONGO users.findOne {“conditions”:{“_id”:”565ac983e473433f209e7ea5”},”options”:{},”collectionName”:”users”} 1ms&lt;br&gt;Completed 200 (62ms)&lt;/p&gt;
+&lt;p&gt;  MONGO topics.findOne {“conditions”:{“_id”:”56469eb62acb60901340ad94”},”options”:{},”collectionName”:”topics”} 2ms&lt;/p&gt;
+&lt;p&gt;  MONGO replies.find {“conditions”:{“deleted”:false,”topic_id”:”56469eb62acb60901340ad94”},”options”:{“sort”:{“create_at”:-1},”limit”:1,”fields”:{“_id”:1}},”collectionName”:”replies”} 2ms&lt;/p&gt;
+&lt;p&gt;然后再去对照controllers/reply.js中的代码：删除回复信息&lt;br&gt;exports.delete = function (req, res, next) { …}&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;其他的还有:&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;controllers/rss.js   订阅处理&lt;/p&gt;
+&lt;p&gt;controllers/search.js   搜索处理&lt;br&gt;res.redirect(‘&lt;a href=&quot;https://www.google.com.hk/#hl=zh-CN&amp;amp;q=site:cnodejs.org+&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://www.google.com.hk/#hl=zh-CN&amp;amp;q=site:cnodejs.org+&lt;/a&gt;‘ + q);//用的是Google&lt;/p&gt;
+&lt;p&gt;controllers/sign.js   注册和登录&lt;/p&gt;
+&lt;p&gt;controllers/site.js    主要显示页面的一些分块内容&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubsite.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;controllers/static.js&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubsite-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;common中大部分都是在处理消息传递的。&lt;/p&gt;
+&lt;p&gt;store.js分为&lt;br&gt;store_qn.js(7牛)和store_local.js(本地)&lt;/p&gt;
+&lt;h4 id=&quot;exports和module-exports-js-引用和复制-传值和传址&quot;&gt;&lt;a href=&quot;#exports和module-exports-js-引用和复制-传值和传址&quot; class=&quot;headerlink&quot; title=&quot;exports和module.exports,js- 引用和复制(传值和传址)&quot;&gt;&lt;/a&gt;exports和module.exports,js- 引用和复制(传值和传址)&lt;/h4&gt;&lt;p&gt;js中几种数据类型分别传的什么&lt;/p&gt;
+&lt;p&gt;引用：对象、数组、函数&lt;/p&gt;
+&lt;p&gt;复制：数字、布尔&lt;/p&gt;
+&lt;h3 id=&quot;express的中间件-middleware&quot;&gt;&lt;a href=&quot;#express的中间件-middleware&quot; class=&quot;headerlink&quot; title=&quot;express的中间件(middleware)&quot;&gt;&lt;/a&gt;express的中间件(middleware)&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/topic/535601a20d7d0faf140303d8&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;通过 nodeclub 项目源码来讲解如何做一个 nodejs + express + mongodb 项目&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;express 的基础是 middleware，或者说 express 的基础是 connect，connect 的基础是 middleware。middleware 模式 相当于一个加工流水线（大家叫 middleware stack），每一个 middleware 相当于一个加工步骤，当出现一个 http 请求的时候，http 请求会挨着每个 middleware 执行下去。&lt;br&gt;express 里处理一个请求的过程基本上就是请求通过 middleware stack 的过程：  * -&amp;gt; middlewares -&amp;gt; 路由 -&amp;gt; controllers -&amp;gt; errorhandlering。&lt;/p&gt;
+&lt;p&gt;middleware 怎样做到异步的方法呢？ middleware 使用 promise 的方式来处理异步，所有每个 middleware 都有三个参数 req, res, next, 对于异步的情况， 必须要调用 next() 方法。不然后续的 middleware 就无法执行。 ps: debug 的时候没调用 next() 还不会报错，一定注意.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;auth.js&lt;/code&gt; exports 出来的函数全部都是中间件.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmiddleware-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;web_router.js&lt;/code&gt;中处理get或post请求的时候会调用这些中间件:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubmiddleware-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;EventProxy&quot;&gt;&lt;a href=&quot;#EventProxy&quot; class=&quot;headerlink&quot; title=&quot;EventProxy&quot;&gt;&lt;/a&gt;EventProxy&lt;/h3&gt;&lt;p&gt;eventProxy是一款非常好用的javascript事件管理系统&lt;/p&gt;
+&lt;p&gt;事件与回调&lt;/p&gt;
+&lt;h4 id=&quot;HTML-DOM事件-前端&quot;&gt;&lt;a href=&quot;#HTML-DOM事件-前端&quot; class=&quot;headerlink&quot; title=&quot;HTML DOM事件(前端)&quot;&gt;&lt;/a&gt;HTML DOM事件(前端)&lt;/h4&gt;&lt;p&gt;HTML DOM 使 JavaScript 有能力对 HTML 事件做出反应。我们可以在事件发生时执行 JavaScript，比如当用户在 HTML 元素上点击时。HTML有一些事件,比如常见的鼠标和键盘事件。事件通常与函数配合使用，这样就可以通过发生的事件来驱动函数执行。&lt;/p&gt;
+&lt;p&gt;在&lt;a href=&quot;http://www.w3school.com.cn/js/js_htmldom_events.asp&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript HTML DOM 事件&lt;/a&gt;上介绍了常见的一些HTML事件例子如:&lt;code&gt;当用户点击鼠标时&lt;/code&gt;,&lt;code&gt;当网页已加载时&lt;/code&gt;,&lt;code&gt;当提交 HTML 表单时&lt;/code&gt;。&lt;/p&gt;
+&lt;h4 id=&quot;Nodejs的事件机制-后端&quot;&gt;&lt;a href=&quot;#Nodejs的事件机制-后端&quot; class=&quot;headerlink&quot; title=&quot;Nodejs的事件机制(后端)&quot;&gt;&lt;/a&gt;Nodejs的事件机制(后端)&lt;/h4&gt;&lt;p&gt;&lt;a href=&quot;http://www.infoq.com/cn/articles/tyq-nodejs-event&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入浅出Node.js（四）：Node.js的事件机制&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;前端中,DOM上的各种事件是异步的。在Ajax大规模应用之后，异步请求更得到广泛的认同，而Ajax亦是基于事件机制的。在Rhino中，文件读取等操作，均是同步操作进行的。这在性能上并没有明显的优势。而nodejs充分利用用异步IO突破单线程编程模型的性能瓶颈，使得JavaScript在后端达到实用价值。同时也统一了前后端JavaScript的编程模型。Node.js通过异步机制使请求之间无阻塞，达到并行请求的目的，但对于多个事件响应结果的协调并非被Node.js原生优雅地支持。为此,《深入浅出nodejs》的作者朴灵写了EventProxy模块来实现多事件协作。nodeclub也是朴灵写的,用的事件管理系统也是EventProxy模块。&lt;/p&gt;
+&lt;p&gt;Node Club涉及到的异步操作不多，这部分内容大部分都被eventProxy代劳，只有在图片上传文件移动中有涉及。&lt;/p&gt;
+&lt;p&gt;原理与Nodejs的Event模块类似。使用了事件侦听器模式和回调。例如:(摘自&lt;a href=&quot;http://www.infoq.com/cn/articles/tyq-nodejs-event&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入浅出Node.js（四）：Node.js的事件机制&lt;/a&gt;)&lt;/p&gt;
+&lt;p&gt;var proxy = new EventProxy();&lt;/p&gt;
+&lt;p&gt;proxy.all(“profile”, “timeline”, “skin”, function&lt;br&gt; (profile, timeline, skin) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// TODO
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;});&lt;/p&gt;
+&lt;p&gt;api.getUser(“username”, function (profile) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;proxy.emit(&amp;quot;profile&amp;quot;, profile);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;});&lt;/p&gt;
+&lt;p&gt;api.getTimeline(“username”, function (timeline) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;proxy.emit(&amp;quot;timeline&amp;quot;, timeline);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;});&lt;/p&gt;
+&lt;p&gt;api.getSkin(“username”, function (skin) {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;proxy.emit(&amp;quot;skin&amp;quot;, skin);
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;});&lt;/p&gt;
+&lt;p&gt;all方法侦听完profile、timeline、skin三个方法后，执行回调函数，并将侦听接收到的数据传入。&lt;/p&gt;
+&lt;p&gt;EventProxy还利用事件队列解决雪崩问题。所谓雪崩问题，是在缓存失效的情景下，大并发高访问量同时涌入数据库中查询，数据库无法同时承受如此大的查询请求，进而往前影响到网站整体响应缓慢。EventProxy对象的once方法，将所有请求的回调都压入事件队列中，并利用其执行一次就会将监视器移除的特点，保证每一个回调只会被执行一次。&lt;/p&gt;
+&lt;h4 id=&quot;EventProxy在nodeclub中的使用&quot;&gt;&lt;a href=&quot;#EventProxy在nodeclub中的使用&quot; class=&quot;headerlink&quot; title=&quot;EventProxy在nodeclub中的使用&quot;&gt;&lt;/a&gt;EventProxy在nodeclub中的使用&lt;/h4&gt;&lt;p&gt;依然以消息(message)的处理为例:&lt;/p&gt;
+&lt;p&gt;在controllers/message.js中:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodeclubeventproxy.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;//待完成&lt;/p&gt;
+&lt;h4 id=&quot;EventProxy源码&quot;&gt;&lt;a href=&quot;#EventProxy源码&quot; class=&quot;headerlink&quot; title=&quot;EventProxy源码&quot;&gt;&lt;/a&gt;EventProxy源码&lt;/h4&gt;&lt;p&gt;//待完成&lt;/p&gt;
+&lt;h3 id=&quot;消息&quot;&gt;&lt;a href=&quot;#消息&quot; class=&quot;headerlink&quot; title=&quot;消息&quot;&gt;&lt;/a&gt;消息&lt;/h3&gt;&lt;h3 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h3&gt;&lt;h2 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference:&quot;&gt;&lt;/a&gt;Reference:&lt;/h2&gt;&lt;p&gt;###&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/nswbmw/N-blog/wiki/_pages&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;N-blog&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/topic/504b4924e2b84515770103dd&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mongoose学习参考文档——基础篇&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;《nodejs实战》&quot;&gt;&lt;a href=&quot;#《nodejs实战》&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》&quot;&gt;&lt;/a&gt;《nodejs实战》&lt;/h3&gt;&lt;h3 id=&quot;《nodejs实战》第2季&quot;&gt;&lt;a href=&quot;#《nodejs实战》第2季&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》第2季&quot;&gt;&lt;/a&gt;《nodejs实战》第2季&lt;/h3&gt;&lt;h3 id=&quot;《深入浅出nodejs》&quot;&gt;&lt;a href=&quot;#《深入浅出nodejs》&quot; class=&quot;headerlink&quot; title=&quot;《深入浅出nodejs》&quot;&gt;&lt;/a&gt;《深入浅出nodejs》&lt;/h3&gt;&lt;h3 id=&quot;《node与express开发》&quot;&gt;&lt;a href=&quot;#《node与express开发》&quot; class=&quot;headerlink&quot; title=&quot;《node与express开发》&quot;&gt;&lt;/a&gt;《node与express开发》&lt;/h3&gt;&lt;h2 id=&quot;To-do-list&quot;&gt;&lt;a href=&quot;#To-do-list&quot; class=&quot;headerlink&quot; title=&quot;To do list:&quot;&gt;&lt;/a&gt;To do list:&lt;/h2&gt;</content>
     
     <summary type="html">
     
