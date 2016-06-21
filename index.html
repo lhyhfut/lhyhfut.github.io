@@ -212,6 +212,141 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/21/node入门/" itemprop="url">
+                  node入门
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-06-21T12:33:01+08:00" content="2016-06-21">
+              2016-06-21
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这里总结一下。</p>
+<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><h2 id="官方安装node"><a href="#官方安装node" class="headerlink" title="官方安装node"></a>官方安装node</h2><p>可以在<a href="https://nodejs.org/en/" target="_blank" rel="external">官网</a>上下载pkg文件安装。node和npm的执行文件都在/usr/local/bin/里。 /usr/local/lib/node_modules/npm/usr/local/lib/node_modules/n/bin 则是实际上存放npm和n的地方。n是一个用来管理nodejs版本的包。但不用这个,下面会用到nvm,更方便一些。</p>
+<h2 id="官方删除node"><a href="#官方删除node" class="headerlink" title="官方删除node"></a>官方删除node</h2><p>MAC下卸载软件很多直接删除安装包就行了。但node的一些文件在系统目录和用户目录里都有,你得找到全部,逐一删除。比较麻烦。这也是推荐用nvm的一个原因。你可以用nvm卸载node。nvm自身的删除也比较简单,nvm及它安装的node都在用户目录下的.nvm文件夹,删除,升级都很方便。</p>
+<p>终端：</p>
+<p><code>lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom | while read f; do  sudo rm /usr/local/${f}; done</code><br>会删除一部分</p>
+<p><code>sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*</code><br>又会删除一部分</p>
+<p>再执行</p>
+<p><code>sudo rm -rf ~/.npm</code></p>
+<p><code>sudo rm -rf ~/.node-gyp</code></p>
+<p><code>sudo rm -rf /usr/local/include/node</code></p>
+<p>主要集中在<code>/usr/local/</code>及username/liuhongyu/目录，也即用户目录和系统目录<br>比如/usr/local/bin下的n可执行文件。在这些文件夹中把与node有关的删除就行了。</p>
+<p>还有就是在<code>username/.bash_profile</code>中删除环境变量。</p>
+<h2 id="nvm安装"><a href="#nvm安装" class="headerlink" title="nvm安装"></a>nvm安装</h2><p>另一种方式是采用nvm安装。nvm和nodejs等是独立的。这样方便管理一些。并且用nvm安装node可以多个版本共存,切换起来也比较方便。在<a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm官方github</a>上有详细的安装过程。在MAC上也可以使用homebrew来安装,便于nvm自身的版本管理。不过我当初还是按照github上的说明安装的。</p>
+<p>MAC下nvm比较方便,但并不支持windows,不过nvm的作者推荐了windows上用<code>nvm-windows</code>。是由另外一个人完成的。</p>
+<p>当你<code>curl https://raw.githubusercontent.com/creationix/nvm/v0.17.2/install.sh | bash</code>的时候<br>会自动增加环境变量到.bash_profile中,也就是说不需要你手动添加环境变量了。</p>
+<h3 id="nvm的卸载"><a href="#nvm的卸载" class="headerlink" title="nvm的卸载"></a>nvm的卸载</h3><p>直接删除就行了。终端命令:<code>rm -rf ~/.nvm</code></p>
+<h3 id="nvm安装node-js"><a href="#nvm安装node-js" class="headerlink" title="nvm安装node.js"></a>nvm安装node.js</h3><p>终端输入<code>nvm</code>,会弹出一些文字说明,会告诉你一些nvm命令的使用方法。</p>
+<p>如<code>nvm install  v0.12.0</code></p>
+<p>node被安装到了<code>username/.nvm/versions/node/v0.12.0</code>里面<br>并且也有npm:<br><code>username/.nvm/versions/node/v0.12.0/lib/node_modules/npm</code></p>
+<h3 id="nvm卸载node"><a href="#nvm卸载node" class="headerlink" title="nvm卸载node"></a>nvm卸载node</h3><p><code>nvm uninstall &lt;version&gt;</code></p>
+<h3 id="nvm使用node"><a href="#nvm使用node" class="headerlink" title="nvm使用node"></a>nvm使用node</h3><p><code>nvm current</code></p>
+<p><code>nvm use 0.1.20</code></p>
+<h3 id="nvm自身升级"><a href="#nvm自身升级" class="headerlink" title="nvm自身升级"></a>nvm自身升级</h3><p>nvm的自身升级对node没有影响。但降级对node有影响</p>
+<h2 id="npm包管理器"><a href="#npm包管理器" class="headerlink" title="npm包管理器"></a>npm包管理器</h2><p>node的包都是由npm管理的。所以我们用nvm管理node(包括nvm自身),用npm管理node的包。npm安装包有2种方式:全局安装和本地安装。</p>
+<h3 id="全局安装"><a href="#全局安装" class="headerlink" title="全局安装"></a>全局安装</h3><p>安装敲命令的时候加上<code>-g</code>,比如以安装<code>hexo</code>为例:</p>
+<p><code>sudo npm install hexo -g</code></p>
+<p>这样安装的包就会像npm一样被安装在了<code>username/.nvm/versions/node/v0.12.0/lib/node_modules/</code>里面。然后被安装的包如’hexo’就可以全局使用了。</p>
+<h3 id="本地安装"><a href="#本地安装" class="headerlink" title="本地安装"></a>本地安装</h3><p>终端下切换到你的工程目录。</p>
+<p><code>npm install packagename</code></p>
+<p>这样就会在你的工程目录中生成node_modules文件夹,包会安装在这里。</p>
+<p>当然最好是:</p>
+<p><code>npm init</code></p>
+<p>这样会生成一个<code>package.json</code>,下次安装包的时候加上<code>-- save</code>后缀,就可以在<code>package.json</code>中保存包的信息。这样就比较方便在别处安装。比如你在github上clone别人的开源项目,一般是没有node_modules包的。因为这个比加大,push上去也没有必要。一般会push <code>package.json</code>,你clone到<code>package.json</code>以后直接<code>npm install</code>,就会安装<code>package.json</code>里面的所有包,比较方便。</p>
+<p>以express为例:</p>
+<p><code>npm install express --save</code></p>
+<p>这样express的信息就被记录在了<code>package.json</code>里,下次如果你要安装很多个包,就不需要一个一个安装了。直接<code>npm install</code>就行了。</p>
+<h2 id="node使用"><a href="#node使用" class="headerlink" title="node使用"></a>node使用</h2><p>node的文档在<a href="https://nodejs.org/en/docs/" target="_blank" rel="external">node官网</a>上。可以先练习一下相关的API。但了解一下即可。具体有项目需求自取查阅,这样学的快一些。</p>
+<h2 id="基于node的框架"><a href="#基于node的框架" class="headerlink" title="基于node的框架"></a>基于node的框架</h2><p>直接用node原生进行开发的项目应该是比较少的了。一般采用基于node的一些web框架如express和koa</p>
+<h3 id="express"><a href="#express" class="headerlink" title="express"></a>express</h3><h3 id="koa"><a href="#koa" class="headerlink" title="koa"></a>koa</h3><h2 id="MEAN快速构建网站"><a href="#MEAN快速构建网站" class="headerlink" title="MEAN快速构建网站"></a>MEAN快速构建网站</h2><p>MEAN:mongodb,express,angularjs,node</p>
+<h2 id="References"><a href="#References" class="headerlink" title="References"></a>References</h2><p><a href="https://cnodejs.org/getstart" target="_blank" rel="external">cnode社区新手入门</a></p>
+
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/20/C语言小结3/" itemprop="url">
                   C语言小结3
                 </a>
@@ -1813,111 +1948,6 @@ compile &apos;com.android.support:design:23.3.0&apos;
           <span itemprop="articleBody">
             
               
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/05/02/Nodeclub源码分析/" itemprop="url">
-                  Nodeclub源码分析
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-05-02T17:36:51+08:00" content="2016-05-02">
-              2016-05-02
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Technology/" itemprop="url" rel="index">
-                    <span itemprop="name">Technology</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><h1 id="nodejs"><a href="#nodejs" class="headerlink" title="nodejs"></a>nodejs</h1><p><strong>这部分内容可以独立出来另外写一篇博客</strong></p>
-<h2 id="安装nodejs"><a href="#安装nodejs" class="headerlink" title="安装nodejs"></a>安装nodejs</h2><h3 id="安装nvm"><a href="#安装nvm" class="headerlink" title="安装nvm"></a>安装nvm</h3><h3 id="安装node-npm"><a href="#安装node-npm" class="headerlink" title="安装node,npm"></a>安装node,npm</h3><h1 id="express"><a href="#express" class="headerlink" title="express"></a>express</h1><h2 id="express构建项目的2种方式"><a href="#express构建项目的2种方式" class="headerlink" title="express构建项目的2种方式"></a>express构建项目的2种方式</h2><h1 id="mongodb"><a href="#mongodb" class="headerlink" title="mongodb"></a>mongodb</h1><h1 id="mongoose"><a href="#mongoose" class="headerlink" title="mongoose"></a>mongoose</h1><h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><h1 id="angular-js"><a href="#angular-js" class="headerlink" title="angular.js"></a>angular.js</h1><h1 id="Nodeclub"><a href="#Nodeclub" class="headerlink" title="Nodeclub"></a>Nodeclub</h1><h2 id="fork-Nodeclub-clone到本地"><a href="#fork-Nodeclub-clone到本地" class="headerlink" title="fork Nodeclub,clone到本地"></a>fork Nodeclub,clone到本地</h2><h2 id="建立exercise-branch"><a href="#建立exercise-branch" class="headerlink" title="建立exercise branch"></a>建立exercise branch</h2><h2 id="运行Nodeclub"><a href="#运行Nodeclub" class="headerlink" title="运行Nodeclub"></a>运行Nodeclub</h2><p>按照<a href="https://github.com/cnodejs/nodeclub" target="_blank" rel="external">Nodeclub README</a>上的说明。<br>终端输入以下命令:</p>
-<p><code>redis-server</code></p>
-<p><code>redis-cli</code></p>
-<p><code>mongod</code></p>
-<p><code>mongo</code></p>
-<p><code>npm install</code> (切换到package.json所在目录,因为这个是在本地安装,而非全局安装)</p>
-<p><code>sudo supervisor app.js</code> //需用npm安装supervisor,否则用<code>node app.js</code>也可以.注意加上sudo,否则有时会报错</p>
-<p>浏览器中打开<a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/nodejs121.png" alt=""></p>
-<h2 id="邮箱验证"><a href="#邮箱验证" class="headerlink" title="邮箱验证"></a>邮箱验证</h2><h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><h2 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h2><h3 id="N-blog"><a href="#N-blog" class="headerlink" title="N-blog"></a><a href="https://github.com/nswbmw/N-blog/wiki/_pages" target="_blank" rel="external">N-blog</a></h3><h3 id="《nodejs实战》"><a href="#《nodejs实战》" class="headerlink" title="《nodejs实战》"></a>《nodejs实战》</h3><h3 id="《nodejs实战》第2季"><a href="#《nodejs实战》第2季" class="headerlink" title="《nodejs实战》第2季"></a>《nodejs实战》第2季</h3><h2 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list:"></a>To do list:</h2>
             
           </span>
         

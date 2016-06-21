@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-20T11:13:05.000Z</updated>
+  <updated>2016-06-21T05:33:24.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,68 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>node入门</title>
+    <link href="http://yoursite.com/2016/06/21/node%E5%85%A5%E9%97%A8/"/>
+    <id>http://yoursite.com/2016/06/21/node入门/</id>
+    <published>2016-06-21T04:33:01.000Z</published>
+    <updated>2016-06-21T05:33:24.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这里总结一下。&lt;/p&gt;
+&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;h2 id=&quot;官方安装node&quot;&gt;&lt;a href=&quot;#官方安装node&quot; class=&quot;headerlink&quot; title=&quot;官方安装node&quot;&gt;&lt;/a&gt;官方安装node&lt;/h2&gt;&lt;p&gt;可以在&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;官网&lt;/a&gt;上下载pkg文件安装。node和npm的执行文件都在/usr/local/bin/里。 /usr/local/lib/node_modules/npm/usr/local/lib/node_modules/n/bin 则是实际上存放npm和n的地方。n是一个用来管理nodejs版本的包。但不用这个,下面会用到nvm,更方便一些。&lt;/p&gt;
+&lt;h2 id=&quot;官方删除node&quot;&gt;&lt;a href=&quot;#官方删除node&quot; class=&quot;headerlink&quot; title=&quot;官方删除node&quot;&gt;&lt;/a&gt;官方删除node&lt;/h2&gt;&lt;p&gt;MAC下卸载软件很多直接删除安装包就行了。但node的一些文件在系统目录和用户目录里都有,你得找到全部,逐一删除。比较麻烦。这也是推荐用nvm的一个原因。你可以用nvm卸载node。nvm自身的删除也比较简单,nvm及它安装的node都在用户目录下的.nvm文件夹,删除,升级都很方便。&lt;/p&gt;
+&lt;p&gt;终端：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom | while read f; do  sudo rm /usr/local/${f}; done&lt;/code&gt;&lt;br&gt;会删除一部分&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*&lt;/code&gt;&lt;br&gt;又会删除一部分&lt;/p&gt;
+&lt;p&gt;再执行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo rm -rf ~/.npm&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo rm -rf ~/.node-gyp&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo rm -rf /usr/local/include/node&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;主要集中在&lt;code&gt;/usr/local/&lt;/code&gt;及username/liuhongyu/目录，也即用户目录和系统目录&lt;br&gt;比如/usr/local/bin下的n可执行文件。在这些文件夹中把与node有关的删除就行了。&lt;/p&gt;
+&lt;p&gt;还有就是在&lt;code&gt;username/.bash_profile&lt;/code&gt;中删除环境变量。&lt;/p&gt;
+&lt;h2 id=&quot;nvm安装&quot;&gt;&lt;a href=&quot;#nvm安装&quot; class=&quot;headerlink&quot; title=&quot;nvm安装&quot;&gt;&lt;/a&gt;nvm安装&lt;/h2&gt;&lt;p&gt;另一种方式是采用nvm安装。nvm和nodejs等是独立的。这样方便管理一些。并且用nvm安装node可以多个版本共存,切换起来也比较方便。在&lt;a href=&quot;https://github.com/creationix/nvm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nvm官方github&lt;/a&gt;上有详细的安装过程。在MAC上也可以使用homebrew来安装,便于nvm自身的版本管理。不过我当初还是按照github上的说明安装的。&lt;/p&gt;
+&lt;p&gt;MAC下nvm比较方便,但并不支持windows,不过nvm的作者推荐了windows上用&lt;code&gt;nvm-windows&lt;/code&gt;。是由另外一个人完成的。&lt;/p&gt;
+&lt;p&gt;当你&lt;code&gt;curl https://raw.githubusercontent.com/creationix/nvm/v0.17.2/install.sh | bash&lt;/code&gt;的时候&lt;br&gt;会自动增加环境变量到.bash_profile中,也就是说不需要你手动添加环境变量了。&lt;/p&gt;
+&lt;h3 id=&quot;nvm的卸载&quot;&gt;&lt;a href=&quot;#nvm的卸载&quot; class=&quot;headerlink&quot; title=&quot;nvm的卸载&quot;&gt;&lt;/a&gt;nvm的卸载&lt;/h3&gt;&lt;p&gt;直接删除就行了。终端命令:&lt;code&gt;rm -rf ~/.nvm&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;nvm安装node-js&quot;&gt;&lt;a href=&quot;#nvm安装node-js&quot; class=&quot;headerlink&quot; title=&quot;nvm安装node.js&quot;&gt;&lt;/a&gt;nvm安装node.js&lt;/h3&gt;&lt;p&gt;终端输入&lt;code&gt;nvm&lt;/code&gt;,会弹出一些文字说明,会告诉你一些nvm命令的使用方法。&lt;/p&gt;
+&lt;p&gt;如&lt;code&gt;nvm install  v0.12.0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;node被安装到了&lt;code&gt;username/.nvm/versions/node/v0.12.0&lt;/code&gt;里面&lt;br&gt;并且也有npm:&lt;br&gt;&lt;code&gt;username/.nvm/versions/node/v0.12.0/lib/node_modules/npm&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;nvm卸载node&quot;&gt;&lt;a href=&quot;#nvm卸载node&quot; class=&quot;headerlink&quot; title=&quot;nvm卸载node&quot;&gt;&lt;/a&gt;nvm卸载node&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nvm uninstall &amp;lt;version&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;nvm使用node&quot;&gt;&lt;a href=&quot;#nvm使用node&quot; class=&quot;headerlink&quot; title=&quot;nvm使用node&quot;&gt;&lt;/a&gt;nvm使用node&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nvm current&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nvm use 0.1.20&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;nvm自身升级&quot;&gt;&lt;a href=&quot;#nvm自身升级&quot; class=&quot;headerlink&quot; title=&quot;nvm自身升级&quot;&gt;&lt;/a&gt;nvm自身升级&lt;/h3&gt;&lt;p&gt;nvm的自身升级对node没有影响。但降级对node有影响&lt;/p&gt;
+&lt;h2 id=&quot;npm包管理器&quot;&gt;&lt;a href=&quot;#npm包管理器&quot; class=&quot;headerlink&quot; title=&quot;npm包管理器&quot;&gt;&lt;/a&gt;npm包管理器&lt;/h2&gt;&lt;p&gt;node的包都是由npm管理的。所以我们用nvm管理node(包括nvm自身),用npm管理node的包。npm安装包有2种方式:全局安装和本地安装。&lt;/p&gt;
+&lt;h3 id=&quot;全局安装&quot;&gt;&lt;a href=&quot;#全局安装&quot; class=&quot;headerlink&quot; title=&quot;全局安装&quot;&gt;&lt;/a&gt;全局安装&lt;/h3&gt;&lt;p&gt;安装敲命令的时候加上&lt;code&gt;-g&lt;/code&gt;,比如以安装&lt;code&gt;hexo&lt;/code&gt;为例:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo npm install hexo -g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这样安装的包就会像npm一样被安装在了&lt;code&gt;username/.nvm/versions/node/v0.12.0/lib/node_modules/&lt;/code&gt;里面。然后被安装的包如’hexo’就可以全局使用了。&lt;/p&gt;
+&lt;h3 id=&quot;本地安装&quot;&gt;&lt;a href=&quot;#本地安装&quot; class=&quot;headerlink&quot; title=&quot;本地安装&quot;&gt;&lt;/a&gt;本地安装&lt;/h3&gt;&lt;p&gt;终端下切换到你的工程目录。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm install packagename&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这样就会在你的工程目录中生成node_modules文件夹,包会安装在这里。&lt;/p&gt;
+&lt;p&gt;当然最好是:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm init&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这样会生成一个&lt;code&gt;package.json&lt;/code&gt;,下次安装包的时候加上&lt;code&gt;-- save&lt;/code&gt;后缀,就可以在&lt;code&gt;package.json&lt;/code&gt;中保存包的信息。这样就比较方便在别处安装。比如你在github上clone别人的开源项目,一般是没有node_modules包的。因为这个比加大,push上去也没有必要。一般会push &lt;code&gt;package.json&lt;/code&gt;,你clone到&lt;code&gt;package.json&lt;/code&gt;以后直接&lt;code&gt;npm install&lt;/code&gt;,就会安装&lt;code&gt;package.json&lt;/code&gt;里面的所有包,比较方便。&lt;/p&gt;
+&lt;p&gt;以express为例:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm install express --save&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这样express的信息就被记录在了&lt;code&gt;package.json&lt;/code&gt;里,下次如果你要安装很多个包,就不需要一个一个安装了。直接&lt;code&gt;npm install&lt;/code&gt;就行了。&lt;/p&gt;
+&lt;h2 id=&quot;node使用&quot;&gt;&lt;a href=&quot;#node使用&quot; class=&quot;headerlink&quot; title=&quot;node使用&quot;&gt;&lt;/a&gt;node使用&lt;/h2&gt;&lt;p&gt;node的文档在&lt;a href=&quot;https://nodejs.org/en/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;node官网&lt;/a&gt;上。可以先练习一下相关的API。但了解一下即可。具体有项目需求自取查阅,这样学的快一些。&lt;/p&gt;
+&lt;h2 id=&quot;基于node的框架&quot;&gt;&lt;a href=&quot;#基于node的框架&quot; class=&quot;headerlink&quot; title=&quot;基于node的框架&quot;&gt;&lt;/a&gt;基于node的框架&lt;/h2&gt;&lt;p&gt;直接用node原生进行开发的项目应该是比较少的了。一般采用基于node的一些web框架如express和koa&lt;/p&gt;
+&lt;h3 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h3&gt;&lt;h3 id=&quot;koa&quot;&gt;&lt;a href=&quot;#koa&quot; class=&quot;headerlink&quot; title=&quot;koa&quot;&gt;&lt;/a&gt;koa&lt;/h3&gt;&lt;h2 id=&quot;MEAN快速构建网站&quot;&gt;&lt;a href=&quot;#MEAN快速构建网站&quot; class=&quot;headerlink&quot; title=&quot;MEAN快速构建网站&quot;&gt;&lt;/a&gt;MEAN快速构建网站&lt;/h2&gt;&lt;p&gt;MEAN:mongodb,express,angularjs,node&lt;/p&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/getstart&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnode社区新手入门&lt;/a&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+    
+      <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
+    
+  </entry>
   
   <entry>
     <title>C语言小结3</title>
@@ -1025,7 +1087,7 @@ compile &amp;apos;com.android.support:design:23.3.0&amp;apos;
     <link href="http://yoursite.com/2016/05/02/Nodeclub%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2016/05/02/Nodeclub源码分析/</id>
     <published>2016-05-02T09:36:51.000Z</published>
-    <updated>2016-05-02T12:32:51.000Z</updated>
+    <updated>2016-06-21T05:31:46.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;h1 id=&quot;nodejs&quot;&gt;&lt;a href=&quot;#nodejs&quot; class=&quot;headerlink&quot; title=&quot;nodejs&quot;&gt;&lt;/a&gt;nodejs&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;这部分内容可以独立出来另外写一篇博客&lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&quot;安装nodejs&quot;&gt;&lt;a href=&quot;#安装nodejs&quot; class=&quot;headerlink&quot; title=&quot;安装nodejs&quot;&gt;&lt;/a&gt;安装nodejs&lt;/h2&gt;&lt;h3 id=&quot;安装nvm&quot;&gt;&lt;a href=&quot;#安装nvm&quot; class=&quot;headerlink&quot; title=&quot;安装nvm&quot;&gt;&lt;/a&gt;安装nvm&lt;/h3&gt;&lt;h3 id=&quot;安装node-npm&quot;&gt;&lt;a href=&quot;#安装node-npm&quot; class=&quot;headerlink&quot; title=&quot;安装node,npm&quot;&gt;&lt;/a&gt;安装node,npm&lt;/h3&gt;&lt;h1 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h1&gt;&lt;h2 id=&quot;express构建项目的2种方式&quot;&gt;&lt;a href=&quot;#express构建项目的2种方式&quot; class=&quot;headerlink&quot; title=&quot;express构建项目的2种方式&quot;&gt;&lt;/a&gt;express构建项目的2种方式&lt;/h2&gt;&lt;h1 id=&quot;mongodb&quot;&gt;&lt;a href=&quot;#mongodb&quot; class=&quot;headerlink&quot; title=&quot;mongodb&quot;&gt;&lt;/a&gt;mongodb&lt;/h1&gt;&lt;h1 id=&quot;mongoose&quot;&gt;&lt;a href=&quot;#mongoose&quot; class=&quot;headerlink&quot; title=&quot;mongoose&quot;&gt;&lt;/a&gt;mongoose&lt;/h1&gt;&lt;h1 id=&quot;redis&quot;&gt;&lt;a href=&quot;#redis&quot; class=&quot;headerlink&quot; title=&quot;redis&quot;&gt;&lt;/a&gt;redis&lt;/h1&gt;&lt;h1 id=&quot;angular-js&quot;&gt;&lt;a href=&quot;#angular-js&quot; class=&quot;headerlink&quot; title=&quot;angular.js&quot;&gt;&lt;/a&gt;angular.js&lt;/h1&gt;&lt;h1 id=&quot;Nodeclub&quot;&gt;&lt;a href=&quot;#Nodeclub&quot; class=&quot;headerlink&quot; title=&quot;Nodeclub&quot;&gt;&lt;/a&gt;Nodeclub&lt;/h1&gt;&lt;h2 id=&quot;fork-Nodeclub-clone到本地&quot;&gt;&lt;a href=&quot;#fork-Nodeclub-clone到本地&quot; class=&quot;headerlink&quot; title=&quot;fork Nodeclub,clone到本地&quot;&gt;&lt;/a&gt;fork Nodeclub,clone到本地&lt;/h2&gt;&lt;h2 id=&quot;建立exercise-branch&quot;&gt;&lt;a href=&quot;#建立exercise-branch&quot; class=&quot;headerlink&quot; title=&quot;建立exercise branch&quot;&gt;&lt;/a&gt;建立exercise branch&lt;/h2&gt;&lt;h2 id=&quot;运行Nodeclub&quot;&gt;&lt;a href=&quot;#运行Nodeclub&quot; class=&quot;headerlink&quot; title=&quot;运行Nodeclub&quot;&gt;&lt;/a&gt;运行Nodeclub&lt;/h2&gt;&lt;p&gt;按照&lt;a href=&quot;https://github.com/cnodejs/nodeclub&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Nodeclub README&lt;/a&gt;上的说明。&lt;br&gt;终端输入以下命令:&lt;/p&gt;
@@ -1037,7 +1099,7 @@ compile &amp;apos;com.android.support:design:23.3.0&amp;apos;
 &lt;p&gt;&lt;code&gt;sudo supervisor app.js&lt;/code&gt; //需用npm安装supervisor,否则用&lt;code&gt;node app.js&lt;/code&gt;也可以.注意加上sudo,否则有时会报错&lt;/p&gt;
 &lt;p&gt;浏览器中打开&lt;a href=&quot;http://localhost:3000/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:3000/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/nodejs121.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;邮箱验证&quot;&gt;&lt;a href=&quot;#邮箱验证&quot; class=&quot;headerlink&quot; title=&quot;邮箱验证&quot;&gt;&lt;/a&gt;邮箱验证&lt;/h2&gt;&lt;h2 id=&quot;源码分析&quot;&gt;&lt;a href=&quot;#源码分析&quot; class=&quot;headerlink&quot; title=&quot;源码分析&quot;&gt;&lt;/a&gt;源码分析&lt;/h2&gt;&lt;h2 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference:&quot;&gt;&lt;/a&gt;reference:&lt;/h2&gt;&lt;h3 id=&quot;N-blog&quot;&gt;&lt;a href=&quot;#N-blog&quot; class=&quot;headerlink&quot; title=&quot;N-blog&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/nswbmw/N-blog/wiki/_pages&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;N-blog&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;《nodejs实战》&quot;&gt;&lt;a href=&quot;#《nodejs实战》&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》&quot;&gt;&lt;/a&gt;《nodejs实战》&lt;/h3&gt;&lt;h3 id=&quot;《nodejs实战》第2季&quot;&gt;&lt;a href=&quot;#《nodejs实战》第2季&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》第2季&quot;&gt;&lt;/a&gt;《nodejs实战》第2季&lt;/h3&gt;&lt;h2 id=&quot;To-do-list&quot;&gt;&lt;a href=&quot;#To-do-list&quot; class=&quot;headerlink&quot; title=&quot;To do list:&quot;&gt;&lt;/a&gt;To do list:&lt;/h2&gt;</content>
+&lt;h2 id=&quot;邮箱验证&quot;&gt;&lt;a href=&quot;#邮箱验证&quot; class=&quot;headerlink&quot; title=&quot;邮箱验证&quot;&gt;&lt;/a&gt;邮箱验证&lt;/h2&gt;&lt;h2 id=&quot;源码分析&quot;&gt;&lt;a href=&quot;#源码分析&quot; class=&quot;headerlink&quot; title=&quot;源码分析&quot;&gt;&lt;/a&gt;源码分析&lt;/h2&gt;&lt;h2 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference:&quot;&gt;&lt;/a&gt;Reference:&lt;/h2&gt;&lt;h3 id=&quot;N-blog&quot;&gt;&lt;a href=&quot;#N-blog&quot; class=&quot;headerlink&quot; title=&quot;N-blog&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/nswbmw/N-blog/wiki/_pages&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;N-blog&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;《nodejs实战》&quot;&gt;&lt;a href=&quot;#《nodejs实战》&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》&quot;&gt;&lt;/a&gt;《nodejs实战》&lt;/h3&gt;&lt;h3 id=&quot;《nodejs实战》第2季&quot;&gt;&lt;a href=&quot;#《nodejs实战》第2季&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》第2季&quot;&gt;&lt;/a&gt;《nodejs实战》第2季&lt;/h3&gt;&lt;h2 id=&quot;To-do-list&quot;&gt;&lt;a href=&quot;#To-do-list&quot; class=&quot;headerlink&quot; title=&quot;To do list:&quot;&gt;&lt;/a&gt;To do list:&lt;/h2&gt;</content>
     
     <summary type="html">
     
@@ -1918,33 +1980,6 @@ and the repository exists.&lt;/code&gt;&lt;/p&gt;
     
     
       <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://yoursite.com/2016/01/10/hello-world/"/>
-    <id>http://yoursite.com/2016/01/10/hello-world/</id>
-    <published>2016-01-10T01:58:08.000Z</published>
-    <updated>2016-01-10T01:58:08.000Z</updated>
-    
-    <content type="html">&lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;http://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;/p&gt;
-&lt;h2 id=&quot;Quick-Start&quot;&gt;&lt;a href=&quot;#Quick-Start&quot; class=&quot;headerlink&quot; title=&quot;Quick Start&quot;&gt;&lt;/a&gt;Quick Start&lt;/h2&gt;&lt;h3 id=&quot;Create-a-new-post&quot;&gt;&lt;a href=&quot;#Create-a-new-post&quot; class=&quot;headerlink&quot; title=&quot;Create a new post&quot;&gt;&lt;/a&gt;Create a new post&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo new &lt;span class=&quot;string&quot;&gt;&quot;My New Post&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/writing.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Writing&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Run-server&quot;&gt;&lt;a href=&quot;#Run-server&quot; class=&quot;headerlink&quot; title=&quot;Run server&quot;&gt;&lt;/a&gt;Run server&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo server&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/server.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Server&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Generate-static-files&quot;&gt;&lt;a href=&quot;#Generate-static-files&quot; class=&quot;headerlink&quot; title=&quot;Generate static files&quot;&gt;&lt;/a&gt;Generate static files&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo generate&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/generating.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Generating&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;Deploy-to-remote-sites&quot;&gt;&lt;a href=&quot;#Deploy-to-remote-sites&quot; class=&quot;headerlink&quot; title=&quot;Deploy to remote sites&quot;&gt;&lt;/a&gt;Deploy to remote sites&lt;/h3&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo deploy&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
-&lt;p&gt;More info: &lt;a href=&quot;http://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Deployment&lt;/a&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;Welcome to &lt;a href=&quot;http://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;http://hexo.io
-    
-    </summary>
-    
     
   </entry>
   
