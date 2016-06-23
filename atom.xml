@@ -409,7 +409,7 @@ default:语句n+1
     <link href="http://yoursite.com/2016/06/17/javascript%E5%B0%8F%E7%BB%93/"/>
     <id>http://yoursite.com/2016/06/17/javascript小结/</id>
     <published>2016-06-16T22:45:49.000Z</published>
-    <updated>2016-06-23T09:22:16.000Z</updated>
+    <updated>2016-06-23T10:14:04.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h1&gt;&lt;p&gt;学前预热课程里有这部分内容,但是没有PPT资料,是自己截图的。&lt;/p&gt;
 &lt;p&gt;有一个能够在Browser上运行的模板html。如果是nodejs的话,就是一个能够正常运行的express模板。&lt;/p&gt;
@@ -472,6 +472,120 @@ default:语句n+1
 &lt;p&gt;数组属性length&lt;/p&gt;
 &lt;p&gt;数组中应该只存一种类型的变量&lt;/p&gt;
 &lt;h4 id=&quot;数组方法&quot;&gt;&lt;a href=&quot;#数组方法&quot; class=&quot;headerlink&quot; title=&quot;数组方法&quot;&gt;&lt;/a&gt;数组方法&lt;/h4&gt;&lt;p&gt;涉及到算法的操作大多数都是:&lt;code&gt;增删查改,排序&lt;/code&gt;等。&lt;/p&gt;
+&lt;p&gt;把函数作为参数,方便用户自定义函数。底层人员负责实现底层函数,用户只需要实现参数(函数)就行了。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;排序&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;sort([比较函数])&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;转换&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;concat(数组2)  //连接2个数组&lt;/p&gt;
+&lt;p&gt;join(分隔符)&lt;/p&gt;
+&lt;p&gt;   用分隔符,组合数组元素,生成字符串&lt;/p&gt;
+&lt;p&gt;   字符串split&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;插入&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;splice(开始,长度)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;删除&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;splice(开始,0,元素)&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;替换&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;concat()&lt;/code&gt;方法用于连接两个或多个数组&lt;/p&gt;
+&lt;p&gt;//该方法不会改变现有的数组，而仅仅会返回被连接数组的一个副本。&lt;/p&gt;
+&lt;p&gt;//连接元素&lt;/p&gt;
+&lt;p&gt;var a = new Array(2);&lt;/p&gt;
+&lt;p&gt;a[0] = ‘a’;&lt;/p&gt;
+&lt;p&gt;a[1] = ‘b’;&lt;/p&gt;
+&lt;p&gt;console.log(a.concat(‘c’)); //[‘a’,’b’,’c’]&lt;/p&gt;
+&lt;p&gt;//console.log(a.concat(c));//这样会报错: c is not defined   这样写就会把c当成变量&lt;/p&gt;
+&lt;p&gt;//连接数组,增加的其实是数组元素,而非数组&lt;/p&gt;
+&lt;p&gt;var a = new Array(2);&lt;/p&gt;
+&lt;p&gt;a[0] = ‘a’;&lt;/p&gt;
+&lt;p&gt;a[1] = ‘b’;&lt;/p&gt;
+&lt;p&gt;var a1 = new Array(2);&lt;/p&gt;
+&lt;p&gt;a1[0] = ‘a1’;&lt;/p&gt;
+&lt;p&gt;a1[1] = ‘b1’;&lt;/p&gt;
+&lt;p&gt;var a2 = new Array(2);&lt;/p&gt;
+&lt;p&gt;a2[0] = ‘a2’;&lt;/p&gt;
+&lt;p&gt;a2[1] = ‘b2’;&lt;/p&gt;
+&lt;p&gt;console.log(a.concat(a1,a2));//[‘a’,’b’,’a1’,’b1’,’a2,’b2’]&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;join()&lt;/code&gt; 方法用于把数组中的所有元素放入一个字符串。元素是通过指定的分隔符进行分隔的。&lt;br&gt;//参数指定要使用的分隔符。如果省略该参数，则使用&lt;code&gt;逗号&lt;/code&gt;作为分隔符。&lt;/p&gt;
+&lt;p&gt;var a = new Array(3);&lt;/p&gt;
+&lt;p&gt;a[0] = ‘a’;&lt;/p&gt;
+&lt;p&gt;a[1] = ‘b’;&lt;/p&gt;
+&lt;p&gt;a[2] = ‘c’;&lt;/p&gt;
+&lt;p&gt;console.log(a.join());//a,b,c&lt;/p&gt;
+&lt;p&gt;//console.log(a.join(+));//报错&lt;/p&gt;
+&lt;p&gt;console.log(a.join(‘+’));//a+b+c&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;pop()&lt;/code&gt;方法将删除数组的最后一个元素，把数组长度减 1，并且返回它删除的元素的值。&lt;br&gt; 如果数组已经为空，则 pop() 不改变数组，并返回 undefined 值。&lt;/p&gt;
+&lt;p&gt;var a = new Array(3);&lt;/p&gt;
+&lt;p&gt;a[0] = ‘a’;&lt;/p&gt;
+&lt;p&gt;a[1] = ‘b’;&lt;/p&gt;
+&lt;p&gt;a[2] = ‘c’;&lt;/p&gt;
+&lt;p&gt;console.log(a.pop());//c&lt;/p&gt;
+&lt;p&gt;console.log(a);//[‘a’,’b’]&lt;/p&gt;
+&lt;p&gt;console.log(a.pop());//b&lt;/p&gt;
+&lt;p&gt;console.log(a.pop());//a&lt;/p&gt;
+&lt;p&gt;console.log(a.pop());//undefined&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;push()&lt;/code&gt;方法可把它的参数顺序添加到数组的尾部。它直接修改数组,而不是创建一个新的数组。&lt;/p&gt;
+&lt;p&gt;push() 方法和 pop() 方法使用数组提供的先进后出 栈的功能。&lt;/p&gt;
+&lt;p&gt;此方法会直接修改原数组,不会创建副本&lt;/p&gt;
+&lt;p&gt;返回数组的新长度&lt;/p&gt;
+&lt;p&gt;要想数组的开头添加一个或多个元素，请使用 unshift() 方法。&lt;/p&gt;
+&lt;p&gt;var a = new Array(3);&lt;/p&gt;
+&lt;p&gt;a[0] = ‘a’;&lt;/p&gt;
+&lt;p&gt;a[1] = ‘b’;&lt;/p&gt;
+&lt;p&gt;a[2] = ‘c’;&lt;/p&gt;
+&lt;p&gt;console.log(a.push(‘d’));//4&lt;/p&gt;
+&lt;p&gt;console.log(a); //[‘a’,’b’,’c’,’d’]&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;reverse()&lt;/code&gt; 方法用于颠倒数组中元素的顺序。&lt;/p&gt;
+&lt;p&gt;var a = new Array(3);&lt;/p&gt;
+&lt;p&gt;a[0] = ‘a’;&lt;/p&gt;
+&lt;p&gt;a[1] = ‘b’;&lt;/p&gt;
+&lt;p&gt;a[2] = ‘c’;&lt;/p&gt;
+&lt;p&gt;console.log(a.reverse());//[‘c’,’b’,’a’]&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;shift()&lt;/code&gt;方法用于把数组的&lt;code&gt;第一个元素从其中删除&lt;/code&gt;，并返回第一个元素的值。&lt;br&gt;如果数组是空的，那么 shift() 方法将不进行任何操作，返回 undefined 值。&lt;br&gt;请注意，该方法不创建新数组，而是直接修改原数组&lt;/p&gt;
+&lt;p&gt;var a = new Array(3);&lt;/p&gt;
+&lt;p&gt;a[0] = ‘a’;&lt;/p&gt;
+&lt;p&gt;a[1] = ‘b’;&lt;/p&gt;
+&lt;p&gt;a[2] = ‘c’;&lt;/p&gt;
+&lt;p&gt;console.log(a.shift());//a&lt;/p&gt;
+&lt;p&gt;console.log(a);//[‘b’,’c’]&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;slice()&lt;/code&gt; 方法&lt;/p&gt;
+&lt;p&gt;//arrayObject.slice(start,end)&lt;/p&gt;
+&lt;p&gt;//返回一个新的数组，包含从 start 到 end （不包括该元素）的数组中的元素。&lt;/p&gt;
+&lt;p&gt;//该方法并不会修改数组，而是返回一个子数组。如果想删除数组中的一段元素，应该使用方法 Array.splice()。&lt;/p&gt;
+&lt;p&gt;//可使用负值从数组的尾部选取元素。&lt;/p&gt;
+&lt;p&gt;//如果 end 未被规定，那么 slice() 方法会选取从 start 到数组结尾的所有元素。&lt;/p&gt;
+&lt;p&gt;var a = new Array(3);&lt;/p&gt;
+&lt;p&gt;a[0] = ‘a’;&lt;/p&gt;
+&lt;p&gt;a[1] = ‘b’;&lt;/p&gt;
+&lt;p&gt;a[2] = ‘c’;&lt;/p&gt;
+&lt;p&gt;console.log(a.slice(1));//[‘b’,’c’]&lt;/p&gt;
+&lt;p&gt;console.log(a);//[‘a’,’b’,’c’]&lt;/p&gt;
+&lt;p&gt;console.log(a.slice(1,2));//[‘b’]&lt;/p&gt;
+&lt;p&gt;console.log(a.slice(-1));//[‘c’]&lt;/p&gt;
+&lt;p&gt;console.log(a.slice(-1,-2));//[]   //注:必须是正向&lt;/p&gt;
+&lt;p&gt;console.log(a.slice(-2,-1));//[‘b’]&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sort()方法&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;splice()&lt;/code&gt; 方法与 slice() 方法的作用是不同的，splice() 方法会直接对数组进行修改。&lt;/p&gt;
+&lt;p&gt;//该方法会改变原始数组。&lt;/p&gt;
+&lt;p&gt;//返回包含被删除项目的新数组&lt;/p&gt;
+&lt;p&gt;//arrayObject.splice(index,howmany,item1,…..,itemX)&lt;/p&gt;
+&lt;p&gt;//index:规定添加/删除项目的位置，使用负数可从数组结尾处规定位置        删除    位置,数目&lt;/p&gt;
+&lt;p&gt;//howmany:要删除的项目数量                                        删除&lt;/p&gt;
+&lt;p&gt;//itemX:向数组添加的新项目                                       添加    数目&lt;/p&gt;
+&lt;p&gt;//splice() 方法可删除从 index 处开始的零个或多个元素，并且用参数列表中声明的一个或多个值来替换那些被删除的元素。&lt;/p&gt;
+&lt;p&gt;//如果从 arrayObject 中删除了元素，则返回的是含有被删除的元素的数组&lt;/p&gt;
+&lt;p&gt;var arr = new Array(6)&lt;/p&gt;
+&lt;p&gt;arr[0] = “10”&lt;/p&gt;
+&lt;p&gt;arr[1] = “5”&lt;/p&gt;
+&lt;p&gt;arr[2] = “40”&lt;/p&gt;
+&lt;p&gt;arr[3] = “25”&lt;/p&gt;
+&lt;p&gt;arr[4] = “1000”&lt;/p&gt;
+&lt;p&gt;arr[5] = “1”&lt;/p&gt;
+&lt;p&gt;console.log(arr.splice(0,2,’a’));//[‘10’,’5’]&lt;/p&gt;
+&lt;p&gt;console.log(arr);//[‘a’,’40’,’25’,’1000’,’1’]&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;toSource()&lt;/code&gt; 方法&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;toString()&lt;/code&gt;方法&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;toLocaleString()&lt;/code&gt;方法&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;unshift()&lt;/code&gt; 方法&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;valueOf()&lt;/code&gt; 方法&lt;/p&gt;
 &lt;h3 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h3&gt;&lt;h4 id=&quot;字面值常量&quot;&gt;&lt;a href=&quot;#字面值常量&quot; class=&quot;headerlink&quot; title=&quot;字面值常量&quot;&gt;&lt;/a&gt;字面值常量&lt;/h4&gt;&lt;h4 id=&quot;new-对象&quot;&gt;&lt;a href=&quot;#new-对象&quot; class=&quot;headerlink&quot; title=&quot;new 对象&quot;&gt;&lt;/a&gt;new 对象&lt;/h4&gt;&lt;p&gt;由于JS中一切皆是对象。&lt;/p&gt;
 &lt;h3 id=&quot;赋值传递&quot;&gt;&lt;a href=&quot;#赋值传递&quot; class=&quot;headerlink&quot; title=&quot;赋值传递&quot;&gt;&lt;/a&gt;赋值传递&lt;/h3&gt;&lt;p&gt;引用：对象、数组、函数&lt;/p&gt;
 &lt;p&gt;复制：数字、布尔&lt;/p&gt;
@@ -535,6 +649,22 @@ default:语句n+1
 &lt;p&gt;}&lt;/p&gt;
 &lt;p&gt;}&lt;/p&gt;
 &lt;p&gt;子函数可以使用父函数内的局部变量&lt;/p&gt;
+&lt;p&gt;//闭包特点&lt;/p&gt;
+&lt;p&gt;//函数嵌套函数,内部函数可以引用外部函数的参数和变量,参数和变量不会被垃圾回收机制所收回&lt;/p&gt;
+&lt;p&gt;function aaa(){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = 5;
+
+function bbb(){
+
+    alert(a);
+
+}
+
+return bbb;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;var c = aaa();//在外部调用aaa(),在这个地方aaa()已经执行完毕&lt;/p&gt;
+&lt;p&gt;c();//c代表bbb()这个函数,c执行,变量并没有被收回,可以弹出a=5&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;未完待续&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/rainman/archive/2009/04/28/1445687.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;深入理解JavaScript的变量作用域&lt;/a&gt;    &lt;/p&gt;
 &lt;p&gt;仔细观察下面的代码，你会发现&lt;code&gt;变量i、j、k作用域是相同的，他们在整个rain函数体内都是全局的&lt;/code&gt;。&lt;/p&gt;
 &lt;p&gt;也就是说&lt;code&gt;JS只有全局作用域和函数作用域,没有块作用域的说法&lt;/code&gt;。&lt;/p&gt;
@@ -622,7 +752,40 @@ default:语句n+1
 &lt;p&gt;{&lt;/p&gt;
 &lt;p&gt;  console.log(2);&lt;/p&gt;
 &lt;p&gt;})()   // 2&lt;/p&gt;
-&lt;h3 id=&quot;arguments&quot;&gt;&lt;a href=&quot;#arguments&quot; class=&quot;headerlink&quot; title=&quot;arguments&quot;&gt;&lt;/a&gt;arguments&lt;/h3&gt;&lt;h2 id=&quot;Ajax&quot;&gt;&lt;a href=&quot;#Ajax&quot; class=&quot;headerlink&quot; title=&quot;Ajax&quot;&gt;&lt;/a&gt;Ajax&lt;/h2&gt;&lt;p&gt;P54&lt;/p&gt;
+&lt;h3 id=&quot;arguments&quot;&gt;&lt;a href=&quot;#arguments&quot; class=&quot;headerlink&quot; title=&quot;arguments&quot;&gt;&lt;/a&gt;arguments&lt;/h3&gt;&lt;p&gt;&lt;code&gt;arguments和this&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;var later1 = function(a,b)&lt;/p&gt;
+&lt;p&gt;{&lt;/p&gt;
+&lt;p&gt;  console.log(arguments); //{ ‘0’: 1 }&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;function test(a,b)&lt;/p&gt;
+&lt;p&gt;{&lt;/p&gt;
+&lt;p&gt;  var self = this;&lt;/p&gt;
+&lt;p&gt;  console.log(arguments);//{ ‘0’: 1, ‘1’: 2 }  //集合下标是字符串?&lt;/p&gt;
+&lt;p&gt;  later1(a);&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;test(1,2);&lt;/p&gt;
+&lt;p&gt;//对比:&lt;/p&gt;
+&lt;p&gt;function test(a,b)&lt;/p&gt;
+&lt;p&gt;{&lt;/p&gt;
+&lt;p&gt;  var self = this;&lt;/p&gt;
+&lt;p&gt;  var args = arguments;&lt;/p&gt;
+&lt;p&gt;  console.log(arguments);//{ ‘0’: 1, ‘1’: 2 }&lt;/p&gt;
+&lt;p&gt;  // var test1 = function(a)&lt;/p&gt;
+&lt;p&gt;  // {&lt;/p&gt;
+&lt;p&gt;  //   console.log(arguments);//{ ‘0’: 1 }&lt;/p&gt;
+&lt;p&gt;  //   console.log(args);//{ ‘0’: 1, ‘1’: 2 }&lt;/p&gt;
+&lt;p&gt;  // }&lt;/p&gt;
+&lt;p&gt;  // test1(a);&lt;/p&gt;
+&lt;p&gt;  //或者像下面这样写&lt;/p&gt;
+&lt;p&gt;  (function(a){&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;console.log(arguments);//{ &amp;apos;0&amp;apos;: 1 }
+
+console.log(args);//{ &amp;apos;0&amp;apos;: 1, &amp;apos;1&amp;apos;: 2 }
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  })(a);&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;test(1,2);&lt;/p&gt;
+&lt;p&gt;//结论:arguments和this一样。都存在作用域链的问题。&lt;/p&gt;
+&lt;h2 id=&quot;Ajax&quot;&gt;&lt;a href=&quot;#Ajax&quot; class=&quot;headerlink&quot; title=&quot;Ajax&quot;&gt;&lt;/a&gt;Ajax&lt;/h2&gt;&lt;p&gt;P54&lt;/p&gt;
 &lt;h3 id=&quot;HTTP请求&quot;&gt;&lt;a href=&quot;#HTTP请求&quot; class=&quot;headerlink&quot; title=&quot;HTTP请求&quot;&gt;&lt;/a&gt;HTTP请求&lt;/h3&gt;&lt;p&gt;页面中用class，JS中用className&lt;/p&gt;
 &lt;h2 id=&quot;javascript面向对象&quot;&gt;&lt;a href=&quot;#javascript面向对象&quot; class=&quot;headerlink&quot; title=&quot;javascript面向对象&quot;&gt;&lt;/a&gt;javascript面向对象&lt;/h2&gt;&lt;p&gt;P64&lt;/p&gt;
 &lt;h3 id=&quot;特点&quot;&gt;&lt;a href=&quot;#特点&quot; class=&quot;headerlink&quot; title=&quot;特点&quot;&gt;&lt;/a&gt;特点&lt;/h3&gt;&lt;p&gt;抽象:抽出核心问题&lt;/p&gt;
