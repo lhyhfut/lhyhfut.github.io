@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-21T10:47:16.000Z</updated>
+  <updated>2016-06-23T10:57:55.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,419 +16,48 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>node环境搭建</title>
-    <link href="http://yoursite.com/2016/06/21/node%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
-    <id>http://yoursite.com/2016/06/21/node环境搭建/</id>
-    <published>2016-06-21T04:33:01.000Z</published>
-    <updated>2016-06-21T10:47:16.000Z</updated>
+    <title>javascript小结3</title>
+    <link href="http://yoursite.com/2016/06/23/javascript%E5%B0%8F%E7%BB%933/"/>
+    <id>http://yoursite.com/2016/06/23/javascript小结3/</id>
+    <published>2016-06-23T10:57:05.000Z</published>
+    <updated>2016-06-23T10:57:55.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这里总结一下。具体的项目分析见另外一篇文章《nodeclub源码分析》。&lt;/p&gt;
-&lt;h2 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h2&gt;&lt;p&gt;MACOS + webstorm&lt;/p&gt;
-&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;h2 id=&quot;官方安装node&quot;&gt;&lt;a href=&quot;#官方安装node&quot; class=&quot;headerlink&quot; title=&quot;官方安装node&quot;&gt;&lt;/a&gt;官方安装node&lt;/h2&gt;&lt;p&gt;可以在&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nodejs官网&lt;/a&gt;上下载pkg文件安装。node和npm的执行文件都在/usr/local/bin/里。 /usr/local/lib/node_modules/npm/usr/local/lib/node_modules/n/bin 则是实际上存放npm和n的地方。n是一个用来管理nodejs版本的包。但不用这个,下面会用到nvm,更方便一些。&lt;/p&gt;
-&lt;h2 id=&quot;卸载node&quot;&gt;&lt;a href=&quot;#卸载node&quot; class=&quot;headerlink&quot; title=&quot;卸载node&quot;&gt;&lt;/a&gt;卸载node&lt;/h2&gt;&lt;p&gt;MAC下卸载软件很多直接删除安装包就行了。但node的一些文件在系统目录和用户目录里都有,你得找到全部,逐一删除。比较麻烦。这也是推荐用nvm的一个原因。你可以用nvm卸载node。nvm自身的删除也比较简单,nvm及它安装的node都在用户目录下的.nvm文件夹,删除,升级都很方便。&lt;/p&gt;
-&lt;p&gt;终端：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom | while read f; do  sudo rm /usr/local/${f}; done&lt;/code&gt;&lt;br&gt;会删除一部分&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*&lt;/code&gt;&lt;br&gt;又会删除一部分&lt;/p&gt;
-&lt;p&gt;再执行&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo rm -rf ~/.npm&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo rm -rf ~/.node-gyp&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo rm -rf /usr/local/include/node&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;主要集中在&lt;code&gt;/usr/local/&lt;/code&gt;及username/liuhongyu/目录，也即用户目录和系统目录&lt;br&gt;比如/usr/local/bin下的n可执行文件。在这些文件夹中把与node有关的删除就行了。&lt;/p&gt;
-&lt;p&gt;还有就是在&lt;code&gt;username/.bash_profile&lt;/code&gt;中删除环境变量。&lt;/p&gt;
-&lt;h2 id=&quot;nvm安装&quot;&gt;&lt;a href=&quot;#nvm安装&quot; class=&quot;headerlink&quot; title=&quot;nvm安装&quot;&gt;&lt;/a&gt;nvm安装&lt;/h2&gt;&lt;p&gt;另一种方式是采用nvm安装。nvm和nodejs等是独立的。这样方便管理一些。并且用nvm安装node可以多个版本共存,切换起来也比较方便。在&lt;a href=&quot;https://github.com/creationix/nvm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nvm官方github&lt;/a&gt;上有详细的安装过程。在MAC上也可以使用homebrew来安装,便于nvm自身的版本管理。不过我当初还是按照github上的说明安装的。&lt;/p&gt;
-&lt;p&gt;MAC下nvm比较方便,但并不支持windows,不过nvm的作者推荐了windows上用&lt;code&gt;nvm-windows&lt;/code&gt;。是由另外一个人完成的。&lt;/p&gt;
-&lt;p&gt;当你&lt;code&gt;curl https://raw.githubusercontent.com/creationix/nvm/v0.17.2/install.sh | bash&lt;/code&gt;的时候&lt;br&gt;会自动增加环境变量到.bash_profile中,也就是说不需要你手动添加环境变量了。&lt;/p&gt;
-&lt;h3 id=&quot;nvm的卸载&quot;&gt;&lt;a href=&quot;#nvm的卸载&quot; class=&quot;headerlink&quot; title=&quot;nvm的卸载&quot;&gt;&lt;/a&gt;nvm的卸载&lt;/h3&gt;&lt;p&gt;直接删除就行了。终端命令:&lt;code&gt;rm -rf ~/.nvm&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;nvm安装node-js&quot;&gt;&lt;a href=&quot;#nvm安装node-js&quot; class=&quot;headerlink&quot; title=&quot;nvm安装node.js&quot;&gt;&lt;/a&gt;nvm安装node.js&lt;/h3&gt;&lt;p&gt;终端输入&lt;code&gt;nvm&lt;/code&gt;,会弹出一些文字说明,会告诉你一些nvm命令的使用方法。&lt;/p&gt;
-&lt;p&gt;如&lt;code&gt;nvm install  v0.12.0&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;node被安装到了&lt;code&gt;username/.nvm/versions/node/v0.12.0&lt;/code&gt;里面&lt;br&gt;并且也有npm:&lt;br&gt;&lt;code&gt;username/.nvm/versions/node/v0.12.0/lib/node_modules/npm&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;nvm卸载node&quot;&gt;&lt;a href=&quot;#nvm卸载node&quot; class=&quot;headerlink&quot; title=&quot;nvm卸载node&quot;&gt;&lt;/a&gt;nvm卸载node&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nvm uninstall &amp;lt;version&amp;gt;&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;nvm使用node&quot;&gt;&lt;a href=&quot;#nvm使用node&quot; class=&quot;headerlink&quot; title=&quot;nvm使用node&quot;&gt;&lt;/a&gt;nvm使用node&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nvm current&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;nvm use 0.1.20&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;nvm自身升级&quot;&gt;&lt;a href=&quot;#nvm自身升级&quot; class=&quot;headerlink&quot; title=&quot;nvm自身升级&quot;&gt;&lt;/a&gt;nvm自身升级&lt;/h3&gt;&lt;p&gt;nvm的自身升级对node没有影响。但降级对node有影响&lt;/p&gt;
-&lt;h2 id=&quot;npm包管理器&quot;&gt;&lt;a href=&quot;#npm包管理器&quot; class=&quot;headerlink&quot; title=&quot;npm包管理器&quot;&gt;&lt;/a&gt;npm包管理器&lt;/h2&gt;&lt;p&gt;node的包都是由npm管理的。所以我们用nvm管理node(包括nvm自身),用npm管理node的包。npm安装包有2种方式:全局安装和本地安装。&lt;/p&gt;
-&lt;h3 id=&quot;全局安装&quot;&gt;&lt;a href=&quot;#全局安装&quot; class=&quot;headerlink&quot; title=&quot;全局安装&quot;&gt;&lt;/a&gt;全局安装&lt;/h3&gt;&lt;p&gt;安装敲命令的时候加上&lt;code&gt;-g&lt;/code&gt;,比如以安装&lt;code&gt;hexo&lt;/code&gt;为例:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;sudo npm install hexo -g&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这样安装的包就会像npm一样被安装在了&lt;code&gt;username/.nvm/versions/node/v0.12.0/lib/node_modules/&lt;/code&gt;里面。然后被安装的包如’hexo’就可以全局使用了。&lt;/p&gt;
-&lt;h3 id=&quot;本地安装&quot;&gt;&lt;a href=&quot;#本地安装&quot; class=&quot;headerlink&quot; title=&quot;本地安装&quot;&gt;&lt;/a&gt;本地安装&lt;/h3&gt;&lt;p&gt;终端下切换到你的工程目录。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm install packagename&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这样就会在你的工程目录中生成node_modules文件夹,包会安装在这里。&lt;/p&gt;
-&lt;p&gt;当然最好是:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm init&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这样会生成一个&lt;code&gt;package.json&lt;/code&gt;,下次安装包的时候加上&lt;code&gt;-- save&lt;/code&gt;后缀,就可以在&lt;code&gt;package.json&lt;/code&gt;中保存包的信息。这样就比较方便在别处安装。比如你在github上clone别人的开源项目,一般是没有node_modules包的。因为这个比加大,push上去也没有必要。一般会push &lt;code&gt;package.json&lt;/code&gt;,你clone到&lt;code&gt;package.json&lt;/code&gt;以后直接&lt;code&gt;npm install&lt;/code&gt;,就会安装&lt;code&gt;package.json&lt;/code&gt;里面的所有包,比较方便。&lt;/p&gt;
-&lt;p&gt;以express为例:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm install express --save&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这样express的信息就被记录在了&lt;code&gt;package.json&lt;/code&gt;里,下次如果你要安装很多个包,就不需要一个一个安装了。直接&lt;code&gt;npm install&lt;/code&gt;就行了。&lt;/p&gt;
-&lt;h2 id=&quot;node使用&quot;&gt;&lt;a href=&quot;#node使用&quot; class=&quot;headerlink&quot; title=&quot;node使用&quot;&gt;&lt;/a&gt;node使用&lt;/h2&gt;&lt;p&gt;node的文档在&lt;a href=&quot;https://nodejs.org/en/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;node官网&lt;/a&gt;上。可以先练习一下相关的API。但了解一下即可。具体有项目需求自取查阅,这样学的快一些。&lt;/p&gt;
-&lt;h2 id=&quot;基于node的框架&quot;&gt;&lt;a href=&quot;#基于node的框架&quot; class=&quot;headerlink&quot; title=&quot;基于node的框架&quot;&gt;&lt;/a&gt;基于node的框架&lt;/h2&gt;&lt;p&gt;直接用node原生进行开发的项目应该是比较少的了。一般采用基于node的一些web框架如express和koa&lt;/p&gt;
-&lt;h3 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://expressjs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;express官网&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;koa&quot;&gt;&lt;a href=&quot;#koa&quot; class=&quot;headerlink&quot; title=&quot;koa&quot;&gt;&lt;/a&gt;koa&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://koajs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;koa官网&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;MEAN快速构建网站&quot;&gt;&lt;a href=&quot;#MEAN快速构建网站&quot; class=&quot;headerlink&quot; title=&quot;MEAN快速构建网站&quot;&gt;&lt;/a&gt;MEAN快速构建网站&lt;/h2&gt;&lt;p&gt;&lt;code&gt;MEAN&lt;/code&gt;:mongodb,express,angularjs,node&lt;/p&gt;
-&lt;h2 id=&quot;2个现成的&quot;&gt;&lt;a href=&quot;#2个现成的&quot; class=&quot;headerlink&quot; title=&quot;2个现成的&quot;&gt;&lt;/a&gt;2个现成的&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/linnovate/mean&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;linnovate/mean&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://github.com/meanjs/mean&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;meanjs/mean&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;手工拼接&quot;&gt;&lt;a href=&quot;#手工拼接&quot; class=&quot;headerlink&quot; title=&quot;手工拼接&quot;&gt;&lt;/a&gt;手工拼接&lt;/h2&gt;&lt;p&gt;大多数情况下,并不用上面2个现成的项目。而是自己用MEAN各个部分进行开发。这有分为2部分:&lt;/p&gt;
-&lt;h3 id=&quot;重前端&quot;&gt;&lt;a href=&quot;#重前端&quot; class=&quot;headerlink&quot; title=&quot;重前端&quot;&gt;&lt;/a&gt;重前端&lt;/h3&gt;&lt;p&gt;以angular为主。虽然还是用到了node等,但业务逻辑什么的大多数由类似&lt;code&gt;angular,react,vue&lt;/code&gt;这样的前端框架来完成。当然还有mongodb,但项目中mongoose用的多。&lt;/p&gt;
-&lt;h3 id=&quot;重后端&quot;&gt;&lt;a href=&quot;#重后端&quot; class=&quot;headerlink&quot; title=&quot;重后端&quot;&gt;&lt;/a&gt;重后端&lt;/h3&gt;&lt;p&gt;直接用node+express或node+koa就行了。不用前端框架。比如&lt;a href=&quot;https://github.com/cnodejs/nodeclub&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnode社区源码&lt;/a&gt;就是直接用Node.js 和 MongoDB 开发的社区系统。也被很多人拿来做二次开发。在github上搜索cnode可以搜到很多。&lt;/p&gt;
-&lt;h3 id=&quot;Restful-API&quot;&gt;&lt;a href=&quot;#Restful-API&quot; class=&quot;headerlink&quot; title=&quot;Restful API&quot;&gt;&lt;/a&gt;Restful API&lt;/h3&gt;&lt;h1 id=&quot;打包构建工具&quot;&gt;&lt;a href=&quot;#打包构建工具&quot; class=&quot;headerlink&quot; title=&quot;打包构建工具&quot;&gt;&lt;/a&gt;打包构建工具&lt;/h1&gt;&lt;p&gt;不用这些工具,应用也能正常运行。但用了更好。就像嵌入式里用UCOS-II操作系统。也是这样。&lt;/p&gt;
-&lt;h2 id=&quot;Grunt-vs-Gulp&quot;&gt;&lt;a href=&quot;#Grunt-vs-Gulp&quot; class=&quot;headerlink&quot; title=&quot;Grunt vs Gulp&quot;&gt;&lt;/a&gt;Grunt vs Gulp&lt;/h2&gt;&lt;h2 id=&quot;Browserify-vs-Webpack&quot;&gt;&lt;a href=&quot;#Browserify-vs-Webpack&quot; class=&quot;headerlink&quot; title=&quot;Browserify vs Webpack&quot;&gt;&lt;/a&gt;Browserify vs Webpack&lt;/h2&gt;&lt;h1 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h1&gt;&lt;h2 id=&quot;AWS&quot;&gt;&lt;a href=&quot;#AWS&quot; class=&quot;headerlink&quot; title=&quot;AWS&quot;&gt;&lt;/a&gt;AWS&lt;/h2&gt;&lt;h2 id=&quot;阿里云&quot;&gt;&lt;a href=&quot;#阿里云&quot; class=&quot;headerlink&quot; title=&quot;阿里云&quot;&gt;&lt;/a&gt;阿里云&lt;/h2&gt;&lt;h2 id=&quot;leancloud&quot;&gt;&lt;a href=&quot;#leancloud&quot; class=&quot;headerlink&quot; title=&quot;leancloud&quot;&gt;&lt;/a&gt;leancloud&lt;/h2&gt;&lt;h2 id=&quot;coding&quot;&gt;&lt;a href=&quot;#coding&quot; class=&quot;headerlink&quot; title=&quot;coding&quot;&gt;&lt;/a&gt;coding&lt;/h2&gt;&lt;h1 id=&quot;移动端&quot;&gt;&lt;a href=&quot;#移动端&quot; class=&quot;headerlink&quot; title=&quot;移动端&quot;&gt;&lt;/a&gt;移动端&lt;/h1&gt;&lt;p&gt;不得不说JS全栈的好处。能干的活非常多。对于讲究开发效率的互联网产品来说,这是非常重要的。JS能够这么流行的一个重要原因在于:强大的开源社区。人多了,解决方案自然也多了。JS刚出道的时候还只能写一些网页脚本,现在已经无处不在。&lt;/p&gt;
-&lt;h2 id=&quot;reactjs&quot;&gt;&lt;a href=&quot;#reactjs&quot; class=&quot;headerlink&quot; title=&quot;reactjs&quot;&gt;&lt;/a&gt;reactjs&lt;/h2&gt;&lt;h2 id=&quot;ionic&quot;&gt;&lt;a href=&quot;#ionic&quot; class=&quot;headerlink&quot; title=&quot;ionic&quot;&gt;&lt;/a&gt;ionic&lt;/h2&gt;&lt;h1 id=&quot;客户端&quot;&gt;&lt;a href=&quot;#客户端&quot; class=&quot;headerlink&quot; title=&quot;客户端&quot;&gt;&lt;/a&gt;客户端&lt;/h1&gt;&lt;h2 id=&quot;Electron&quot;&gt;&lt;a href=&quot;#Electron&quot; class=&quot;headerlink&quot; title=&quot;Electron&quot;&gt;&lt;/a&gt;Electron&lt;/h2&gt;&lt;h1 id=&quot;嵌入式&quot;&gt;&lt;a href=&quot;#嵌入式&quot; class=&quot;headerlink&quot; title=&quot;嵌入式&quot;&gt;&lt;/a&gt;嵌入式&lt;/h1&gt;&lt;h2 id=&quot;Tessel&quot;&gt;&lt;a href=&quot;#Tessel&quot; class=&quot;headerlink&quot; title=&quot;Tessel&quot;&gt;&lt;/a&gt;Tessel&lt;/h2&gt;&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/getstart&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnode社区新手入门&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;《node与express开发》&lt;/p&gt;
-&lt;p&gt;《Nodejs实战》&lt;/p&gt;
-&lt;p&gt;《Nodejs实战》第2季&lt;/p&gt;
-</content>
+    <content type="html">&lt;h1 id=&quot;php&quot;&gt;&lt;a href=&quot;#php&quot; class=&quot;headerlink&quot; title=&quot;php&quot;&gt;&lt;/a&gt;php&lt;/h1&gt;&lt;p&gt;P120&lt;/p&gt;
+&lt;p&gt;学习一门新语言:语法,函数,库&lt;/p&gt;
+&lt;p&gt;算法独立出语言&lt;/p&gt;
+&lt;h1 id=&quot;typescipt&quot;&gt;&lt;a href=&quot;#typescipt&quot; class=&quot;headerlink&quot; title=&quot;typescipt&quot;&gt;&lt;/a&gt;typescipt&lt;/h1&gt;&lt;h1 id=&quot;jquery&quot;&gt;&lt;a href=&quot;#jquery&quot; class=&quot;headerlink&quot; title=&quot;jquery&quot;&gt;&lt;/a&gt;jquery&lt;/h1&gt;&lt;p&gt;P153&lt;/p&gt;
+&lt;h2 id=&quot;jquery源码分析&quot;&gt;&lt;a href=&quot;#jquery源码分析&quot; class=&quot;headerlink&quot; title=&quot;jquery源码分析&quot;&gt;&lt;/a&gt;jquery源码分析&lt;/h2&gt;&lt;p&gt;P161&lt;br&gt;笔记在练习代码上&lt;/p&gt;
+&lt;h1 id=&quot;angular&quot;&gt;&lt;a href=&quot;#angular&quot; class=&quot;headerlink&quot; title=&quot;angular&quot;&gt;&lt;/a&gt;angular&lt;/h1&gt;&lt;h1 id=&quot;nodejs&quot;&gt;&lt;a href=&quot;#nodejs&quot; class=&quot;headerlink&quot; title=&quot;nodejs&quot;&gt;&lt;/a&gt;nodejs&lt;/h1&gt;&lt;h1 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h1&gt;&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;h3 id=&quot;《javascript权威指南》&quot;&gt;&lt;a href=&quot;#《javascript权威指南》&quot; class=&quot;headerlink&quot; title=&quot;《javascript权威指南》&quot;&gt;&lt;/a&gt;《javascript权威指南》&lt;/h3&gt;</content>
     
     <summary type="html">
     
-      &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这
+      &lt;h1 id=&quot;php&quot;&gt;&lt;a href=&quot;#php&quot; class=&quot;headerlink&quot; title=&quot;php&quot;&gt;&lt;/a&gt;php&lt;/h1&gt;&lt;p&gt;P120&lt;/p&gt;
+&lt;p&gt;学习一门新语言:语法,函数,库&lt;/p&gt;
+&lt;p&gt;算法独立出语言&lt;/p&gt;
+&lt;h1 id=&quot;typescipt&quot;&gt;
     
     </summary>
     
       <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
     
     
-      <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
     
   </entry>
   
   <entry>
-    <title>C语言小结3</title>
-    <link href="http://yoursite.com/2016/06/20/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E7%BB%933/"/>
-    <id>http://yoursite.com/2016/06/20/C语言小结3/</id>
-    <published>2016-06-20T10:48:26.000Z</published>
-    <updated>2016-06-20T11:13:05.000Z</updated>
+    <title>javascript小结2</title>
+    <link href="http://yoursite.com/2016/06/23/javascript%E5%B0%8F%E7%BB%932/"/>
+    <id>http://yoursite.com/2016/06/23/javascript小结2/</id>
+    <published>2016-06-23T10:55:27.000Z</published>
+    <updated>2016-06-23T10:58:00.000Z</updated>
     
-    <content type="html">&lt;h1 id=&quot;函数-数组-指针-字符串-结构体-共用体&quot;&gt;&lt;a href=&quot;#函数-数组-指针-字符串-结构体-共用体&quot; class=&quot;headerlink&quot; title=&quot;函数,数组,指针,字符串,结构体,共用体&quot;&gt;&lt;/a&gt;函数,数组,指针,字符串,结构体,共用体&lt;/h1&gt;&lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h2&gt;&lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h2&gt;&lt;h2 id=&quot;指针&quot;&gt;&lt;a href=&quot;#指针&quot; class=&quot;headerlink&quot; title=&quot;指针&quot;&gt;&lt;/a&gt;指针&lt;/h2&gt;&lt;h3 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h3&gt;&lt;p&gt;指针变量在使用之前必须进行初始化:&lt;/p&gt;
-&lt;p&gt;int num = 100;&lt;/p&gt;
-&lt;p&gt;int *p;&lt;/p&gt;
-&lt;p&gt;printf(“%d”,*p); //error,未初始化&lt;/p&gt;
-&lt;p&gt;指针未初始化可能会出现意外的后果。系统中有一些垃圾数据。未初始化时系统可能赋值给指针p一个垃圾数据当作地址。这个地址可能不该访问。&lt;/p&gt;
-&lt;p&gt;下面这样赋值会把100当成地址:&lt;/p&gt;
-&lt;p&gt;p = num;&lt;/p&gt;
-&lt;p&gt;printf(“%d”,*p); //可能会报错。因为地址为100的内存区域可能是系统的。这样可能会造成非法访问。&lt;/p&gt;
-&lt;p&gt;像上面这样赋值还会有类型问题。左边是int *类型,右边是int类型&lt;/p&gt;
-&lt;p&gt;p = \&amp;num;  //这样赋值以后p就指向了num&lt;/p&gt;
-&lt;p&gt;一般在声明的时候就初始化:&lt;/p&gt;
-&lt;p&gt;int *p = \&amp;num;&lt;/p&gt;
-&lt;h3 id=&quot;取地址运算符-amp-，-间接运算符&quot;&gt;&lt;a href=&quot;#取地址运算符-amp-，-间接运算符&quot; class=&quot;headerlink&quot; title=&quot;取地址运算符&amp;amp;， 间接运算符*&quot;&gt;&lt;/a&gt;取地址运算符&amp;amp;， 间接运算符*&lt;/h3&gt;&lt;p&gt;\&amp;amp;运算符:  取地址运算符，\&amp;amp;m即是变量m在内存中的实际地址。&lt;/p&gt;
-&lt;p&gt;*运算符： 指针运算符 (通常称为间接引用运算符),它返回其操作数 (即一个指针)所指向的对象的值.这种方式访问变量称为间接访问。直接访问是直接使用变量名来访问。&lt;/p&gt;
-&lt;p&gt;打印指针,地址格式符:%p , %x&lt;/p&gt;
-&lt;p&gt;%x:   按照十六进制打印，无意义的0就不打印&lt;/p&gt;
-&lt;p&gt;%p:   显示地址的位数，32位，8个十六进制，2^4=16,32位&lt;br&gt;      显示地址的位数，64位，16个十六进制位，64个二进制位&lt;/p&gt;
-&lt;h3 id=&quot;指向指针的指针-二级指针&quot;&gt;&lt;a href=&quot;#指向指针的指针-二级指针&quot; class=&quot;headerlink&quot; title=&quot;指向指针的指针,二级指针&quot;&gt;&lt;/a&gt;指向指针的指针,二级指针&lt;/h3&gt;&lt;p&gt;通过**声明一个二级指针&lt;/p&gt;
-&lt;p&gt;int num;&lt;/p&gt;
-&lt;p&gt;int *a = \&amp;num;&lt;/p&gt;
-&lt;p&gt;int **b = \&amp;a;&lt;/p&gt;
-&lt;p&gt;指针作为函数形参:&lt;/p&gt;
-&lt;p&gt;函数形式参数，除了数组以外，传递的任何数据，变量，都会新建一个变量接收传入的变量的值。不影响原来的变量，如果是一个数据，传递数据的地址（指针），如果是一个指针，传递指针的地址。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; 注: &lt;/strong&gt; 声明的时候 int *p = \&amp;num;  &lt;em&gt; 与 int在一起表示指针类型(int \&lt;/em&gt;)。右边直接赋值为地址。&lt;/p&gt;
-&lt;p&gt;但声明后使用则不能 *p = \&amp;num;  因为此时*p表示p指向的那个值。应该用 p = \&amp;num;&lt;/p&gt;
-&lt;p&gt;所谓指针类型，指的是声明指针变量时位于变量名前的“类型*”，而所谓指针所指向的类型，指的是为指针初始化或赋值的变量类型。&lt;/p&gt;
-&lt;p&gt;不是同一类型的指针，不可以任意赋值。不同的数据类型，大小不一样（如果强制赋值的话，就会少读取或多读取，内存有很多垃圾0,1），解析方式不一样.&lt;/p&gt;
-&lt;p&gt;注:指针不同类型之间的赋值和数据不同类型之间的赋值还有所不同。后者只是数据有溢出或截短，但前者可能找到另外一个指针去了，指向的就不再是以前的那个数据了。&lt;/p&gt;
-&lt;p&gt;同类型指针的赋值.这是最常见的一种情况，如所示，pN1和pN2是两个相同类型的指针，执行“pN2=pN1;”这样一个赋值操作后，pN1和pN2指向同样的地址，也就是说，两个指针指向同一个内存单元，对&lt;em&gt;pN2的任何改动都会影响&lt;/em&gt;pN1的值，反之亦然。&lt;/p&gt;
-&lt;h3 id=&quot;指针的类型和指针所指向的类型&quot;&gt;&lt;a href=&quot;#指针的类型和指针所指向的类型&quot; class=&quot;headerlink&quot; title=&quot;指针的类型和指针所指向的类型&quot;&gt;&lt;/a&gt;指针的类型和指针所指向的类型&lt;/h3&gt;&lt;p&gt;指针除了地址以外还有类型，类型决定了指向的数据大小，决定了数据的解析方式。指针的类型必须要与指针指向的类型一致。&lt;/p&gt;
-&lt;p&gt;指向内存字节数大于指针类型占据的字节数&lt;/p&gt;
-&lt;p&gt;指向内存字节数小于指针类型占据的字节数&lt;/p&gt;
-&lt;h3 id=&quot;指针变量的值&quot;&gt;&lt;a href=&quot;#指针变量的值&quot; class=&quot;headerlink&quot; title=&quot;指针变量的值&quot;&gt;&lt;/a&gt;指针变量的值&lt;/h3&gt;&lt;p&gt;指针变量的值是指针本身存储的数值，这个值将被编译器当作一个地址，而不是&lt;br&gt;一个一般的数值。在32位程序里，所有类型的指针的值都是一个32位整数，因为32位程序里内存地址长度都为32位。&lt;/p&gt;
-&lt;p&gt;指针所指向的内存区就是从指针的值所代表的那个内存地址开始，长度为sizeof(指针所指向的类型)的一片内存区。&lt;/p&gt;
-&lt;p&gt;指针存储的是地址，地址是首地址，从哪里开始，从哪里结束，由类型决定，类型决定长度，决定如何解析。&lt;/p&gt;
-&lt;h3 id=&quot;指针的运算&quot;&gt;&lt;a href=&quot;#指针的运算&quot; class=&quot;headerlink&quot; title=&quot;指针的运算&quot;&gt;&lt;/a&gt;指针的运算&lt;/h3&gt;&lt;p&gt;int a = 5;&lt;/p&gt;
-&lt;p&gt;int *p = a;&lt;/p&gt;
-&lt;p&gt;*p = 3;&lt;/p&gt;
-&lt;p&gt;把a的值5作为地址 0x00000005赋值给*p是发生访问冲突。整数与指针最好不要直接运算。&lt;/p&gt;
-&lt;h3 id=&quot;指向数组的指针&quot;&gt;&lt;a href=&quot;#指向数组的指针&quot; class=&quot;headerlink&quot; title=&quot;指向数组的指针&quot;&gt;&lt;/a&gt;指向数组的指针&lt;/h3&gt;&lt;p&gt;指向数组的指针被编译器解析为数组的首地址&lt;/p&gt;
-&lt;p&gt;数组的遍历:&lt;/p&gt;
-&lt;p&gt;通过下标循环进行遍历&lt;/p&gt;
-&lt;p&gt;a[i]和*(a + i)等价&lt;/p&gt;
-&lt;p&gt;通过dll注入的方式修改另一个进程的数据&lt;/p&gt;
-&lt;p&gt;int a[3] = {1,2,3};&lt;/p&gt;
-&lt;p&gt;int *p = a;&lt;/p&gt;
-&lt;p&gt;printf(“%d,%x,%x”,*p,a,&amp;amp;p);&lt;/p&gt;
-&lt;p&gt;通过定义并初始化二级指针p(下面给*&lt;em&gt;p赋的值是读到的上面\&lt;/em&gt;p的地址&amp;amp;p),使其改变另一个程序的指针p的指向，从而改变它的值。&lt;/p&gt;
-&lt;p&gt;_declspec(dllexport) void go()&lt;br&gt;{&lt;/p&gt;
-&lt;p&gt;int *&lt;em&gt;p = (int *&lt;/em&gt;)0x1bf734;   //注意左右两边的类型要匹配&lt;/p&gt;
-&lt;p&gt;*p = (int *)(0x1bf740 + 36);  //注意左右两边的类型要匹配&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;h3 id=&quot;指针的算术运算&quot;&gt;&lt;a href=&quot;#指针的算术运算&quot; class=&quot;headerlink&quot; title=&quot;指针的算术运算&quot;&gt;&lt;/a&gt;指针的算术运算&lt;/h3&gt;&lt;p&gt;指针++就是按照指针类型的大小，前进一个类型(不是一个字节)的大小，如int,前进四个字节。&lt;/p&gt;
-&lt;p&gt;指针++就是按照指针类型的大小，前进一个类型(不是一个字节)的大小，int,前进四个字节。&lt;/p&gt;
-&lt;p&gt;指针++  就是 指针每次向前移动sizeof(指针类型)个字节。&lt;/p&gt;
-&lt;p&gt;通过指针循环(以前是下标循环)的方式初始化数组a的每一个元素（从头到尾扫描数组）:&lt;/p&gt;
-&lt;p&gt;int a[5];&lt;/p&gt;
-&lt;p&gt;int i = 0;&lt;/p&gt;
-&lt;p&gt;for(int *p = a;p &amp;lt; a + 5;p++) //在数组内部用p++才有意义,移动的是sizeof(*p)个字节&lt;/p&gt;
-&lt;p&gt;{&lt;/p&gt;
-&lt;p&gt;  *p = i++;&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;注:i(下标循环)和p(指针循环)的效果是一样的。注意指针p++只能用于数组内部&lt;/p&gt;
-&lt;p&gt;指针加上2,在数组内部等价于向后移动两个元素的大小,指针减去3，等价于数组内部，向前移动3个元素(和p++是一致的)的大小&lt;/p&gt;
-&lt;p&gt;求指针的具体地址&lt;/p&gt;
-&lt;p&gt;double   *p=0x300400;&lt;br&gt;p=p+2   ; //p=0x300416=p+2&lt;em&gt;sizeof(double)&lt;br&gt;p=p-5;    //p=0x300416-sizeof(double)\&lt;/em&gt;5=0x300376&lt;/p&gt;
-&lt;h3 id=&quot;指针之间的比较&quot;&gt;&lt;a href=&quot;#指针之间的比较&quot; class=&quot;headerlink&quot; title=&quot;指针之间的比较&quot;&gt;&lt;/a&gt;指针之间的比较&lt;/h3&gt;&lt;p&gt;对两个毫无关联的指针比较大小是没有意义的，因为指针只代表了“位置”这么一个信息， 但是， 如果两个指针所指向的元素位于同一个数组（或同一块动态申请的内存中）， 指针的大小比较反映了元素在数组中的先后关系。&lt;/p&gt;
-&lt;p&gt;注：指针往往和数组联系在一起。要么就像游戏外挂那样，直接赋值为一个地址。&lt;/p&gt;
-&lt;h3 id=&quot;指针运算&quot;&gt;&lt;a href=&quot;#指针运算&quot; class=&quot;headerlink&quot; title=&quot;指针运算&quot;&gt;&lt;/a&gt;指针运算&lt;/h3&gt;&lt;p&gt;*p++ 与&lt;em&gt;(p++)一样，相当于a[i++]&lt;br&gt;\&lt;/em&gt;(++p)，相当于a[++i]&lt;br&gt;(*p)++ 表示p所指向的元素值加1，而非指针值加1&lt;/p&gt;
-&lt;p&gt;num[i]与*（num+i）等价    &amp;amp;num[i]等价于  num+i&lt;br&gt;num是第一个元素的首地址，指向int 类型&lt;br&gt;每次指针相加，相加指针指向的类型的大小&lt;/p&gt;
-&lt;h3 id=&quot;指向元素的指针与指向数组的指针&quot;&gt;&lt;a href=&quot;#指向元素的指针与指向数组的指针&quot; class=&quot;headerlink&quot; title=&quot;指向元素的指针与指向数组的指针&quot;&gt;&lt;/a&gt;指向元素的指针与指向数组的指针&lt;/h3&gt;&lt;p&gt;若有定义int(*p)[3];则定义了一个名为p的指针变量，表示p是一个指针变量，它可以指向每行有三个整数（即int型）元素的二维数组.&lt;/p&gt;
-&lt;p&gt;p指针每一次加1就相当于把p中存的地址加6（前提是int类型占2个字节，在VC中是占4个字节）。&lt;/p&gt;
-&lt;p&gt;例子：&lt;/p&gt;
-&lt;p&gt;int a[3][3];&lt;/p&gt;
-&lt;p&gt;int(*p)[3];&lt;/p&gt;
-&lt;p&gt;p = a; //p=a的意思是把数组a的首地址存放到p中那么p[1]就是a[1][0]的地址，p[1][0]就等于a[1][0]，而p[1][2]就等于a[1][2].&lt;/p&gt;
-&lt;p&gt;a通常表示一维数组首地址,&amp;amp;a通常表示二维数组首地址。但在二维数组中a和&amp;amp;a的值是相等的。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;注:赋值的时候要注意类型匹配。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;函数-数组-指针-字符串-结构体-共用体&quot;&gt;&lt;a href=&quot;#函数-数组-指针-字符串-结构体-共用体&quot; class=&quot;headerlink&quot; title=&quot;函数,数组,指针,字符串,结构体,共用体&quot;&gt;&lt;/a&gt;函数,数组,指针,字符串,结构体,共用体&lt;/h1&gt;&lt;
-    
-    </summary>
-    
-      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
-    
-    
-      <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言小结2</title>
-    <link href="http://yoursite.com/2016/06/20/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E7%BB%932/"/>
-    <id>http://yoursite.com/2016/06/20/C语言小结2/</id>
-    <published>2016-06-20T10:48:19.000Z</published>
-    <updated>2016-06-20T10:55:07.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;语言逻辑流程&quot;&gt;&lt;a href=&quot;#语言逻辑流程&quot; class=&quot;headerlink&quot; title=&quot;语言逻辑流程&quot;&gt;&lt;/a&gt;语言逻辑流程&lt;/h1&gt;&lt;h2 id=&quot;C语言语句类型&quot;&gt;&lt;a href=&quot;#C语言语句类型&quot; class=&quot;headerlink&quot; title=&quot;C语言语句类型:&quot;&gt;&lt;/a&gt;C语言语句类型:&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E8%AF%AD%E5%8F%A5%E7%B1%BB%E5%9E%8B.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;结构化程序设计的3种控制结构&quot;&gt;&lt;a href=&quot;#结构化程序设计的3种控制结构&quot; class=&quot;headerlink&quot; title=&quot;结构化程序设计的3种控制结构&quot;&gt;&lt;/a&gt;结构化程序设计的3种控制结构&lt;/h2&gt;&lt;h3 id=&quot;顺序结构&quot;&gt;&lt;a href=&quot;#顺序结构&quot; class=&quot;headerlink&quot; title=&quot;顺序结构&quot;&gt;&lt;/a&gt;顺序结构&lt;/h3&gt;&lt;h3 id=&quot;分支结构&quot;&gt;&lt;a href=&quot;#分支结构&quot; class=&quot;headerlink&quot; title=&quot;分支结构&quot;&gt;&lt;/a&gt;分支结构&lt;/h3&gt;&lt;h4 id=&quot;if-else&quot;&gt;&lt;a href=&quot;#if-else&quot; class=&quot;headerlink&quot; title=&quot;if else&quot;&gt;&lt;/a&gt;if else&lt;/h4&gt;&lt;p&gt;if else 嵌套&lt;/p&gt;
-&lt;p&gt;If—else语句同时使用，需要匹配出现，否则出现“没有匹配if的非法else”错误&lt;/p&gt;
-&lt;h4 id=&quot;switch&quot;&gt;&lt;a href=&quot;#switch&quot; class=&quot;headerlink&quot; title=&quot;switch&quot;&gt;&lt;/a&gt;switch&lt;/h4&gt;&lt;p&gt;switch(表达式)&lt;/p&gt;
-&lt;p&gt; {&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;case 常量表达式1:语句1
-
-case 常量表达式2:语句2
-
-……
-
-case 常量表达式n:语句n
-
-default:语句n+1
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  }&lt;/p&gt;
-&lt;p&gt;switch语句中的“表达式”和case后面的“常量表达式”的结果值的类型应该一致。其类型可以是除实型以外的任何类型（如整型、字符型、枚举类型）。每一个case后的常量表达式的值必须互不相同。执行完一个case后面的语句后，流程控制到下一个case继续执行。因此，多个case可共用一组语句。&lt;/p&gt;
-&lt;p&gt;switch语句中可以不含default分支；default分支并不限定在最后，几个case分支也没有顺序区别，但必须做适当处理，否则会影响执行结果。当default语句省略时，表示“缺省情况下什么也不做”。某些编译器可能会对default语句的缺失给出警告，从防错意义上说，即使什么也不做，最好也把default语句写上，采用下述形式：&lt;br&gt;default：&lt;br&gt;；/&lt;em&gt;（空语句。不要忘记分号）&lt;/em&gt;/&lt;br&gt;当default语句不在switch结构的最后时，不要忘记使用break。&lt;/p&gt;
-&lt;p&gt;break为跳出去执行switch后面的语句。终止switch语句的执行。为了执行完某个分支后跳出switch结构，应在其后加上break语句。如果不加break则会顺序执行下一个case语句。&lt;/p&gt;
-&lt;p&gt;int num;&lt;/p&gt;
-&lt;p&gt;switch(num)&lt;br&gt;{&lt;/p&gt;
-&lt;p&gt;  case 3:&lt;/p&gt;
-&lt;p&gt;  //&lt;/p&gt;
-&lt;p&gt;  case 2:&lt;/p&gt;
-&lt;p&gt;  printf(“大于2”);&lt;/p&gt;
-&lt;p&gt;  break;&lt;/p&gt;
-&lt;p&gt;  case 1:&lt;/p&gt;
-&lt;p&gt;  printf(“为1”);&lt;/p&gt;
-&lt;p&gt;  break;&lt;/p&gt;
-&lt;p&gt;  default://default可以不在最后&lt;/p&gt;
-&lt;p&gt;  break;//最后一个default可以省略。也是可以跳出switch的。&lt;/p&gt;
-&lt;p&gt;}&lt;/p&gt;
-&lt;p&gt;关闭_CRT_SECURE_NO_WARNINGS警告:(不然像scanf()这类函数都不能用)&lt;/p&gt;
-&lt;p&gt;在项目-&amp;gt;属性-&amp;gt;C/C++-&amp;gt;预处理器-&amp;gt;预处理器定中添加&lt;br&gt;  _CRT_SECURE_NO_WARNINGS 这个预定义。&lt;/p&gt;
-&lt;p&gt;下图中default语句在中间,如果不写break,输入5,则除了会打印”输入不合法”,还会打印”输入为2”.即使没有default语句,最后一个case 0不加break,也不会有错误结果。但一般都要加上。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80switch%E8%AF%AD%E5%8F%A5.PNG&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h4 id=&quot;if与Switch语句进行比较&quot;&gt;&lt;a href=&quot;#if与Switch语句进行比较&quot; class=&quot;headerlink&quot; title=&quot;if与Switch语句进行比较&quot;&gt;&lt;/a&gt;if与Switch语句进行比较&lt;/h4&gt;&lt;p&gt;switch结构只进行相等与否的判断，而if…else…结构还可以进行大于小于等范围上的判断。&lt;/p&gt;
-&lt;p&gt;此外，switch无法处理浮点数，只进行整数的判断，&lt;/p&gt;
-&lt;p&gt;而且，case标签值必须是常量，如果涉及到浮点数和变量的判断，应当使用if…else…结构。应当从可读性和程序效率多方面综合考虑，适当搭配两种结构，方能写出高质量的代码。&lt;/p&gt;
-&lt;h3 id=&quot;循环结构&quot;&gt;&lt;a href=&quot;#循环结构&quot; class=&quot;headerlink&quot; title=&quot;循环结构&quot;&gt;&lt;/a&gt;循环结构&lt;/h3&gt;&lt;h4 id=&quot;C语言中的三种循环语句&quot;&gt;&lt;a href=&quot;#C语言中的三种循环语句&quot; class=&quot;headerlink&quot; title=&quot;C语言中的三种循环语句&quot;&gt;&lt;/a&gt;C语言中的三种循环语句&lt;/h4&gt;&lt;p&gt;while 语句（当型）&lt;/p&gt;
-&lt;p&gt;do-while 语句（直到型）&lt;/p&gt;
-&lt;p&gt;for 语句（当型）&lt;/p&gt;
-&lt;h4 id=&quot;循环体中的辅助控制语句&quot;&gt;&lt;a href=&quot;#循环体中的辅助控制语句&quot; class=&quot;headerlink&quot; title=&quot;循环体中的辅助控制语句&quot;&gt;&lt;/a&gt;循环体中的辅助控制语句&lt;/h4&gt;&lt;h5 id=&quot;break-语句&quot;&gt;&lt;a href=&quot;#break-语句&quot; class=&quot;headerlink&quot; title=&quot;break 语句&quot;&gt;&lt;/a&gt;break 语句&lt;/h5&gt;&lt;p&gt;用在switch语句中使流程跳出switch结构，继续执行switch语句后面的语句。&lt;br&gt;用在循环体内，迫使所在循环立即终止(跳出当前循环体)，继续执行循环体后面的第一条语句。&lt;/p&gt;
-&lt;p&gt;break语句不能用于循环语句和switch语句之外的任何其他语句。&lt;/p&gt;
-&lt;h5 id=&quot;continue-语句&quot;&gt;&lt;a href=&quot;#continue-语句&quot; class=&quot;headerlink&quot; title=&quot;continue 语句&quot;&gt;&lt;/a&gt;continue 语句&lt;/h5&gt;&lt;p&gt;结束本次循环(跳过循环体中尚未执行的语句)，接着进行是否执行下一次循环的判定。&lt;/p&gt;
-&lt;h4 id=&quot;continue和break的区别&quot;&gt;&lt;a href=&quot;#continue和break的区别&quot; class=&quot;headerlink&quot; title=&quot;continue和break的区别&quot;&gt;&lt;/a&gt;continue和break的区别&lt;/h4&gt;&lt;p&gt;continue只结束本次循环，而非终止整个循环。&lt;/p&gt;
-&lt;p&gt;break则是结束所在循环，不再进行条件判断。&lt;/p&gt;
-&lt;h5 id=&quot;goto-语句&quot;&gt;&lt;a href=&quot;#goto-语句&quot; class=&quot;headerlink&quot; title=&quot;goto 语句&quot;&gt;&lt;/a&gt;goto 语句&lt;/h5&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;语言逻辑流程&quot;&gt;&lt;a href=&quot;#语言逻辑流程&quot; class=&quot;headerlink&quot; title=&quot;语言逻辑流程&quot;&gt;&lt;/a&gt;语言逻辑流程&lt;/h1&gt;&lt;h2 id=&quot;C语言语句类型&quot;&gt;&lt;a href=&quot;#C语言语句类型&quot; class=&quot;headerlink&quot; ti
-    
-    </summary>
-    
-      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
-    
-    
-      <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>C语言小结</title>
-    <link href="http://yoursite.com/2016/06/20/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E7%BB%93/"/>
-    <id>http://yoursite.com/2016/06/20/C语言小结/</id>
-    <published>2016-06-20T10:48:08.000Z</published>
-    <updated>2016-06-20T10:53:57.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;IDE-helloword&quot;&gt;&lt;a href=&quot;#IDE-helloword&quot; class=&quot;headerlink&quot; title=&quot;IDE,helloword&quot;&gt;&lt;/a&gt;IDE,helloword&lt;/h1&gt;&lt;p&gt;visual studio 2013&lt;/p&gt;
-&lt;h1 id=&quot;数据类型-运算符-表达式&quot;&gt;&lt;a href=&quot;#数据类型-运算符-表达式&quot; class=&quot;headerlink&quot; title=&quot;数据类型,运算符,表达式&quot;&gt;&lt;/a&gt;数据类型,运算符,表达式&lt;/h1&gt;&lt;h2 id=&quot;内存中的位，字节，字&quot;&gt;&lt;a href=&quot;#内存中的位，字节，字&quot; class=&quot;headerlink&quot; title=&quot;内存中的位，字节，字&quot;&gt;&lt;/a&gt;内存中的位，字节，字&lt;/h2&gt;&lt;p&gt;计算机中的内存是以位为最小存储单位的。通过对内存进行组织，可以引用特定的位集合。把计算机的内存起始位编号为1，每隔8位编号增1，也就是以字节为单位，每隔一个字节编号向上加一，可以对计算机所有内存进行编号。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80C%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;不同数据类型占据的空间不同。char一般占1个byte,short一般占2个,int在16位机器上占2个,在32位机器上占4个,double占8个&lt;/p&gt;
-&lt;h2 id=&quot;原码反码补码&quot;&gt;&lt;a href=&quot;#原码反码补码&quot; class=&quot;headerlink&quot; title=&quot;原码反码补码&quot;&gt;&lt;/a&gt;原码反码补码&lt;/h2&gt;&lt;p&gt;正数：原码、反码、补码相同&lt;/p&gt;
-&lt;p&gt;负数：最高位为1，其余位为原码取反，再对整个数加1。也就是反码加1（逆操作就是反码减1再取反）&lt;/p&gt;
-&lt;p&gt;一般只提原码，补码，反码只是作为过渡。&lt;/p&gt;
-&lt;p&gt;在原码，补码的转换中，符号位是不变的。不论正负。负数的其它位进行取反操作。&lt;/p&gt;
-&lt;p&gt;在计算机系统中,数值一律用补码来表示。&lt;/p&gt;
-&lt;h2 id=&quot;有符号数与无符号数&quot;&gt;&lt;a href=&quot;#有符号数与无符号数&quot; class=&quot;headerlink&quot; title=&quot;有符号数与无符号数&quot;&gt;&lt;/a&gt;有符号数与无符号数&lt;/h2&gt;&lt;p&gt;以int类型为例。16位机器上,默认(signed) int为有符号数。数值范围是-32767——32767.无符号数是unsigned int,范围是0——65535。&lt;/p&gt;
-&lt;p&gt;例子:&lt;/p&gt;
-&lt;p&gt;unsigned char x= - 0x10;&lt;/p&gt;
-&lt;p&gt;printf(“%x\n”,x);//输出f0&lt;/p&gt;
-&lt;p&gt;signed char x= - 0x10;&lt;/p&gt;
-&lt;p&gt;printf(“%x\n”,x);//输出fffffff0&lt;/p&gt;
-&lt;p&gt;Printf(“%x”,&amp;amp;x)   //按照十六进制形式打印x的地址&lt;/p&gt;
-&lt;p&gt;%d : 以十进制形式输出数据&lt;br&gt;%o : 以八进制形式输出数据&lt;br&gt;%x : 以十六进制形式输出数据&lt;br&gt;%u : 以十进制形式输出unsigned型数据&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;unsigned char x= - 0x10;&lt;/p&gt;
-&lt;p&gt;原码 ‭0001 0000‬   unsigned char符号位应该是0,也就是不存储符号位&lt;/p&gt;
-&lt;p&gt;反码 1110 1111   但仍然是负数,如果是正数的话,反码和原码是一样的&lt;/p&gt;
-&lt;p&gt;补码 1111 0000   这一个首位的1不是符号位,是数据位,和原码不存储符号位是一致的,如果首位存储符号位的话,就无法存储数据位了。这就相当于一个正数0x10了。总之,符号位丢了。&lt;/p&gt;
-&lt;p&gt;Printf(“%x”,&amp;amp;x)的时候会把这个unsigned char以无符号(unsigned)的十六进制形式输出。也就是 0000 0000 1111 0000,也就是f0了&lt;/p&gt;
-&lt;p&gt;signed char x= - 0x10;&lt;/p&gt;
-&lt;p&gt;原码: ‭1001 0000   1是符号位,不是数据位&lt;/p&gt;
-&lt;p&gt;反码: 1110 1111   反码和符号位没关系,是数据位取反&lt;/p&gt;
-&lt;p&gt;补码: 1111 0000   首位1是符号位&lt;/p&gt;
-&lt;p&gt;Printf(“%x”,&amp;amp;x)的时候会把这个unsigned char以无符号(unsigned)的十六进制形式输出。就变成 0000  0000  1111 0000,又是00f0了。显然与结果不符。&lt;/p&gt;
-&lt;p&gt;关键是现在signed char的首位1是个符号位。转化为unsigned int的话,应该不能这样转化。&lt;/p&gt;
-&lt;p&gt;原码: 0000 0000 0001 0000&lt;br&gt;反码: 1111 1111 1110 1111&lt;br&gt;补码: 1111 1111 1111 0000&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; 小结 &lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;符号位是不参与数据位的取反,加1操作的。&lt;/p&gt;
-&lt;p&gt;正数的原码,反码,补码一样,负数才有这些操作。关键在符号位和数据位不要处理混了。还有尽管上面用ussigned char存储-1,首位为0,但仍然是负数,它的补码还是取反的。不像正数,补码是它本身。但首位变成了数据位,也参与取反运算。&lt;/p&gt;
-&lt;p&gt;上面看出:unsigned char 转换为unsigned int直接加00就行了。但signed char转unsigned int还要从原码开始计算,不能随意丢弃符号位,不能随意把符号位变为数据位。&lt;/p&gt;
-&lt;p&gt;以补码形式存储。以原码形式读取?还是要区分正负。有无符号位。&lt;/p&gt;
-&lt;p&gt;计算机没有数据类型的概念。并不认识unsigned和signed&lt;/p&gt;
-&lt;p&gt;再用-1尝试。&lt;/p&gt;
-&lt;p&gt;unsigned char x= - 1;&lt;/p&gt;
-&lt;p&gt;printf(“%x\n”,x);//输出ff&lt;/p&gt;
-&lt;p&gt;signed char x= - 1;&lt;/p&gt;
-&lt;p&gt;printf(“%x\n”,x);//输出fffffff&lt;/p&gt;
-&lt;p&gt;以signed int形式打印。&lt;/p&gt;
-&lt;p&gt;unsigned char x= - 1;&lt;/p&gt;
-&lt;p&gt;printf(“%d\n”,x);//输出&lt;/p&gt;
-&lt;p&gt;signed char x= - 1;&lt;/p&gt;
-&lt;p&gt;printf(“%d\n”,x);//输出&lt;/p&gt;
-&lt;p&gt;unsigned char x= - 1;&lt;/p&gt;
-&lt;p&gt;原码 0000 0001&lt;/p&gt;
-&lt;p&gt;反码 1111 1110&lt;/p&gt;
-&lt;p&gt;补码 1111 1111   //首位是数据位。可以直接转换为signed int&lt;/p&gt;
-&lt;p&gt;0000 0000 1111 1111 // 255  。现在首位为0,并非为1,直接转换来的.现在为正数,原码,补码,反码相等&lt;/p&gt;
-&lt;p&gt;signed char x= - 1;&lt;/p&gt;
-&lt;p&gt;原码 1000 0001&lt;/p&gt;
-&lt;p&gt;反码 1111 1110&lt;/p&gt;
-&lt;p&gt;补码 1111 1111 //首位是符号位,不可以直接转换为signed int,从源码开始重新计算&lt;/p&gt;
-&lt;p&gt;原码 1000 0000 0000 0001&lt;/p&gt;
-&lt;p&gt;反码 1111 1111 1111 1110&lt;/p&gt;
-&lt;p&gt;补码 1111 1111 1111 1111 //首位是符号位&lt;/p&gt;
-&lt;p&gt;难道是 -32767 ？实际输出为-1。也就是虽然以补码形式存储,但还是以原码形式输出。&lt;/p&gt;
-&lt;p&gt;8进制：octal&lt;/p&gt;
-&lt;p&gt;10进制：decimal&lt;/p&gt;
-&lt;p&gt;16进制：hex&lt;/p&gt;
-&lt;h2 id=&quot;转义字符&quot;&gt;&lt;a href=&quot;#转义字符&quot; class=&quot;headerlink&quot; title=&quot;转义字符&quot;&gt;&lt;/a&gt;转义字符&lt;/h2&gt;&lt;p&gt;转义字符列表:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E5%88%97%E8%A1%A8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;字符常量与变量&quot;&gt;&lt;a href=&quot;#字符常量与变量&quot; class=&quot;headerlink&quot; title=&quot;字符常量与变量&quot;&gt;&lt;/a&gt;字符常量与变量&lt;/h2&gt;&lt;p&gt;字符常量：&lt;/p&gt;
-&lt;p&gt;定义:用单引号括起来的单个普通字符或转义字符.&lt;/p&gt;
-&lt;p&gt;字符常量的值：该字符的ASCII码值&lt;/p&gt;
-&lt;p&gt;转义字符:反斜线后面跟一个字符或一个代码值表示&lt;/p&gt;
-&lt;p&gt;ASCII码表:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80ascii%E7%A0%81%E8%A1%A8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;字符串常量：用双引号括起来的字符序列，每个字符串尾自动加个‘\0’作为字符串结束标志。&lt;/p&gt;
-&lt;p&gt;例子:四种方式都是打印h&lt;/p&gt;
-&lt;p&gt;十进制104，八进制150，十六进制68&lt;/p&gt;
-&lt;p&gt;在上面转义字符表格中有说明&lt;/p&gt;
-&lt;p&gt;\ddd  1-3位八进制数所代表的任意字符&lt;br&gt;\xhh  1-2位十六进制数代表的任意字符   &lt;/p&gt;
-&lt;p&gt;putchar(‘h’);&lt;/p&gt;
-&lt;p&gt;putchar(104);&lt;/p&gt;
-&lt;p&gt;putchar(‘\150’); //开始以为是putchar(‘\d150’); 但实际上不需要加d&lt;/p&gt;
-&lt;p&gt;putchar(‘\x68’);&lt;/p&gt;
-&lt;p&gt;字符’1’和整数1是不同的概念：&lt;/p&gt;
-&lt;p&gt;字符’1’只是代表一个形状为’1’的符号，在需要时按原样输出，在内存中以ASCII码形式存储，占1个字节。&lt;/p&gt;
-&lt;p&gt;整数1是以整数存储方式(二进制补码方式)存储的，占2个或4个字节。&lt;/p&gt;
-&lt;p&gt;如何存储和如何表示的是不一样的。存储都以补码形式存储。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; 例子: &lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;int a = 1;&lt;/p&gt;
-&lt;p&gt;Printf(“%d,%c”,a,a);  //%d是输出a数值本身。%c是输出ASCII码值为a的字符&lt;/p&gt;
-&lt;p&gt;char ch = ‘\0’;&lt;/p&gt;
-&lt;p&gt;Printf(“%d,%c”,ch,ch);  //%d是求它的编号(ASCII码编号), %c是求ASCII码字符本身&lt;/p&gt;
-&lt;p&gt;字符型变量在内存中占一个字节，由于存储的是字符的二进制ASCII码(补码?)，与整型数据存储方式类似，字符型数据和整型数据可以相互运算。&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt; 注意： &lt;/strong&gt; 字符串常量不允许赋值给字符型变量，C语言也没有专门的字符串变量。要在内存中存取字符串，只能使用数组或指针。&lt;/p&gt;
-&lt;h3 id=&quot;ASCII码特例&quot;&gt;&lt;a href=&quot;#ASCII码特例&quot; class=&quot;headerlink&quot; title=&quot;ASCII码特例&quot;&gt;&lt;/a&gt;ASCII码特例&lt;/h3&gt;&lt;p&gt;关于ASCII码表:&lt;/p&gt;
-&lt;p&gt;48是数字0，&lt;/p&gt;
-&lt;p&gt;65是A，&lt;/p&gt;
-&lt;p&gt;97是a，&lt;/p&gt;
-&lt;p&gt;0是’\0’  也就是NULL，注意如果打印这个值，是什么也不输出，而非输出0&lt;/p&gt;
-&lt;p&gt;32是空格字符&lt;/p&gt;
-&lt;h2 id=&quot;类型自动转换&quot;&gt;&lt;a href=&quot;#类型自动转换&quot; class=&quot;headerlink&quot; title=&quot;类型自动转换&quot;&gt;&lt;/a&gt;类型自动转换&lt;/h2&gt;&lt;h3 id=&quot;隐式转换&quot;&gt;&lt;a href=&quot;#隐式转换&quot; class=&quot;headerlink&quot; title=&quot;隐式转换&quot;&gt;&lt;/a&gt;隐式转换&lt;/h3&gt;&lt;p&gt;整型、实型和字符型数据之间可以混合运算。例如：&lt;/p&gt;
-&lt;p&gt;10 + ’a’ + 1.5 - 8765.1234 * ’b’&lt;/p&gt;
-&lt;p&gt;不同数据类型之间运算会进行自动类型转换，规则如下：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;常常打印的几个值: 所占的字节长度，地址，数值大小&lt;/p&gt;
-&lt;p&gt;低字节向高字节转换，极限范围小的向极限范围大的转换。  数据较大会从有符号数向无符号数转换&lt;/p&gt;
-&lt;p&gt;赋值的时候，会自动将右边表达式转换成左边变量类型&lt;/p&gt;
-&lt;h3 id=&quot;强制类型转换&quot;&gt;&lt;a href=&quot;#强制类型转换&quot; class=&quot;headerlink&quot; title=&quot;强制类型转换&quot;&gt;&lt;/a&gt;强制类型转换&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;高类型向低类型转化时可能发生精度损失&quot;&gt;&lt;a href=&quot;#高类型向低类型转化时可能发生精度损失&quot; class=&quot;headerlink&quot; title=&quot;高类型向低类型转化时可能发生精度损失&quot;&gt;&lt;/a&gt;高类型向低类型转化时可能发生精度损失&lt;/h3&gt;&lt;p&gt;unsigned short a = 256;&lt;/p&gt;
-&lt;p&gt;char b = a;&lt;/p&gt;
-&lt;p&gt;printf(“%d”,b);//结果不是256,b只截取了a的低8位数据&lt;/p&gt;
-&lt;h3 id=&quot;当把占字节较小的数据赋值给占字节较大的数据时，可能出现以下两种情况&quot;&gt;&lt;a href=&quot;#当把占字节较小的数据赋值给占字节较大的数据时，可能出现以下两种情况&quot; class=&quot;headerlink&quot; title=&quot;当把占字节较小的数据赋值给占字节较大的数据时，可能出现以下两种情况&quot;&gt;&lt;/a&gt;当把占字节较小的数据赋值给占字节较大的数据时，可能出现以下两种情况&lt;/h3&gt;&lt;p&gt;第1种情况，当字节较大数是无符号数时，转换时新扩充的位被填充成0&lt;/p&gt;
-&lt;p&gt;char b = 10;&lt;/p&gt;
-&lt;p&gt;unsigned short a = b;&lt;/p&gt;
-&lt;p&gt;printf(“%u”,a);&lt;/p&gt;
-&lt;p&gt;这样赋值后，变量a中输出的值是10&lt;/p&gt;
-&lt;p&gt;第2种情况，当字节较大数是有符号数时，转换时新扩充的位被填充成符号位&lt;/p&gt;
-&lt;p&gt;char b = 255;&lt;/p&gt;
-&lt;p&gt;short a = b;&lt;/p&gt;
-&lt;p&gt;printf(“%d”,a); //-1    &lt;/p&gt;
-&lt;p&gt;b: 1111 1111  //char应该是有符号数。是存储不了255的,溢出了。这里可能进行了类型转换。转换成了无符号数。但1还是符号位?  signed确实会向unsigned转换。&lt;/p&gt;
-&lt;p&gt;a: 1111 1111 1111 1111 //补码,表示-1&lt;/p&gt;
-&lt;p&gt;CHAR_MAX  有符号char最大值&lt;/p&gt;
-&lt;p&gt;CHAR_MIN  有符号char最小值&lt;/p&gt;
-&lt;h1 id=&quot;位运算文件函数高级指针高级内存高级映射-内存四区生存期作用域&quot;&gt;&lt;a href=&quot;#位运算文件函数高级指针高级内存高级映射-内存四区生存期作用域&quot; class=&quot;headerlink&quot; title=&quot;位运算文件函数高级指针高级内存高级映射_内存四区生存期作用域&quot;&gt;&lt;/a&gt;位运算&lt;em&gt;文件&lt;/em&gt;函数高级&lt;em&gt;指针高级&lt;/em&gt;内存高级映射_内存四区生存期作用域&lt;/h1&gt;&lt;h1 id=&quot;编译选项-数据结构-链表-栈-队列-实战&quot;&gt;&lt;a href=&quot;#编译选项-数据结构-链表-栈-队列-实战&quot; class=&quot;headerlink&quot; title=&quot;编译选项,(数据结构)链表,栈,队列,实战&quot;&gt;&lt;/a&gt;编译选项,(数据结构)链表,栈,队列,实战&lt;/h1&gt;&lt;h2 id=&quot;references&quot;&gt;&lt;a href=&quot;#references&quot; class=&quot;headerlink&quot; title=&quot;references:&quot;&gt;&lt;/a&gt;references:&lt;/h2&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;IDE-helloword&quot;&gt;&lt;a href=&quot;#IDE-helloword&quot; class=&quot;headerlink&quot; title=&quot;IDE,helloword&quot;&gt;&lt;/a&gt;IDE,helloword&lt;/h1&gt;&lt;p&gt;visual studio 2013&lt;/p&gt;
-&lt;h1
-    
-    </summary>
-    
-      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
-    
-    
-      <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>javascript小结</title>
-    <link href="http://yoursite.com/2016/06/17/javascript%E5%B0%8F%E7%BB%93/"/>
-    <id>http://yoursite.com/2016/06/17/javascript小结/</id>
-    <published>2016-06-16T22:45:49.000Z</published>
-    <updated>2016-06-23T10:14:04.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h1&gt;&lt;p&gt;学前预热课程里有这部分内容,但是没有PPT资料,是自己截图的。&lt;/p&gt;
-&lt;p&gt;有一个能够在Browser上运行的模板html。如果是nodejs的话,就是一个能够正常运行的express模板。&lt;/p&gt;
-&lt;h2 id=&quot;DOM&quot;&gt;&lt;a href=&quot;#DOM&quot; class=&quot;headerlink&quot; title=&quot;DOM&quot;&gt;&lt;/a&gt;DOM&lt;/h2&gt;&lt;p&gt;P36&lt;/p&gt;
-&lt;h2 id=&quot;BOM&quot;&gt;&lt;a href=&quot;#BOM&quot; class=&quot;headerlink&quot; title=&quot;BOM&quot;&gt;&lt;/a&gt;BOM&lt;/h2&gt;&lt;p&gt;P39&lt;/p&gt;
-&lt;h2 id=&quot;event&quot;&gt;&lt;a href=&quot;#event&quot; class=&quot;headerlink&quot; title=&quot;event&quot;&gt;&lt;/a&gt;event&lt;/h2&gt;&lt;p&gt;P40&lt;/p&gt;
-&lt;h3 id=&quot;鼠标事件&quot;&gt;&lt;a href=&quot;#鼠标事件&quot; class=&quot;headerlink&quot; title=&quot;鼠标事件&quot;&gt;&lt;/a&gt;鼠标事件&lt;/h3&gt;&lt;h3 id=&quot;键盘事件&quot;&gt;&lt;a href=&quot;#键盘事件&quot; class=&quot;headerlink&quot; title=&quot;键盘事件&quot;&gt;&lt;/a&gt;键盘事件&lt;/h3&gt;&lt;h2 id=&quot;cookie与session&quot;&gt;&lt;a href=&quot;#cookie与session&quot; class=&quot;headerlink&quot; title=&quot;cookie与session&quot;&gt;&lt;/a&gt;cookie与session&lt;/h2&gt;&lt;p&gt;P53&lt;/p&gt;
-&lt;h1 id=&quot;css&quot;&gt;&lt;a href=&quot;#css&quot; class=&quot;headerlink&quot; title=&quot;css&quot;&gt;&lt;/a&gt;css&lt;/h1&gt;&lt;p&gt;样式有优先级，id的优先级大于class，所以有时候你改变class样式可能会没用。&lt;/p&gt;
-&lt;p&gt;Css需要放在&lt;style&gt;标签，类似的JS需要&lt;script&gt;标签&lt;/p&gt;
-&lt;style type=”text/css”&gt;
-
-&lt;/style&gt;
-
-&lt;/p&gt;&lt;p&gt;S中的style只能获取行间样式，所以后来才会去用currentStyle和getComputedStyle&lt;/p&gt;
-&lt;h1 id=&quot;javascript&quot;&gt;&lt;a href=&quot;#javascript&quot; class=&quot;headerlink&quot; title=&quot;javascript&quot;&gt;&lt;/a&gt;javascript&lt;/h1&gt;&lt;script type=&quot;”text/javascript”&quot;&gt;
+    <content type="html">&lt;h1 id=&quot;javascript&quot;&gt;&lt;a href=&quot;#javascript&quot; class=&quot;headerlink&quot; title=&quot;javascript&quot;&gt;&lt;/a&gt;javascript&lt;/h1&gt;&lt;script type=&quot;”text/javascript”&quot;&gt;
 
 &lt;/script&gt;
 
-&lt;h2 id=&quot;组成&quot;&gt;&lt;a href=&quot;#组成&quot; class=&quot;headerlink&quot; title=&quot;组成&quot;&gt;&lt;/a&gt;组成&lt;/h2&gt;&lt;p&gt;ECMScript:解释器,翻译&lt;/p&gt;
+&lt;h2 id=&quot;组成&quot;&gt;&lt;a href=&quot;#组成&quot; class=&quot;headerlink&quot; title=&quot;组成&quot;&gt;&lt;/a&gt;组成&lt;/h2&gt;&lt;p&gt;下面是前端Browser的DOM,还不是后端如nodejs的DOM&lt;/p&gt;
+&lt;p&gt;ECMScript:解释器,翻译&lt;/p&gt;
 &lt;p&gt;DOM: Document Object Model. 就是document。 文档（HTML/网页）对象模型，把网页/文档变成JS可以操作的对象。DOM给了JS操作页面元素的能力。也就是&lt;code&gt;document&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;BOM: Browser Object Model   兼容性问题的来源。给了JS操纵浏览器的功能（收藏夹，打印机，location之类的），就是&lt;code&gt;window&lt;/code&gt;。&lt;/p&gt;
 &lt;h2 id=&quot;JS变量类型&quot;&gt;&lt;a href=&quot;#JS变量类型&quot; class=&quot;headerlink&quot; title=&quot;JS变量类型&quot;&gt;&lt;/a&gt;JS变量类型&lt;/h2&gt;&lt;p&gt;注:typeof 返回的是字符串,如’number’,但有时返回的是string,true,不加引号’’&lt;/p&gt;
@@ -911,12 +540,433 @@ console.log(obj.name);//1
 &lt;h2 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h2&gt;&lt;p&gt;字符串的处理是每种语言的一个重点&lt;/p&gt;
 &lt;p&gt;p145&lt;/p&gt;
 &lt;p&gt;P152 问题&lt;/p&gt;
-&lt;h1 id=&quot;php&quot;&gt;&lt;a href=&quot;#php&quot; class=&quot;headerlink&quot; title=&quot;php&quot;&gt;&lt;/a&gt;php&lt;/h1&gt;&lt;p&gt;P120&lt;/p&gt;
-&lt;p&gt;学习一门新语言:语法,函数,库&lt;/p&gt;
-&lt;p&gt;算法独立出语言&lt;/p&gt;
-&lt;h1 id=&quot;typescipt&quot;&gt;&lt;a href=&quot;#typescipt&quot; class=&quot;headerlink&quot; title=&quot;typescipt&quot;&gt;&lt;/a&gt;typescipt&lt;/h1&gt;&lt;h1 id=&quot;jquery&quot;&gt;&lt;a href=&quot;#jquery&quot; class=&quot;headerlink&quot; title=&quot;jquery&quot;&gt;&lt;/a&gt;jquery&lt;/h1&gt;&lt;p&gt;P153&lt;/p&gt;
-&lt;h2 id=&quot;jquery源码分析&quot;&gt;&lt;a href=&quot;#jquery源码分析&quot; class=&quot;headerlink&quot; title=&quot;jquery源码分析&quot;&gt;&lt;/a&gt;jquery源码分析&lt;/h2&gt;&lt;p&gt;P161&lt;br&gt;笔记在练习代码上&lt;/p&gt;
-&lt;h1 id=&quot;angular&quot;&gt;&lt;a href=&quot;#angular&quot; class=&quot;headerlink&quot; title=&quot;angular&quot;&gt;&lt;/a&gt;angular&lt;/h1&gt;&lt;h1 id=&quot;nodejs&quot;&gt;&lt;a href=&quot;#nodejs&quot; class=&quot;headerlink&quot; title=&quot;nodejs&quot;&gt;&lt;/a&gt;nodejs&lt;/h1&gt;&lt;h1 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h1&gt;&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;h3 id=&quot;《javascript权威指南》&quot;&gt;&lt;a href=&quot;#《javascript权威指南》&quot; class=&quot;headerlink&quot; title=&quot;《javascript权威指南》&quot;&gt;&lt;/a&gt;《javascript权威指南》&lt;/h3&gt;</content>
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;h3 id=&quot;《javascript权威指南》&quot;&gt;&lt;a href=&quot;#《javascript权威指南》&quot; class=&quot;headerlink&quot; title=&quot;《javascript权威指南》&quot;&gt;&lt;/a&gt;《javascript权威指南》&lt;/h3&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;javascript&quot;&gt;&lt;a href=&quot;#javascript&quot; class=&quot;headerlink&quot; title=&quot;javascript&quot;&gt;&lt;/a&gt;javascript&lt;/h1&gt;&lt;script type=&quot;”text/javascript”&quot;&gt;
+
+&lt;/scri
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+    
+      <category term="javascript" scheme="http://yoursite.com/tags/javascript/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>node环境搭建</title>
+    <link href="http://yoursite.com/2016/06/21/node%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
+    <id>http://yoursite.com/2016/06/21/node环境搭建/</id>
+    <published>2016-06-21T04:33:01.000Z</published>
+    <updated>2016-06-21T10:47:16.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这里总结一下。具体的项目分析见另外一篇文章《nodeclub源码分析》。&lt;/p&gt;
+&lt;h2 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h2&gt;&lt;p&gt;MACOS + webstorm&lt;/p&gt;
+&lt;h1 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h1&gt;&lt;h2 id=&quot;官方安装node&quot;&gt;&lt;a href=&quot;#官方安装node&quot; class=&quot;headerlink&quot; title=&quot;官方安装node&quot;&gt;&lt;/a&gt;官方安装node&lt;/h2&gt;&lt;p&gt;可以在&lt;a href=&quot;https://nodejs.org/en/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nodejs官网&lt;/a&gt;上下载pkg文件安装。node和npm的执行文件都在/usr/local/bin/里。 /usr/local/lib/node_modules/npm/usr/local/lib/node_modules/n/bin 则是实际上存放npm和n的地方。n是一个用来管理nodejs版本的包。但不用这个,下面会用到nvm,更方便一些。&lt;/p&gt;
+&lt;h2 id=&quot;卸载node&quot;&gt;&lt;a href=&quot;#卸载node&quot; class=&quot;headerlink&quot; title=&quot;卸载node&quot;&gt;&lt;/a&gt;卸载node&lt;/h2&gt;&lt;p&gt;MAC下卸载软件很多直接删除安装包就行了。但node的一些文件在系统目录和用户目录里都有,你得找到全部,逐一删除。比较麻烦。这也是推荐用nvm的一个原因。你可以用nvm卸载node。nvm自身的删除也比较简单,nvm及它安装的node都在用户目录下的.nvm文件夹,删除,升级都很方便。&lt;/p&gt;
+&lt;p&gt;终端：&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;lsbom -f -l -s -pf /var/db/receipts/org.nodejs.pkg.bom | while read f; do  sudo rm /usr/local/${f}; done&lt;/code&gt;&lt;br&gt;会删除一部分&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo rm -rf /usr/local/lib/node /usr/local/lib/node_modules /var/db/receipts/org.nodejs.*&lt;/code&gt;&lt;br&gt;又会删除一部分&lt;/p&gt;
+&lt;p&gt;再执行&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo rm -rf ~/.npm&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo rm -rf ~/.node-gyp&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo rm -rf /usr/local/include/node&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;主要集中在&lt;code&gt;/usr/local/&lt;/code&gt;及username/liuhongyu/目录，也即用户目录和系统目录&lt;br&gt;比如/usr/local/bin下的n可执行文件。在这些文件夹中把与node有关的删除就行了。&lt;/p&gt;
+&lt;p&gt;还有就是在&lt;code&gt;username/.bash_profile&lt;/code&gt;中删除环境变量。&lt;/p&gt;
+&lt;h2 id=&quot;nvm安装&quot;&gt;&lt;a href=&quot;#nvm安装&quot; class=&quot;headerlink&quot; title=&quot;nvm安装&quot;&gt;&lt;/a&gt;nvm安装&lt;/h2&gt;&lt;p&gt;另一种方式是采用nvm安装。nvm和nodejs等是独立的。这样方便管理一些。并且用nvm安装node可以多个版本共存,切换起来也比较方便。在&lt;a href=&quot;https://github.com/creationix/nvm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nvm官方github&lt;/a&gt;上有详细的安装过程。在MAC上也可以使用homebrew来安装,便于nvm自身的版本管理。不过我当初还是按照github上的说明安装的。&lt;/p&gt;
+&lt;p&gt;MAC下nvm比较方便,但并不支持windows,不过nvm的作者推荐了windows上用&lt;code&gt;nvm-windows&lt;/code&gt;。是由另外一个人完成的。&lt;/p&gt;
+&lt;p&gt;当你&lt;code&gt;curl https://raw.githubusercontent.com/creationix/nvm/v0.17.2/install.sh | bash&lt;/code&gt;的时候&lt;br&gt;会自动增加环境变量到.bash_profile中,也就是说不需要你手动添加环境变量了。&lt;/p&gt;
+&lt;h3 id=&quot;nvm的卸载&quot;&gt;&lt;a href=&quot;#nvm的卸载&quot; class=&quot;headerlink&quot; title=&quot;nvm的卸载&quot;&gt;&lt;/a&gt;nvm的卸载&lt;/h3&gt;&lt;p&gt;直接删除就行了。终端命令:&lt;code&gt;rm -rf ~/.nvm&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;nvm安装node-js&quot;&gt;&lt;a href=&quot;#nvm安装node-js&quot; class=&quot;headerlink&quot; title=&quot;nvm安装node.js&quot;&gt;&lt;/a&gt;nvm安装node.js&lt;/h3&gt;&lt;p&gt;终端输入&lt;code&gt;nvm&lt;/code&gt;,会弹出一些文字说明,会告诉你一些nvm命令的使用方法。&lt;/p&gt;
+&lt;p&gt;如&lt;code&gt;nvm install  v0.12.0&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;node被安装到了&lt;code&gt;username/.nvm/versions/node/v0.12.0&lt;/code&gt;里面&lt;br&gt;并且也有npm:&lt;br&gt;&lt;code&gt;username/.nvm/versions/node/v0.12.0/lib/node_modules/npm&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;nvm卸载node&quot;&gt;&lt;a href=&quot;#nvm卸载node&quot; class=&quot;headerlink&quot; title=&quot;nvm卸载node&quot;&gt;&lt;/a&gt;nvm卸载node&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nvm uninstall &amp;lt;version&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;nvm使用node&quot;&gt;&lt;a href=&quot;#nvm使用node&quot; class=&quot;headerlink&quot; title=&quot;nvm使用node&quot;&gt;&lt;/a&gt;nvm使用node&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nvm current&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;nvm use 0.1.20&lt;/code&gt;&lt;/p&gt;
+&lt;h3 id=&quot;nvm自身升级&quot;&gt;&lt;a href=&quot;#nvm自身升级&quot; class=&quot;headerlink&quot; title=&quot;nvm自身升级&quot;&gt;&lt;/a&gt;nvm自身升级&lt;/h3&gt;&lt;p&gt;nvm的自身升级对node没有影响。但降级对node有影响&lt;/p&gt;
+&lt;h2 id=&quot;npm包管理器&quot;&gt;&lt;a href=&quot;#npm包管理器&quot; class=&quot;headerlink&quot; title=&quot;npm包管理器&quot;&gt;&lt;/a&gt;npm包管理器&lt;/h2&gt;&lt;p&gt;node的包都是由npm管理的。所以我们用nvm管理node(包括nvm自身),用npm管理node的包。npm安装包有2种方式:全局安装和本地安装。&lt;/p&gt;
+&lt;h3 id=&quot;全局安装&quot;&gt;&lt;a href=&quot;#全局安装&quot; class=&quot;headerlink&quot; title=&quot;全局安装&quot;&gt;&lt;/a&gt;全局安装&lt;/h3&gt;&lt;p&gt;安装敲命令的时候加上&lt;code&gt;-g&lt;/code&gt;,比如以安装&lt;code&gt;hexo&lt;/code&gt;为例:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;sudo npm install hexo -g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这样安装的包就会像npm一样被安装在了&lt;code&gt;username/.nvm/versions/node/v0.12.0/lib/node_modules/&lt;/code&gt;里面。然后被安装的包如’hexo’就可以全局使用了。&lt;/p&gt;
+&lt;h3 id=&quot;本地安装&quot;&gt;&lt;a href=&quot;#本地安装&quot; class=&quot;headerlink&quot; title=&quot;本地安装&quot;&gt;&lt;/a&gt;本地安装&lt;/h3&gt;&lt;p&gt;终端下切换到你的工程目录。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm install packagename&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这样就会在你的工程目录中生成node_modules文件夹,包会安装在这里。&lt;/p&gt;
+&lt;p&gt;当然最好是:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm init&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这样会生成一个&lt;code&gt;package.json&lt;/code&gt;,下次安装包的时候加上&lt;code&gt;-- save&lt;/code&gt;后缀,就可以在&lt;code&gt;package.json&lt;/code&gt;中保存包的信息。这样就比较方便在别处安装。比如你在github上clone别人的开源项目,一般是没有node_modules包的。因为这个比加大,push上去也没有必要。一般会push &lt;code&gt;package.json&lt;/code&gt;,你clone到&lt;code&gt;package.json&lt;/code&gt;以后直接&lt;code&gt;npm install&lt;/code&gt;,就会安装&lt;code&gt;package.json&lt;/code&gt;里面的所有包,比较方便。&lt;/p&gt;
+&lt;p&gt;以express为例:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;npm install express --save&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;这样express的信息就被记录在了&lt;code&gt;package.json&lt;/code&gt;里,下次如果你要安装很多个包,就不需要一个一个安装了。直接&lt;code&gt;npm install&lt;/code&gt;就行了。&lt;/p&gt;
+&lt;h2 id=&quot;node使用&quot;&gt;&lt;a href=&quot;#node使用&quot; class=&quot;headerlink&quot; title=&quot;node使用&quot;&gt;&lt;/a&gt;node使用&lt;/h2&gt;&lt;p&gt;node的文档在&lt;a href=&quot;https://nodejs.org/en/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;node官网&lt;/a&gt;上。可以先练习一下相关的API。但了解一下即可。具体有项目需求自取查阅,这样学的快一些。&lt;/p&gt;
+&lt;h2 id=&quot;基于node的框架&quot;&gt;&lt;a href=&quot;#基于node的框架&quot; class=&quot;headerlink&quot; title=&quot;基于node的框架&quot;&gt;&lt;/a&gt;基于node的框架&lt;/h2&gt;&lt;p&gt;直接用node原生进行开发的项目应该是比较少的了。一般采用基于node的一些web框架如express和koa&lt;/p&gt;
+&lt;h3 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://expressjs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;express官网&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&quot;koa&quot;&gt;&lt;a href=&quot;#koa&quot; class=&quot;headerlink&quot; title=&quot;koa&quot;&gt;&lt;/a&gt;koa&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://koajs.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;koa官网&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;MEAN快速构建网站&quot;&gt;&lt;a href=&quot;#MEAN快速构建网站&quot; class=&quot;headerlink&quot; title=&quot;MEAN快速构建网站&quot;&gt;&lt;/a&gt;MEAN快速构建网站&lt;/h2&gt;&lt;p&gt;&lt;code&gt;MEAN&lt;/code&gt;:mongodb,express,angularjs,node&lt;/p&gt;
+&lt;h2 id=&quot;2个现成的&quot;&gt;&lt;a href=&quot;#2个现成的&quot; class=&quot;headerlink&quot; title=&quot;2个现成的&quot;&gt;&lt;/a&gt;2个现成的&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/linnovate/mean&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;linnovate/mean&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://github.com/meanjs/mean&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;meanjs/mean&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;手工拼接&quot;&gt;&lt;a href=&quot;#手工拼接&quot; class=&quot;headerlink&quot; title=&quot;手工拼接&quot;&gt;&lt;/a&gt;手工拼接&lt;/h2&gt;&lt;p&gt;大多数情况下,并不用上面2个现成的项目。而是自己用MEAN各个部分进行开发。这有分为2部分:&lt;/p&gt;
+&lt;h3 id=&quot;重前端&quot;&gt;&lt;a href=&quot;#重前端&quot; class=&quot;headerlink&quot; title=&quot;重前端&quot;&gt;&lt;/a&gt;重前端&lt;/h3&gt;&lt;p&gt;以angular为主。虽然还是用到了node等,但业务逻辑什么的大多数由类似&lt;code&gt;angular,react,vue&lt;/code&gt;这样的前端框架来完成。当然还有mongodb,但项目中mongoose用的多。&lt;/p&gt;
+&lt;h3 id=&quot;重后端&quot;&gt;&lt;a href=&quot;#重后端&quot; class=&quot;headerlink&quot; title=&quot;重后端&quot;&gt;&lt;/a&gt;重后端&lt;/h3&gt;&lt;p&gt;直接用node+express或node+koa就行了。不用前端框架。比如&lt;a href=&quot;https://github.com/cnodejs/nodeclub&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnode社区源码&lt;/a&gt;就是直接用Node.js 和 MongoDB 开发的社区系统。也被很多人拿来做二次开发。在github上搜索cnode可以搜到很多。&lt;/p&gt;
+&lt;h3 id=&quot;Restful-API&quot;&gt;&lt;a href=&quot;#Restful-API&quot; class=&quot;headerlink&quot; title=&quot;Restful API&quot;&gt;&lt;/a&gt;Restful API&lt;/h3&gt;&lt;h1 id=&quot;打包构建工具&quot;&gt;&lt;a href=&quot;#打包构建工具&quot; class=&quot;headerlink&quot; title=&quot;打包构建工具&quot;&gt;&lt;/a&gt;打包构建工具&lt;/h1&gt;&lt;p&gt;不用这些工具,应用也能正常运行。但用了更好。就像嵌入式里用UCOS-II操作系统。也是这样。&lt;/p&gt;
+&lt;h2 id=&quot;Grunt-vs-Gulp&quot;&gt;&lt;a href=&quot;#Grunt-vs-Gulp&quot; class=&quot;headerlink&quot; title=&quot;Grunt vs Gulp&quot;&gt;&lt;/a&gt;Grunt vs Gulp&lt;/h2&gt;&lt;h2 id=&quot;Browserify-vs-Webpack&quot;&gt;&lt;a href=&quot;#Browserify-vs-Webpack&quot; class=&quot;headerlink&quot; title=&quot;Browserify vs Webpack&quot;&gt;&lt;/a&gt;Browserify vs Webpack&lt;/h2&gt;&lt;h1 id=&quot;部署&quot;&gt;&lt;a href=&quot;#部署&quot; class=&quot;headerlink&quot; title=&quot;部署&quot;&gt;&lt;/a&gt;部署&lt;/h1&gt;&lt;h2 id=&quot;AWS&quot;&gt;&lt;a href=&quot;#AWS&quot; class=&quot;headerlink&quot; title=&quot;AWS&quot;&gt;&lt;/a&gt;AWS&lt;/h2&gt;&lt;h2 id=&quot;阿里云&quot;&gt;&lt;a href=&quot;#阿里云&quot; class=&quot;headerlink&quot; title=&quot;阿里云&quot;&gt;&lt;/a&gt;阿里云&lt;/h2&gt;&lt;h2 id=&quot;leancloud&quot;&gt;&lt;a href=&quot;#leancloud&quot; class=&quot;headerlink&quot; title=&quot;leancloud&quot;&gt;&lt;/a&gt;leancloud&lt;/h2&gt;&lt;h2 id=&quot;coding&quot;&gt;&lt;a href=&quot;#coding&quot; class=&quot;headerlink&quot; title=&quot;coding&quot;&gt;&lt;/a&gt;coding&lt;/h2&gt;&lt;h1 id=&quot;移动端&quot;&gt;&lt;a href=&quot;#移动端&quot; class=&quot;headerlink&quot; title=&quot;移动端&quot;&gt;&lt;/a&gt;移动端&lt;/h1&gt;&lt;p&gt;不得不说JS全栈的好处。能干的活非常多。对于讲究开发效率的互联网产品来说,这是非常重要的。JS能够这么流行的一个重要原因在于:强大的开源社区。人多了,解决方案自然也多了。JS刚出道的时候还只能写一些网页脚本,现在已经无处不在。&lt;/p&gt;
+&lt;h2 id=&quot;reactjs&quot;&gt;&lt;a href=&quot;#reactjs&quot; class=&quot;headerlink&quot; title=&quot;reactjs&quot;&gt;&lt;/a&gt;reactjs&lt;/h2&gt;&lt;h2 id=&quot;ionic&quot;&gt;&lt;a href=&quot;#ionic&quot; class=&quot;headerlink&quot; title=&quot;ionic&quot;&gt;&lt;/a&gt;ionic&lt;/h2&gt;&lt;h1 id=&quot;客户端&quot;&gt;&lt;a href=&quot;#客户端&quot; class=&quot;headerlink&quot; title=&quot;客户端&quot;&gt;&lt;/a&gt;客户端&lt;/h1&gt;&lt;h2 id=&quot;Electron&quot;&gt;&lt;a href=&quot;#Electron&quot; class=&quot;headerlink&quot; title=&quot;Electron&quot;&gt;&lt;/a&gt;Electron&lt;/h2&gt;&lt;h1 id=&quot;嵌入式&quot;&gt;&lt;a href=&quot;#嵌入式&quot; class=&quot;headerlink&quot; title=&quot;嵌入式&quot;&gt;&lt;/a&gt;嵌入式&lt;/h1&gt;&lt;h2 id=&quot;Tessel&quot;&gt;&lt;a href=&quot;#Tessel&quot; class=&quot;headerlink&quot; title=&quot;Tessel&quot;&gt;&lt;/a&gt;Tessel&lt;/h2&gt;&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/getstart&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;cnode社区新手入门&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;《node与express开发》&lt;/p&gt;
+&lt;p&gt;《Nodejs实战》&lt;/p&gt;
+&lt;p&gt;《Nodejs实战》第2季&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+    
+      <category term="nodejs" scheme="http://yoursite.com/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言小结3</title>
+    <link href="http://yoursite.com/2016/06/20/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E7%BB%933/"/>
+    <id>http://yoursite.com/2016/06/20/C语言小结3/</id>
+    <published>2016-06-20T10:48:26.000Z</published>
+    <updated>2016-06-20T11:13:05.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;函数-数组-指针-字符串-结构体-共用体&quot;&gt;&lt;a href=&quot;#函数-数组-指针-字符串-结构体-共用体&quot; class=&quot;headerlink&quot; title=&quot;函数,数组,指针,字符串,结构体,共用体&quot;&gt;&lt;/a&gt;函数,数组,指针,字符串,结构体,共用体&lt;/h1&gt;&lt;h2 id=&quot;函数&quot;&gt;&lt;a href=&quot;#函数&quot; class=&quot;headerlink&quot; title=&quot;函数&quot;&gt;&lt;/a&gt;函数&lt;/h2&gt;&lt;h2 id=&quot;数组&quot;&gt;&lt;a href=&quot;#数组&quot; class=&quot;headerlink&quot; title=&quot;数组&quot;&gt;&lt;/a&gt;数组&lt;/h2&gt;&lt;h2 id=&quot;指针&quot;&gt;&lt;a href=&quot;#指针&quot; class=&quot;headerlink&quot; title=&quot;指针&quot;&gt;&lt;/a&gt;指针&lt;/h2&gt;&lt;h3 id=&quot;初始化&quot;&gt;&lt;a href=&quot;#初始化&quot; class=&quot;headerlink&quot; title=&quot;初始化&quot;&gt;&lt;/a&gt;初始化&lt;/h3&gt;&lt;p&gt;指针变量在使用之前必须进行初始化:&lt;/p&gt;
+&lt;p&gt;int num = 100;&lt;/p&gt;
+&lt;p&gt;int *p;&lt;/p&gt;
+&lt;p&gt;printf(“%d”,*p); //error,未初始化&lt;/p&gt;
+&lt;p&gt;指针未初始化可能会出现意外的后果。系统中有一些垃圾数据。未初始化时系统可能赋值给指针p一个垃圾数据当作地址。这个地址可能不该访问。&lt;/p&gt;
+&lt;p&gt;下面这样赋值会把100当成地址:&lt;/p&gt;
+&lt;p&gt;p = num;&lt;/p&gt;
+&lt;p&gt;printf(“%d”,*p); //可能会报错。因为地址为100的内存区域可能是系统的。这样可能会造成非法访问。&lt;/p&gt;
+&lt;p&gt;像上面这样赋值还会有类型问题。左边是int *类型,右边是int类型&lt;/p&gt;
+&lt;p&gt;p = \&amp;num;  //这样赋值以后p就指向了num&lt;/p&gt;
+&lt;p&gt;一般在声明的时候就初始化:&lt;/p&gt;
+&lt;p&gt;int *p = \&amp;num;&lt;/p&gt;
+&lt;h3 id=&quot;取地址运算符-amp-，-间接运算符&quot;&gt;&lt;a href=&quot;#取地址运算符-amp-，-间接运算符&quot; class=&quot;headerlink&quot; title=&quot;取地址运算符&amp;amp;， 间接运算符*&quot;&gt;&lt;/a&gt;取地址运算符&amp;amp;， 间接运算符*&lt;/h3&gt;&lt;p&gt;\&amp;amp;运算符:  取地址运算符，\&amp;amp;m即是变量m在内存中的实际地址。&lt;/p&gt;
+&lt;p&gt;*运算符： 指针运算符 (通常称为间接引用运算符),它返回其操作数 (即一个指针)所指向的对象的值.这种方式访问变量称为间接访问。直接访问是直接使用变量名来访问。&lt;/p&gt;
+&lt;p&gt;打印指针,地址格式符:%p , %x&lt;/p&gt;
+&lt;p&gt;%x:   按照十六进制打印，无意义的0就不打印&lt;/p&gt;
+&lt;p&gt;%p:   显示地址的位数，32位，8个十六进制，2^4=16,32位&lt;br&gt;      显示地址的位数，64位，16个十六进制位，64个二进制位&lt;/p&gt;
+&lt;h3 id=&quot;指向指针的指针-二级指针&quot;&gt;&lt;a href=&quot;#指向指针的指针-二级指针&quot; class=&quot;headerlink&quot; title=&quot;指向指针的指针,二级指针&quot;&gt;&lt;/a&gt;指向指针的指针,二级指针&lt;/h3&gt;&lt;p&gt;通过**声明一个二级指针&lt;/p&gt;
+&lt;p&gt;int num;&lt;/p&gt;
+&lt;p&gt;int *a = \&amp;num;&lt;/p&gt;
+&lt;p&gt;int **b = \&amp;a;&lt;/p&gt;
+&lt;p&gt;指针作为函数形参:&lt;/p&gt;
+&lt;p&gt;函数形式参数，除了数组以外，传递的任何数据，变量，都会新建一个变量接收传入的变量的值。不影响原来的变量，如果是一个数据，传递数据的地址（指针），如果是一个指针，传递指针的地址。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; 注: &lt;/strong&gt; 声明的时候 int *p = \&amp;num;  &lt;em&gt; 与 int在一起表示指针类型(int \&lt;/em&gt;)。右边直接赋值为地址。&lt;/p&gt;
+&lt;p&gt;但声明后使用则不能 *p = \&amp;num;  因为此时*p表示p指向的那个值。应该用 p = \&amp;num;&lt;/p&gt;
+&lt;p&gt;所谓指针类型，指的是声明指针变量时位于变量名前的“类型*”，而所谓指针所指向的类型，指的是为指针初始化或赋值的变量类型。&lt;/p&gt;
+&lt;p&gt;不是同一类型的指针，不可以任意赋值。不同的数据类型，大小不一样（如果强制赋值的话，就会少读取或多读取，内存有很多垃圾0,1），解析方式不一样.&lt;/p&gt;
+&lt;p&gt;注:指针不同类型之间的赋值和数据不同类型之间的赋值还有所不同。后者只是数据有溢出或截短，但前者可能找到另外一个指针去了，指向的就不再是以前的那个数据了。&lt;/p&gt;
+&lt;p&gt;同类型指针的赋值.这是最常见的一种情况，如所示，pN1和pN2是两个相同类型的指针，执行“pN2=pN1;”这样一个赋值操作后，pN1和pN2指向同样的地址，也就是说，两个指针指向同一个内存单元，对&lt;em&gt;pN2的任何改动都会影响&lt;/em&gt;pN1的值，反之亦然。&lt;/p&gt;
+&lt;h3 id=&quot;指针的类型和指针所指向的类型&quot;&gt;&lt;a href=&quot;#指针的类型和指针所指向的类型&quot; class=&quot;headerlink&quot; title=&quot;指针的类型和指针所指向的类型&quot;&gt;&lt;/a&gt;指针的类型和指针所指向的类型&lt;/h3&gt;&lt;p&gt;指针除了地址以外还有类型，类型决定了指向的数据大小，决定了数据的解析方式。指针的类型必须要与指针指向的类型一致。&lt;/p&gt;
+&lt;p&gt;指向内存字节数大于指针类型占据的字节数&lt;/p&gt;
+&lt;p&gt;指向内存字节数小于指针类型占据的字节数&lt;/p&gt;
+&lt;h3 id=&quot;指针变量的值&quot;&gt;&lt;a href=&quot;#指针变量的值&quot; class=&quot;headerlink&quot; title=&quot;指针变量的值&quot;&gt;&lt;/a&gt;指针变量的值&lt;/h3&gt;&lt;p&gt;指针变量的值是指针本身存储的数值，这个值将被编译器当作一个地址，而不是&lt;br&gt;一个一般的数值。在32位程序里，所有类型的指针的值都是一个32位整数，因为32位程序里内存地址长度都为32位。&lt;/p&gt;
+&lt;p&gt;指针所指向的内存区就是从指针的值所代表的那个内存地址开始，长度为sizeof(指针所指向的类型)的一片内存区。&lt;/p&gt;
+&lt;p&gt;指针存储的是地址，地址是首地址，从哪里开始，从哪里结束，由类型决定，类型决定长度，决定如何解析。&lt;/p&gt;
+&lt;h3 id=&quot;指针的运算&quot;&gt;&lt;a href=&quot;#指针的运算&quot; class=&quot;headerlink&quot; title=&quot;指针的运算&quot;&gt;&lt;/a&gt;指针的运算&lt;/h3&gt;&lt;p&gt;int a = 5;&lt;/p&gt;
+&lt;p&gt;int *p = a;&lt;/p&gt;
+&lt;p&gt;*p = 3;&lt;/p&gt;
+&lt;p&gt;把a的值5作为地址 0x00000005赋值给*p是发生访问冲突。整数与指针最好不要直接运算。&lt;/p&gt;
+&lt;h3 id=&quot;指向数组的指针&quot;&gt;&lt;a href=&quot;#指向数组的指针&quot; class=&quot;headerlink&quot; title=&quot;指向数组的指针&quot;&gt;&lt;/a&gt;指向数组的指针&lt;/h3&gt;&lt;p&gt;指向数组的指针被编译器解析为数组的首地址&lt;/p&gt;
+&lt;p&gt;数组的遍历:&lt;/p&gt;
+&lt;p&gt;通过下标循环进行遍历&lt;/p&gt;
+&lt;p&gt;a[i]和*(a + i)等价&lt;/p&gt;
+&lt;p&gt;通过dll注入的方式修改另一个进程的数据&lt;/p&gt;
+&lt;p&gt;int a[3] = {1,2,3};&lt;/p&gt;
+&lt;p&gt;int *p = a;&lt;/p&gt;
+&lt;p&gt;printf(“%d,%x,%x”,*p,a,&amp;amp;p);&lt;/p&gt;
+&lt;p&gt;通过定义并初始化二级指针p(下面给*&lt;em&gt;p赋的值是读到的上面\&lt;/em&gt;p的地址&amp;amp;p),使其改变另一个程序的指针p的指向，从而改变它的值。&lt;/p&gt;
+&lt;p&gt;_declspec(dllexport) void go()&lt;br&gt;{&lt;/p&gt;
+&lt;p&gt;int *&lt;em&gt;p = (int *&lt;/em&gt;)0x1bf734;   //注意左右两边的类型要匹配&lt;/p&gt;
+&lt;p&gt;*p = (int *)(0x1bf740 + 36);  //注意左右两边的类型要匹配&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;h3 id=&quot;指针的算术运算&quot;&gt;&lt;a href=&quot;#指针的算术运算&quot; class=&quot;headerlink&quot; title=&quot;指针的算术运算&quot;&gt;&lt;/a&gt;指针的算术运算&lt;/h3&gt;&lt;p&gt;指针++就是按照指针类型的大小，前进一个类型(不是一个字节)的大小，如int,前进四个字节。&lt;/p&gt;
+&lt;p&gt;指针++就是按照指针类型的大小，前进一个类型(不是一个字节)的大小，int,前进四个字节。&lt;/p&gt;
+&lt;p&gt;指针++  就是 指针每次向前移动sizeof(指针类型)个字节。&lt;/p&gt;
+&lt;p&gt;通过指针循环(以前是下标循环)的方式初始化数组a的每一个元素（从头到尾扫描数组）:&lt;/p&gt;
+&lt;p&gt;int a[5];&lt;/p&gt;
+&lt;p&gt;int i = 0;&lt;/p&gt;
+&lt;p&gt;for(int *p = a;p &amp;lt; a + 5;p++) //在数组内部用p++才有意义,移动的是sizeof(*p)个字节&lt;/p&gt;
+&lt;p&gt;{&lt;/p&gt;
+&lt;p&gt;  *p = i++;&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;注:i(下标循环)和p(指针循环)的效果是一样的。注意指针p++只能用于数组内部&lt;/p&gt;
+&lt;p&gt;指针加上2,在数组内部等价于向后移动两个元素的大小,指针减去3，等价于数组内部，向前移动3个元素(和p++是一致的)的大小&lt;/p&gt;
+&lt;p&gt;求指针的具体地址&lt;/p&gt;
+&lt;p&gt;double   *p=0x300400;&lt;br&gt;p=p+2   ; //p=0x300416=p+2&lt;em&gt;sizeof(double)&lt;br&gt;p=p-5;    //p=0x300416-sizeof(double)\&lt;/em&gt;5=0x300376&lt;/p&gt;
+&lt;h3 id=&quot;指针之间的比较&quot;&gt;&lt;a href=&quot;#指针之间的比较&quot; class=&quot;headerlink&quot; title=&quot;指针之间的比较&quot;&gt;&lt;/a&gt;指针之间的比较&lt;/h3&gt;&lt;p&gt;对两个毫无关联的指针比较大小是没有意义的，因为指针只代表了“位置”这么一个信息， 但是， 如果两个指针所指向的元素位于同一个数组（或同一块动态申请的内存中）， 指针的大小比较反映了元素在数组中的先后关系。&lt;/p&gt;
+&lt;p&gt;注：指针往往和数组联系在一起。要么就像游戏外挂那样，直接赋值为一个地址。&lt;/p&gt;
+&lt;h3 id=&quot;指针运算&quot;&gt;&lt;a href=&quot;#指针运算&quot; class=&quot;headerlink&quot; title=&quot;指针运算&quot;&gt;&lt;/a&gt;指针运算&lt;/h3&gt;&lt;p&gt;*p++ 与&lt;em&gt;(p++)一样，相当于a[i++]&lt;br&gt;\&lt;/em&gt;(++p)，相当于a[++i]&lt;br&gt;(*p)++ 表示p所指向的元素值加1，而非指针值加1&lt;/p&gt;
+&lt;p&gt;num[i]与*（num+i）等价    &amp;amp;num[i]等价于  num+i&lt;br&gt;num是第一个元素的首地址，指向int 类型&lt;br&gt;每次指针相加，相加指针指向的类型的大小&lt;/p&gt;
+&lt;h3 id=&quot;指向元素的指针与指向数组的指针&quot;&gt;&lt;a href=&quot;#指向元素的指针与指向数组的指针&quot; class=&quot;headerlink&quot; title=&quot;指向元素的指针与指向数组的指针&quot;&gt;&lt;/a&gt;指向元素的指针与指向数组的指针&lt;/h3&gt;&lt;p&gt;若有定义int(*p)[3];则定义了一个名为p的指针变量，表示p是一个指针变量，它可以指向每行有三个整数（即int型）元素的二维数组.&lt;/p&gt;
+&lt;p&gt;p指针每一次加1就相当于把p中存的地址加6（前提是int类型占2个字节，在VC中是占4个字节）。&lt;/p&gt;
+&lt;p&gt;例子：&lt;/p&gt;
+&lt;p&gt;int a[3][3];&lt;/p&gt;
+&lt;p&gt;int(*p)[3];&lt;/p&gt;
+&lt;p&gt;p = a; //p=a的意思是把数组a的首地址存放到p中那么p[1]就是a[1][0]的地址，p[1][0]就等于a[1][0]，而p[1][2]就等于a[1][2].&lt;/p&gt;
+&lt;p&gt;a通常表示一维数组首地址,&amp;amp;a通常表示二维数组首地址。但在二维数组中a和&amp;amp;a的值是相等的。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;注:赋值的时候要注意类型匹配。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%8C%87%E9%92%88-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;函数-数组-指针-字符串-结构体-共用体&quot;&gt;&lt;a href=&quot;#函数-数组-指针-字符串-结构体-共用体&quot; class=&quot;headerlink&quot; title=&quot;函数,数组,指针,字符串,结构体,共用体&quot;&gt;&lt;/a&gt;函数,数组,指针,字符串,结构体,共用体&lt;/h1&gt;&lt;
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+    
+      <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言小结2</title>
+    <link href="http://yoursite.com/2016/06/20/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E7%BB%932/"/>
+    <id>http://yoursite.com/2016/06/20/C语言小结2/</id>
+    <published>2016-06-20T10:48:19.000Z</published>
+    <updated>2016-06-20T10:55:07.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;语言逻辑流程&quot;&gt;&lt;a href=&quot;#语言逻辑流程&quot; class=&quot;headerlink&quot; title=&quot;语言逻辑流程&quot;&gt;&lt;/a&gt;语言逻辑流程&lt;/h1&gt;&lt;h2 id=&quot;C语言语句类型&quot;&gt;&lt;a href=&quot;#C语言语句类型&quot; class=&quot;headerlink&quot; title=&quot;C语言语句类型:&quot;&gt;&lt;/a&gt;C语言语句类型:&lt;/h2&gt;&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E8%AF%AD%E5%8F%A5%E7%B1%BB%E5%9E%8B.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;结构化程序设计的3种控制结构&quot;&gt;&lt;a href=&quot;#结构化程序设计的3种控制结构&quot; class=&quot;headerlink&quot; title=&quot;结构化程序设计的3种控制结构&quot;&gt;&lt;/a&gt;结构化程序设计的3种控制结构&lt;/h2&gt;&lt;h3 id=&quot;顺序结构&quot;&gt;&lt;a href=&quot;#顺序结构&quot; class=&quot;headerlink&quot; title=&quot;顺序结构&quot;&gt;&lt;/a&gt;顺序结构&lt;/h3&gt;&lt;h3 id=&quot;分支结构&quot;&gt;&lt;a href=&quot;#分支结构&quot; class=&quot;headerlink&quot; title=&quot;分支结构&quot;&gt;&lt;/a&gt;分支结构&lt;/h3&gt;&lt;h4 id=&quot;if-else&quot;&gt;&lt;a href=&quot;#if-else&quot; class=&quot;headerlink&quot; title=&quot;if else&quot;&gt;&lt;/a&gt;if else&lt;/h4&gt;&lt;p&gt;if else 嵌套&lt;/p&gt;
+&lt;p&gt;If—else语句同时使用，需要匹配出现，否则出现“没有匹配if的非法else”错误&lt;/p&gt;
+&lt;h4 id=&quot;switch&quot;&gt;&lt;a href=&quot;#switch&quot; class=&quot;headerlink&quot; title=&quot;switch&quot;&gt;&lt;/a&gt;switch&lt;/h4&gt;&lt;p&gt;switch(表达式)&lt;/p&gt;
+&lt;p&gt; {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;case 常量表达式1:语句1
+
+case 常量表达式2:语句2
+
+……
+
+case 常量表达式n:语句n
+
+default:语句n+1
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;  }&lt;/p&gt;
+&lt;p&gt;switch语句中的“表达式”和case后面的“常量表达式”的结果值的类型应该一致。其类型可以是除实型以外的任何类型（如整型、字符型、枚举类型）。每一个case后的常量表达式的值必须互不相同。执行完一个case后面的语句后，流程控制到下一个case继续执行。因此，多个case可共用一组语句。&lt;/p&gt;
+&lt;p&gt;switch语句中可以不含default分支；default分支并不限定在最后，几个case分支也没有顺序区别，但必须做适当处理，否则会影响执行结果。当default语句省略时，表示“缺省情况下什么也不做”。某些编译器可能会对default语句的缺失给出警告，从防错意义上说，即使什么也不做，最好也把default语句写上，采用下述形式：&lt;br&gt;default：&lt;br&gt;；/&lt;em&gt;（空语句。不要忘记分号）&lt;/em&gt;/&lt;br&gt;当default语句不在switch结构的最后时，不要忘记使用break。&lt;/p&gt;
+&lt;p&gt;break为跳出去执行switch后面的语句。终止switch语句的执行。为了执行完某个分支后跳出switch结构，应在其后加上break语句。如果不加break则会顺序执行下一个case语句。&lt;/p&gt;
+&lt;p&gt;int num;&lt;/p&gt;
+&lt;p&gt;switch(num)&lt;br&gt;{&lt;/p&gt;
+&lt;p&gt;  case 3:&lt;/p&gt;
+&lt;p&gt;  //&lt;/p&gt;
+&lt;p&gt;  case 2:&lt;/p&gt;
+&lt;p&gt;  printf(“大于2”);&lt;/p&gt;
+&lt;p&gt;  break;&lt;/p&gt;
+&lt;p&gt;  case 1:&lt;/p&gt;
+&lt;p&gt;  printf(“为1”);&lt;/p&gt;
+&lt;p&gt;  break;&lt;/p&gt;
+&lt;p&gt;  default://default可以不在最后&lt;/p&gt;
+&lt;p&gt;  break;//最后一个default可以省略。也是可以跳出switch的。&lt;/p&gt;
+&lt;p&gt;}&lt;/p&gt;
+&lt;p&gt;关闭_CRT_SECURE_NO_WARNINGS警告:(不然像scanf()这类函数都不能用)&lt;/p&gt;
+&lt;p&gt;在项目-&amp;gt;属性-&amp;gt;C/C++-&amp;gt;预处理器-&amp;gt;预处理器定中添加&lt;br&gt;  _CRT_SECURE_NO_WARNINGS 这个预定义。&lt;/p&gt;
+&lt;p&gt;下图中default语句在中间,如果不写break,输入5,则除了会打印”输入不合法”,还会打印”输入为2”.即使没有default语句,最后一个case 0不加break,也不会有错误结果。但一般都要加上。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80switch%E8%AF%AD%E5%8F%A5.PNG&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h4 id=&quot;if与Switch语句进行比较&quot;&gt;&lt;a href=&quot;#if与Switch语句进行比较&quot; class=&quot;headerlink&quot; title=&quot;if与Switch语句进行比较&quot;&gt;&lt;/a&gt;if与Switch语句进行比较&lt;/h4&gt;&lt;p&gt;switch结构只进行相等与否的判断，而if…else…结构还可以进行大于小于等范围上的判断。&lt;/p&gt;
+&lt;p&gt;此外，switch无法处理浮点数，只进行整数的判断，&lt;/p&gt;
+&lt;p&gt;而且，case标签值必须是常量，如果涉及到浮点数和变量的判断，应当使用if…else…结构。应当从可读性和程序效率多方面综合考虑，适当搭配两种结构，方能写出高质量的代码。&lt;/p&gt;
+&lt;h3 id=&quot;循环结构&quot;&gt;&lt;a href=&quot;#循环结构&quot; class=&quot;headerlink&quot; title=&quot;循环结构&quot;&gt;&lt;/a&gt;循环结构&lt;/h3&gt;&lt;h4 id=&quot;C语言中的三种循环语句&quot;&gt;&lt;a href=&quot;#C语言中的三种循环语句&quot; class=&quot;headerlink&quot; title=&quot;C语言中的三种循环语句&quot;&gt;&lt;/a&gt;C语言中的三种循环语句&lt;/h4&gt;&lt;p&gt;while 语句（当型）&lt;/p&gt;
+&lt;p&gt;do-while 语句（直到型）&lt;/p&gt;
+&lt;p&gt;for 语句（当型）&lt;/p&gt;
+&lt;h4 id=&quot;循环体中的辅助控制语句&quot;&gt;&lt;a href=&quot;#循环体中的辅助控制语句&quot; class=&quot;headerlink&quot; title=&quot;循环体中的辅助控制语句&quot;&gt;&lt;/a&gt;循环体中的辅助控制语句&lt;/h4&gt;&lt;h5 id=&quot;break-语句&quot;&gt;&lt;a href=&quot;#break-语句&quot; class=&quot;headerlink&quot; title=&quot;break 语句&quot;&gt;&lt;/a&gt;break 语句&lt;/h5&gt;&lt;p&gt;用在switch语句中使流程跳出switch结构，继续执行switch语句后面的语句。&lt;br&gt;用在循环体内，迫使所在循环立即终止(跳出当前循环体)，继续执行循环体后面的第一条语句。&lt;/p&gt;
+&lt;p&gt;break语句不能用于循环语句和switch语句之外的任何其他语句。&lt;/p&gt;
+&lt;h5 id=&quot;continue-语句&quot;&gt;&lt;a href=&quot;#continue-语句&quot; class=&quot;headerlink&quot; title=&quot;continue 语句&quot;&gt;&lt;/a&gt;continue 语句&lt;/h5&gt;&lt;p&gt;结束本次循环(跳过循环体中尚未执行的语句)，接着进行是否执行下一次循环的判定。&lt;/p&gt;
+&lt;h4 id=&quot;continue和break的区别&quot;&gt;&lt;a href=&quot;#continue和break的区别&quot; class=&quot;headerlink&quot; title=&quot;continue和break的区别&quot;&gt;&lt;/a&gt;continue和break的区别&lt;/h4&gt;&lt;p&gt;continue只结束本次循环，而非终止整个循环。&lt;/p&gt;
+&lt;p&gt;break则是结束所在循环，不再进行条件判断。&lt;/p&gt;
+&lt;h5 id=&quot;goto-语句&quot;&gt;&lt;a href=&quot;#goto-语句&quot; class=&quot;headerlink&quot; title=&quot;goto 语句&quot;&gt;&lt;/a&gt;goto 语句&lt;/h5&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;语言逻辑流程&quot;&gt;&lt;a href=&quot;#语言逻辑流程&quot; class=&quot;headerlink&quot; title=&quot;语言逻辑流程&quot;&gt;&lt;/a&gt;语言逻辑流程&lt;/h1&gt;&lt;h2 id=&quot;C语言语句类型&quot;&gt;&lt;a href=&quot;#C语言语句类型&quot; class=&quot;headerlink&quot; ti
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+    
+      <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>C语言小结</title>
+    <link href="http://yoursite.com/2016/06/20/C%E8%AF%AD%E8%A8%80%E5%B0%8F%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/06/20/C语言小结/</id>
+    <published>2016-06-20T10:48:08.000Z</published>
+    <updated>2016-06-20T10:53:57.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;IDE-helloword&quot;&gt;&lt;a href=&quot;#IDE-helloword&quot; class=&quot;headerlink&quot; title=&quot;IDE,helloword&quot;&gt;&lt;/a&gt;IDE,helloword&lt;/h1&gt;&lt;p&gt;visual studio 2013&lt;/p&gt;
+&lt;h1 id=&quot;数据类型-运算符-表达式&quot;&gt;&lt;a href=&quot;#数据类型-运算符-表达式&quot; class=&quot;headerlink&quot; title=&quot;数据类型,运算符,表达式&quot;&gt;&lt;/a&gt;数据类型,运算符,表达式&lt;/h1&gt;&lt;h2 id=&quot;内存中的位，字节，字&quot;&gt;&lt;a href=&quot;#内存中的位，字节，字&quot; class=&quot;headerlink&quot; title=&quot;内存中的位，字节，字&quot;&gt;&lt;/a&gt;内存中的位，字节，字&lt;/h2&gt;&lt;p&gt;计算机中的内存是以位为最小存储单位的。通过对内存进行组织，可以引用特定的位集合。把计算机的内存起始位编号为1，每隔8位编号增1，也就是以字节为单位，每隔一个字节编号向上加一，可以对计算机所有内存进行编号。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80C%E8%AF%AD%E8%A8%80%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;不同数据类型占据的空间不同。char一般占1个byte,short一般占2个,int在16位机器上占2个,在32位机器上占4个,double占8个&lt;/p&gt;
+&lt;h2 id=&quot;原码反码补码&quot;&gt;&lt;a href=&quot;#原码反码补码&quot; class=&quot;headerlink&quot; title=&quot;原码反码补码&quot;&gt;&lt;/a&gt;原码反码补码&lt;/h2&gt;&lt;p&gt;正数：原码、反码、补码相同&lt;/p&gt;
+&lt;p&gt;负数：最高位为1，其余位为原码取反，再对整个数加1。也就是反码加1（逆操作就是反码减1再取反）&lt;/p&gt;
+&lt;p&gt;一般只提原码，补码，反码只是作为过渡。&lt;/p&gt;
+&lt;p&gt;在原码，补码的转换中，符号位是不变的。不论正负。负数的其它位进行取反操作。&lt;/p&gt;
+&lt;p&gt;在计算机系统中,数值一律用补码来表示。&lt;/p&gt;
+&lt;h2 id=&quot;有符号数与无符号数&quot;&gt;&lt;a href=&quot;#有符号数与无符号数&quot; class=&quot;headerlink&quot; title=&quot;有符号数与无符号数&quot;&gt;&lt;/a&gt;有符号数与无符号数&lt;/h2&gt;&lt;p&gt;以int类型为例。16位机器上,默认(signed) int为有符号数。数值范围是-32767——32767.无符号数是unsigned int,范围是0——65535。&lt;/p&gt;
+&lt;p&gt;例子:&lt;/p&gt;
+&lt;p&gt;unsigned char x= - 0x10;&lt;/p&gt;
+&lt;p&gt;printf(“%x\n”,x);//输出f0&lt;/p&gt;
+&lt;p&gt;signed char x= - 0x10;&lt;/p&gt;
+&lt;p&gt;printf(“%x\n”,x);//输出fffffff0&lt;/p&gt;
+&lt;p&gt;Printf(“%x”,&amp;amp;x)   //按照十六进制形式打印x的地址&lt;/p&gt;
+&lt;p&gt;%d : 以十进制形式输出数据&lt;br&gt;%o : 以八进制形式输出数据&lt;br&gt;%x : 以十六进制形式输出数据&lt;br&gt;%u : 以十进制形式输出unsigned型数据&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6-1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E6%A0%BC%E5%BC%8F%E5%AD%97%E7%AC%A6-2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;unsigned char x= - 0x10;&lt;/p&gt;
+&lt;p&gt;原码 ‭0001 0000‬   unsigned char符号位应该是0,也就是不存储符号位&lt;/p&gt;
+&lt;p&gt;反码 1110 1111   但仍然是负数,如果是正数的话,反码和原码是一样的&lt;/p&gt;
+&lt;p&gt;补码 1111 0000   这一个首位的1不是符号位,是数据位,和原码不存储符号位是一致的,如果首位存储符号位的话,就无法存储数据位了。这就相当于一个正数0x10了。总之,符号位丢了。&lt;/p&gt;
+&lt;p&gt;Printf(“%x”,&amp;amp;x)的时候会把这个unsigned char以无符号(unsigned)的十六进制形式输出。也就是 0000 0000 1111 0000,也就是f0了&lt;/p&gt;
+&lt;p&gt;signed char x= - 0x10;&lt;/p&gt;
+&lt;p&gt;原码: ‭1001 0000   1是符号位,不是数据位&lt;/p&gt;
+&lt;p&gt;反码: 1110 1111   反码和符号位没关系,是数据位取反&lt;/p&gt;
+&lt;p&gt;补码: 1111 0000   首位1是符号位&lt;/p&gt;
+&lt;p&gt;Printf(“%x”,&amp;amp;x)的时候会把这个unsigned char以无符号(unsigned)的十六进制形式输出。就变成 0000  0000  1111 0000,又是00f0了。显然与结果不符。&lt;/p&gt;
+&lt;p&gt;关键是现在signed char的首位1是个符号位。转化为unsigned int的话,应该不能这样转化。&lt;/p&gt;
+&lt;p&gt;原码: 0000 0000 0001 0000&lt;br&gt;反码: 1111 1111 1110 1111&lt;br&gt;补码: 1111 1111 1111 0000&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; 小结 &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;符号位是不参与数据位的取反,加1操作的。&lt;/p&gt;
+&lt;p&gt;正数的原码,反码,补码一样,负数才有这些操作。关键在符号位和数据位不要处理混了。还有尽管上面用ussigned char存储-1,首位为0,但仍然是负数,它的补码还是取反的。不像正数,补码是它本身。但首位变成了数据位,也参与取反运算。&lt;/p&gt;
+&lt;p&gt;上面看出:unsigned char 转换为unsigned int直接加00就行了。但signed char转unsigned int还要从原码开始计算,不能随意丢弃符号位,不能随意把符号位变为数据位。&lt;/p&gt;
+&lt;p&gt;以补码形式存储。以原码形式读取?还是要区分正负。有无符号位。&lt;/p&gt;
+&lt;p&gt;计算机没有数据类型的概念。并不认识unsigned和signed&lt;/p&gt;
+&lt;p&gt;再用-1尝试。&lt;/p&gt;
+&lt;p&gt;unsigned char x= - 1;&lt;/p&gt;
+&lt;p&gt;printf(“%x\n”,x);//输出ff&lt;/p&gt;
+&lt;p&gt;signed char x= - 1;&lt;/p&gt;
+&lt;p&gt;printf(“%x\n”,x);//输出fffffff&lt;/p&gt;
+&lt;p&gt;以signed int形式打印。&lt;/p&gt;
+&lt;p&gt;unsigned char x= - 1;&lt;/p&gt;
+&lt;p&gt;printf(“%d\n”,x);//输出&lt;/p&gt;
+&lt;p&gt;signed char x= - 1;&lt;/p&gt;
+&lt;p&gt;printf(“%d\n”,x);//输出&lt;/p&gt;
+&lt;p&gt;unsigned char x= - 1;&lt;/p&gt;
+&lt;p&gt;原码 0000 0001&lt;/p&gt;
+&lt;p&gt;反码 1111 1110&lt;/p&gt;
+&lt;p&gt;补码 1111 1111   //首位是数据位。可以直接转换为signed int&lt;/p&gt;
+&lt;p&gt;0000 0000 1111 1111 // 255  。现在首位为0,并非为1,直接转换来的.现在为正数,原码,补码,反码相等&lt;/p&gt;
+&lt;p&gt;signed char x= - 1;&lt;/p&gt;
+&lt;p&gt;原码 1000 0001&lt;/p&gt;
+&lt;p&gt;反码 1111 1110&lt;/p&gt;
+&lt;p&gt;补码 1111 1111 //首位是符号位,不可以直接转换为signed int,从源码开始重新计算&lt;/p&gt;
+&lt;p&gt;原码 1000 0000 0000 0001&lt;/p&gt;
+&lt;p&gt;反码 1111 1111 1111 1110&lt;/p&gt;
+&lt;p&gt;补码 1111 1111 1111 1111 //首位是符号位&lt;/p&gt;
+&lt;p&gt;难道是 -32767 ？实际输出为-1。也就是虽然以补码形式存储,但还是以原码形式输出。&lt;/p&gt;
+&lt;p&gt;8进制：octal&lt;/p&gt;
+&lt;p&gt;10进制：decimal&lt;/p&gt;
+&lt;p&gt;16进制：hex&lt;/p&gt;
+&lt;h2 id=&quot;转义字符&quot;&gt;&lt;a href=&quot;#转义字符&quot; class=&quot;headerlink&quot; title=&quot;转义字符&quot;&gt;&lt;/a&gt;转义字符&lt;/h2&gt;&lt;p&gt;转义字符列表:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E5%88%97%E8%A1%A8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h2 id=&quot;字符常量与变量&quot;&gt;&lt;a href=&quot;#字符常量与变量&quot; class=&quot;headerlink&quot; title=&quot;字符常量与变量&quot;&gt;&lt;/a&gt;字符常量与变量&lt;/h2&gt;&lt;p&gt;字符常量：&lt;/p&gt;
+&lt;p&gt;定义:用单引号括起来的单个普通字符或转义字符.&lt;/p&gt;
+&lt;p&gt;字符常量的值：该字符的ASCII码值&lt;/p&gt;
+&lt;p&gt;转义字符:反斜线后面跟一个字符或一个代码值表示&lt;/p&gt;
+&lt;p&gt;ASCII码表:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80ascii%E7%A0%81%E8%A1%A8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;字符串常量：用双引号括起来的字符序列，每个字符串尾自动加个‘\0’作为字符串结束标志。&lt;/p&gt;
+&lt;p&gt;例子:四种方式都是打印h&lt;/p&gt;
+&lt;p&gt;十进制104，八进制150，十六进制68&lt;/p&gt;
+&lt;p&gt;在上面转义字符表格中有说明&lt;/p&gt;
+&lt;p&gt;\ddd  1-3位八进制数所代表的任意字符&lt;br&gt;\xhh  1-2位十六进制数代表的任意字符   &lt;/p&gt;
+&lt;p&gt;putchar(‘h’);&lt;/p&gt;
+&lt;p&gt;putchar(104);&lt;/p&gt;
+&lt;p&gt;putchar(‘\150’); //开始以为是putchar(‘\d150’); 但实际上不需要加d&lt;/p&gt;
+&lt;p&gt;putchar(‘\x68’);&lt;/p&gt;
+&lt;p&gt;字符’1’和整数1是不同的概念：&lt;/p&gt;
+&lt;p&gt;字符’1’只是代表一个形状为’1’的符号，在需要时按原样输出，在内存中以ASCII码形式存储，占1个字节。&lt;/p&gt;
+&lt;p&gt;整数1是以整数存储方式(二进制补码方式)存储的，占2个或4个字节。&lt;/p&gt;
+&lt;p&gt;如何存储和如何表示的是不一样的。存储都以补码形式存储。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; 例子: &lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;int a = 1;&lt;/p&gt;
+&lt;p&gt;Printf(“%d,%c”,a,a);  //%d是输出a数值本身。%c是输出ASCII码值为a的字符&lt;/p&gt;
+&lt;p&gt;char ch = ‘\0’;&lt;/p&gt;
+&lt;p&gt;Printf(“%d,%c”,ch,ch);  //%d是求它的编号(ASCII码编号), %c是求ASCII码字符本身&lt;/p&gt;
+&lt;p&gt;字符型变量在内存中占一个字节，由于存储的是字符的二进制ASCII码(补码?)，与整型数据存储方式类似，字符型数据和整型数据可以相互运算。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt; 注意： &lt;/strong&gt; 字符串常量不允许赋值给字符型变量，C语言也没有专门的字符串变量。要在内存中存取字符串，只能使用数组或指针。&lt;/p&gt;
+&lt;h3 id=&quot;ASCII码特例&quot;&gt;&lt;a href=&quot;#ASCII码特例&quot; class=&quot;headerlink&quot; title=&quot;ASCII码特例&quot;&gt;&lt;/a&gt;ASCII码特例&lt;/h3&gt;&lt;p&gt;关于ASCII码表:&lt;/p&gt;
+&lt;p&gt;48是数字0，&lt;/p&gt;
+&lt;p&gt;65是A，&lt;/p&gt;
+&lt;p&gt;97是a，&lt;/p&gt;
+&lt;p&gt;0是’\0’  也就是NULL，注意如果打印这个值，是什么也不输出，而非输出0&lt;/p&gt;
+&lt;p&gt;32是空格字符&lt;/p&gt;
+&lt;h2 id=&quot;类型自动转换&quot;&gt;&lt;a href=&quot;#类型自动转换&quot; class=&quot;headerlink&quot; title=&quot;类型自动转换&quot;&gt;&lt;/a&gt;类型自动转换&lt;/h2&gt;&lt;h3 id=&quot;隐式转换&quot;&gt;&lt;a href=&quot;#隐式转换&quot; class=&quot;headerlink&quot; title=&quot;隐式转换&quot;&gt;&lt;/a&gt;隐式转换&lt;/h3&gt;&lt;p&gt;整型、实型和字符型数据之间可以混合运算。例如：&lt;/p&gt;
+&lt;p&gt;10 + ’a’ + 1.5 - 8765.1234 * ’b’&lt;/p&gt;
+&lt;p&gt;不同数据类型之间运算会进行自动类型转换，规则如下：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E8%87%AA%E5%8A%A8%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;p&gt;常常打印的几个值: 所占的字节长度，地址，数值大小&lt;/p&gt;
+&lt;p&gt;低字节向高字节转换，极限范围小的向极限范围大的转换。  数据较大会从有符号数向无符号数转换&lt;/p&gt;
+&lt;p&gt;赋值的时候，会自动将右边表达式转换成左边变量类型&lt;/p&gt;
+&lt;h3 id=&quot;强制类型转换&quot;&gt;&lt;a href=&quot;#强制类型转换&quot; class=&quot;headerlink&quot; title=&quot;强制类型转换&quot;&gt;&lt;/a&gt;强制类型转换&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/C%E8%AF%AD%E8%A8%80%E5%BC%BA%E5%88%B6%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;高类型向低类型转化时可能发生精度损失&quot;&gt;&lt;a href=&quot;#高类型向低类型转化时可能发生精度损失&quot; class=&quot;headerlink&quot; title=&quot;高类型向低类型转化时可能发生精度损失&quot;&gt;&lt;/a&gt;高类型向低类型转化时可能发生精度损失&lt;/h3&gt;&lt;p&gt;unsigned short a = 256;&lt;/p&gt;
+&lt;p&gt;char b = a;&lt;/p&gt;
+&lt;p&gt;printf(“%d”,b);//结果不是256,b只截取了a的低8位数据&lt;/p&gt;
+&lt;h3 id=&quot;当把占字节较小的数据赋值给占字节较大的数据时，可能出现以下两种情况&quot;&gt;&lt;a href=&quot;#当把占字节较小的数据赋值给占字节较大的数据时，可能出现以下两种情况&quot; class=&quot;headerlink&quot; title=&quot;当把占字节较小的数据赋值给占字节较大的数据时，可能出现以下两种情况&quot;&gt;&lt;/a&gt;当把占字节较小的数据赋值给占字节较大的数据时，可能出现以下两种情况&lt;/h3&gt;&lt;p&gt;第1种情况，当字节较大数是无符号数时，转换时新扩充的位被填充成0&lt;/p&gt;
+&lt;p&gt;char b = 10;&lt;/p&gt;
+&lt;p&gt;unsigned short a = b;&lt;/p&gt;
+&lt;p&gt;printf(“%u”,a);&lt;/p&gt;
+&lt;p&gt;这样赋值后，变量a中输出的值是10&lt;/p&gt;
+&lt;p&gt;第2种情况，当字节较大数是有符号数时，转换时新扩充的位被填充成符号位&lt;/p&gt;
+&lt;p&gt;char b = 255;&lt;/p&gt;
+&lt;p&gt;short a = b;&lt;/p&gt;
+&lt;p&gt;printf(“%d”,a); //-1    &lt;/p&gt;
+&lt;p&gt;b: 1111 1111  //char应该是有符号数。是存储不了255的,溢出了。这里可能进行了类型转换。转换成了无符号数。但1还是符号位?  signed确实会向unsigned转换。&lt;/p&gt;
+&lt;p&gt;a: 1111 1111 1111 1111 //补码,表示-1&lt;/p&gt;
+&lt;p&gt;CHAR_MAX  有符号char最大值&lt;/p&gt;
+&lt;p&gt;CHAR_MIN  有符号char最小值&lt;/p&gt;
+&lt;h1 id=&quot;位运算文件函数高级指针高级内存高级映射-内存四区生存期作用域&quot;&gt;&lt;a href=&quot;#位运算文件函数高级指针高级内存高级映射-内存四区生存期作用域&quot; class=&quot;headerlink&quot; title=&quot;位运算文件函数高级指针高级内存高级映射_内存四区生存期作用域&quot;&gt;&lt;/a&gt;位运算&lt;em&gt;文件&lt;/em&gt;函数高级&lt;em&gt;指针高级&lt;/em&gt;内存高级映射_内存四区生存期作用域&lt;/h1&gt;&lt;h1 id=&quot;编译选项-数据结构-链表-栈-队列-实战&quot;&gt;&lt;a href=&quot;#编译选项-数据结构-链表-栈-队列-实战&quot; class=&quot;headerlink&quot; title=&quot;编译选项,(数据结构)链表,栈,队列,实战&quot;&gt;&lt;/a&gt;编译选项,(数据结构)链表,栈,队列,实战&lt;/h1&gt;&lt;h2 id=&quot;references&quot;&gt;&lt;a href=&quot;#references&quot; class=&quot;headerlink&quot; title=&quot;references:&quot;&gt;&lt;/a&gt;references:&lt;/h2&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;IDE-helloword&quot;&gt;&lt;a href=&quot;#IDE-helloword&quot; class=&quot;headerlink&quot; title=&quot;IDE,helloword&quot;&gt;&lt;/a&gt;IDE,helloword&lt;/h1&gt;&lt;p&gt;visual studio 2013&lt;/p&gt;
+&lt;h1
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+    
+      <category term="C语言" scheme="http://yoursite.com/tags/C%E8%AF%AD%E8%A8%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>javascript小结</title>
+    <link href="http://yoursite.com/2016/06/17/javascript%E5%B0%8F%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/06/17/javascript小结/</id>
+    <published>2016-06-16T22:45:49.000Z</published>
+    <updated>2016-06-23T10:57:37.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h1&gt;&lt;p&gt;学前预热课程里有这部分内容,但是没有PPT资料,是自己截图的。&lt;/p&gt;
+&lt;p&gt;有一个能够在Browser上运行的模板html。如果是nodejs的话,就是一个能够正常运行的express模板。&lt;/p&gt;
+&lt;h2 id=&quot;DOM&quot;&gt;&lt;a href=&quot;#DOM&quot; class=&quot;headerlink&quot; title=&quot;DOM&quot;&gt;&lt;/a&gt;DOM&lt;/h2&gt;&lt;p&gt;P36&lt;/p&gt;
+&lt;h2 id=&quot;BOM&quot;&gt;&lt;a href=&quot;#BOM&quot; class=&quot;headerlink&quot; title=&quot;BOM&quot;&gt;&lt;/a&gt;BOM&lt;/h2&gt;&lt;p&gt;P39&lt;/p&gt;
+&lt;h2 id=&quot;event&quot;&gt;&lt;a href=&quot;#event&quot; class=&quot;headerlink&quot; title=&quot;event&quot;&gt;&lt;/a&gt;event&lt;/h2&gt;&lt;p&gt;P40&lt;/p&gt;
+&lt;h3 id=&quot;鼠标事件&quot;&gt;&lt;a href=&quot;#鼠标事件&quot; class=&quot;headerlink&quot; title=&quot;鼠标事件&quot;&gt;&lt;/a&gt;鼠标事件&lt;/h3&gt;&lt;h3 id=&quot;键盘事件&quot;&gt;&lt;a href=&quot;#键盘事件&quot; class=&quot;headerlink&quot; title=&quot;键盘事件&quot;&gt;&lt;/a&gt;键盘事件&lt;/h3&gt;&lt;h2 id=&quot;cookie与session&quot;&gt;&lt;a href=&quot;#cookie与session&quot; class=&quot;headerlink&quot; title=&quot;cookie与session&quot;&gt;&lt;/a&gt;cookie与session&lt;/h2&gt;&lt;p&gt;P53&lt;/p&gt;
+&lt;h1 id=&quot;css&quot;&gt;&lt;a href=&quot;#css&quot; class=&quot;headerlink&quot; title=&quot;css&quot;&gt;&lt;/a&gt;css&lt;/h1&gt;&lt;p&gt;样式有优先级，id的优先级大于class，所以有时候你改变class样式可能会没用。&lt;/p&gt;
+&lt;p&gt;Css需要放在&lt;style&gt;标签，类似的JS需要&lt;script&gt;标签&lt;/p&gt;
+&lt;style type=”text/css”&gt;
+
+&lt;/style&gt;
+
+&lt;/p&gt;&lt;p&gt;S中的style只能获取行间样式，所以后来才会去用currentStyle和getComputedStyle&lt;/p&gt;
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;h3 id=&quot;《javascript权威指南》&quot;&gt;&lt;a href=&quot;#《javascript权威指南》&quot; class=&quot;headerlink&quot; title=&quot;《javascript权威指南》&quot;&gt;&lt;/a&gt;《javascript权威指南》&lt;/h3&gt;</content>
     
     <summary type="html">
     
@@ -2537,163 +2587,6 @@ and the repository exists.&lt;/code&gt;&lt;/p&gt;
     
     
       <category term="git&github" scheme="http://yoursite.com/tags/git-github/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>使用githubpages+hexo+atom写博客</title>
-    <link href="http://yoursite.com/2016/04/20/%E4%BD%BF%E7%94%A8githubpages-hexo-atom%E5%86%99%E5%8D%9A%E5%AE%A2/"/>
-    <id>http://yoursite.com/2016/04/20/使用githubpages-hexo-atom写博客/</id>
-    <published>2016-04-19T23:18:14.000Z</published>
-    <updated>2016-05-02T11:05:18.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;一-git-客户端-github-pages-配置连接与取消&quot;&gt;&lt;a href=&quot;#一-git-客户端-github-pages-配置连接与取消&quot; class=&quot;headerlink&quot; title=&quot;一.git(客户端)github pages 配置连接与取消&quot;&gt;&lt;/a&gt;一.git(客户端)github pages 配置连接与取消&lt;/h1&gt;&lt;h2 id=&quot;1-1-git方面自己是用的是mac上的github客户端。省略了一些命令操作。&quot;&gt;&lt;a href=&quot;#1-1-git方面自己是用的是mac上的github客户端。省略了一些命令操作。&quot; class=&quot;headerlink&quot; title=&quot;1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。&quot;&gt;&lt;/a&gt;1.1.git方面自己是用的是mac上的github客户端。省略了一些命令操作。&lt;/h2&gt;&lt;h2 id=&quot;1-2-githubpages的使用。&quot;&gt;&lt;a href=&quot;#1-2-githubpages的使用。&quot; class=&quot;headerlink&quot; title=&quot;1.2.githubpages的使用。&quot;&gt;&lt;/a&gt;1.2.githubpages的使用。&lt;/h2&gt;&lt;h3 id=&quot;1-2-1首先要注册一个github帐号。点击new-repository。建立名为username-github-io这样的用户-amp-组织页（站）&quot;&gt;&lt;a href=&quot;#1-2-1首先要注册一个github帐号。点击new-repository。建立名为username-github-io这样的用户-amp-组织页（站）&quot; class=&quot;headerlink&quot; title=&quot;1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;amp;组织页（站）&quot;&gt;&lt;/a&gt;1.2.1首先要注册一个github帐号。点击new repository。建立名为username.github.io这样的用户&amp;amp;组织页（站）&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;添加相应的说明文字&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;1-2-2点击上图lhyhfut-github-io仓库右上角的settings-点击launch-Automatic-page-generator，Github将会自动替你创建出一个github-pages的页面。&quot;&gt;&lt;a href=&quot;#1-2-2点击上图lhyhfut-github-io仓库右上角的settings-点击launch-Automatic-page-generator，Github将会自动替你创建出一个github-pages的页面。&quot; class=&quot;headerlink&quot; title=&quot;1.2.2点击上图lhyhfut.github.io仓库右上角的settings.点击launch Automatic page generator，Github将会自动替你创建出一个github-pages的页面。&quot;&gt;&lt;/a&gt;1.2.2点击上图lhyhfut.github.io仓库右上角的settings.点击launch Automatic page generator，Github将会自动替你创建出一个github-pages的页面。&lt;/h3&gt;&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;点击右下角的按钮&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages5.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;选择一个主题，点击publish&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages6.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;成功后会有提示，并且可以看到仓库里多了一些文件:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages7.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;等待15分钟，在浏览器browser的URL中输入&lt;a href=&quot;http://lhyhfut.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://lhyhfut.github.io/&lt;/a&gt;  这样就可以看到githubpages的页面了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;二-hexo的安装与设置&quot;&gt;&lt;a href=&quot;#二-hexo的安装与设置&quot; class=&quot;headerlink&quot; title=&quot;二.hexo的安装与设置&quot;&gt;&lt;/a&gt;二.hexo的安装与设置&lt;/h1&gt;&lt;p&gt;上面只是githubpages默认的页面。下面采用的是hexo&lt;/p&gt;
-&lt;h2 id=&quot;2-1-hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后-终端用如下命令&quot;&gt;&lt;a href=&quot;#2-1-hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后-终端用如下命令&quot; class=&quot;headerlink&quot; title=&quot;2.1.hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后,终端用如下命令:&quot;&gt;&lt;/a&gt;2.1.hexo是用npm安装的。npm是node的包管理工具。需要先安装它。安装好npm后,终端用如下命令:&lt;/h2&gt;&lt;p&gt;&lt;code&gt;sudo npm install -g hexo&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;默认被安装在了node的包目录下。可以使用&lt;code&gt;hexo -h&lt;/code&gt;查看帮助&lt;/p&gt;
-&lt;p&gt;然后切换到想安装的目录:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo init&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;npm istall //安装hexo package.json中默认的包&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo g  //hexo generate&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo s //hexo server&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这时在浏览器中输入&lt;a href=&quot;http://localhost:4000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:4000&lt;/a&gt; ,可以看到本地的效果&lt;/p&gt;
-&lt;h2 id=&quot;2-2-npm安装插件&quot;&gt;&lt;a href=&quot;#2-2-npm安装插件&quot; class=&quot;headerlink&quot; title=&quot;2.2.npm安装插件&quot;&gt;&lt;/a&gt;2.2.npm安装插件&lt;/h2&gt;&lt;p&gt;`npm install hexo-generator-index –save   &lt;/p&gt;
-&lt;p&gt;npm install hexo-generator-archive –save   &lt;/p&gt;
-&lt;p&gt;npm install hexo-generator-category –save  &lt;/p&gt;
-&lt;p&gt;npm install hexo-generator-tag –save    &lt;/p&gt;
-&lt;p&gt;npm install hexo-server –save   &lt;/p&gt;
-&lt;p&gt;npm install hexo-deployer-git –save   安装时有错误  &lt;/p&gt;
-&lt;p&gt;npm install hexo-deployer-heroku –save  &lt;/p&gt;
-&lt;p&gt;npm install hexo-deployer-rsync –save  &lt;/p&gt;
-&lt;p&gt;npm install hexo-deployer-openshift –save  &lt;/p&gt;
-&lt;p&gt;npm install hexo-renderer-marked@0.2 –save  &lt;/p&gt;
-&lt;p&gt;npm install hexo-renderer-stylus@0.2 –save  &lt;/p&gt;
-&lt;p&gt;npm install hexo-generator-feed@1 –save     &lt;/p&gt;
-&lt;p&gt;npm install hexo-generator-sitemap@1 –save`&lt;/p&gt;
-&lt;p&gt;然后再&lt;br&gt;&lt;code&gt;hexo s //hexo server&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;这时在浏览器中输入&lt;a href=&quot;http://localhost:4000,可以看到本地的效果&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:4000,可以看到本地的效果&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&quot;2-3-更换主题&quot;&gt;&lt;a href=&quot;#2-3-更换主题&quot; class=&quot;headerlink&quot; title=&quot;2.3.更换主题&quot;&gt;&lt;/a&gt;2.3.更换主题&lt;/h2&gt;&lt;p&gt;hexo默认的主题不好看,在知乎上的推荐中选了一个投票较高的:NexT 主题&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://theme-next.iissnan.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Next主题官网&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-3-1复制主题&quot;&gt;&lt;a href=&quot;#2-3-1复制主题&quot; class=&quot;headerlink&quot; title=&quot;2.3.1复制主题:&quot;&gt;&lt;/a&gt;2.3.1复制主题:&lt;/h3&gt;&lt;p&gt;在终端窗口下，定位到 Hexo 站点目录下。使用 Git checkout 代码：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cd your-hexo-site&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git clone https://github.com/iissnan/hexo-theme-next themes/next&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-3-2-启用主题&quot;&gt;&lt;a href=&quot;#2-3-2-启用主题&quot; class=&quot;headerlink&quot; title=&quot;2.3.2 启用主题&quot;&gt;&lt;/a&gt;2.3.2 启用主题&lt;/h3&gt;&lt;p&gt;打开站点配置文件(在Hexo 站点目录下的_config.yml中)， 找&lt;/p&gt;
-&lt;p&gt;到theme字段，并将其值更改为 next&lt;/p&gt;
-&lt;p&gt;下一步我们将验证主题是否正确启用。在切换主题之后、验证之前， 我们最好使用 &lt;code&gt;hexo clean&lt;/code&gt; 来清除 Hexo 的缓存。&lt;/p&gt;
-&lt;h3 id=&quot;2-3-3-验证主题&quot;&gt;&lt;a href=&quot;#2-3-3-验证主题&quot; class=&quot;headerlink&quot; title=&quot;2.3.3 验证主题&quot;&gt;&lt;/a&gt;2.3.3 验证主题&lt;/h3&gt;&lt;p&gt;启动 Hexo 本地站点，并开启调试模式（即加上 –debug），整&lt;br&gt;个命令是 &lt;code&gt;hexo s --debug&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;在浏览器中输入&lt;a href=&quot;http://localhost:4000,可以看到本地的效果&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:4000,可以看到本地的效果&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-3-3-1选择-Scheme&quot;&gt;&lt;a href=&quot;#2-3-3-1选择-Scheme&quot; class=&quot;headerlink&quot; title=&quot;2.3.3.1选择 Scheme&quot;&gt;&lt;/a&gt;2.3.3.1选择 Scheme&lt;/h3&gt;&lt;p&gt;在themes\next目录中的_config.yml中&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;scheme: Mist&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-3-3-2设置为简体中文&quot;&gt;&lt;a href=&quot;#2-3-3-2设置为简体中文&quot; class=&quot;headerlink&quot; title=&quot;2.3.3.2设置为简体中文&quot;&gt;&lt;/a&gt;2.3.3.2设置为简体中文&lt;/h3&gt;&lt;p&gt;在Hexo 站点目录下的_config.yml中&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;language: zh-Hans&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;还有许多配置(比如菜单设置)详见&lt;a href=&quot;http://theme-next.iissnan.com/five-minutes-setup.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Next主题官网&lt;/a&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-3-3-3设置分类与标签文&quot;&gt;&lt;a href=&quot;#2-3-3-3设置分类与标签文&quot; class=&quot;headerlink&quot; title=&quot;2.3.3.3设置分类与标签文&quot;&gt;&lt;/a&gt;2.3.3.3设置分类与标签文&lt;/h3&gt;&lt;p&gt;参考&lt;a href=&quot;https://hexo.io/zh-cn/docs/front-matter.html#分类和标签&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo 的分类与标签文档&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;在Hexo 站点目录下的_config.yml中:&lt;/p&gt;
-&lt;p&gt;把&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages113.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;修改为:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages114.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在博文的页头(Front-matter 是文件最上方以 — 分隔的区域)添加相应的配置:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages115.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo clean&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo g&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo s&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo d&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;将在网站上的博客页头看到分类和写作时间:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages116.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;点击能够进入相关分类:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages117.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;在博客页末能够看到标签和下一篇文章链接:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages118.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;右上角的 &lt;strong&gt;标签&lt;/strong&gt; 和 &lt;strong&gt;分类&lt;/strong&gt; 页面参考&lt;a href=&quot;http://theme-next.iissnan.com/theme-settings.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;添加「分类」页面&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;终端切换到你的hexo站点目录&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo new page categories&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo new page tags&lt;/code&gt;  &lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo new page about&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo new page title&lt;/code&gt; //没用,右上角没这个&lt;/p&gt;
-&lt;p&gt;与&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://localhost:4000/about/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://localhost:4000/tags/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://localhost:4000/categories/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;是对应的&lt;/p&gt;
-&lt;p&gt;点击进入,由于你还 &lt;strong&gt;没在生成的页面中添加内容&lt;/strong&gt;,网站上相应页面也都还是一片空白:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github119.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h3 id=&quot;2-3-4将本地文件部署到-GitHub&quot;&gt;&lt;a href=&quot;#2-3-4将本地文件部署到-GitHub&quot; class=&quot;headerlink&quot; title=&quot;2.3.4将本地文件部署到 GitHub&quot;&gt;&lt;/a&gt;2.3.4将本地文件部署到 GitHub&lt;/h3&gt;&lt;p&gt;修改 Hexo 中的_config.yml 文件,找到deploy字段,如下设置:&lt;br&gt;(注:冒号后面要加上一个空格，否则会报错)&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;deploy:&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;  &lt;code&gt;type: git&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;  &lt;code&gt;repository:
-   https://github.com/lhyhfut/lhyhfut.github.io.git&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;  &lt;code&gt;branch: master&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;  将其 deploy 到仓库中:&lt;/p&gt;
-&lt;p&gt;  &lt;code&gt;npm install hexo-deployer-git --save&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;  &lt;code&gt;hexo clean&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;  &lt;code&gt;hexo generate&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;  &lt;code&gt;hexo deploy&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;  到这一步，个人博客就已经部署到 GitHub 上了，你可以到你的GitHub仓库查看是否已经更新.在浏览器browser的URL中输入&lt;a href=&quot;http://lhyhfut.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://lhyhfut.github.io/&lt;/a&gt;  这样就可以看到githubpages的页面了。&lt;/p&gt;
-&lt;h1 id=&quot;三-发表博文&quot;&gt;&lt;a href=&quot;#三-发表博文&quot; class=&quot;headerlink&quot; title=&quot;三.发表博文&quot;&gt;&lt;/a&gt;三.发表博文&lt;/h1&gt;&lt;h2 id=&quot;3-1新建博文&quot;&gt;&lt;a href=&quot;#3-1新建博文&quot; class=&quot;headerlink&quot; title=&quot;3.1新建博文&quot;&gt;&lt;/a&gt;3.1新建博文&lt;/h2&gt;&lt;p&gt;终端中进入hexo站点目录:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo new &amp;quot;文章题目&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;会生成相应的.md文件。也可以手动再Hexo\source_posts 目录中下新建md文件&lt;/p&gt;
-&lt;h2 id=&quot;3-2新建页面&quot;&gt;&lt;a href=&quot;#3-2新建页面&quot; class=&quot;headerlink&quot; title=&quot;3.2新建页面&quot;&gt;&lt;/a&gt;3.2新建页面&lt;/h2&gt;&lt;p&gt;上面新建的博文是显示在单个文章界面，这里新建的页面是作为单个页面显示的，比如下图的分类、标签、归档和关于我，你点击后都是显示为单个页面。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo new page &amp;quot;页面名称&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;命令执行完后，就会发现在在 Hexo\source 目录中多了一个文件夹，里面还有一个index.md,这就代表我们新建了一个页面。&lt;/p&gt;
-&lt;h2 id=&quot;3-3写博文&quot;&gt;&lt;a href=&quot;#3-3写博文&quot; class=&quot;headerlink&quot; title=&quot;3.3写博文&quot;&gt;&lt;/a&gt;3.3写博文&lt;/h2&gt;&lt;h3 id=&quot;3-3-1-atom编辑器和markdown-prew插件就可以使用markdow来编辑博客&quot;&gt;&lt;a href=&quot;#3-3-1-atom编辑器和markdown-prew插件就可以使用markdow来编辑博客&quot; class=&quot;headerlink&quot; title=&quot;3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客&quot;&gt;&lt;/a&gt;3.3.1 atom编辑器和markdown-prew插件就可以使用markdow来编辑博客&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/1e402922ee32/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown——入门指南&lt;/a&gt;中推荐了MouMarkdown 编辑器.但个人还是觉得atom编辑器和&lt;/p&gt;
-&lt;p&gt;markdown-prew插件可以把写代码和写博客统一起来。并且也支持实时预览，既左边是你编辑 Markdown 语言，右边会实时的生成预览效果。在atom中&lt;/p&gt;
-&lt;p&gt;使用快捷键command + shift + p，弹出包搜索框，输入markdown Preview，然后点击确定即可。&lt;/p&gt;
-&lt;h3 id=&quot;3-3-3-markdown语法&quot;&gt;&lt;a href=&quot;#3-3-3-markdown语法&quot; class=&quot;headerlink&quot; title=&quot;3.3.3 markdown语法&quot;&gt;&lt;/a&gt;3.3.3 markdown语法&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/1e402922ee32/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown——入门指南&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/hnrainll/p/3514637.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Markdown 11种基本语法&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;记住几个常用的如:标题,代码快,插入图片,插入链接&lt;/p&gt;
-&lt;h3 id=&quot;3-3-4-用七牛图床来保存博客中所需要的图片&quot;&gt;&lt;a href=&quot;#3-3-4-用七牛图床来保存博客中所需要的图片&quot; class=&quot;headerlink&quot; title=&quot;3.3.4 用七牛图床来保存博客中所需要的图片&quot;&gt;&lt;/a&gt;3.3.4 用七牛图床来保存博客中所需要的图片&lt;/h3&gt;&lt;p&gt;把本地的图片上传到&lt;a href=&quot;https://portal.qiniu.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;七牛云服务&lt;/a&gt;,七牛会给你的图片生成相应的外链,在博客中插入这个图片外链就可以了&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://portal.qiniu.com/tutorial/index&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;新手上路&lt;/a&gt;中有详细的教程。总的步骤如下:&lt;/p&gt;
-&lt;p&gt;新建空间——内容管理——上传文件——复制外链到博客    &lt;/p&gt;
-&lt;h3 id=&quot;3-3-5最终效果&quot;&gt;&lt;a href=&quot;#3-3-5最终效果&quot; class=&quot;headerlink&quot; title=&quot;3.3.5最终效果&quot;&gt;&lt;/a&gt;3.3.5最终效果&lt;/h3&gt;&lt;p&gt;在终端切换到你的hexo站点目录&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo clean&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo s&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo g&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hexo d&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;在浏览器中输入&lt;a href=&quot;http://localhost:4000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:4000&lt;/a&gt; ,可以看到本地的效果&lt;/p&gt;
-&lt;p&gt;在浏览器browser的URL中输入&lt;a href=&quot;http://lhyhfut.github.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://lhyhfut.github.io/&lt;/a&gt;  ,这样就可以看到githubpages的页面了。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/githubpages9.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h1 id=&quot;给博客添加github-star链接&quot;&gt;&lt;a href=&quot;#给博客添加github-star链接&quot; class=&quot;headerlink&quot; title=&quot;给博客添加github star链接&quot;&gt;&lt;/a&gt;给博客添加github star链接&lt;/h1&gt;&lt;p&gt;参考&lt;a href=&quot;http://www.cnblogs.com/zhcncn/p/4097881.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo搭建Github静态博客&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;给blog主页添加一个“Fork me on Github”的绶带（ribbon），比如选择了红色的ribbon，将下面链接中提供的相应代码复制到Hexo正在使用的theme下_layout.swig中。比如我使用的next theme，那么将下面的代码（注意将you改为你自己的github上的注册名）&lt;/p&gt;
-&lt;p&gt;代码在&lt;a href=&quot;https://github.com/blog/273-github-ribbons&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub Ribbons&lt;/a&gt;上挑选你喜欢的样式&lt;/p&gt;
-&lt;p&gt;粘贴到 themes\next\layout\layout.swig中，放置在 最后，标签之前即可。&lt;/p&gt;
-&lt;p&gt;效果:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github120.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference:&quot;&gt;&lt;/a&gt;reference:&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://www.jianshu.com/p/05289a4bc8b2&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;如何搭建一个独立博客——简明Github Pages与Hexo教程&lt;/a&gt;   &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/Leo_wl/p/3608794.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;给你的博客加上“Fork me on Github”彩带&lt;/a&gt;   &lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://www.cnblogs.com/zhcncn/p/4097881.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo搭建Github静态博客&lt;/a&gt;   &lt;/p&gt;
-&lt;h2 id=&quot;To-do-list&quot;&gt;&lt;a href=&quot;#To-do-list&quot; class=&quot;headerlink&quot; title=&quot;To do list:&quot;&gt;&lt;/a&gt;To do list:&lt;/h2&gt;&lt;p&gt;1.博客上只有”归档”等够使用,”关于,分类,标签”都不能打开。可能仅仅新建了博文,没有新建页面&lt;/p&gt;
-&lt;p&gt;2.插入外链时&lt;a href=&quot;&quot;&gt;&lt;/a&gt;这样会不起作用。直接写反倒是可以的。需要写入名字。相反,插入图片的时候不需要写入名字就可以直接显示图片。&lt;/p&gt;
-&lt;p&gt;3.hexo配置的继续折腾。比如菜单等设置。&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://theme-next.iissnan.com/theme-settings.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;主题配置&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;https://hexo.io/zh-cn/docs/front-matter.html#分类和标签&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo 的分类与标签文档&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://theme-next.iissnan.com/third-party-services.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;第三方服务&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;4.图片在博客中的位置还不够美观。显得比较乱。&lt;/p&gt;
-&lt;p&gt;5.向标签和分类页面添加内容。&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;一-git-客户端-github-pages-配置连接与取消&quot;&gt;&lt;a href=&quot;#一-git-客户端-github-pages-配置连接与取消&quot; class=&quot;headerlink&quot; title=&quot;一.git(客户端)github pages 配置连接与取消&quot;&gt;
-    
-    </summary>
-    
-      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
-    
-    
-      <category term="博客" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%AE%A2/"/>
     
   </entry>
   
