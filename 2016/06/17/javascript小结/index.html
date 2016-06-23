@@ -73,7 +73,7 @@ eventP40
 鼠标事件键盘事件cookie与sessionP53
 css样式有优先级，id的优先级大于class，所以有时候你改变class样式可能会没用。
 Css需要放在标签，类">
-<meta property="og:updated_time" content="2016-06-23T04:35:35.000Z">
+<meta property="og:updated_time" content="2016-06-23T05:48:33.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript小结">
 <meta name="twitter:description" content="html学前预热课程里有这部分内容,但是没有PPT资料,是自己截图的。
@@ -386,8 +386,16 @@ Css需要放在标签，类">
 <p>   多态：父类和子类有相同的操作，但操作之间又不一样。</p>
 <h3 id="对象的组成"><a href="#对象的组成" class="headerlink" title="对象的组成"></a>对象的组成</h3><p>方法——函数:过程,动态的</p>
 <p>属性——变量:状态,静态的</p>
-<h3 id="例子代码"><a href="#例子代码" class="headerlink" title="例子代码"></a>例子代码</h3><p>使用<br>构造函数来存储<br>function Person</p>
-<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>字符串的处理是每种语言的一个重点</p>
+<h3 id="例子代码"><a href="#例子代码" class="headerlink" title="例子代码"></a>例子代码</h3><p>使用构造函数来存储属性</p>
+<p>使用原型来构建方法</p>
+<p>使用原型来继承</p>
+<p>function Person(name,sex)//父类的构造函数,存储属性<br>{//一般来说构造函数名就是类名,首字母大写<br>  this.name = name;<br>  this.sex = sex;<br>}<br>//定义方法<br>Person.prototype.showName = function()<br>{<br>  console.log(this.name);<br>}</p>
+<p>Person.prototype.showSex = function()<br>{<br>  console.log(this.sex);<br>}<br>//创建类的实例<br>//JS中一切皆是对象。String,Array对象都可以用new的方式创建实例。这些自定义的对象也采用了这种形式，<br>var p1 = new Person(‘liu’,’man’);//写为’liu’,’man’是字面值常量,写为liu,man则是未定义的变量。会报错。<br>p1.showName();<br>p1.showSex();</p>
+<p>//下面开始定义子类并继承<br>//属性的继承是通过在子类的构造函数中调用父类的构造函数实现<br>function Worker(name,sex,job)<br>{<br>  //一般的调用形式是:对象.方法。但call,apply的调用形式反过来了:方法.对象.参数。因为此时的方法并非这个对象上的。只是在这个对象上调用<br>  Person.call(this,name,sex);<br>  //子类新的属性<br>  this.job = job;<br>}</p>
+<p>//通过原型来继承父级的方法<br>//赋值的方法,引用传递?<br>Worker.prototype = Person.prototype;<br>//实例化的方式,但属性这一块与上面有些重复<br>//var Worker = new Person();//不过这里不像真的实例化那样带参数<br>//子类自定义的方法<br>//Worker.prototype.showJob = function(job)//错误,参数传递在构造函数中进行,方法只用来执行功能<br>Worker.prototype.showJob = function()<br>{<br>  console.log(this.job);<br>}<br>var w1 = new Worker(‘liu’,’man’,’worker’);<br>//w1.showJob(‘worker’);<br>w1.showJob();//worker</p>
+<p>JS采用的是原型继承。给对象添加属性和方法就比较简单。在给已有的对象(如Array)添加属性或方法的时候可能会冲突。所以自己添加时往往需要一个空白的对象。object就是一个空白的对象。</p>
+<h3 id="this"><a href="#this" class="headerlink" title="this"></a>this</h3><p>JS中的this主要有4种使用场景。可以分别在browser和nodejs上测试，</p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>字符串的处理是每种语言的一个重点</p>
 <p>p145</p>
 <p>P152 问题</p>
 <h1 id="php"><a href="#php" class="headerlink" title="php"></a>php</h1><p>P120</p>

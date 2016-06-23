@@ -409,7 +409,7 @@ default:语句n+1
     <link href="http://yoursite.com/2016/06/17/javascript%E5%B0%8F%E7%BB%93/"/>
     <id>http://yoursite.com/2016/06/17/javascript小结/</id>
     <published>2016-06-16T22:45:49.000Z</published>
-    <updated>2016-06-23T04:35:35.000Z</updated>
+    <updated>2016-06-23T05:48:33.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h1&gt;&lt;p&gt;学前预热课程里有这部分内容,但是没有PPT资料,是自己截图的。&lt;/p&gt;
 &lt;p&gt;有一个能够在Browser上运行的模板html。如果是nodejs的话,就是一个能够正常运行的express模板。&lt;/p&gt;
@@ -524,8 +524,16 @@ default:语句n+1
 &lt;p&gt;   多态：父类和子类有相同的操作，但操作之间又不一样。&lt;/p&gt;
 &lt;h3 id=&quot;对象的组成&quot;&gt;&lt;a href=&quot;#对象的组成&quot; class=&quot;headerlink&quot; title=&quot;对象的组成&quot;&gt;&lt;/a&gt;对象的组成&lt;/h3&gt;&lt;p&gt;方法——函数:过程,动态的&lt;/p&gt;
 &lt;p&gt;属性——变量:状态,静态的&lt;/p&gt;
-&lt;h3 id=&quot;例子代码&quot;&gt;&lt;a href=&quot;#例子代码&quot; class=&quot;headerlink&quot; title=&quot;例子代码&quot;&gt;&lt;/a&gt;例子代码&lt;/h3&gt;&lt;p&gt;使用&lt;br&gt;构造函数来存储&lt;br&gt;function Person&lt;/p&gt;
-&lt;h3 id=&quot;this&quot;&gt;&lt;a href=&quot;#this&quot; class=&quot;headerlink&quot; title=&quot;this&quot;&gt;&lt;/a&gt;this&lt;/h3&gt;&lt;h2 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h2&gt;&lt;p&gt;字符串的处理是每种语言的一个重点&lt;/p&gt;
+&lt;h3 id=&quot;例子代码&quot;&gt;&lt;a href=&quot;#例子代码&quot; class=&quot;headerlink&quot; title=&quot;例子代码&quot;&gt;&lt;/a&gt;例子代码&lt;/h3&gt;&lt;p&gt;使用构造函数来存储属性&lt;/p&gt;
+&lt;p&gt;使用原型来构建方法&lt;/p&gt;
+&lt;p&gt;使用原型来继承&lt;/p&gt;
+&lt;p&gt;function Person(name,sex)//父类的构造函数,存储属性&lt;br&gt;{//一般来说构造函数名就是类名,首字母大写&lt;br&gt;  this.name = name;&lt;br&gt;  this.sex = sex;&lt;br&gt;}&lt;br&gt;//定义方法&lt;br&gt;Person.prototype.showName = function()&lt;br&gt;{&lt;br&gt;  console.log(this.name);&lt;br&gt;}&lt;/p&gt;
+&lt;p&gt;Person.prototype.showSex = function()&lt;br&gt;{&lt;br&gt;  console.log(this.sex);&lt;br&gt;}&lt;br&gt;//创建类的实例&lt;br&gt;//JS中一切皆是对象。String,Array对象都可以用new的方式创建实例。这些自定义的对象也采用了这种形式，&lt;br&gt;var p1 = new Person(‘liu’,’man’);//写为’liu’,’man’是字面值常量,写为liu,man则是未定义的变量。会报错。&lt;br&gt;p1.showName();&lt;br&gt;p1.showSex();&lt;/p&gt;
+&lt;p&gt;//下面开始定义子类并继承&lt;br&gt;//属性的继承是通过在子类的构造函数中调用父类的构造函数实现&lt;br&gt;function Worker(name,sex,job)&lt;br&gt;{&lt;br&gt;  //一般的调用形式是:对象.方法。但call,apply的调用形式反过来了:方法.对象.参数。因为此时的方法并非这个对象上的。只是在这个对象上调用&lt;br&gt;  Person.call(this,name,sex);&lt;br&gt;  //子类新的属性&lt;br&gt;  this.job = job;&lt;br&gt;}&lt;/p&gt;
+&lt;p&gt;//通过原型来继承父级的方法&lt;br&gt;//赋值的方法,引用传递?&lt;br&gt;Worker.prototype = Person.prototype;&lt;br&gt;//实例化的方式,但属性这一块与上面有些重复&lt;br&gt;//var Worker = new Person();//不过这里不像真的实例化那样带参数&lt;br&gt;//子类自定义的方法&lt;br&gt;//Worker.prototype.showJob = function(job)//错误,参数传递在构造函数中进行,方法只用来执行功能&lt;br&gt;Worker.prototype.showJob = function()&lt;br&gt;{&lt;br&gt;  console.log(this.job);&lt;br&gt;}&lt;br&gt;var w1 = new Worker(‘liu’,’man’,’worker’);&lt;br&gt;//w1.showJob(‘worker’);&lt;br&gt;w1.showJob();//worker&lt;/p&gt;
+&lt;p&gt;JS采用的是原型继承。给对象添加属性和方法就比较简单。在给已有的对象(如Array)添加属性或方法的时候可能会冲突。所以自己添加时往往需要一个空白的对象。object就是一个空白的对象。&lt;/p&gt;
+&lt;h3 id=&quot;this&quot;&gt;&lt;a href=&quot;#this&quot; class=&quot;headerlink&quot; title=&quot;this&quot;&gt;&lt;/a&gt;this&lt;/h3&gt;&lt;p&gt;JS中的this主要有4种使用场景。可以分别在browser和nodejs上测试，&lt;/p&gt;
+&lt;h2 id=&quot;正则表达式&quot;&gt;&lt;a href=&quot;#正则表达式&quot; class=&quot;headerlink&quot; title=&quot;正则表达式&quot;&gt;&lt;/a&gt;正则表达式&lt;/h2&gt;&lt;p&gt;字符串的处理是每种语言的一个重点&lt;/p&gt;
 &lt;p&gt;p145&lt;/p&gt;
 &lt;p&gt;P152 问题&lt;/p&gt;
 &lt;h1 id=&quot;php&quot;&gt;&lt;a href=&quot;#php&quot; class=&quot;headerlink&quot; title=&quot;php&quot;&gt;&lt;/a&gt;php&lt;/h1&gt;&lt;p&gt;P120&lt;/p&gt;
