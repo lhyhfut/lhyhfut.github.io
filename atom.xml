@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-23T11:01:18.000Z</updated>
+  <updated>2016-06-30T14:59:34.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>面试题-前端</title>
+    <link href="http://yoursite.com/2016/06/30/%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%89%8D%E7%AB%AF/"/>
+    <id>http://yoursite.com/2016/06/30/面试题-前端/</id>
+    <published>2016-06-30T14:48:16.000Z</published>
+    <updated>2016-06-30T14:59:34.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h1&gt;&lt;h1 id=&quot;资源&quot;&gt;&lt;a href=&quot;#资源&quot; class=&quot;headerlink&quot; title=&quot;资源&quot;&gt;&lt;/a&gt;资源&lt;/h1&gt;&lt;p&gt;1.&lt;a href=&quot;https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;前端开发面试题&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;2.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwNjI5MTYyMw==&amp;amp;mid=401123752&amp;amp;idx=1&amp;amp;sn=06f51d5b97eff32453a4d4f1f470fc86&amp;amp;scene=1&amp;amp;srcid=0630crXOLAN1aUD2Z9Z7Ts9F&amp;amp;key=77421cf58af4a65365b167293befc93d92f7ffd02d23ffd09759ce0eace874a1aab092e8e8aa9f4b3e2fe57208e314a6&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;2015 前端[JS]工程师必知必会&lt;/a&gt;   &lt;/p&gt;
+&lt;p&gt;3.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwNjI5MTYyMw==&amp;amp;mid=401105848&amp;amp;idx=1&amp;amp;sn=65e1ced1f8e3e305ff2c40aa8a08f24a&amp;amp;scene=1&amp;amp;srcid=0630DDYWwLxbaDZcLLYriRgE&amp;amp;key=77421cf58af4a65315c8bf65e2cecb44ebe452f876031a5771c9a887852b86521ffda7d4a0a1a2497fc85f063073b431&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;2015年十大热点javascript笔试题你都会么&lt;/a&gt;   &lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h1&gt;&lt;h1 id=&quot;资源&quot;&gt;&lt;a href=&quot;#资源&quot; class=&quot;headerlink&quot; title=&quot;资源&quot;&gt;&lt;/a&gt;资源&lt;/h1&gt;&lt;p
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+    
+      <category term="面试" scheme="http://yoursite.com/tags/%E9%9D%A2%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>javascript小结3</title>
@@ -951,7 +976,7 @@ default:语句n+1
     <link href="http://yoursite.com/2016/06/17/javascript%E5%B0%8F%E7%BB%93/"/>
     <id>http://yoursite.com/2016/06/17/javascript小结/</id>
     <published>2016-06-16T22:45:49.000Z</published>
-    <updated>2016-06-23T10:57:37.000Z</updated>
+    <updated>2016-06-25T23:41:34.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;html&quot;&gt;&lt;a href=&quot;#html&quot; class=&quot;headerlink&quot; title=&quot;html&quot;&gt;&lt;/a&gt;html&lt;/h1&gt;&lt;p&gt;学前预热课程里有这部分内容,但是没有PPT资料,是自己截图的。&lt;/p&gt;
 &lt;p&gt;有一个能够在Browser上运行的模板html。如果是nodejs的话,就是一个能够正常运行的express模板。&lt;/p&gt;
@@ -966,7 +991,7 @@ default:语句n+1
 &lt;/style&gt;
 
 &lt;/p&gt;&lt;p&gt;S中的style只能获取行间样式，所以后来才会去用currentStyle和getComputedStyle&lt;/p&gt;
-&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;h3 id=&quot;《javascript权威指南》&quot;&gt;&lt;a href=&quot;#《javascript权威指南》&quot; class=&quot;headerlink&quot; title=&quot;《javascript权威指南》&quot;&gt;&lt;/a&gt;《javascript权威指南》&lt;/h3&gt;</content>
+&lt;h2 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h2&gt;&lt;h3 id=&quot;《javascript权威指南》&quot;&gt;&lt;a href=&quot;#《javascript权威指南》&quot; class=&quot;headerlink&quot; title=&quot;《javascript权威指南》&quot;&gt;&lt;/a&gt;《javascript权威指南》&lt;/h3&gt;&lt;h3 id=&quot;W3Cshhool-en-注意版本CSS3-CSS2&quot;&gt;&lt;a href=&quot;#W3Cshhool-en-注意版本CSS3-CSS2&quot; class=&quot;headerlink&quot; title=&quot;W3Cshhool-en   注意版本CSS3,CSS2&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.w3schools.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;W3Cshhool-en&lt;/a&gt;   注意版本CSS3,CSS2&lt;/h3&gt;&lt;h3 id=&quot;W3Cshhool-ch&quot;&gt;&lt;a href=&quot;#W3Cshhool-ch&quot; class=&quot;headerlink&quot; title=&quot;W3Cshhool-ch&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.w3school.com.cn/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;W3Cshhool-ch&lt;/a&gt;&lt;/h3&gt;</content>
     
     <summary type="html">
     
@@ -2378,215 +2403,6 @@ and the repository exists.&lt;/code&gt;&lt;/p&gt;
     
     </summary>
     
-    
-  </entry>
-  
-  <entry>
-    <title>git&amp;github使用指南1</title>
-    <link href="http://yoursite.com/2016/04/24/git-github%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%971/"/>
-    <id>http://yoursite.com/2016/04/24/git-github使用指南1/</id>
-    <published>2016-04-24T06:05:23.000Z</published>
-    <updated>2016-05-02T09:52:34.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;p&gt;鉴于git,github已经成为程序员的基础技能,有必要总结一下。本文主要参考了&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;廖雪峰的Git教程&lt;/a&gt; ,该文深入浅出,很适合入门。&lt;/p&gt;
-&lt;h1 id=&quot;git的安装和使用&quot;&gt;&lt;a href=&quot;#git的安装和使用&quot; class=&quot;headerlink&quot; title=&quot;git的安装和使用&quot;&gt;&lt;/a&gt;git的安装和使用&lt;/h1&gt;&lt;h2 id=&quot;1-安装&quot;&gt;&lt;a href=&quot;#1-安装&quot; class=&quot;headerlink&quot; title=&quot;1.安装&quot;&gt;&lt;/a&gt;1.安装&lt;/h2&gt;&lt;p&gt;MAC下采用brew安装。具体方法请参考&lt;a href=&quot;http://brew.sh/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;homebrew的文档&lt;/a&gt;。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;brew install git&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;查看git软件包安装的详细路径和安装内容:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;brew list git&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;2-设置&quot;&gt;&lt;a href=&quot;#2-设置&quot; class=&quot;headerlink&quot; title=&quot;2.设置&quot;&gt;&lt;/a&gt;2.设置&lt;/h2&gt;&lt;p&gt;安装之后需要设置邮箱和用户名:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git config --global user.name &amp;quot;Your Name&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git config --global user.email &amp;quot;email@example.com&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。&lt;/p&gt;
-&lt;h1 id=&quot;git的原理&quot;&gt;&lt;a href=&quot;#git的原理&quot; class=&quot;headerlink&quot; title=&quot;git的原理&quot;&gt;&lt;/a&gt;git的原理&lt;/h1&gt;&lt;h2 id=&quot;1-集中式VS分布式&quot;&gt;&lt;a href=&quot;#1-集中式VS分布式&quot; class=&quot;headerlink&quot; title=&quot;1.集中式VS分布式&quot;&gt;&lt;/a&gt;1.集中式VS分布式&lt;/h2&gt;&lt;p&gt;集中式版本控制系统有一个“中央服务器”,用户端都是它的离线拷贝。所有提交最终都要汇总到中央服务器，并且可以影响全部离线拷贝。它必须在联网的时候才能够正常工作。&lt;/p&gt;
-&lt;p&gt;分布式版本控制系统根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。所有代码库能够自由的从一个用户端分发到另一个用户端。分布式版本控制系统通常也有一台充当“中央服务器”的电脑(但其实也相当于一个用户端,不是像集中式版本控制系统那样的意义)，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家也一样干活，只是交换修改不方便而已。&lt;/p&gt;
-&lt;h2 id=&quot;2-工作区-暂存区-版本库&quot;&gt;&lt;a href=&quot;#2-工作区-暂存区-版本库&quot; class=&quot;headerlink&quot; title=&quot;2.工作区,暂存区,版本库&quot;&gt;&lt;/a&gt;2.工作区,暂存区,版本库&lt;/h2&gt;&lt;p&gt;在 Git 中，存在三个工作区域：&lt;/p&gt;
-&lt;p&gt;工作区(working directory)&lt;/p&gt;
-&lt;p&gt;暂存区(staging area)&lt;/p&gt;
-&lt;p&gt;版本库(git directory)&lt;/p&gt;
-&lt;p&gt;同时，文件有三种状态：&lt;/p&gt;
-&lt;p&gt;已提交（committed）：该文件被安全地保存在了本地数据库&lt;/p&gt;
-&lt;p&gt;已修改（modified）：修改了某个文件，但还没有保存&lt;/p&gt;
-&lt;p&gt;已暂存（staged）：把已修改的文件放下下次保存的清单中&lt;/p&gt;
-&lt;p&gt;下图说明了这三个区域和文件状态的差别：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github1.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;所以，在Git中，你可以暂存部分文件，甚至一个文件中的部分内容，你的本地可以将版本管理玩的非常复杂和有趣。 这也是为什么 SVN 用户最常疑问 Git 为什么每次都要TM的 git add 才能再 commit 的原因&lt;/p&gt;
-&lt;h1 id=&quot;git的命令&quot;&gt;&lt;a href=&quot;#git的命令&quot; class=&quot;headerlink&quot; title=&quot;git的命令&quot;&gt;&lt;/a&gt;git的命令&lt;/h1&gt;&lt;h2 id=&quot;1-git-init&quot;&gt;&lt;a href=&quot;#1-git-init&quot; class=&quot;headerlink&quot; title=&quot;1.git init&quot;&gt;&lt;/a&gt;1.git init&lt;/h2&gt;&lt;p&gt;在本地创建版本库(仓库,repository)。&lt;/p&gt;
-&lt;h2 id=&quot;1-1-在你的工作目录新建learngit文件夹。&quot;&gt;&lt;a href=&quot;#1-1-在你的工作目录新建learngit文件夹。&quot; class=&quot;headerlink&quot; title=&quot;1.1 在你的工作目录新建learngit文件夹。&quot;&gt;&lt;/a&gt;1.1 在你的工作目录新建learngit文件夹。&lt;/h2&gt;&lt;p&gt;&lt;code&gt;mdkir learngit&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;cd learngit&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;pwd&lt;/code&gt;   //用于显示当前目录&lt;/p&gt;
-&lt;h2 id=&quot;1-2-通过git-init命令把这个目录变成Git可以管理的仓库&quot;&gt;&lt;a href=&quot;#1-2-通过git-init命令把这个目录变成Git可以管理的仓库&quot; class=&quot;headerlink&quot; title=&quot;1.2 通过git init命令把这个目录变成Git可以管理的仓库&quot;&gt;&lt;/a&gt;1.2 通过git init命令把这个目录变成Git可以管理的仓库&lt;/h2&gt;&lt;p&gt;&lt;code&gt;git init&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github2.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;这样就把git仓库建立好了。并且是一个初始化了的空的repository。可以看到learngit中有个空的.git文件夹。这个目录默认是隐藏的，用&lt;code&gt;ls -ah&lt;/code&gt;命令就可以看见。&lt;/p&gt;
-&lt;p&gt;在learngit目录下新建readme.txt文件,内容如下:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software.&lt;/code&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-3-git-add&quot;&gt;&lt;a href=&quot;#1-3-git-add&quot; class=&quot;headerlink&quot; title=&quot;1.3 git add&quot;&gt;&lt;/a&gt;1.3 git add&lt;/h2&gt;&lt;p&gt;用命令git add告诉Git，把文件添加到仓库:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git add readme.txt&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github3.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;没有任何显示。这是对的。&lt;/p&gt;
-&lt;h2 id=&quot;1-4-git-commit&quot;&gt;&lt;a href=&quot;#1-4-git-commit&quot; class=&quot;headerlink&quot; title=&quot;1.4 git commit&quot;&gt;&lt;/a&gt;1.4 git commit&lt;/h2&gt;&lt;p&gt;用命令git commit告诉Git，把文件提交到仓库：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git commit -m &amp;#39;wrote a readme file&amp;#39;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github4.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;git commit命令执行成功后会告诉你，1个文件被改动（我们新添加的readme.txt文件），插入了两行内容（readme.txt有两行内容）。&lt;/p&gt;
-&lt;p&gt;为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件,如&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git add file1.txt&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git add file2.txt file3.txt&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git commit -m &amp;#39;add 3 files&amp;#39;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;在你新建readme.txt时,它是在工作区(working directory),用git add命令是把它提交到暂存区(staging area),也就是说需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。&lt;/p&gt;
-&lt;p&gt;然后用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支(master)。&lt;/p&gt;
-&lt;p&gt;因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。&lt;/p&gt;
-&lt;h2 id=&quot;1-5-git-status&quot;&gt;&lt;a href=&quot;#1-5-git-status&quot; class=&quot;headerlink&quot; title=&quot;1.5 git status&quot;&gt;&lt;/a&gt;1.5 git status&lt;/h2&gt;&lt;p&gt;运行&lt;code&gt;git status&lt;/code&gt;命令看看结果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github5.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;说明暂存区的代码已经提交完了。没有需要提交的了。&lt;/p&gt;
-&lt;p&gt;修改readme.txt文件，改成如下内容：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a distributed version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;运行&lt;code&gt;git status&lt;/code&gt;命令看看结果：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github6.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;readme.txt被修改过了(工作区(working directory))，但还没有准备提交的修改(由于还没有git add,暂存区(staging area)内还没有要提交的修改)。&lt;/p&gt;
-&lt;p&gt;从上面可以看出暂存区的作用。同时通过&lt;code&gt;git status&lt;/code&gt;命令我们可以清楚的知道我们修改的代码到底到哪了。是在工作区?还是在暂存区?还是在本地仓库?&lt;/p&gt;
-&lt;h2 id=&quot;1-6-git-diff&quot;&gt;&lt;a href=&quot;#1-6-git-diff&quot; class=&quot;headerlink&quot; title=&quot;1.6 git diff&quot;&gt;&lt;/a&gt;1.6 git diff&lt;/h2&gt;&lt;p&gt;虽然Git告诉我们readme.txt被修改了，但如果能看看具体修改了什么内容(这是在工作区的操作)，自然是很好的。&lt;code&gt;git diff&lt;/code&gt;命令能满足这个需求。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github7.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;git diff顾名思义就是查看difference，显示的格式正是Unix通用的diff格式，可以从上面的命令输出看到，我们在第一行添加了一个“distributed”单词。&lt;/p&gt;
-&lt;p&gt;知道了对readme.txt作了什么修改后，再把它提交到仓库就放心多了，&lt;/p&gt;
-&lt;p&gt;提交新文件:&lt;code&gt;git add readme.txt&lt;/code&gt;,这个命令没有任何输出&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github8.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;通过&lt;code&gt;git status&lt;/code&gt;命令我们可以看出将要被提交的修改包括readme.txt，下一步，就可以放心地提交了：&lt;/p&gt;
-&lt;p&gt;提交修改:&lt;code&gt;git commit -m &amp;quot;add distributed&amp;quot;&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github9.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git diff readme.txt&lt;/code&gt;命令是没有输出的。原因是&lt;code&gt;git diff&lt;/code&gt;是针对工作区的。通过&lt;code&gt;git status&lt;/code&gt;命令我们可以看出(暂存区)当前没有需要提交的修改，而且工作目录是干净（working directory clean）的。所以&lt;code&gt;git diff&lt;/code&gt;命令没输出。&lt;/p&gt;
-&lt;h2 id=&quot;1-7-git-log&quot;&gt;&lt;a href=&quot;#1-7-git-log&quot; class=&quot;headerlink&quot; title=&quot;1.7 git log&quot;&gt;&lt;/a&gt;1.7 git log&lt;/h2&gt;&lt;p&gt;现在，你已经学会了修改文件，然后把修改提交到Git版本库，现在，再练习一次，修改readme.txt文件如下：&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a distributed version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software distributed under the GPL.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;然后尝试提交：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github10.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;像这样，你不断对文件进行修改，然后不断提交修改到版本库里，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。&lt;/p&gt;
-&lt;p&gt;现在，我们回顾一下readme.txt文件一共有几个版本被提交到Git仓库里了：&lt;/p&gt;
-&lt;p&gt;版本1：&lt;code&gt;wrote a readme file&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;版本2：&lt;code&gt;add distributed&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a distributed version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;版本3：&lt;code&gt;append GPL&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a distributed version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software distributed under the GPL.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;当然了，在实际工作中，我们脑子里怎么可能记得一个几千行的文件每次都改了什么内容，不然要版本控制系统干什么。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用&lt;code&gt;git log&lt;/code&gt;命令查看：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github11.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;从上面看到了你在前面配置的邮箱和用户名。因为分布式管理系统是端对端的。不同的用户端需要自报姓名。&lt;/p&gt;
-&lt;p&gt;git log命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是&lt;code&gt;append GPL&lt;/code&gt;，上一次是&lt;code&gt;add distributed&lt;/code&gt;，最早的一次是&lt;code&gt;wrote a readme file&lt;/code&gt;。&lt;br&gt;如果嫌输出信息太多，看得眼花缭乱的，可以试试加上&lt;code&gt;--pretty=oneline&lt;/code&gt;参数：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github12.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，而且你看到的commit id和我的肯定不一样，以你自己的为准。为什么commit id需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。&lt;/p&gt;
-&lt;p&gt;每提交一个新版本，实际上Git就会把它们自动串成一条时间线。如果使用可视化工具查看Git历史，就可以更清楚地看到提交历史的时间线：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github13.jpeg&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git log&lt;/code&gt;主要是针对&lt;code&gt;git commit&lt;/code&gt;和版本库(git directory)的。&lt;/p&gt;
-&lt;h2 id=&quot;1-8-git-reset&quot;&gt;&lt;a href=&quot;#1-8-git-reset&quot; class=&quot;headerlink&quot; title=&quot;1.8 git reset&quot;&gt;&lt;/a&gt;1.8 git reset&lt;/h2&gt;&lt;p&gt;准备把readme.txt回退到上一个版本，也就是“add distributed”的那个版本，怎么做呢？&lt;/p&gt;
-&lt;p&gt;首先，Git必须知道当前版本是哪个版本，在Git中，用&lt;code&gt;HEAD&lt;/code&gt;表示当前版本，也就是最新的提交3628164…882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。&lt;/p&gt;
-&lt;p&gt;现在，我们要把当前版本&lt;code&gt;“append GPL”&lt;/code&gt;回退到上一个版本&lt;code&gt;“add distributed”&lt;/code&gt;，就可以使用&lt;code&gt;git reset&lt;/code&gt;命令：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github14.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;hard&lt;/code&gt;参数下面会用到。跟一个commit id。&lt;code&gt;HEAD&lt;/code&gt;现在指向了上一个版本 &lt;code&gt;add distributed&lt;/code&gt;,上面还给出了它的commit id:20fcdfe。对照一下前面的commit id,确实是这样的。&lt;/p&gt;
-&lt;p&gt;看看readme.txt的内容确实是版本&lt;code&gt;add distributed&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github15.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;用&lt;code&gt;git log&lt;/code&gt;再看看现在版本库的状态：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github16.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;最新的那个版本append GPL已经看不到了！&lt;/p&gt;
-&lt;p&gt;只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个&lt;code&gt;append GPL&lt;/code&gt;的commit id是3628164…，于是就可以指定回到未来的某个版本：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github17.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;前面&lt;code&gt;git reset --hard HEAD^&lt;/code&gt;可以恢复到上一版本。因为HEAD指向当前版本。但这种表示方法只能表示上面的版本。如果是时间线上下一个版本。只能用你的commit id了。版本号(commit id)没必要写全，前7位就可以了.&lt;/p&gt;
-&lt;p&gt;Git的版本回退速度非常快，因为Git在内部有个指向当前版本的&lt;code&gt;HEAD&lt;/code&gt;指针，当你回退版本的时候，Git仅仅是把&lt;code&gt;HEAD&lt;/code&gt;从指向&lt;code&gt;append GPL&lt;/code&gt;。&lt;/p&gt;
-&lt;h2 id=&quot;1-9-git-reflog&quot;&gt;&lt;a href=&quot;#1-9-git-reflog&quot; class=&quot;headerlink&quot; title=&quot;1.9 git reflog&quot;&gt;&lt;/a&gt;1.9 git reflog&lt;/h2&gt;&lt;p&gt;找不到版本号(commit id)怎么办?当你用&lt;code&gt;git reset --hard HEAD^&lt;/code&gt;回退到&lt;code&gt;add distributed&lt;/code&gt;版本时，再想恢复到&lt;code&gt;append GPL&lt;/code&gt;，就必须找到&lt;code&gt;append GPL&lt;/code&gt;的commit id。Git提供了一个命令&lt;code&gt;git reflog&lt;/code&gt;用来记录你的每一次命令：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github18.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;第三行显示&lt;code&gt;append GPL&lt;/code&gt;的commit id是d9c87a6,这样就可以回到&lt;code&gt;append GPL&lt;/code&gt;版本了。&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;HEAD&lt;/code&gt;指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令&lt;code&gt;git reset --hard commit_id&lt;/code&gt;。&lt;/p&gt;
-&lt;p&gt;穿梭前，用&lt;code&gt;git log&lt;/code&gt;可以查看提交历史，以便确定要回退到哪个版本。&lt;/p&gt;
-&lt;p&gt;要重返未来，用&lt;code&gt;git reflog&lt;/code&gt;查看命令历史，以便确定要回到未来的哪个版本。&lt;/p&gt;
-&lt;h2 id=&quot;1-10-管理修改&quot;&gt;&lt;a href=&quot;#1-10-管理修改&quot; class=&quot;headerlink&quot; title=&quot;1.10 管理修改&quot;&gt;&lt;/a&gt;1.10 管理修改&lt;/h2&gt;&lt;p&gt;现在把readme.txt由&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a distributed version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software distributed under the GPL.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git has a mutable index called stage.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git tracks changes.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;改为:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a distributed version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software distributed under the GPL.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git has a mutable index called stage.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git tracks changes of files.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;假设有下面的操作流程:&lt;br&gt;第一次修改-&amp;gt; &lt;code&gt;git add&lt;/code&gt; -&amp;gt; 第二次修改 -&amp;gt; &lt;code&gt;git commit&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;当你用git add命令后，在工作区的第一次修改被放入暂存区，准备提交，但是，在工作区的第二次修改并没有放入暂存区，所以，git commit只负责把暂存区的修改提交了，也就是第一次的修改被提交了，第二次的修改不会被提交。&lt;/p&gt;
-&lt;p&gt;提交后，用&lt;code&gt;git diff HEAD -- readme.txt&lt;/code&gt;(中间要有空格,&lt;code&gt;git diff&lt;/code&gt;本来就针对工作区,所以用&lt;code&gt;git diff&lt;/code&gt;,&lt;code&gt;git diff HEAD&lt;/code&gt;都可以)命令可以查看工作区和版本库里面最新版本的区别。可以看到第二次修改确实没有被提交。&lt;/p&gt;
-&lt;p&gt;下面的流程可以提交第二次修改(方法不止一种,但需要在commit之前把第二次修改add到暂存区):&lt;br&gt;第一次修改 -&amp;gt; &lt;code&gt;git add&lt;/code&gt; -&amp;gt; 第二次修改 -&amp;gt; &lt;code&gt;git add&lt;/code&gt; -&amp;gt; &lt;code&gt;git commit&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;所以,每次修改，如果不add到暂存区，那就不会加入到commit中。&lt;/p&gt;
-&lt;h2 id=&quot;1-11-撤销修改-git-checkout-file&quot;&gt;&lt;a href=&quot;#1-11-撤销修改-git-checkout-file&quot; class=&quot;headerlink&quot; title=&quot;1.11 撤销修改(git checkout -- file)&quot;&gt;&lt;/a&gt;1.11 撤销修改(&lt;code&gt;git checkout -- file&lt;/code&gt;)&lt;/h2&gt;&lt;p&gt;这个命令主要针对下面的应用场景:&lt;/p&gt;
-&lt;p&gt;工作区修改了文件(还没有add到暂存区),发现修改的有错误,想纠正它。这时候用&lt;code&gt;git status&lt;/code&gt;查看的话,git会提示你用&lt;code&gt;git add&lt;/code&gt;把它提交到暂存区或者用&lt;code&gt;git checkout -- file&lt;/code&gt;撤销你刚才的修改。总的来说,&lt;code&gt;git checkout -- file&lt;/code&gt;针对工作区的文件修改。即&lt;code&gt;git checkout -- file&lt;/code&gt;可以丢弃工作区的修改。&lt;/p&gt;
-&lt;p&gt;当然,你也可以手动修改文件,把它手动恢复到上一个版本的状态。&lt;/p&gt;
-&lt;p&gt;延续1.10的修改,用&lt;code&gt;git status&lt;/code&gt;查看:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github19.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;会提示你有一次对工作区文件readme.txt的修改(modified)没有提交到暂存区(modified, not staged for commit)。&lt;/p&gt;
-&lt;p&gt;会有下面2种场景:&lt;/p&gt;
-&lt;p&gt;(1)一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库(commit)一模一样的状态；&lt;br&gt;比如上图的情况:已经commit到版本库一次,又修改了一次(modified),但是还没有放到暂存区(not staged)&lt;br&gt;这种情况下用&lt;code&gt;git checkout -- file&lt;/code&gt;可以丢弃工作区的修改。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github20.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;现在就撤销了工作去的修改,返回到了版本库的状态。&lt;/p&gt;
-&lt;p&gt;(2)另一种情况就是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。&lt;/p&gt;
-&lt;p&gt;现在依然把readme.txt由&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a distributed version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software distributed under the GPL.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git has a mutable index called stage.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git tracks changes.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;改为:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a distributed version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software distributed under the GPL.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git has a mutable index called stage.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git tracks changes of files.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;git add -- readme.txt&lt;/code&gt;之后再修改为:&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is a distributed version control system.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git is free software distributed under the GPL.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git has a mutable index called stage.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;code&gt;Git tracks changes.&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt; 然后再&lt;code&gt;git checkout -- readme.txt&lt;/code&gt;,恢复成了add时候的状态。&lt;br&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github22.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;h2 id=&quot;1-12-git-reset-HEAD-file&quot;&gt;&lt;a href=&quot;#1-12-git-reset-HEAD-file&quot; class=&quot;headerlink&quot; title=&quot;1.12 git reset HEAD file&quot;&gt;&lt;/a&gt;1.12 git reset HEAD file&lt;/h2&gt;&lt;p&gt;撤销修改&lt;/p&gt;
-&lt;p&gt;把暂存区的修改撤销掉（unstage），重新放回工作区：&lt;/p&gt;
-&lt;p&gt;git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。&lt;/p&gt;
-&lt;p&gt;reset命令不仅可用于版本库,还可以用于暂存区。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github23.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;(1)丢弃工作区的修改:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github24.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;BW:如果想撤销刚才的撤销怎么办?git log貌似只能查询commit的id。对于add和modified好像没办法。&lt;/p&gt;
-&lt;p&gt;(2)现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退一节吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。&lt;/p&gt;
-&lt;h2 id=&quot;1-13-git-rm&quot;&gt;&lt;a href=&quot;#1-13-git-rm&quot; class=&quot;headerlink&quot; title=&quot;1.13 git rm&quot;&gt;&lt;/a&gt;1.13 git rm&lt;/h2&gt;&lt;p&gt;删除文件&lt;/p&gt;
-&lt;p&gt;在git中,删除也是一个修改操作，我们实战一下，先添加一个新文件test.txt到Git并且提交：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github25.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用rm命令删了,这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻告诉你哪些文件被删除了：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github26.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;下面就有2种情况:&lt;/p&gt;
-&lt;p&gt;(1)一是确实要从版本库中删除该文件，那就用命令&lt;code&gt;git rm&lt;/code&gt;删掉，并且&lt;code&gt;git commit&lt;/code&gt;：&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github27.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;现在，文件就从版本库中被删除了。&lt;/p&gt;
-&lt;p&gt;即使你不手动删除工作区的test.txt,仅仅是git rm版本库的test.txt,则工作区的test.txt也讲会被删除。&lt;/p&gt;
-&lt;p&gt;(2)另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本&lt;/p&gt;
-&lt;p&gt;由于(1)中删除了test.txt,现在再重来一遍,新建test.txt&lt;/p&gt;
-&lt;p&gt;&lt;img src=&quot;http://7xpy7l.com1.z0.glb.clouddn.com/git%26github28.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
-&lt;p&gt;注意上面第三步不是&lt;code&gt;git rm test.txt&lt;/code&gt;,而是’rm test.txt’,前者会同时删除版本库和工作区的文件。后者只会删除工作区文件。如果用前者,你后来的&lt;code&gt;git checkout&lt;/code&gt;就没用了。因为它也是按照版本库恢复工作区的文件。既然版本库的文件都被你删除了。那么也恢复不了了。&lt;/p&gt;
-&lt;p&gt;小结&lt;/p&gt;
-&lt;p&gt;命令&lt;code&gt;git rm&lt;/code&gt;用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容(它依然版本库的内容恢复工作区的文件)。&lt;/p&gt;
-&lt;h2 id=&quot;1-14-远程仓库&quot;&gt;&lt;a href=&quot;#1-14-远程仓库&quot; class=&quot;headerlink&quot; title=&quot;1.14 远程仓库&quot;&gt;&lt;/a&gt;1.14 远程仓库&lt;/h2&gt;&lt;p&gt;我们已经掌握了如何在Git仓库里对一个文件进行时光穿梭，你再也不用担心文件备份或者丢失的问题了。这些功能在SVN里早就有了。&lt;/p&gt;
-&lt;p&gt;如果只是在一个仓库里管理文件历史，Git和SVN真没啥区别。&lt;/p&gt;
-&lt;p&gt;Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。&lt;/p&gt;
-&lt;p&gt;至少需要两台机器才能玩远程库。其实一台电脑上也是可以克隆多个版本库的，只要不在同一个目录下。但一般不建议这样玩。没有意义,硬盘挂掉了全都没了。所以也不折腾在一台电脑上怎么克隆多个仓库。&lt;/p&gt;
-&lt;p&gt;实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。&lt;/p&gt;
-&lt;p&gt;也就是说:虽然是分布式的软件,但仍然需要一个服务器。&lt;/p&gt;
-&lt;p&gt;你可以自己搭建一台运行Git的服务器，不过现阶段，为了学Git先搭个服务器绝对是小题大作。&lt;/p&gt;
-&lt;p&gt;还可以用现成的:&lt;a href=&quot;https://github.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github&lt;/a&gt;,这个网站就是提供Git仓库托管服务的，所以，只要注册一个GitHub账号，就可以免费获得Git远程仓库。&lt;/p&gt;
-&lt;h1 id=&quot;reference&quot;&gt;&lt;a href=&quot;#reference&quot; class=&quot;headerlink&quot; title=&quot;reference:&quot;&gt;&lt;/a&gt;reference:&lt;/h1&gt;&lt;h3 id=&quot;GitHub-漫游指南&quot;&gt;&lt;a href=&quot;#GitHub-漫游指南&quot; class=&quot;headerlink&quot; title=&quot;GitHub 漫游指南&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://github.phodal.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub 漫游指南&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;廖雪峰的Git教程&quot;&gt;&lt;a href=&quot;#廖雪峰的Git教程&quot; class=&quot;headerlink&quot; title=&quot;廖雪峰的Git教程&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;廖雪峰的Git教程&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;常用-Git-命令清单&quot;&gt;&lt;a href=&quot;#常用-Git-命令清单&quot; class=&quot;headerlink&quot; title=&quot;常用 Git 命令清单&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;常用 Git 命令清单&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;git-recipes&quot;&gt;&lt;a href=&quot;#git-recipes&quot; class=&quot;headerlink&quot; title=&quot;git-recipes&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/geeeeeeeeek/git-recipes/wiki&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;git-recipes&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;图解git&quot;&gt;&lt;a href=&quot;#图解git&quot; class=&quot;headerlink&quot; title=&quot;图解git&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://marklodato.github.io/visual-git-guide/index-zh-cn.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;图解git&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;猴子都能懂的Git入门&quot;&gt;&lt;a href=&quot;#猴子都能懂的Git入门&quot; class=&quot;headerlink&quot; title=&quot;猴子都能懂的Git入门&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://backlogtool.com/git-guide/cn/intro/intro1_1.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;猴子都能懂的Git入门&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;《走进git时代系列一》-你该怎么玩&quot;&gt;&lt;a href=&quot;#《走进git时代系列一》-你该怎么玩&quot; class=&quot;headerlink&quot; title=&quot;《走进git时代系列一》 你该怎么玩&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;《走进git时代系列一》 你该怎么玩&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;Pro-Git-v2-中文版&quot;&gt;&lt;a href=&quot;#Pro-Git-v2-中文版&quot; class=&quot;headerlink&quot; title=&quot;Pro Git v2 中文版&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Pro Git v2 中文版&lt;/a&gt;&lt;/h3&gt;&lt;h3 id=&quot;Git的官方网站&quot;&gt;&lt;a href=&quot;#Git的官方网站&quot; class=&quot;headerlink&quot; title=&quot;Git的官方网站&quot;&gt;&lt;/a&gt;&lt;a href=&quot;http://git-scm.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Git的官方网站&lt;/a&gt;&lt;/h3&gt;&lt;h1 id=&quot;To-do-list&quot;&gt;&lt;a href=&quot;#To-do-list&quot; class=&quot;headerlink&quot; title=&quot;To do list:&quot;&gt;&lt;/a&gt;To do list:&lt;/h1&gt;&lt;h3 id=&quot;gitlab-coding&quot;&gt;&lt;a href=&quot;#gitlab-coding&quot; class=&quot;headerlink&quot; title=&quot;gitlab,coding&quot;&gt;&lt;/a&gt;gitlab,coding&lt;/h3&gt;&lt;h3 id=&quot;git-flow-gitlab-flow-github-flow&quot;&gt;&lt;a href=&quot;#git-flow-gitlab-flow-github-flow&quot; class=&quot;headerlink&quot; title=&quot;git flow,gitlab flow,github flow&quot;&gt;&lt;/a&gt;git flow,gitlab flow,github flow&lt;/h3&gt;&lt;h3 id=&quot;Git与协作&quot;&gt;&lt;a href=&quot;#Git与协作&quot; class=&quot;headerlink&quot; title=&quot;Git与协作&quot;&gt;&lt;/a&gt;Git与协作&lt;/h3&gt;</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;p&gt;鉴于git,github已经成为程序员的基础技能,有必要总结一下。本文主要参考了&lt;a href=&quot;http://www.liaoxuefen
-    
-    </summary>
-    
-      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
-    
-    
-      <category term="git&github" scheme="http://yoursite.com/tags/git-github/"/>
     
   </entry>
   

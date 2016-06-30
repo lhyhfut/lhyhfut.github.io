@@ -212,6 +212,282 @@
             
               
                 
+                <a class="post-title-link" href="/2016/05/13/AndroidDeveloperTraining2/" itemprop="url">
+                  AndroidDeveloperTraining2
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            发表于
+            <time itemprop="dateCreated" datetime="2016-05-13T23:17:45+08:00" content="2016-05-13">
+              2016-05-13
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp; 分类于
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Technology/" itemprop="url" rel="index">
+                    <span itemprop="name">Technology</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body">
+
+      
+      
+
+      
+        
+          <span itemprop="articleBody">
+            
+              <p>继续<a href="https://developer.android.com/training/index.html" target="_blank" rel="external">AndroidDeveloperTraining</a>的练习</p>
+<h1 id="Managing-the-Activity-Lifecycle"><a href="#Managing-the-Activity-Lifecycle" class="headerlink" title="Managing the Activity Lifecycle"></a><a href="https://developer.android.com/training/basics/activity-lifecycle/index.html" target="_blank" rel="external">Managing the Activity Lifecycle</a></h1><p>当用户使用,退出,返回你的app的时候,the Activity instances在它们的lifecycle中正在不通的states之间过度。比如当你的activity第一次启动(start),它就会到达foreground of the system,在这个过程中(process),Android system在activity上调用一套lifecycle methods,如果用户执行了一个操作(user performs an action)让app跳转到另一个activity或直接切换到另一个app(starts another activity or switches to another app)。Android system在activity上调用另一套lifecycle methods让它由foreground进入background。虽然activity不再可见,但是the instance and its state remains intact。</p>
+<p>在lifecycle callback methods内,你可以声明用户leaves and re-enters the activity时你的activity的表现行为。</p>
+<h2 id="Starting-an-Activity"><a href="#Starting-an-Activity" class="headerlink" title="Starting an Activity"></a>Starting an Activity</h2><p>在其它的编程范式中,app靠一个main()启动。但Android system中在一个Activity instance 中启动代码却是靠调用specific callback methods that correspond to specific stages of its lifecycle。</p>
+<p>There is a <code>sequence of callback methods</code> that start up (启动)an activity and a sequence of callback methods that tear down(拆除?) an activity.</p>
+<p>This lesson provides an overview of the <code>most important lifecycle methods</code> and shows you how to handle the first lifecycle callback that <code>creates a new instance</code> of your activity.</p>
+<h3 id="Understand-the-Lifecycle-Callbacks"><a href="#Understand-the-Lifecycle-Callbacks" class="headerlink" title="Understand the Lifecycle Callbacks"></a>Understand the Lifecycle Callbacks</h3><p>Activity的3个状态:<code>Resumed(running),Paused,Stopped</code>,<code>Created 和 Started</code>是2个瞬态(临时状态),Android system很快通过调用next lifecycle callback method而进入next state。即after the system calls <code>onCreate()</code>, it quickly calls <code>onStart()</code>, which is quickly followed by <code>onResume()</code>.</p>
+<p>当用户leave/switches to another app/returns to the activity的时候,Android system会调用一系列的lifecycle callback methods让activity在不同的state之间切换。</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android33-basic-lifecycle.png" alt=""></p>
+<h3 id="Specify-Your-App’s-Launcher-Activity"><a href="#Specify-Your-App’s-Launcher-Activity" class="headerlink" title="Specify Your App’s Launcher Activity"></a>Specify Your App’s Launcher Activity</h3><p>当用户点击手机屏幕上的app图标,系统为Activity调用onCreate(),这个Activity就是<code>&quot;launcher&quot; (or &quot;main&quot;) activity</code>,这个Activity充当着 main entry point to your app’s user interface。</p>
+<p>你可以在 project根目录下的<code>AndroidManifest.xml</code>中来定义充当main activity的那个activity。这个main activity在<code>AndroidManifest.xml</code>中的标记有些特别,带有<code>&lt;intent-filter&gt;</code>,<code>MAIN</code>,<code>LAUNCHER</code>等。</p>
+<p>当你用SDK tools创建project的时候,default project files会包含一个Activity class that’s declared in the manifest with this filter,比如下图中的<code>MyActivity.java</code></p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android34.png" alt=""></p>
+<h3 id="Create-a-New-Instance"><a href="#Create-a-New-Instance" class="headerlink" title="Create a New Instance"></a>Create a New Instance</h3><p>Most apps include several different activities that allow the user to perform different actions.当用户点击 app icon或是在其他应用中启动你的app的时候,system就会调用onCreate() creates every new instance of Activity.你必须完善onCreate()来执行一些basic application startup logic that should <code>happen only once</code> for the entire life of the activity. 比如应该定义一些the user interface and possibly instantiate some class-scope variables.</p>
+<p><strong>SDK_INT</strong></p>
+<p>onCreate()执行完之后会立即调用onStart(),onResume().Your activity never resides(驻留) in the Created or Started states. 即很快就调用onResume()而让activity常驻在Resumed state。</p>
+<p>The onCreate() method includes a parameter called <code>savedInstanceState</code> that’s discussed in the latter lesson about Recreating an Activity.</p>
+<h3 id="Destroy-the-Activity"><a href="#Destroy-the-Activity" class="headerlink" title="Destroy the Activity"></a>Destroy the Activity</h3><p>While the activity’s <code>first</code> lifecycle callback is onCreate(), its very <code>last</code> callback is onDestroy().与onPause() and onStop(),onCreate()的关系。有时候是不调用onDestroy()的。</p>
+<p>The system calls onDestroy() after it has already called onPause() and onStop() in all situations except one: when you call finish() from within the onCreate() method.</p>
+<h2 id="Pausing-and-Resuming-an-Activity-暂停-恢复"><a href="#Pausing-and-Resuming-an-Activity-暂停-恢复" class="headerlink" title="Pausing and Resuming an Activity(暂停/恢复)"></a>Pausing and Resuming an Activity(暂停/恢复)</h2><p>app在使用过程中,foreground activity经常会被其它的visual components打断。这样就会导致activity被暂停。当activity仍然是partially visible but currently not the activity in focus,他就维持暂停(paused)状态。当activity是fully-obstructed and not visible时,他就被停止(stop)了。</p>
+<p>As your activity enters the <code>paused state</code>,system calls the <code>onPause()</code> method on your Activity,If the user returns to your activity from the paused state, the system <code>resumes</code> it and calls the <code>onResume()</code> method.</p>
+<h3 id="Pause-Your-Activity"><a href="#Pause-Your-Activity" class="headerlink" title="Pause Your Activity"></a>Pause Your Activity</h3><p>通常应该在onPause() callback里面做这些事情:</p>
+<p>Stop animations or other ongoing actions that could consume CPU.</p>
+<p>Commit unsaved changes</p>
+<p>Release system resources</p>
+<p>you should not use onPause() to store user changes (such as personal information entered into a form) to permanent storage</p>
+<h3 id="Resume-Your-Activity"><a href="#Resume-Your-Activity" class="headerlink" title="Resume Your Activity"></a>Resume Your Activity</h3><p>When the user resumes your activity from the Paused state, the system calls the onResume() method.</p>
+<p>the system calls this method every time your activity comes into the foreground, including when it’s created for the first time.</p>
+<p>通常应该在onResume() callback里面做这些事情:</p>
+<p>initialize components that you release during onPause() and perform any other initializations that must occur each time the activity enters the Resumed state (such as begin animations and initialize components only used while the activity has user focus).</p>
+<h2 id="Stopping-and-Restarting-an-Activity-停止-重启"><a href="#Stopping-and-Restarting-an-Activity-停止-重启" class="headerlink" title="Stopping and Restarting an Activity(停止/重启)"></a>Stopping and Restarting an Activity(停止/重启)</h2><p>Activity停止/重启的几个应用场景:</p>
+<p><strong>见官方教程</strong></p>
+<p>The Activity class provides two lifecycle methods, <code>onStop() and onRestart()</code>, which allow you to specifically handle how your activity handles being stopped and restarted。Unlike the <code>paused state</code>, which identifies a <code>partial</code> UI obstruction, the <code>stopped state</code> guarantees that the UI is <code>no longer visible</code> and the user’s focus is in a separate activity (or an entirely separate app).</p>
+<p> Because the system retains your Activity instance in system memory when it is stopped, it’s possible that you <code>don&#39;t need to implement</code>the <code>onStop()</code> and <code>onRestart()</code> (or even onStart() methods at all.)</p>
+<h2 id="Stop-Your-Activity"><a href="#Stop-Your-Activity" class="headerlink" title="Stop Your Activity"></a>Stop Your Activity</h2><p><strong>见官方教程</strong></p>
+<h2 id="Start-Restart-Your-Activity"><a href="#Start-Restart-Your-Activity" class="headerlink" title="Start/Restart Your Activity"></a>Start/Restart Your Activity</h2><p>onStart(),onRestart()</p>
+<h2 id="Recreating-重现-an-Activity"><a href="#Recreating-重现-an-Activity" class="headerlink" title="Recreating(重现) an Activity"></a>Recreating(重现) an Activity</h2><p>By default, the system uses the <code>Bundle</code> instance state to save information about each View object in your activity layout (such as the text value entered into an EditText object)</p>
+<p><code>destroyed and recreated</code></p>
+<p>使用场景:用户点击返回键。</p>
+<p>In order for the Android system to restore the <code>state of the views</code> in your activity, each view must have a <code>unique ID</code>, supplied by the <code>android:id</code> attribute.</p>
+<p>onSaveInstanceState(),onRestoreInstanceState()</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android35basic-lifecycle-savestate.png" alt=""></p>
+<h2 id="Save-Your-Activity-State"><a href="#Save-Your-Activity-State" class="headerlink" title="Save Your Activity State"></a>Save Your Activity State</h2><p>在onSaveInstanceState()中用a collection of key-value pairs来save state information.</p>
+<p>Caution: Always call the <code>superclass</code> implementation of onSaveInstanceState() so the default implementation can save the state of the view hierarchy.  </p>
+<h2 id="Restore-Your-Activity-State"><a href="#Restore-Your-Activity-State" class="headerlink" title="Restore Your Activity State"></a>Restore Your Activity State</h2><p>When your activity is recreated after it was previously destroyed, you can <code>recover</code> your saved state from the <code>Bundle</code> that the system passes your activity. Both the <code>onCreate()</code> and <code>onRestoreInstanceState()</code> callback methods receive the <code>same</code> <code>Bundle</code> that contains the <code>instance state</code> information</p>
+<p>onRestoreInstanceState()</p>
+<h1 id="Building-a-Dynamic-UI-with-Fragments"><a href="#Building-a-Dynamic-UI-with-Fragments" class="headerlink" title="Building a Dynamic UI with Fragments"></a><a href="https://developer.android.com/training/basics/fragments/index.html" target="_blank" rel="external">Building a Dynamic UI with Fragments</a></h1><p>To create a dynamic and multi-pane user interface on Android, you need to encapsulate(封装) UI components and activity behaviors into modules that you can swap into and out of your activities. You can create these modules with the <code>Fragment class</code>, which behaves somewhat like a nested activity that can define its own layout and manage its own lifecycle.</p>
+<h2 id="Creating-a-Fragment"><a href="#Creating-a-Fragment" class="headerlink" title="Creating a Fragment"></a>Creating a Fragment</h2><p>You can think of a fragment as a <code>modular section of an activity</code>, which has its own lifecycle, receives its own input events, and which you can add or remove while the activity is running (sort of like a <code>&quot;sub activity&quot;</code> that you can reuse in different activities)</p>
+<p><strong>set up your Android project to use the Support Library</strong></p>
+<p>打开setting中的SDK界面</p>
+<p>launch standalone SDK manager</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android36.png" alt=""></p>
+<p>Extras folder</p>
+<p>Android Support Library(repository?)</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android37.png" alt=""></p>
+<h3 id="Create-a-Fragment-Class"><a href="#Create-a-Fragment-Class" class="headerlink" title="Create a Fragment Class"></a>Create a Fragment Class</h3><p>(1)导入一些package</p>
+<p><code>import android.os.Bundle</code></p>
+<p><code>import android.support.v4.app.Fragment</code></p>
+<p>(2)extend the Fragment class</p>
+<p><code>public class ArticleFragment extend Fragment{</code></p>
+<p><code>}</code></p>
+<p>(3)与Create a Activity class不同的是,Create a Fragment Class时,需要use the <code>onCreateView()</code> callback to define the layout.In fact, this is the <code>only callback</code> you need in order to get a fragment running.</p>
+<p>(4)Just like an activity, a fragment should implement other lifecycle callbacks that allow you to manage its state as it is added or removed from the activity and as the activity transitions between its lifecycle states.</p>
+<h3 id="Add-a-Fragment-to-an-Activity-using-XML"><a href="#Add-a-Fragment-to-an-Activity-using-XML" class="headerlink" title="Add a Fragment to an Activity using XML"></a>Add a Fragment to an Activity using XML</h3><p>While fragments are reusable, modular UI components, each instance of a Fragment class must be associated with a parent <code>FragmentActivity</code>. You can achieve this association by defining each fragment within your <code>activity layout XML file</code>.</p>
+<p><code>FragmentActivity</code> is a <code>special activity</code> provided in the <code>Support Library</code> to handle fragments on system versions <code>older</code> than API level 11. If the lowest system version you support is API level 11 or higher, then you can use a <code>regular Activity</code>.</p>
+<p><strong>相关设置见官方教程</strong></p>
+<p>Then apply the layout to your activity</p>
+<p><code>public class MainActivity extends FragmentActivity {</code></p>
+<p>//此处引用</p>
+<p><code>}</code></p>
+<h2 id="Building-a-Flexible-UI"><a href="#Building-a-Flexible-UI" class="headerlink" title="Building a Flexible UI"></a>Building a Flexible UI</h2><p>The <code>FragmentManager</code> class provides <code>methods</code> that allow you to add, remove, and replace <code>fragments</code> to an <code>activity</code> at runtime in order to create a <code>dynamic</code> experience.</p>
+<h3 id="Add-a-Fragment-to-an-Activity-at-Runtime"><a href="#Add-a-Fragment-to-an-Activity-at-Runtime" class="headerlink" title="Add a Fragment to an Activity at Runtime"></a>Add a Fragment to an Activity at Runtime</h3><p>2种方式:</p>
+<p>Rather than defining the fragments for an activity in the <code>layout file</code>—as shown in the previous lesson with the <code>fragment element</code>—you can add a fragment to the activity during the activity runtime. This is necessary if you plan to change fragments during the life of the activity.</p>
+<p>(1)上一节中是在<code>res/layout-large/news_articles.xml</code>中设置,本节是在<code>res/layout/news_articles.xml</code>,可以看到二者文件名一样。只是所在的layout directory没有<code>large</code>前缀。</p>
+<p>(2)Inside your <code>activity</code>, call <code>getSupportFragmentManager()</code> to get a FragmentManager using the <code>Support Library APIs</code>. Then call <code>beginTransaction()</code> to <code>create a FragmentTransaction</code> and call <code>add()</code> to <code>add a fragment</code>.</p>
+<p>You can perform <code>multiple</code> fragment transaction for the activity using the same <code>FragmentTransaction</code>. When you’re ready to make the changes, you must call <code>commit()</code>.</p>
+<p>代码如下:</p>
+<p>import android.os.Bundle;<br>import android.support.v4.app.FragmentActivity;</p>
+<p>public class MainActivity extends FragmentActivity{</p>
+<p>  @Override  //表示重写,编译器可以给你验证@Override下面的方法名是否是你父类中所有的,如果没有则报错</p>
+<p>  public void onCreate(Bundle savedInstanceState){<br>      super.onCreate(savedInstanceState);<br>      setContentView(R.layout.news_articles);</p>
+<pre><code>if (findViewById(R.id.fragment_container) != null) {
+  if (savedInstanceState != null) {
+          return;
+      }
+  HeadlinesFragment firstFragment = new HeadlinesFragment();
+
+  firstFragment.setArguments(getIntent().getExtras());
+</code></pre><p>// Add the fragment to the ‘fragment_container’ FrameLayout</p>
+<pre><code>getSupportFragmentManager().beginTransaction().add(R.id.fragment_container,firstFragment).commit();
+</code></pre><p>  }<br>}</p>
+<h3 id="Replace-One-Fragment-with-Another"><a href="#Replace-One-Fragment-with-Another" class="headerlink" title="Replace One Fragment with Another"></a>Replace One Fragment with Another</h3><p>The procedure to replace a fragment is similar to adding one, but requires the <code>replace()</code> method instead of <code>add()</code>.</p>
+<p>To allow the user to navigate backward through the fragment transactions, you must call <code>addToBackStack()</code> before you <code>commit</code> the FragmentTransaction.</p>
+<h2 id="Communicating-with-Other-Fragments"><a href="#Communicating-with-Other-Fragments" class="headerlink" title="Communicating with Other Fragments"></a>Communicating with Other Fragments</h2><p>Often you will want one Fragment to communicate with another, for example to change the content based on a user event. All Fragment-to-Fragment communication is done through the <code>associated Activity</code>. Two Fragments should <code>never communicate directly</code>.</p>
+<h3 id="Define-an-Interface"><a href="#Define-an-Interface" class="headerlink" title="Define an Interface"></a>Define an Interface</h3><p>To allow a Fragment to communicate up to its Activity, you can <code>define</code> an interface in the <code>Fragment class</code> and <code>implement</code> it within the <code>Activity</code>. The Fragment captures the interface implementation during its <code>onAttach()</code> lifecycle method and can then call the Interface methods in order to communicate with the Activity.</p>
+<p>在<code>Fragment class</code>内定义interface:</p>
+<p>public class HeadlinesFragment extends ListFragment {</p>
+<p>public interface OnHeadlineSelectedListener{<br>  public void onArticleSelected(int position);<br>}</p>
+<p>@Override</p>
+<p>public void onAttach(Activity activity) {<br>        super.onAttach(activity);<br>      //  …<br>      }<br>}</p>
+<p>Now the fragment can deliver messages to the activity by calling the onArticleSelected() method (or other methods in the interface) using the mCallback instance of the OnHeadlineSelectedListener interface.</p>
+<h3 id="Implement-the-Interface"><a href="#Implement-the-Interface" class="headerlink" title="Implement the Interface"></a>Implement the Interface</h3><p>在activity class中实现。</p>
+<p>In order to receive event callbacks from the fragment, the activity that hosts it must implement the interface defined in the fragment class.</p>
+<p>public static class MainActivity extends Activity implements HeadlinesFragment.OnHeadlineSelectedListener{</p>
+<p>public void onArticleSelected(int position) {</p>
+<p>}<br>}</p>
+<h3 id="Deliver-a-Message-to-a-Fragment"><a href="#Deliver-a-Message-to-a-Fragment" class="headerlink" title="Deliver a Message to a Fragment"></a>Deliver a Message to a Fragment</h3><p>在activity class中实现。</p>
+<p>The host activity can deliver messages to a fragment by capturing the Fragment instance with findFragmentById(), then directly call the fragment’s public methods.</p>
+<h1 id="Saving-Data"><a href="#Saving-Data" class="headerlink" title="Saving Data"></a>Saving Data</h1><h2 id="Saving-Key-Value-Sets"><a href="#Saving-Key-Value-Sets" class="headerlink" title="Saving Key-Value Sets"></a>Saving Key-Value Sets</h2><p>If you have a relatively small collection of <code>key-values</code> that you’d like to save, you should use the <code>SharedPreferences</code> APIs. The <code>SharedPreferences</code> APIs are only for reading and writing <code>key-value pairs</code> and you should not confuse them with the <code>Preference</code> APIs, which help you build a <code>user interface</code> for your app settings.</p>
+<h3 id="Get-a-Handle-to-a-SharedPreferences"><a href="#Get-a-Handle-to-a-SharedPreferences" class="headerlink" title="Get a Handle to a SharedPreferences"></a>Get a Handle to a SharedPreferences</h3><p>You can create a new shared preference file or access an existing one by calling one of two methods:<code>getSharedPreferences()</code>,<code>getPreferences()</code>.</p>
+<p>if you need just one shared preference file for your activity, you can use the <code>getPreferences()</code> method</p>
+<p>Caution: If you create a shared preferences file with <code>MODE_WORLD_READABLE</code> or <code>MODE_WORLD_WRITEABLE</code>, then <code>any other apps</code> that know the file identifier can access your data.</p>
+<h3 id="Write-to-Shared-Preferences"><a href="#Write-to-Shared-Preferences" class="headerlink" title="Write to Shared Preferences"></a>Write to Shared Preferences</h3><p><code>edit()</code></p>
+<p><code>putInt()</code></p>
+<p><code>putString()</code></p>
+<p><code>commit()</code></p>
+<h3 id="Read-from-Shared-Preferences"><a href="#Read-from-Shared-Preferences" class="headerlink" title="Read from Shared Preferences"></a>Read from Shared Preferences</h3><p><code>getInt()</code></p>
+<p><code>getString()</code></p>
+<h2 id="Saving-Files"><a href="#Saving-Files" class="headerlink" title="Saving Files"></a>Saving Files</h2><p><code>File</code> APIs</p>
+<p>A <code>File object</code> is suited to reading or writing <code>large</code>amounts of data in start-to-finish order without skipping around. For example, it’s good for <code>image</code> files or anything exchanged over a network.</p>
+<h3 id="Choose-Internal-or-External-Storage"><a href="#Choose-Internal-or-External-Storage" class="headerlink" title="Choose Internal or External Storage"></a>Choose Internal or External Storage</h3><p><strong>相关比较见官方教程</strong></p>
+<h3 id="Obtain-Permissions-for-External-Storage"><a href="#Obtain-Permissions-for-External-Storage" class="headerlink" title="Obtain Permissions for External Storage"></a>Obtain Permissions for External Storage</h3><p>To write to the <code>external</code> storage, you must request the <code>WRITE_EXTERNAL_STORAGE</code> permission in your <code>manifest file</code></p>
+<h3 id="Save-a-File-on-Internal-Storage"><a href="#Save-a-File-on-Internal-Storage" class="headerlink" title="Save a File on Internal Storage"></a>Save a File on Internal Storage</h3><p>When saving a file to internal storage, you can acquire the appropriate directory as a <code>File</code> by calling one of two methods:<code>getFilesDir()</code>,<code>getCacheDir()</code></p>
+<p><code>File()</code>:create a new file in one of these directories</p>
+<p><code>openFileOutput()</code>:get a <code>FileOutputStream</code> that writes to a file in your internal directory</p>
+<p><code>createTempFile()</code>:cache some files</p>
+<p>Your app’s <code>internal</code> storage directory is specified by your <code>app&#39;s package name</code> in a special location of the Android file system.</p>
+<p>as long as you use <code>MODE_PRIVATE</code> for your files on the internal storage, they are <code>never accessible</code> to other apps.</p>
+<h3 id="Save-a-File-on-External-Storage"><a href="#Save-a-File-on-External-Storage" class="headerlink" title="Save a File on External Storage"></a>Save a File on External Storage</h3><p>Because the <code>external</code> storage may be <code>unavailable</code>—such as when the user has mounted the storage to a PC or has removed the SD card that provides the external storage—you should always <code>verify</code> that the volume is <code>available</code> before <code>accessing</code> it.</p>
+<p>You can query the external storage state by calling <code>getExternalStorageState()</code>. If the returned state is equal to <code>MEDIA_MOUNTED</code>, then you can read and write your files.</p>
+<p>Although the external storage is <code>modifiable</code> by the user and other apps, there are two categories of files you might save here:<code>Public files</code>,<code>Private files</code></p>
+<p>If you want to save <code>public files</code> on the external storage, use the <code>getExternalStoragePublicDirectory()</code> method to get a File representing the appropriate directory on the external storage.</p>
+<p>If you want to save files that are <code>private</code> to your app, you can acquire the appropriate directory by calling <code>getExternalFilesDir()</code></p>
+<p>If none of the <code>pre-defined sub-directory names</code> suit your <code>files</code>, you can instead call <code>getExternalFilesDir()</code> and pass <code>null</code>. This returns the <code>root directory</code> for your app’s <code>private directory</code> on the <code>external storage</code>.</p>
+<p><code>getExternalStoragePublicDirectory()</code></p>
+<h3 id="Query-Free-Space"><a href="#Query-Free-Space" class="headerlink" title="Query Free Space"></a>Query Free Space</h3><p>If you know ahead of time how much data you’re saving, you can find out whether sufficient space is available without causing an <code>IOException</code> by calling <code>getFreeSpace()</code> or <code>getTotalSpace()</code>.</p>
+<h3 id="Delete-a-File"><a href="#Delete-a-File" class="headerlink" title="Delete a File"></a>Delete a File</h3><p>最直接的方式就是在file自身上调用<code>delete()</code></p>
+<p>If the file is saved on <code>internal</code> storage, you can also ask the <code>Context</code> to locate and delete a file by calling <code>deleteFile()</code></p>
+<h2 id="Saving-Data-in-SQL-Databases"><a href="#Saving-Data-in-SQL-Databases" class="headerlink" title="Saving Data in SQL Databases"></a>Saving Data in SQL Databases</h2><p>Saving data to a <code>database</code> is ideal for <code>repeating or structured</code> data, such as <code>contact information</code>. The APIs you’ll need to use a database on Android are available in the <code>android.database.sqlite</code> package.</p>
+<h3 id="Define-a-Schema-and-Contract"><a href="#Define-a-Schema-and-Contract" class="headerlink" title="Define a Schema and Contract"></a>Define a Schema and Contract</h3><p>One of the <code>main principles</code> of SQL databases is the <code>schema</code>: a formal declaration of how the database is organized. The schema is reflected in the SQL statements that you use to create your database.</p>
+<p>A <code>contract class</code> is a container for constants that define <code>names</code> for URIs, tables, and columns.</p>
+<p>A good way to <code>organize a contract class</code> is to put definitions that are <code>global</code> to your <code>whole database</code> in the <code>root level of the class</code>. Then create an <code>inner class</code> for each <code>table</code> that enumerates its columns.</p>
+<h3 id="Create-a-Database-Using-a-SQL-Helper"><a href="#Create-a-Database-Using-a-SQL-Helper" class="headerlink" title="Create a Database Using a SQL Helper"></a>Create a Database Using a SQL Helper</h3><p>Once you have <code>defined</code> how your database looks, you should <code>implement methods</code> that create and maintain the <code>database and tables</code>.</p>
+<p>A useful set of APIs is available in the <code>SQLiteOpenHelper</code> class</p>
+<p><code>getWritableDatabase()</code></p>
+<p><code>getReadableDatabase()</code></p>
+<h3 id="Put-Information-into-a-Database"><a href="#Put-Information-into-a-Database" class="headerlink" title="Put Information into a Database"></a>Put Information into a Database</h3><p>Insert data into the database by passing a <code>ContentValues</code> object to the <code>insert()</code> method:</p>
+<h3 id="Read-Information-from-a-Database"><a href="#Read-Information-from-a-Database" class="headerlink" title="Read Information from a Database"></a>Read Information from a Database</h3><p><code>query()</code>.The method combines elements of <code>insert()</code> and <code>update()</code>.The results of the query are returned to you in a <code>Cursor</code> object.</p>
+<p>To look at a row in the cursor, use one of the <code>Cursor move methods</code>,</p>
+<p><code>moveToFirst()</code></p>
+<p>For each <code>row</code>, you can read a column’s value by calling one of the Cursor get methods, such as <code>getString()</code> or <code>getLong()</code>.</p>
+<p>For each of the <code>get methods</code>, you must pass the index position of the column you desire, which you can get by calling <code>getColumnIndex()</code> or <code>getColumnIndexOrThrow()</code></p>
+<h3 id="Delete-Information-from-a-Database"><a href="#Delete-Information-from-a-Database" class="headerlink" title="Delete Information from a Database"></a>Delete Information from a Database</h3><p><code>delete()</code></p>
+<h3 id="Update-a-Database"><a href="#Update-a-Database" class="headerlink" title="Update a Database"></a>Update a Database</h3><p><code>update()</code></p>
+<p>Updating the table <code>combines</code> the content values syntax of <code>insert()</code> with the where syntax of <code>delete()</code>.</p>
+<h1 id="Interacting-with-Other-Apps"><a href="#Interacting-with-Other-Apps" class="headerlink" title="Interacting with Other Apps"></a>Interacting with Other Apps</h1><p>An Android app typically has <code>several activities</code>. <code>Each activity</code> displays <code>a user interface</code> that allows the user to perform a specific task (such as view a map or take a photo). To take the user from one activity to another, your app must use an <code>Intent</code> to define your app’s “intent” to do something.</p>
+<h2 id="Sending-the-User-to-Another-App"><a href="#Sending-the-User-to-Another-App" class="headerlink" title="Sending the User to Another App"></a>Sending the User to Another App</h2><p>One of Android’s <code>most important features</code> is an app’s <code>ability to send the user to another app</code> based on an “action” it would like to perform. For example, if your app has the address of a business that you’d like to show on a map, you <code>don&#39;t have to build an activity in your app that shows a map</code>. Instead, you can <code>create a request to view the address using an Intent</code>. The Android system then starts an <code>app</code> that’s able to show the address on a map.</p>
+<p>when you want to have a separate app perform an action, such as “view a map,” you must use an <code>implicit intent</code>.</p>
+<h3 id="Build-an-Implicit-Intent"><a href="#Build-an-Implicit-Intent" class="headerlink" title="Build an Implicit Intent"></a>Build an Implicit Intent</h3><p>Implicit intents do <code>not</code> declare the <code>class name</code> of the component to start, but instead declare an <code>action</code> to perform. The action specifies the thing you want to do, such as view, edit, send, or get something.</p>
+<p><code>Intent()</code> constructor</p>
+<p>some kinds of implicit intents require <code>&quot;extra&quot;</code> data that provide different data types, such as a <code>string</code>. You can add one or more pieces of extra data using the various <code>putExtra()</code> methods.</p>
+<p>It’s important that you define your <code>Intent</code> to be as <code>specific</code> as possible.</p>
+<h3 id="Verify-There-is-an-App-to-Receive-the-Intent"><a href="#Verify-There-is-an-App-to-Receive-the-Intent" class="headerlink" title="Verify There is an App to Receive the Intent"></a>Verify There is an App to Receive the Intent</h3><p>上面讲到了如何定义Intent,下面来说接收Intent的事情</p>
+<p><code>queryIntentActivities()</code></p>
+<h3 id="Start-an-Activity-with-the-Intent"><a href="#Start-an-Activity-with-the-Intent" class="headerlink" title="Start an Activity with the Intent"></a>Start an Activity with the Intent</h3><p>Once you have <code>created</code> your Intent and set the <code>extra</code> info, call <code>startActivity()</code> to send it to the system. If the system identifies more than one activity that can handle the intent, it displays a dialog for the user to select which app to use, as shown in figure. If there is only <code>one</code> activity that handles the intent, the system immediately <code>starts</code> it.</p>
+<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/Android38intents-choice.png" alt=""></p>
+<p><code>startActivity(intent);</code></p>
+<h3 id="Show-an-App-Chooser"><a href="#Show-an-App-Chooser" class="headerlink" title="Show an App Chooser"></a>Show an App Chooser</h3><p>To show the chooser, create an Intent using <code>createChooser()</code> and pass it to <code>startActivity()</code></p>
+<h3 id="Getting-a-Result-from-an-Activity"><a href="#Getting-a-Result-from-an-Activity" class="headerlink" title="Getting a Result from an Activity"></a>Getting a Result from an Activity</h3><p><code>startActivityForResult()</code> (instead of <code>startActivity()</code>)</p>
+<h3 id="Start-the-Activity"><a href="#Start-the-Activity" class="headerlink" title="Start the Activity"></a>Start the Activity</h3><p><code>startActivityForResult()</code></p>
+<h3 id="Receive-the-Result"><a href="#Receive-the-Result" class="headerlink" title="Receive the Result"></a>Receive the Result</h3><p><code>onActivityResult()</code></p>
+<p><strong>3*个参数见官方教程</strong></p>
+<h2 id="Allowing-Other-Apps-to-Start-Your-Activity"><a href="#Allowing-Other-Apps-to-Start-Your-Activity" class="headerlink" title="Allowing Other Apps to Start Your Activity"></a>Allowing Other Apps to Start Your Activity</h2><p>To allow other apps to start your activity, you need to add an <code>intent-filter element</code> in your manifest file for the corresponding <code>activity element</code>.</p>
+<h3 id="Add-an-Intent-Filter"><a href="#Add-an-Intent-Filter" class="headerlink" title="Add an Intent Filter"></a>Add an Intent Filter</h3><p>几种intent filter:<code>Action</code>,<code>Data</code>,<code>Category</code></p>
+<p>both the <code>ACTION_SEND</code> and <code>ACTION_SENDTO</code> intents.</p>
+<p><code>Note</code>: In order to receive implicit intents, you must include the <code>CATEGORY_DEFAULT</code> category in the intent filter. The methods <code>startActivity()</code> and <code>startActivityForResult()</code> treat all intents as if they declared the CATEGORY_DEFAULT category. If you do not declare it in your intent filter, no implicit intents will resolve to your activity.</p>
+<h3 id="Handle-the-Intent-in-Your-Activity"><a href="#Handle-the-Intent-in-Your-Activity" class="headerlink" title="Handle the Intent in Your Activity"></a>Handle the Intent in Your Activity</h3><p>As your activity starts, call <code>getIntent()</code> to retrieve the Intent that started the activity.</p>
+<h3 id="Return-a-Result"><a href="#Return-a-Result" class="headerlink" title="Return a Result"></a>Return a Result</h3><p><code>setResult()</code></p>
+<p><code>finish()</code></p>
+<h2 id="API-SDK的组成"><a href="#API-SDK的组成" class="headerlink" title="API,SDK的组成"></a>API,SDK的组成</h2><h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础"></a>Java基础</h2><h2 id="Java-Web"><a href="#Java-Web" class="headerlink" title="Java Web"></a>Java Web</h2><p><a href="https://www.raywenderlich.com/78576/android-tutorial-for-beginners-part-2" target="_blank" rel="external">raywenderlich android教程</a></p>
+<p><a href="http://blog.csdn.net/mynameishuangshuai/article/details/51332790" target="_blank" rel="external">最全面的AndroidStudio配置指南总结-包括护眼模式</a></p>
+<h2 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list"></a>To do list</h2><h3 id="等在博客中会显示为其他字符。可能受markdown语法的影响。"><a href="#等在博客中会显示为其他字符。可能受markdown语法的影响。" class="headerlink" title="等在博客中会显示为其他字符。可能受markdown语法的影响。"></a><relativelayout>等在博客中会显示为其他字符。可能受markdown语法的影响。</relativelayout></h3>
+            
+          </span>
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/05/04/AndroidDeveloperTraining1/" itemprop="url">
                   AndroidDeveloperTraining1
                 </a>
@@ -1769,288 +2045,6 @@ and the repository exists.</code></p>
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/24/git-github使用指南1/" itemprop="url">
-                  git&github使用指南1
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            发表于
-            <time itemprop="dateCreated" datetime="2016-04-24T14:05:23+08:00" content="2016-04-24">
-              2016-04-24
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp; 分类于
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/Technology/" itemprop="url" rel="index">
-                    <span itemprop="name">Technology</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body">
-
-      
-      
-
-      
-        
-          <span itemprop="articleBody">
-            
-              <h1 id="缘起"><a href="#缘起" class="headerlink" title="缘起"></a>缘起</h1><p>鉴于git,github已经成为程序员的基础技能,有必要总结一下。本文主要参考了<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a> ,该文深入浅出,很适合入门。</p>
-<h1 id="git的安装和使用"><a href="#git的安装和使用" class="headerlink" title="git的安装和使用"></a>git的安装和使用</h1><h2 id="1-安装"><a href="#1-安装" class="headerlink" title="1.安装"></a>1.安装</h2><p>MAC下采用brew安装。具体方法请参考<a href="http://brew.sh/" target="_blank" rel="external">homebrew的文档</a>。</p>
-<p><code>brew install git</code></p>
-<p>查看git软件包安装的详细路径和安装内容:</p>
-<p><code>brew list git</code></p>
-<h2 id="2-设置"><a href="#2-设置" class="headerlink" title="2.设置"></a>2.设置</h2><p>安装之后需要设置邮箱和用户名:</p>
-<p><code>git config --global user.name &quot;Your Name&quot;</code></p>
-<p><code>git config --global user.email &quot;email@example.com&quot;</code></p>
-<p>因为Git是分布式版本控制系统，所以，每个机器都必须自报家门：你的名字和Email地址。</p>
-<h1 id="git的原理"><a href="#git的原理" class="headerlink" title="git的原理"></a>git的原理</h1><h2 id="1-集中式VS分布式"><a href="#1-集中式VS分布式" class="headerlink" title="1.集中式VS分布式"></a>1.集中式VS分布式</h2><p>集中式版本控制系统有一个“中央服务器”,用户端都是它的离线拷贝。所有提交最终都要汇总到中央服务器，并且可以影响全部离线拷贝。它必须在联网的时候才能够正常工作。</p>
-<p>分布式版本控制系统根本没有“中央服务器”，每个人的电脑上都是一个完整的版本库，这样，你工作的时候，就不需要联网了，因为版本库就在你自己的电脑上。所有代码库能够自由的从一个用户端分发到另一个用户端。分布式版本控制系统通常也有一台充当“中央服务器”的电脑(但其实也相当于一个用户端,不是像集中式版本控制系统那样的意义)，但这个服务器的作用仅仅是用来方便“交换”大家的修改，没有它大家也一样干活，只是交换修改不方便而已。</p>
-<h2 id="2-工作区-暂存区-版本库"><a href="#2-工作区-暂存区-版本库" class="headerlink" title="2.工作区,暂存区,版本库"></a>2.工作区,暂存区,版本库</h2><p>在 Git 中，存在三个工作区域：</p>
-<p>工作区(working directory)</p>
-<p>暂存区(staging area)</p>
-<p>版本库(git directory)</p>
-<p>同时，文件有三种状态：</p>
-<p>已提交（committed）：该文件被安全地保存在了本地数据库</p>
-<p>已修改（modified）：修改了某个文件，但还没有保存</p>
-<p>已暂存（staged）：把已修改的文件放下下次保存的清单中</p>
-<p>下图说明了这三个区域和文件状态的差别：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github1.png" alt=""></p>
-<p>所以，在Git中，你可以暂存部分文件，甚至一个文件中的部分内容，你的本地可以将版本管理玩的非常复杂和有趣。 这也是为什么 SVN 用户最常疑问 Git 为什么每次都要TM的 git add 才能再 commit 的原因</p>
-<h1 id="git的命令"><a href="#git的命令" class="headerlink" title="git的命令"></a>git的命令</h1><h2 id="1-git-init"><a href="#1-git-init" class="headerlink" title="1.git init"></a>1.git init</h2><p>在本地创建版本库(仓库,repository)。</p>
-<h2 id="1-1-在你的工作目录新建learngit文件夹。"><a href="#1-1-在你的工作目录新建learngit文件夹。" class="headerlink" title="1.1 在你的工作目录新建learngit文件夹。"></a>1.1 在你的工作目录新建learngit文件夹。</h2><p><code>mdkir learngit</code></p>
-<p><code>cd learngit</code></p>
-<p><code>pwd</code>   //用于显示当前目录</p>
-<h2 id="1-2-通过git-init命令把这个目录变成Git可以管理的仓库"><a href="#1-2-通过git-init命令把这个目录变成Git可以管理的仓库" class="headerlink" title="1.2 通过git init命令把这个目录变成Git可以管理的仓库"></a>1.2 通过git init命令把这个目录变成Git可以管理的仓库</h2><p><code>git init</code></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github2.png" alt=""></p>
-<p>这样就把git仓库建立好了。并且是一个初始化了的空的repository。可以看到learngit中有个空的.git文件夹。这个目录默认是隐藏的，用<code>ls -ah</code>命令就可以看见。</p>
-<p>在learngit目录下新建readme.txt文件,内容如下:</p>
-<p><code>Git is a version control system.</code></p>
-<p><code>Git is free software.</code></p>
-<h2 id="1-3-git-add"><a href="#1-3-git-add" class="headerlink" title="1.3 git add"></a>1.3 git add</h2><p>用命令git add告诉Git，把文件添加到仓库:</p>
-<p><code>git add readme.txt</code></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github3.png" alt=""></p>
-<p>没有任何显示。这是对的。</p>
-<h2 id="1-4-git-commit"><a href="#1-4-git-commit" class="headerlink" title="1.4 git commit"></a>1.4 git commit</h2><p>用命令git commit告诉Git，把文件提交到仓库：</p>
-<p><code>git commit -m &#39;wrote a readme file&#39;</code></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github4.png" alt=""></p>
-<p>git commit命令执行成功后会告诉你，1个文件被改动（我们新添加的readme.txt文件），插入了两行内容（readme.txt有两行内容）。</p>
-<p>为什么Git添加文件需要add，commit一共两步呢？因为commit可以一次提交很多文件，所以你可以多次add不同的文件,如</p>
-<p><code>git add file1.txt</code></p>
-<p><code>git add file2.txt file3.txt</code></p>
-<p><code>git commit -m &#39;add 3 files&#39;</code></p>
-<p>在你新建readme.txt时,它是在工作区(working directory),用git add命令是把它提交到暂存区(staging area),也就是说需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
-<p>然后用git commit提交更改，实际上就是把暂存区的所有内容提交到当前分支(master)。</p>
-<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个master分支，所以，现在，git commit就是往master分支上提交更改。</p>
-<h2 id="1-5-git-status"><a href="#1-5-git-status" class="headerlink" title="1.5 git status"></a>1.5 git status</h2><p>运行<code>git status</code>命令看看结果：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github5.png" alt=""></p>
-<p>说明暂存区的代码已经提交完了。没有需要提交的了。</p>
-<p>修改readme.txt文件，改成如下内容：</p>
-<p><code>Git is a distributed version control system.</code></p>
-<p><code>Git is free software.</code></p>
-<p>运行<code>git status</code>命令看看结果：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github6.png" alt=""></p>
-<p>readme.txt被修改过了(工作区(working directory))，但还没有准备提交的修改(由于还没有git add,暂存区(staging area)内还没有要提交的修改)。</p>
-<p>从上面可以看出暂存区的作用。同时通过<code>git status</code>命令我们可以清楚的知道我们修改的代码到底到哪了。是在工作区?还是在暂存区?还是在本地仓库?</p>
-<h2 id="1-6-git-diff"><a href="#1-6-git-diff" class="headerlink" title="1.6 git diff"></a>1.6 git diff</h2><p>虽然Git告诉我们readme.txt被修改了，但如果能看看具体修改了什么内容(这是在工作区的操作)，自然是很好的。<code>git diff</code>命令能满足这个需求。</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github7.png" alt=""></p>
-<p>git diff顾名思义就是查看difference，显示的格式正是Unix通用的diff格式，可以从上面的命令输出看到，我们在第一行添加了一个“distributed”单词。</p>
-<p>知道了对readme.txt作了什么修改后，再把它提交到仓库就放心多了，</p>
-<p>提交新文件:<code>git add readme.txt</code>,这个命令没有任何输出</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github8.png" alt=""></p>
-<p>通过<code>git status</code>命令我们可以看出将要被提交的修改包括readme.txt，下一步，就可以放心地提交了：</p>
-<p>提交修改:<code>git commit -m &quot;add distributed&quot;</code></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github9.png" alt=""></p>
-<p><code>git diff readme.txt</code>命令是没有输出的。原因是<code>git diff</code>是针对工作区的。通过<code>git status</code>命令我们可以看出(暂存区)当前没有需要提交的修改，而且工作目录是干净（working directory clean）的。所以<code>git diff</code>命令没输出。</p>
-<h2 id="1-7-git-log"><a href="#1-7-git-log" class="headerlink" title="1.7 git log"></a>1.7 git log</h2><p>现在，你已经学会了修改文件，然后把修改提交到Git版本库，现在，再练习一次，修改readme.txt文件如下：</p>
-<p><code>Git is a distributed version control system.</code></p>
-<p><code>Git is free software distributed under the GPL.</code></p>
-<p>然后尝试提交：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github10.png" alt=""></p>
-<p>像这样，你不断对文件进行修改，然后不断提交修改到版本库里，每当你觉得文件修改到一定程度的时候，就可以“保存一个快照”，这个快照在Git中被称为commit。一旦你把文件改乱了，或者误删了文件，还可以从最近的一个commit恢复，然后继续工作，而不是把几个月的工作成果全部丢失。</p>
-<p>现在，我们回顾一下readme.txt文件一共有几个版本被提交到Git仓库里了：</p>
-<p>版本1：<code>wrote a readme file</code></p>
-<p><code>Git is a version control system.</code></p>
-<p><code>Git is free software.</code></p>
-<p>版本2：<code>add distributed</code></p>
-<p><code>Git is a distributed version control system.</code></p>
-<p><code>Git is free software.</code></p>
-<p>版本3：<code>append GPL</code></p>
-<p><code>Git is a distributed version control system.</code></p>
-<p><code>Git is free software distributed under the GPL.</code></p>
-<p>当然了，在实际工作中，我们脑子里怎么可能记得一个几千行的文件每次都改了什么内容，不然要版本控制系统干什么。版本控制系统肯定有某个命令可以告诉我们历史记录，在Git中，我们用<code>git log</code>命令查看：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github11.png" alt=""></p>
-<p>从上面看到了你在前面配置的邮箱和用户名。因为分布式管理系统是端对端的。不同的用户端需要自报姓名。</p>
-<p>git log命令显示从最近到最远的提交日志，我们可以看到3次提交，最近的一次是<code>append GPL</code>，上一次是<code>add distributed</code>，最早的一次是<code>wrote a readme file</code>。<br>如果嫌输出信息太多，看得眼花缭乱的，可以试试加上<code>--pretty=oneline</code>参数：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github12.png" alt=""></p>
-<p>你看到的一大串类似3628164…882e1e0的是commit id（版本号），和SVN不一样，Git的commit id不是1，2，3……递增的数字，而是一个SHA1计算出来的一个非常大的数字，用十六进制表示，而且你看到的commit id和我的肯定不一样，以你自己的为准。为什么commit id需要用这么一大串数字表示呢？因为Git是分布式的版本控制系统，后面我们还要研究多人在同一个版本库里工作，如果大家都用1，2，3……作为版本号，那肯定就冲突了。</p>
-<p>每提交一个新版本，实际上Git就会把它们自动串成一条时间线。如果使用可视化工具查看Git历史，就可以更清楚地看到提交历史的时间线：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github13.jpeg" alt=""></p>
-<p><code>git log</code>主要是针对<code>git commit</code>和版本库(git directory)的。</p>
-<h2 id="1-8-git-reset"><a href="#1-8-git-reset" class="headerlink" title="1.8 git reset"></a>1.8 git reset</h2><p>准备把readme.txt回退到上一个版本，也就是“add distributed”的那个版本，怎么做呢？</p>
-<p>首先，Git必须知道当前版本是哪个版本，在Git中，用<code>HEAD</code>表示当前版本，也就是最新的提交3628164…882e1e0（注意我的提交ID和你的肯定不一样），上一个版本就是HEAD^，上上一个版本就是HEAD^^，当然往上100个版本写100个^比较容易数不过来，所以写成HEAD~100。</p>
-<p>现在，我们要把当前版本<code>“append GPL”</code>回退到上一个版本<code>“add distributed”</code>，就可以使用<code>git reset</code>命令：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github14.png" alt=""></p>
-<p><code>hard</code>参数下面会用到。跟一个commit id。<code>HEAD</code>现在指向了上一个版本 <code>add distributed</code>,上面还给出了它的commit id:20fcdfe。对照一下前面的commit id,确实是这样的。</p>
-<p>看看readme.txt的内容确实是版本<code>add distributed</code></p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github15.png" alt=""></p>
-<p>用<code>git log</code>再看看现在版本库的状态：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github16.png" alt=""></p>
-<p>最新的那个版本append GPL已经看不到了！</p>
-<p>只要上面的命令行窗口还没有被关掉，你就可以顺着往上找啊找啊，找到那个<code>append GPL</code>的commit id是3628164…，于是就可以指定回到未来的某个版本：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github17.png" alt=""></p>
-<p>前面<code>git reset --hard HEAD^</code>可以恢复到上一版本。因为HEAD指向当前版本。但这种表示方法只能表示上面的版本。如果是时间线上下一个版本。只能用你的commit id了。版本号(commit id)没必要写全，前7位就可以了.</p>
-<p>Git的版本回退速度非常快，因为Git在内部有个指向当前版本的<code>HEAD</code>指针，当你回退版本的时候，Git仅仅是把<code>HEAD</code>从指向<code>append GPL</code>。</p>
-<h2 id="1-9-git-reflog"><a href="#1-9-git-reflog" class="headerlink" title="1.9 git reflog"></a>1.9 git reflog</h2><p>找不到版本号(commit id)怎么办?当你用<code>git reset --hard HEAD^</code>回退到<code>add distributed</code>版本时，再想恢复到<code>append GPL</code>，就必须找到<code>append GPL</code>的commit id。Git提供了一个命令<code>git reflog</code>用来记录你的每一次命令：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github18.png" alt=""></p>
-<p>第三行显示<code>append GPL</code>的commit id是d9c87a6,这样就可以回到<code>append GPL</code>版本了。</p>
-<p><code>HEAD</code>指向的版本就是当前版本，因此，Git允许我们在版本的历史之间穿梭，使用命令<code>git reset --hard commit_id</code>。</p>
-<p>穿梭前，用<code>git log</code>可以查看提交历史，以便确定要回退到哪个版本。</p>
-<p>要重返未来，用<code>git reflog</code>查看命令历史，以便确定要回到未来的哪个版本。</p>
-<h2 id="1-10-管理修改"><a href="#1-10-管理修改" class="headerlink" title="1.10 管理修改"></a>1.10 管理修改</h2><p>现在把readme.txt由</p>
-<p><code>Git is a distributed version control system.</code></p>
-<p><code>Git is free software distributed under the GPL.</code></p>
-<p><code>Git has a mutable index called stage.</code></p>
-<p><code>Git tracks changes.</code></p>
-<p>改为:</p>
-<p><code>Git is a distributed version control system.</code></p>
-<p><code>Git is free software distributed under the GPL.</code></p>
-<p><code>Git has a mutable index called stage.</code></p>
-<p><code>Git tracks changes of files.</code></p>
-<p>假设有下面的操作流程:<br>第一次修改-&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git commit</code></p>
-<p>当你用git add命令后，在工作区的第一次修改被放入暂存区，准备提交，但是，在工作区的第二次修改并没有放入暂存区，所以，git commit只负责把暂存区的修改提交了，也就是第一次的修改被提交了，第二次的修改不会被提交。</p>
-<p>提交后，用<code>git diff HEAD -- readme.txt</code>(中间要有空格,<code>git diff</code>本来就针对工作区,所以用<code>git diff</code>,<code>git diff HEAD</code>都可以)命令可以查看工作区和版本库里面最新版本的区别。可以看到第二次修改确实没有被提交。</p>
-<p>下面的流程可以提交第二次修改(方法不止一种,但需要在commit之前把第二次修改add到暂存区):<br>第一次修改 -&gt; <code>git add</code> -&gt; 第二次修改 -&gt; <code>git add</code> -&gt; <code>git commit</code></p>
-<p>所以,每次修改，如果不add到暂存区，那就不会加入到commit中。</p>
-<h2 id="1-11-撤销修改-git-checkout-file"><a href="#1-11-撤销修改-git-checkout-file" class="headerlink" title="1.11 撤销修改(git checkout -- file)"></a>1.11 撤销修改(<code>git checkout -- file</code>)</h2><p>这个命令主要针对下面的应用场景:</p>
-<p>工作区修改了文件(还没有add到暂存区),发现修改的有错误,想纠正它。这时候用<code>git status</code>查看的话,git会提示你用<code>git add</code>把它提交到暂存区或者用<code>git checkout -- file</code>撤销你刚才的修改。总的来说,<code>git checkout -- file</code>针对工作区的文件修改。即<code>git checkout -- file</code>可以丢弃工作区的修改。</p>
-<p>当然,你也可以手动修改文件,把它手动恢复到上一个版本的状态。</p>
-<p>延续1.10的修改,用<code>git status</code>查看:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github19.png" alt=""></p>
-<p>会提示你有一次对工作区文件readme.txt的修改(modified)没有提交到暂存区(modified, not staged for commit)。</p>
-<p>会有下面2种场景:</p>
-<p>(1)一种是readme.txt自修改后还没有被放到暂存区，现在，撤销修改就回到和版本库(commit)一模一样的状态；<br>比如上图的情况:已经commit到版本库一次,又修改了一次(modified),但是还没有放到暂存区(not staged)<br>这种情况下用<code>git checkout -- file</code>可以丢弃工作区的修改。</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github20.png" alt=""></p>
-<p>现在就撤销了工作去的修改,返回到了版本库的状态。</p>
-<p>(2)另一种情况就是readme.txt已经添加到暂存区后，又作了修改，现在，撤销修改就回到添加到暂存区后的状态。</p>
-<p>现在依然把readme.txt由</p>
-<p><code>Git is a distributed version control system.</code></p>
-<p><code>Git is free software distributed under the GPL.</code></p>
-<p><code>Git has a mutable index called stage.</code></p>
-<p><code>Git tracks changes.</code></p>
-<p>改为:</p>
-<p><code>Git is a distributed version control system.</code></p>
-<p><code>Git is free software distributed under the GPL.</code></p>
-<p><code>Git has a mutable index called stage.</code></p>
-<p><code>Git tracks changes of files.</code></p>
-<p><code>git add -- readme.txt</code>之后再修改为:</p>
-<p><code>Git is a distributed version control system.</code></p>
-<p><code>Git is free software distributed under the GPL.</code></p>
-<p><code>Git has a mutable index called stage.</code></p>
-<p><code>Git tracks changes.</code></p>
-<p> 然后再<code>git checkout -- readme.txt</code>,恢复成了add时候的状态。<br><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github22.png" alt=""></p>
-<h2 id="1-12-git-reset-HEAD-file"><a href="#1-12-git-reset-HEAD-file" class="headerlink" title="1.12 git reset HEAD file"></a>1.12 git reset HEAD file</h2><p>撤销修改</p>
-<p>把暂存区的修改撤销掉（unstage），重新放回工作区：</p>
-<p>git reset命令既可以回退版本，也可以把暂存区的修改回退到工作区。当我们用HEAD时，表示最新的版本。</p>
-<p>reset命令不仅可用于版本库,还可以用于暂存区。</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github23.png" alt=""></p>
-<p>(1)丢弃工作区的修改:</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github24.png" alt=""></p>
-<p>BW:如果想撤销刚才的撤销怎么办?git log貌似只能查询commit的id。对于add和modified好像没办法。</p>
-<p>(2)现在，假设你不但改错了东西，还从暂存区提交到了版本库，怎么办呢？还记得版本回退一节吗？可以回退到上一个版本。不过，这是有条件的，就是你还没有把自己的本地版本库推送到远程。</p>
-<h2 id="1-13-git-rm"><a href="#1-13-git-rm" class="headerlink" title="1.13 git rm"></a>1.13 git rm</h2><p>删除文件</p>
-<p>在git中,删除也是一个修改操作，我们实战一下，先添加一个新文件test.txt到Git并且提交：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github25.png" alt=""></p>
-<p>一般情况下，你通常直接在文件管理器中把没用的文件删了，或者用rm命令删了,这个时候，Git知道你删除了文件，因此，工作区和版本库就不一致了，git status命令会立刻告诉你哪些文件被删除了：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github26.png" alt=""></p>
-<p>下面就有2种情况:</p>
-<p>(1)一是确实要从版本库中删除该文件，那就用命令<code>git rm</code>删掉，并且<code>git commit</code>：</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github27.png" alt=""></p>
-<p>现在，文件就从版本库中被删除了。</p>
-<p>即使你不手动删除工作区的test.txt,仅仅是git rm版本库的test.txt,则工作区的test.txt也讲会被删除。</p>
-<p>(2)另一种情况是删错了，因为版本库里还有呢，所以可以很轻松地把误删的文件恢复到最新版本</p>
-<p>由于(1)中删除了test.txt,现在再重来一遍,新建test.txt</p>
-<p><img src="http://7xpy7l.com1.z0.glb.clouddn.com/git%26github28.png" alt=""></p>
-<p>注意上面第三步不是<code>git rm test.txt</code>,而是’rm test.txt’,前者会同时删除版本库和工作区的文件。后者只会删除工作区文件。如果用前者,你后来的<code>git checkout</code>就没用了。因为它也是按照版本库恢复工作区的文件。既然版本库的文件都被你删除了。那么也恢复不了了。</p>
-<p>小结</p>
-<p>命令<code>git rm</code>用于删除一个文件。如果一个文件已经被提交到版本库，那么你永远不用担心误删，但是要小心，你只能恢复文件到最新版本，你会丢失最近一次提交后你修改的内容(它依然版本库的内容恢复工作区的文件)。</p>
-<h2 id="1-14-远程仓库"><a href="#1-14-远程仓库" class="headerlink" title="1.14 远程仓库"></a>1.14 远程仓库</h2><p>我们已经掌握了如何在Git仓库里对一个文件进行时光穿梭，你再也不用担心文件备份或者丢失的问题了。这些功能在SVN里早就有了。</p>
-<p>如果只是在一个仓库里管理文件历史，Git和SVN真没啥区别。</p>
-<p>Git是分布式版本控制系统，同一个Git仓库，可以分布到不同的机器上。怎么分布呢？最早，肯定只有一台机器有一个原始版本库，此后，别的机器可以“克隆”这个原始版本库，而且每台机器的版本库其实都是一样的，并没有主次之分。</p>
-<p>至少需要两台机器才能玩远程库。其实一台电脑上也是可以克隆多个版本库的，只要不在同一个目录下。但一般不建议这样玩。没有意义,硬盘挂掉了全都没了。所以也不折腾在一台电脑上怎么克隆多个仓库。</p>
-<p>实际情况往往是这样，找一台电脑充当服务器的角色，每天24小时开机，其他每个人都从这个“服务器”仓库克隆一份到自己的电脑上，并且各自把各自的提交推送到服务器仓库里，也从服务器仓库中拉取别人的提交。</p>
-<p>也就是说:虽然是分布式的软件,但仍然需要一个服务器。</p>
-<p>你可以自己搭建一台运行Git的服务器，不过现阶段，为了学Git先搭个服务器绝对是小题大作。</p>
-<p>还可以用现成的:<a href="https://github.com/" target="_blank" rel="external">Github</a>,这个网站就是提供Git仓库托管服务的，所以，只要注册一个GitHub账号，就可以免费获得Git远程仓库。</p>
-<h1 id="reference"><a href="#reference" class="headerlink" title="reference:"></a>reference:</h1><h3 id="GitHub-漫游指南"><a href="#GitHub-漫游指南" class="headerlink" title="GitHub 漫游指南"></a><a href="http://github.phodal.com/" target="_blank" rel="external">GitHub 漫游指南</a></h3><h3 id="廖雪峰的Git教程"><a href="#廖雪峰的Git教程" class="headerlink" title="廖雪峰的Git教程"></a><a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖雪峰的Git教程</a></h3><h3 id="常用-Git-命令清单"><a href="#常用-Git-命令清单" class="headerlink" title="常用 Git 命令清单"></a><a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a></h3><h3 id="git-recipes"><a href="#git-recipes" class="headerlink" title="git-recipes"></a><a href="https://github.com/geeeeeeeeek/git-recipes/wiki" target="_blank" rel="external">git-recipes</a></h3><h3 id="图解git"><a href="#图解git" class="headerlink" title="图解git"></a><a href="https://marklodato.github.io/visual-git-guide/index-zh-cn.html" target="_blank" rel="external">图解git</a></h3><h3 id="猴子都能懂的Git入门"><a href="#猴子都能懂的Git入门" class="headerlink" title="猴子都能懂的Git入门"></a><a href="http://backlogtool.com/git-guide/cn/intro/intro1_1.html" target="_blank" rel="external">猴子都能懂的Git入门</a></h3><h3 id="《走进git时代系列一》-你该怎么玩"><a href="#《走进git时代系列一》-你该怎么玩" class="headerlink" title="《走进git时代系列一》 你该怎么玩"></a><a href="https://yq.aliyun.com/articles/5843?spm=5176.blog6046.yqblogcon1.9.y0q4MC" target="_blank" rel="external">《走进git时代系列一》 你该怎么玩</a></h3><h3 id="Pro-Git-v2-中文版"><a href="#Pro-Git-v2-中文版" class="headerlink" title="Pro Git v2 中文版"></a><a href="http://wiki.jikexueyuan.com/project/pro-git-two/distributed-workflow.html" target="_blank" rel="external">Pro Git v2 中文版</a></h3><h3 id="Git的官方网站"><a href="#Git的官方网站" class="headerlink" title="Git的官方网站"></a><a href="http://git-scm.com" target="_blank" rel="external">Git的官方网站</a></h3><h1 id="To-do-list"><a href="#To-do-list" class="headerlink" title="To do list:"></a>To do list:</h1><h3 id="gitlab-coding"><a href="#gitlab-coding" class="headerlink" title="gitlab,coding"></a>gitlab,coding</h3><h3 id="git-flow-gitlab-flow-github-flow"><a href="#git-flow-gitlab-flow-github-flow" class="headerlink" title="git flow,gitlab flow,github flow"></a>git flow,gitlab flow,github flow</h3><h3 id="Git与协作"><a href="#Git与协作" class="headerlink" title="Git与协作"></a>Git与协作</h3>
-            
-          </span>
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -2097,7 +2091,7 @@ and the repository exists.</code></p>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -2111,7 +2105,7 @@ and the repository exists.</code></p>
 
           <div class="site-state-item site-state-tags">
             <a href="/tags">
-              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-count">10</span>
               <span class="site-state-item-name">标签</span>
               </a>
           </div>
