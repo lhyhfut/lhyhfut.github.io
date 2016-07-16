@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-06-30T16:14:25.000Z</updated>
+  <updated>2016-07-16T08:32:05.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,132 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sublime使用小结</title>
+    <link href="http://yoursite.com/2016/07/16/sublime%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/"/>
+    <id>http://yoursite.com/2016/07/16/sublime使用小结/</id>
+    <published>2016-07-16T01:33:18.000Z</published>
+    <updated>2016-07-16T08:32:05.000Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;下载-安装&quot;&gt;&lt;a href=&quot;#下载-安装&quot; class=&quot;headerlink&quot; title=&quot;下载,安装&quot;&gt;&lt;/a&gt;下载,安装&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.sublimetext.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;sublime官网&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;插件&quot;&gt;&lt;a href=&quot;#插件&quot; class=&quot;headerlink&quot; title=&quot;插件&quot;&gt;&lt;/a&gt;插件&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://packagecontrol.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;插件集合&lt;/a&gt;  &lt;/p&gt;
+&lt;p&gt;1.package control&lt;/p&gt;
+&lt;p&gt;(1)通过快捷键 ctrl+` 或者菜单（View &amp;gt; Show Console）&lt;br&gt;打开控制台，然后粘贴下列的 Python 代码&lt;/p&gt;
+&lt;p&gt;import urllib.request,os,hashlib; h = ‘7183a2d3e96f11eeadd761d777e62404’ + ‘e330c659d4bb41d3bdf022e94cab3cd0’; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( ‘&lt;a href=&quot;http://sublime.wbond.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sublime.wbond.net/&lt;/a&gt;‘ + pf.replace(‘ ‘, ‘%20’)).read(); dh = hashlib.sha256(by).hexdigest(); print(‘Error validating download (got %s instead of %s), please try manual install’ % (dh, h)) if dh != h else open(os.path.join( ipp, pf), ‘wb’ ).write(by)&lt;/p&gt;
+&lt;p&gt;另外提供Sublime text 2的Package Control的安装代码:&lt;/p&gt;
+&lt;p&gt;import urllib2,os,hashlib; h = ‘7183a2d3e96f11eeadd761d777e62404’ + ‘e330c659d4bb41d3bdf022e94cab3cd0’; pf = ‘Package Control.sublime-package’; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) if not os.path.exists(ipp) else None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler()) ); by = urllib2.urlopen( ‘&lt;a href=&quot;http://sublime.wbond.net/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://sublime.wbond.net/&lt;/a&gt;‘ + pf.replace(‘ ‘, ‘%20’)).read(); dh = hashlib.sha256(by).hexdigest(); open( os.path.join( ipp, pf), ‘wb’ ).write(by) if dh == h else None; print(‘Error validating download (got %s instead of %s), please try manual install’ % (dh, h) if dh != h else ‘Please restart Sublime Text to finish installation’)&lt;/p&gt;
+&lt;p&gt;(2)手动安装&lt;/p&gt;
+&lt;p&gt;a.点击Preferences &amp;gt; Browse Packages&lt;/p&gt;
+&lt;p&gt;b.上面会打开一个文件夹,在其中找到Installed Packages文件夹(如果没找到,在父击级目录中找)&lt;/p&gt;
+&lt;p&gt;c.在&lt;a href=&quot;https://packagecontrol.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;插件集合&lt;/a&gt;上下载&lt;code&gt;Control.sublime-package&lt;/code&gt;,然后拷贝到Installed Packages文件夹&lt;/p&gt;
+&lt;p&gt;d.重启sublime&lt;/p&gt;
+&lt;p&gt;(3)如果在preferences-package settings中看到package control这一项,则表明安装成功&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注:&lt;/strong&gt;&lt;br&gt;(1)有时候ctrl+` 打不开控制台,可能会与其他的快捷键冲突,这是可以在Preferences -&amp;gt; Key Bindings – Default中修改:&lt;/p&gt;
+&lt;p&gt;{ “keys”: [“ctrl+backquote”], “command”: “show_panel”, “args”: {“panel”: “console”, “toggle”: true} }&lt;/p&gt;
+&lt;p&gt;把&lt;code&gt;ctrl+backquote&lt;/code&gt;修改为其他的快捷键就行了。&lt;/p&gt;
+&lt;p&gt;(2)Installed Packages和Packages文件夹&lt;/p&gt;
+&lt;p&gt;只有单一文件（插件名.sublime-package）的插件，被放在了Installed Packages目录中，包含有多个文件的安装包插件（比如ConvertToUTF8，IMESupport），被放在了Packages 目录中。&lt;/p&gt;
+&lt;p&gt;2.使用package control安装插件&lt;/p&gt;
+&lt;p&gt;ctrl + shift + p调出命令面板&lt;/p&gt;
+&lt;p&gt;输入install调出install package回车&lt;/p&gt;
+&lt;p&gt;输入插件。&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注:&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;(1)已经安装的插件是不会显示在install package列表中的,但会出现在remove package列表中。&lt;/p&gt;
+&lt;p&gt;(2)除了可以在install package列表中搜索,也可以在&lt;a href=&quot;https://packagecontrol.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;插件集合&lt;/a&gt;上搜索。&lt;/p&gt;
+&lt;p&gt;(3)输入remove package则可以卸载package&lt;/p&gt;
+&lt;p&gt;(4)关闭自动更新提示&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;preferences-settings User&lt;/code&gt;中最后添加&lt;code&gt;&amp;quot;update_check&amp;quot;: false&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;3.Theme – Soda&lt;/p&gt;
+&lt;p&gt;在&lt;code&gt;Installed Packages&lt;/code&gt;文件夹中有&lt;code&gt;Theme - Soda.sublime-package&lt;/code&gt;,在&lt;code&gt;preferences-settings User&lt;/code&gt;里面添加&lt;code&gt;”theme”:” Soda Dark.sublime-theme”&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;4.Emmet&lt;/p&gt;
+&lt;p&gt;安装后,新建一个html文件，输入html:5，tab键,会得到格式化的模板。&lt;/p&gt;
+&lt;p&gt;5.HTML-CSS-JS Prettify&lt;/p&gt;
+&lt;p&gt;安装之后在&lt;code&gt;preferences-package settings-HTML-CSS-JS Prettify-set-node-path&lt;/code&gt;中设置你的node路径。&lt;/p&gt;
+&lt;p&gt;windows及MAC中都是用Nvm安装的。&lt;/p&gt;
+&lt;p&gt;windows中可以设置为&lt;code&gt;C:/Program Files/nodejs/node.exe&lt;/code&gt;或&lt;code&gt;C:/Users/liuhongyu/AppData/Roaming/nvm/v6.0.0/node.exe&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;mac中为:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/Users/liuhongyu/.nvm/versions/node/v6.0.0/bin/node&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;注:&lt;/strong&gt; 为斜杠而非反斜杠。&lt;/p&gt;
+&lt;p&gt;6.ColorPicker&lt;/p&gt;
+&lt;p&gt;而在 Sublime Text 中，你可以使用内置的颜色选择器。安装完成后，只要按下Ctrl / Cmd + Shift + C 快捷键。&lt;/p&gt;
+&lt;p&gt;7.GBK to UTF8&lt;/p&gt;
+&lt;p&gt;这个在package control中没有搜到,在&lt;a href=&quot;https://packagecontrol.io/中搜索到了`ConvertToUTF8`,再在package&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;https://packagecontrol.io/中搜索到了`ConvertToUTF8`,再在package&lt;/a&gt; control中搜索ConvertToUTF8,重启，在file菜单中多了&lt;code&gt;reopen with encoding&lt;/code&gt;及&lt;code&gt;reload with encoding&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;8.Alignment&lt;/p&gt;
+&lt;p&gt;这里仍然有个快捷键冲突问题。默认的快捷键是super+ctrl+a，但这个与QQ的截屏快捷键冲突了。&lt;/p&gt;
+&lt;p&gt;在全局的&lt;code&gt;preferences-key bindings-user&lt;/code&gt;中添加&lt;code&gt;{ &amp;quot;keys&amp;quot;: [&amp;quot;super+ctrl+b&amp;quot;], &amp;quot;command&amp;quot;: &amp;quot;alignment&amp;quot; },&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;也可以在插件的&lt;code&gt;key bindings-Default&lt;/code&gt;中把这个删除。&lt;/p&gt;
+&lt;p&gt;9.Sublime Terminal&lt;/p&gt;
+&lt;p&gt;这个插件可以让你在Sublime中直接使用终端打开你的项目文件夹，并支持使用快捷键。&lt;/p&gt;
+&lt;p&gt;10.JsFormat&lt;/p&gt;
+&lt;p&gt;有时从网上扒了人家的js代码来学习学习，打开发现被压缩了，这时就可以用JsFormat插件格式化js代码，恢复未压缩时候的排版，挺给力的。按快捷键Ctrl+Alt+F即可格式化当前的js文件了。&lt;/p&gt;
+&lt;p&gt;11.Ctags插件&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.smslit.top/develop/2015/11/14/macSTctags-Develop.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mac OSX下Sublime Text配置使用Ctags实现代码跳转&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;以前用homebrew安装过ctags,在&lt;code&gt;/usr/local/bin/ctags和/usr/local/Cellar/ctags/5.8/bin/ctags&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;将插件下的&lt;code&gt;Settings-Default&lt;/code&gt;中的内容全选复制到&lt;code&gt;Settings-User&lt;/code&gt;文件中，并将其中&lt;code&gt;Command&lt;/code&gt;的值设置为：&lt;code&gt;/usr/local/bin/ctags&lt;/code&gt;,不行。设置为&lt;code&gt;/usr/local/Cellar/ctags/5.8/bin/ctags&lt;/code&gt;则可以，前者只是一个快捷方式&lt;/p&gt;
+&lt;p&gt;打开工程——右键-ctags-rebuild tags,会生成ctags相关的索引目录。鼠标左键点击函数名,ctrl+t,ctrl+t就可以查找函数定义了。&lt;/p&gt;
+&lt;p&gt;在mac中测试可以,但是在win10中总是测试失败，不知道是不是ctags.exe在win10中不兼容。&lt;/p&gt;
+&lt;p&gt;12.SublimeTmpl 快速生成文件模板&lt;/p&gt;
+&lt;p&gt;ctrl+alt+h html&lt;br&gt;ctrl+alt+j javascript&lt;br&gt;ctrl+alt+c css&lt;br&gt;ctrl+alt+p php&lt;br&gt;ctrl+alt+r ruby&lt;br&gt;ctrl+alt+shift+p python&lt;/p&gt;
+&lt;p&gt;13.SublimeREPL&lt;/p&gt;
+&lt;p&gt;这可能是对程序员很有用的插件。SublimeREPL 允许你在 Sublime Text 中运行各种语言（NodeJS ， Python，Ruby， Scala 和 Haskell 等等）。&lt;/p&gt;
+&lt;p&gt;这只适合通过官方方式或者homebrew等方式安装的软件。因为SublimeREPL只能照到&lt;code&gt;usr/bin&lt;/code&gt;及&lt;code&gt;usr/local/bin&lt;/code&gt;。由于node是用Nvm安装的,找不到相应的node可执行文件。需要指定node目录。这在上面设置&lt;code&gt;HTML-CSS-JS Prettify&lt;/code&gt;插件时已经说明过。python等是通过官方方式安装的,所以安装SublimeREPL之后就可以通过&lt;code&gt;ctrl + b&lt;/code&gt;来运行python文件。但node不行。需要专门指定其可执行文件的路径。&lt;/p&gt;
+&lt;p&gt;14.编译node&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Tools -&amp;gt; Build System -&amp;gt; New Build System&lt;/code&gt;,保存为&lt;code&gt;Node.sublime-build&lt;/code&gt;,它会被保存在&lt;code&gt;/Users/liuhongyu/Library/Application\ Support/Sublime\ Text\ 3/Packages/User&lt;/code&gt;里。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;quot;cmd&amp;quot;: [&amp;quot;/Users/liuhongyu/.nvm/versions/node/v4.0.0/bin/node&amp;quot;, &amp;quot;--use-strict&amp;quot;, &amp;quot;--harmony&amp;quot;, &amp;quot;$file&amp;quot;],
+    &amp;quot;selector&amp;quot;: &amp;quot;source.js&amp;quot;,&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;就可以了&lt;/p&gt;
+&lt;p&gt;.bash_profile中环境变量的设置。&lt;/p&gt;
+&lt;p&gt;export PATH=”/Users/liuhongyu/.nvm/versions/node/v4.0.0/bin”:$PATH&lt;/p&gt;
+&lt;p&gt;不能带” “&lt;/p&gt;
+&lt;p&gt;export PATH=/Users/liuhongyu/.nvm/versions/node/v4.0.0/bin:$PATH&lt;/p&gt;
+&lt;p&gt;是可以的。&lt;/p&gt;
+&lt;p&gt;15.DocBlockr&lt;/p&gt;
+&lt;p&gt;安装之后在代码段前面输入/** 然后再输入TAB/Enter键就能够得到响应的注释。&lt;/p&gt;
+&lt;p&gt;16.InsertDate&lt;/p&gt;
+&lt;p&gt;插入日期。&lt;/p&gt;
+&lt;p&gt;17.jsFormat&lt;/p&gt;
+&lt;p&gt;格式化js代码。比如有时候下载的是压缩的JS文件如jquery.min.js。用jsFormat格式化之后就能够以正常格式阅读代码了。&lt;/p&gt;
+&lt;p&gt;18.Terminal&lt;/p&gt;
+&lt;p&gt;当你想要打开在当前文件所在的目录的终端。但默认的&lt;code&gt;Ctrl / Cmd + Shift + T&lt;/code&gt;会有快捷键冲突。删除在插件的&lt;code&gt;Key Bindings – Default&lt;/code&gt;中的快捷键设置,在全局的&lt;code&gt;Key Bindings – User&lt;/code&gt;中添加自定义的快捷键。&lt;/p&gt;
+&lt;p&gt;19.Git&lt;/p&gt;
+&lt;p&gt;这只是一个sublime git插件。&lt;/p&gt;
+&lt;p&gt;Git软件的安装与配置,与github的连接需要另外独立进行。这个插件只是把终端中的git命令操作转移到了&lt;code&gt;ctrl + shift + p&lt;/code&gt;中,并且还不支持命令参数。&lt;/p&gt;
+&lt;p&gt;注:如果是手动安装Git插件到&lt;code&gt;Packages&lt;/code&gt;目录,需要在Usr目录下手动创建&lt;code&gt;Git.sublime-settings&lt;/code&gt;并在其中设置Git的路径。如windows下&lt;code&gt;&amp;quot;git_command&amp;quot;: &amp;quot;D:/IDE/Git/cmd/git.exe&amp;quot;&lt;/code&gt;,sublime及其插件只能找到&lt;code&gt;usr/bin&lt;/code&gt;及&lt;code&gt;usr/local/bin&lt;/code&gt;,如果没有安装在这里,就需要另外指定路径。&lt;/p&gt;
+&lt;p&gt;20.GitGutter&lt;/p&gt;
+&lt;p&gt;21.BracketHighlighter&lt;/p&gt;
+&lt;p&gt;让[], (), {}, “”, ‘’, #!xml &lt;tag&gt;&lt;/tag&gt;这些块语句高亮显示。括号高亮匹配。针对代码很长超过一屏时这个就很好用了。&lt;/p&gt;
+&lt;p&gt;22.can i use&lt;/p&gt;
+&lt;p&gt;查询 CSS 属性兼容性&lt;/p&gt;
+&lt;p&gt;23.AutoFileName&lt;/p&gt;
+&lt;p&gt;24.SublimeLinter&lt;/p&gt;
+&lt;p&gt;代码校验插件，支持多种语言&lt;/p&gt;
+&lt;p&gt;25.SFTP&lt;/p&gt;
+&lt;p&gt;26.LiveReload&lt;/p&gt;
+&lt;p&gt;27.jquery&lt;/p&gt;
+&lt;p&gt;jquery函数补全&lt;/p&gt;
+&lt;p&gt;28.auto-save&lt;/p&gt;
+&lt;p&gt;29.YUI Compressor&lt;/p&gt;
+&lt;p&gt;压缩js,css文件的&lt;/p&gt;
+&lt;p&gt;30.PHPTidy&lt;/p&gt;
+&lt;p&gt;ST2有,ST3没有&lt;/p&gt;
+&lt;p&gt;31.Clipboard-history&lt;/p&gt;
+&lt;p&gt;ST2有,ST3没有&lt;/p&gt;
+&lt;p&gt;32.Tag&lt;/p&gt;
+&lt;h1 id=&quot;References&quot;&gt;&lt;a href=&quot;#References&quot; class=&quot;headerlink&quot; title=&quot;References&quot;&gt;&lt;/a&gt;References&lt;/h1&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;下载-安装&quot;&gt;&lt;a href=&quot;#下载-安装&quot; class=&quot;headerlink&quot; title=&quot;下载,安装&quot;&gt;&lt;/a&gt;下载,安装&lt;/h1&gt;&lt;p&gt;&lt;a href=&quot;https://www.sublimetext.com/&quot; target=&quot;_blank&quot; rel
+    
+    </summary>
+    
+      <category term="Technology" scheme="http://yoursite.com/categories/Technology/"/>
+    
+    
+      <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
   
   <entry>
     <title>javascript小结-3</title>
@@ -51,7 +177,7 @@
     <link href="http://yoursite.com/2016/06/30/%E9%9D%A2%E8%AF%95%E9%A2%98-%E5%89%8D%E7%AB%AF/"/>
     <id>http://yoursite.com/2016/06/30/面试题-前端/</id>
     <published>2016-06-30T14:48:16.000Z</published>
-    <updated>2016-06-30T16:02:55.000Z</updated>
+    <updated>2016-07-13T09:36:38.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;知识点&quot;&gt;&lt;a href=&quot;#知识点&quot; class=&quot;headerlink&quot; title=&quot;知识点&quot;&gt;&lt;/a&gt;知识点&lt;/h1&gt;&lt;h1 id=&quot;资源&quot;&gt;&lt;a href=&quot;#资源&quot; class=&quot;headerlink&quot; title=&quot;资源&quot;&gt;&lt;/a&gt;资源&lt;/h1&gt;&lt;p&gt;1.&lt;a href=&quot;https://github.com/markyun/My-blog/tree/master/Front-end-Developer-Questions/Questions-and-Answers&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;前端开发面试题&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;2.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwNjI5MTYyMw==&amp;amp;mid=401123752&amp;amp;idx=1&amp;amp;sn=06f51d5b97eff32453a4d4f1f470fc86&amp;amp;scene=1&amp;amp;srcid=0630crXOLAN1aUD2Z9Z7Ts9F&amp;amp;key=77421cf58af4a65365b167293befc93d92f7ffd02d23ffd09759ce0eace874a1aab092e8e8aa9f4b3e2fe57208e314a6&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;2015 前端[JS]工程师必知必会&lt;/a&gt;   &lt;/p&gt;
@@ -78,8 +204,6 @@
 &lt;p&gt;23.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzA3NTUzNjk1OA==&amp;amp;mid=403749438&amp;amp;idx=1&amp;amp;sn=2d5fb4ddc6f550fcf74747f0a0f745c7&amp;amp;scene=1&amp;amp;srcid=0630VMUP2QxhBYY0IufOQYNd&amp;amp;key=77421cf58af4a65373e5a56044d7e792caafa7e43270820a0fd4404845772da6a5adbb231bf5142635b4b429c81d6b61&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;当你输入一个网址，实际会发生什么&lt;/a&gt;    &lt;/p&gt;
 &lt;p&gt;24.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzA3NTUzNjk1OA==&amp;amp;mid=403522084&amp;amp;idx=1&amp;amp;sn=17c9fa1ae460420e1d38f78c6966bab2&amp;amp;scene=1&amp;amp;srcid=0630rEtZz2A67v4PCkgvE18P&amp;amp;key=77421cf58af4a653bd39ccf779777ca06d160dbc8c1111d8eb4a1fb28ac4a0554ec85445d33fa5cc39a9612940163c07&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;正则表达式30分钟入门教程&lt;/a&gt;    &lt;/p&gt;
 &lt;p&gt;25.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzA3NTUzNjk1OA==&amp;amp;mid=403404808&amp;amp;idx=1&amp;amp;sn=26e512d6b276b0c9b1dcb5dabac16b8a&amp;amp;scene=1&amp;amp;srcid=0630VNjncbTcirEjtLOzitxN&amp;amp;key=77421cf58af4a653667cafe1c3e10c3da6f0325e37e3a93a14b4b3a97636e68815106e967fe4a0312d305de3df8e2a9c&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;全栈工程师眼中的HTTP&lt;/a&gt;   &lt;/p&gt;
-&lt;p&gt;26.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzA3NTUzNjk1OA==&amp;amp;mid=403462848&amp;amp;idx=1&amp;amp;sn=0893e342d09f91ecea47dcdfe27f3490&amp;amp;scene=1&amp;amp;srcid=0630AC19bOQZ0GThXLsWHXZh&amp;amp;key=77421cf58af4a6536ee056af2f574e09c177906d2a0deece4d9017d40e3e7eea8af7060c199228dab39361b29c083833&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;大型网站架构技术一览&lt;/a&gt;   &lt;/p&gt;
-&lt;p&gt;27.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzA3NTUzNjk1OA==&amp;amp;mid=403356855&amp;amp;idx=1&amp;amp;sn=f239d2ca5c7ab1a2f7fd154012250ff7&amp;amp;scene=1&amp;amp;srcid=0630zC5ogIqeWNdOh3fEyrSn&amp;amp;key=77421cf58af4a6533037bc0e4a70187ad04979ec8933c0ebd40f19094feb32af81aa05c0aa20e025aeaf259cc3230968&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;中小型网站架构分析及优化&lt;/a&gt;   &lt;/p&gt;
 &lt;p&gt;28.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzA3NTUzNjk1OA==&amp;amp;mid=2651560085&amp;amp;idx=1&amp;amp;sn=ee952aaa415b605336b9ab27c7eff50e&amp;amp;scene=1&amp;amp;srcid=06307B6H0aoeoKn8JxgFBpIX&amp;amp;key=77421cf58af4a65307a03cb37feb8e5c8214ef432733c67ba35800eb715de0eb4d59bee22610fb55c684aa55216d179e&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;HTTP/2 你需要知道的知识&lt;/a&gt;    &lt;/p&gt;
 &lt;p&gt;29.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzA3NTUzNjk1OA==&amp;amp;mid=2651560078&amp;amp;idx=1&amp;amp;sn=620ba5fae267b87038debe2dd9cc5c6d&amp;amp;scene=1&amp;amp;srcid=0630vXfDLH9A8deWc4zZtirR&amp;amp;key=77421cf58af4a65372607b0945f6da80edc62e8974979803d5f3ed719d0462072fea73e44c3626a40bb27f7456f9c3f3&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;解析Nginx负载均衡&lt;/a&gt;    &lt;/p&gt;
 &lt;p&gt;30.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzA3NTUzNjk1OA==&amp;amp;mid=2651560093&amp;amp;idx=1&amp;amp;sn=b326418257b40e0d6531613406c81c76&amp;amp;scene=1&amp;amp;srcid=0630AA3tR5xyteekw6qXxd0n&amp;amp;key=77421cf58af4a65327a0c6211ef5bdb0731ce1f9ac9cf7758b127ccc4b73bc31d099d61e4deccc4be13ca657ef6f1ca2&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;简述 OAuth 2.0 的运作流程&lt;/a&gt;   &lt;/p&gt;
@@ -140,7 +264,7 @@
 &lt;p&gt;85.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwNDcyNjI3OA==&amp;amp;mid=2650838965&amp;amp;idx=1&amp;amp;sn=07c324e5168d2d2ac99e6a28a36fb293&amp;amp;scene=1&amp;amp;srcid=06302GuSn7r78z9GALxwkeXj&amp;amp;key=77421cf58af4a6530c47001cdb0aa5b2dd605f9a676463f8740141d41a271fdb89f824b83a0fa1880b208ea98e494956&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;结合个人经历总结的前端入门方法&lt;/a&gt;    &lt;/p&gt;
 &lt;p&gt;86.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwNDcyNjI3OA==&amp;amp;mid=2650839006&amp;amp;idx=1&amp;amp;sn=998e1e88c9fe53b4c9dfb24e8fcf1cf3&amp;amp;scene=1&amp;amp;srcid=0630XnhN53PaQZtMAQpVr2G5&amp;amp;key=77421cf58af4a653a147945c17cc03708cae0c778fa59583642961df6e485b43a867c72cd371c8076bddd6db0d53ca42&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JavaScript数组操作&lt;/a&gt;   &lt;/p&gt;
 &lt;p&gt;87.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwNDcyNjI3OA==&amp;amp;mid=2650839038&amp;amp;idx=1&amp;amp;sn=4c00fadc386247bce0a9d23092330bd4&amp;amp;scene=1&amp;amp;srcid=0630GO5wXdfQGmpx2xXFCuPJ&amp;amp;key=77421cf58af4a653fcc0af4a0fd8e054f6199742cc9e6738d912926524e2d8eafc3c17a5e56b2f3593326009b3599bc7&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;你知道吗？Web的26项基本概念和技术&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;88.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwNDcyNjI3OA==&amp;amp;mid=2650839035&amp;amp;idx=1&amp;amp;sn=7dc93eb4687ab6d6c124d0bdf683ae90&amp;amp;scene=1&amp;amp;srcid=06307F1SZ92QHFXohPBsY9Jk&amp;amp;key=77421cf58af4a6539e9a04411fe013c345a9dc3bb91bcf36e4d583eae2d064feb6515c4b5ede511411627e196b648128&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;总结Web应用中常用的各种Cache&lt;/a&gt;    &lt;/p&gt;
+&lt;p&gt;88.&lt;a href=&quot;https://mp.weixin.qq.com/s?__biz=MzAwNDcyNjI3OA==&amp;amp;mid=2650839035&amp;amp;idx=1&amp;amp;sn=7dc93eb4687ab6d6c124d0bdf683ae90&amp;amp;scene=1&amp;amp;srcid=06307F1SZ92QHFXohPBsY9Jk&amp;amp;key=77421cf58af4a6539e9a04411fe013c345a9dc3bb91bcf36e4d583eae2d064feb6515c4b5ede511411627e196b648128&amp;amp;ascene=0&amp;amp;uin=MjE2MTU5NjQyMA%3D%3D&amp;amp;devicetype=iMac+MacBookPro8%2C1+OSX+OSX+10.11.5+build&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;总结Web应用中常用的各种Cache&lt;/a&gt;&lt;br&gt;&lt;a href=&quot;https://zhuanlan.zhihu.com/p/21408753?hmsr=toutiao.io&amp;amp;utm_medium=toutiao.io&amp;amp;utm_source=toutiao.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;前端同学大福利，最全的面试题目整理&lt;/a&gt;   &lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -673,7 +797,7 @@ console.log(obj.name);//1
     <link href="http://yoursite.com/2016/06/21/node%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/"/>
     <id>http://yoursite.com/2016/06/21/node环境搭建/</id>
     <published>2016-06-21T04:33:01.000Z</published>
-    <updated>2016-06-21T10:47:16.000Z</updated>
+    <updated>2016-07-16T01:31:46.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;写在前面&quot;&gt;&lt;a href=&quot;#写在前面&quot; class=&quot;headerlink&quot; title=&quot;写在前面&quot;&gt;&lt;/a&gt;写在前面&lt;/h1&gt;&lt;p&gt;以前都是把学习记录写在word上。按照时间线的记录方式不利于回顾。现在按照主题线写在博客上。现在把以前学习node的一些在这里总结一下。具体的项目分析见另外一篇文章《nodeclub源码分析》。&lt;/p&gt;
 &lt;h2 id=&quot;开发环境&quot;&gt;&lt;a href=&quot;#开发环境&quot; class=&quot;headerlink&quot; title=&quot;开发环境&quot;&gt;&lt;/a&gt;开发环境&lt;/h2&gt;&lt;p&gt;MACOS + webstorm&lt;/p&gt;
@@ -688,17 +812,28 @@ console.log(obj.name);//1
 &lt;p&gt;&lt;code&gt;sudo rm -rf /usr/local/include/node&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;主要集中在&lt;code&gt;/usr/local/&lt;/code&gt;及username/liuhongyu/目录，也即用户目录和系统目录&lt;br&gt;比如/usr/local/bin下的n可执行文件。在这些文件夹中把与node有关的删除就行了。&lt;/p&gt;
 &lt;p&gt;还有就是在&lt;code&gt;username/.bash_profile&lt;/code&gt;中删除环境变量。&lt;/p&gt;
-&lt;h2 id=&quot;nvm安装&quot;&gt;&lt;a href=&quot;#nvm安装&quot; class=&quot;headerlink&quot; title=&quot;nvm安装&quot;&gt;&lt;/a&gt;nvm安装&lt;/h2&gt;&lt;p&gt;另一种方式是采用nvm安装。nvm和nodejs等是独立的。这样方便管理一些。并且用nvm安装node可以多个版本共存,切换起来也比较方便。在&lt;a href=&quot;https://github.com/creationix/nvm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nvm官方github&lt;/a&gt;上有详细的安装过程。在MAC上也可以使用homebrew来安装,便于nvm自身的版本管理。不过我当初还是按照github上的说明安装的。&lt;/p&gt;
+&lt;h2 id=&quot;nvm安装&quot;&gt;&lt;a href=&quot;#nvm安装&quot; class=&quot;headerlink&quot; title=&quot;nvm安装&quot;&gt;&lt;/a&gt;nvm安装&lt;/h2&gt;&lt;p&gt;另一种方式是采用nvm安装。nvm和nodejs等是独立的。这样方便管理一些。并且用nvm安装node可以多个版本共存,切换起来也比较方便。&lt;/p&gt;
+&lt;h3 id=&quot;mac下的Nvm&quot;&gt;&lt;a href=&quot;#mac下的Nvm&quot; class=&quot;headerlink&quot; title=&quot;mac下的Nvm&quot;&gt;&lt;/a&gt;mac下的Nvm&lt;/h3&gt;&lt;p&gt;在&lt;a href=&quot;https://github.com/creationix/nvm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nvm官方github&lt;/a&gt;上有详细的安装过程。在MAC上也可以使用homebrew来安装,便于nvm自身的版本管理。不过我当初还是按照github上的说明安装的。&lt;/p&gt;
 &lt;p&gt;MAC下nvm比较方便,但并不支持windows,不过nvm的作者推荐了windows上用&lt;code&gt;nvm-windows&lt;/code&gt;。是由另外一个人完成的。&lt;/p&gt;
 &lt;p&gt;当你&lt;code&gt;curl https://raw.githubusercontent.com/creationix/nvm/v0.17.2/install.sh | bash&lt;/code&gt;的时候&lt;br&gt;会自动增加环境变量到.bash_profile中,也就是说不需要你手动添加环境变量了。&lt;/p&gt;
-&lt;h3 id=&quot;nvm的卸载&quot;&gt;&lt;a href=&quot;#nvm的卸载&quot; class=&quot;headerlink&quot; title=&quot;nvm的卸载&quot;&gt;&lt;/a&gt;nvm的卸载&lt;/h3&gt;&lt;p&gt;直接删除就行了。终端命令:&lt;code&gt;rm -rf ~/.nvm&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;nvm安装node-js&quot;&gt;&lt;a href=&quot;#nvm安装node-js&quot; class=&quot;headerlink&quot; title=&quot;nvm安装node.js&quot;&gt;&lt;/a&gt;nvm安装node.js&lt;/h3&gt;&lt;p&gt;终端输入&lt;code&gt;nvm&lt;/code&gt;,会弹出一些文字说明,会告诉你一些nvm命令的使用方法。&lt;/p&gt;
+&lt;h3 id=&quot;windows下的Nvm&quot;&gt;&lt;a href=&quot;#windows下的Nvm&quot; class=&quot;headerlink&quot; title=&quot;windows下的Nvm&quot;&gt;&lt;/a&gt;windows下的Nvm&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/coreybutler/nvm-windows&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Nvm的windows版本&lt;/a&gt;&lt;br&gt;nvm在&lt;code&gt;C:\Users\liuhongyu\AppData\Roaming\nvm&lt;/code&gt;下，这是个隐藏文件夹,但安装的时候会在&lt;code&gt;C:\Program Files\nodejs&lt;/code&gt;中也创建nodejs可执行文件的快捷方式。并把这个目录添加到系统的环境变量中。&lt;/p&gt;
+&lt;h2 id=&quot;Nvm的升级&quot;&gt;&lt;a href=&quot;#Nvm的升级&quot; class=&quot;headerlink&quot; title=&quot;Nvm的升级&quot;&gt;&lt;/a&gt;Nvm的升级&lt;/h2&gt;&lt;p&gt;用Nvm管理node版本比较方便。Nvm自身的升级也比较方便。nvm的自身升级对node没有影响。但降级对node有影响。&lt;/p&gt;
+&lt;h3 id=&quot;mac下的Nvm升级&quot;&gt;&lt;a href=&quot;#mac下的Nvm升级&quot; class=&quot;headerlink&quot; title=&quot;mac下的Nvm升级&quot;&gt;&lt;/a&gt;mac下的Nvm升级&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://github.com/creationix/nvm&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;nvm官方github&lt;/a&gt;,第一次安装Nvm的时候需要考虑是否与官方方式安装的node冲突。第一次安装Nvm可以用curl,wget或git。&lt;/p&gt;
+&lt;p&gt;但升级的时候就只能用git手动升级了(也可能因为自己首次安装Nvm就采用git安装的方式,导致后来的升级也必须采用git)。&lt;/p&gt;
+&lt;p&gt;终端:&lt;/p&gt;
+&lt;p&gt;cd “$NVM_DIR” &amp;amp;&amp;amp; git fetch origin &amp;amp;&amp;amp; git checkout &lt;code&gt;git describe --abbrev=0 --tags&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;升级之后激活nvm:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;. &amp;quot;$NVM_DIR/nvm.sh&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;升级之后可以用&lt;code&gt;nvm --version&lt;/code&gt;查看是否升级到最新版本&lt;/p&gt;
+&lt;h3 id=&quot;windows下的Nvm升级&quot;&gt;&lt;a href=&quot;#windows下的Nvm升级&quot; class=&quot;headerlink&quot; title=&quot;windows下的Nvm升级&quot;&gt;&lt;/a&gt;windows下的Nvm升级&lt;/h3&gt;&lt;p&gt;在&lt;a href=&quot;https://github.com/coreybutler/nvm-windows/releases&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;windows下Nvm下载&lt;/a&gt;中下载&lt;code&gt;nvm-setup.zip&lt;/code&gt;就行了。&lt;/p&gt;
+&lt;p&gt;升级之后可以用&lt;code&gt;nvm -v&lt;/code&gt;查看是否升级到最新版本&lt;/p&gt;
+&lt;h2 id=&quot;nvm的卸载&quot;&gt;&lt;a href=&quot;#nvm的卸载&quot; class=&quot;headerlink&quot; title=&quot;nvm的卸载&quot;&gt;&lt;/a&gt;nvm的卸载&lt;/h2&gt;&lt;p&gt;直接删除就行了。终端命令:&lt;code&gt;rm -rf ~/.nvm&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;nvm安装node-js&quot;&gt;&lt;a href=&quot;#nvm安装node-js&quot; class=&quot;headerlink&quot; title=&quot;nvm安装node.js&quot;&gt;&lt;/a&gt;nvm安装node.js&lt;/h2&gt;&lt;p&gt;终端输入&lt;code&gt;nvm&lt;/code&gt;,会弹出一些文字说明,会告诉你一些nvm命令的使用方法。&lt;/p&gt;
 &lt;p&gt;如&lt;code&gt;nvm install  v0.12.0&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;node被安装到了&lt;code&gt;username/.nvm/versions/node/v0.12.0&lt;/code&gt;里面&lt;br&gt;并且也有npm:&lt;br&gt;&lt;code&gt;username/.nvm/versions/node/v0.12.0/lib/node_modules/npm&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;nvm卸载node&quot;&gt;&lt;a href=&quot;#nvm卸载node&quot; class=&quot;headerlink&quot; title=&quot;nvm卸载node&quot;&gt;&lt;/a&gt;nvm卸载node&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nvm uninstall &amp;lt;version&amp;gt;&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;nvm使用node&quot;&gt;&lt;a href=&quot;#nvm使用node&quot; class=&quot;headerlink&quot; title=&quot;nvm使用node&quot;&gt;&lt;/a&gt;nvm使用node&lt;/h3&gt;&lt;p&gt;&lt;code&gt;nvm current&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;nvm use 0.1.20&lt;/code&gt;&lt;/p&gt;
-&lt;h3 id=&quot;nvm自身升级&quot;&gt;&lt;a href=&quot;#nvm自身升级&quot; class=&quot;headerlink&quot; title=&quot;nvm自身升级&quot;&gt;&lt;/a&gt;nvm自身升级&lt;/h3&gt;&lt;p&gt;nvm的自身升级对node没有影响。但降级对node有影响&lt;/p&gt;
 &lt;h2 id=&quot;npm包管理器&quot;&gt;&lt;a href=&quot;#npm包管理器&quot; class=&quot;headerlink&quot; title=&quot;npm包管理器&quot;&gt;&lt;/a&gt;npm包管理器&lt;/h2&gt;&lt;p&gt;node的包都是由npm管理的。所以我们用nvm管理node(包括nvm自身),用npm管理node的包。npm安装包有2种方式:全局安装和本地安装。&lt;/p&gt;
 &lt;h3 id=&quot;全局安装&quot;&gt;&lt;a href=&quot;#全局安装&quot; class=&quot;headerlink&quot; title=&quot;全局安装&quot;&gt;&lt;/a&gt;全局安装&lt;/h3&gt;&lt;p&gt;安装敲命令的时候加上&lt;code&gt;-g&lt;/code&gt;,比如以安装&lt;code&gt;hexo&lt;/code&gt;为例:&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;sudo npm install hexo -g&lt;/code&gt;&lt;/p&gt;
@@ -1789,7 +1924,7 @@ compile &amp;apos;com.android.support:design:23.3.0&amp;apos;
     <link href="http://yoursite.com/2016/05/02/Nodeclub%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/"/>
     <id>http://yoursite.com/2016/05/02/Nodeclub源码分析/</id>
     <published>2016-05-02T09:36:51.000Z</published>
-    <updated>2016-06-21T13:50:07.000Z</updated>
+    <updated>2016-07-11T04:33:22.000Z</updated>
     
     <content type="html">&lt;h1 id=&quot;缘起&quot;&gt;&lt;a href=&quot;#缘起&quot; class=&quot;headerlink&quot; title=&quot;缘起&quot;&gt;&lt;/a&gt;缘起&lt;/h1&gt;&lt;h1 id=&quot;nodejs&quot;&gt;&lt;a href=&quot;#nodejs&quot; class=&quot;headerlink&quot; title=&quot;nodejs&quot;&gt;&lt;/a&gt;nodejs&lt;/h1&gt;&lt;p&gt;&lt;strong&gt; 这部分内容可以独立出来另外写一篇博客 &lt;/strong&gt;&lt;/p&gt;
 &lt;h2 id=&quot;安装nodejs&quot;&gt;&lt;a href=&quot;#安装nodejs&quot; class=&quot;headerlink&quot; title=&quot;安装nodejs&quot;&gt;&lt;/a&gt;安装nodejs&lt;/h2&gt;&lt;h3 id=&quot;安装nvm&quot;&gt;&lt;a href=&quot;#安装nvm&quot; class=&quot;headerlink&quot; title=&quot;安装nvm&quot;&gt;&lt;/a&gt;安装nvm&lt;/h3&gt;&lt;h3 id=&quot;安装node-npm&quot;&gt;&lt;a href=&quot;#安装node-npm&quot; class=&quot;headerlink&quot; title=&quot;安装node,npm&quot;&gt;&lt;/a&gt;安装node,npm&lt;/h3&gt;&lt;h1 id=&quot;express&quot;&gt;&lt;a href=&quot;#express&quot; class=&quot;headerlink&quot; title=&quot;express&quot;&gt;&lt;/a&gt;express&lt;/h1&gt;&lt;h2 id=&quot;express构建项目的2种方式&quot;&gt;&lt;a href=&quot;#express构建项目的2种方式&quot; class=&quot;headerlink&quot; title=&quot;express构建项目的2种方式&quot;&gt;&lt;/a&gt;express构建项目的2种方式&lt;/h2&gt;&lt;h1 id=&quot;mongodb&quot;&gt;&lt;a href=&quot;#mongodb&quot; class=&quot;headerlink&quot; title=&quot;mongodb&quot;&gt;&lt;/a&gt;mongodb&lt;/h1&gt;&lt;h1 id=&quot;mongoose&quot;&gt;&lt;a href=&quot;#mongoose&quot; class=&quot;headerlink&quot; title=&quot;mongoose&quot;&gt;&lt;/a&gt;mongoose&lt;/h1&gt;&lt;h1 id=&quot;redis&quot;&gt;&lt;a href=&quot;#redis&quot; class=&quot;headerlink&quot; title=&quot;redis&quot;&gt;&lt;/a&gt;redis&lt;/h1&gt;&lt;h1 id=&quot;angular-js&quot;&gt;&lt;a href=&quot;#angular-js&quot; class=&quot;headerlink&quot; title=&quot;angular.js&quot;&gt;&lt;/a&gt;angular.js&lt;/h1&gt;&lt;p&gt;上述的这些部分在《nodejs环境搭建》中。&lt;/p&gt;
@@ -1974,6 +2109,9 @@ return ep.emit(&amp;apos;error&amp;apos;, err);
 &lt;p&gt;callback(err);&lt;/p&gt;
 &lt;p&gt;})&lt;/p&gt;
 &lt;h3 id=&quot;消息&quot;&gt;&lt;a href=&quot;#消息&quot; class=&quot;headerlink&quot; title=&quot;消息&quot;&gt;&lt;/a&gt;消息&lt;/h3&gt;&lt;h3 id=&quot;测试&quot;&gt;&lt;a href=&quot;#测试&quot; class=&quot;headerlink&quot; title=&quot;测试&quot;&gt;&lt;/a&gt;测试&lt;/h3&gt;&lt;h2 id=&quot;Reference&quot;&gt;&lt;a href=&quot;#Reference&quot; class=&quot;headerlink&quot; title=&quot;Reference:&quot;&gt;&lt;/a&gt;Reference:&lt;/h2&gt;&lt;h3 id=&quot;N-blog&quot;&gt;&lt;a href=&quot;#N-blog&quot; class=&quot;headerlink&quot; title=&quot;N-blog&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://github.com/nswbmw/N-blog/wiki/_pages&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;N-blog&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;a href=&quot;https://cnodejs.org/topic/504b4924e2b84515770103dd&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mongoose学习参考文档——基础篇&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;http://www.nodeclass.com/api/mongoose.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Mongoose文档&lt;/a&gt;   &lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://docs.mongodb.com/manual/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mongodb官方文档&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;《mongodb权威指南》   &lt;/p&gt;
 &lt;h3 id=&quot;《nodejs实战》&quot;&gt;&lt;a href=&quot;#《nodejs实战》&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》&quot;&gt;&lt;/a&gt;《nodejs实战》&lt;/h3&gt;&lt;h3 id=&quot;《nodejs实战》第2季&quot;&gt;&lt;a href=&quot;#《nodejs实战》第2季&quot; class=&quot;headerlink&quot; title=&quot;《nodejs实战》第2季&quot;&gt;&lt;/a&gt;《nodejs实战》第2季&lt;/h3&gt;&lt;h3 id=&quot;《深入浅出nodejs》&quot;&gt;&lt;a href=&quot;#《深入浅出nodejs》&quot; class=&quot;headerlink&quot; title=&quot;《深入浅出nodejs》&quot;&gt;&lt;/a&gt;《深入浅出nodejs》&lt;/h3&gt;&lt;h3 id=&quot;《node与express开发》&quot;&gt;&lt;a href=&quot;#《node与express开发》&quot; class=&quot;headerlink&quot; title=&quot;《node与express开发》&quot;&gt;&lt;/a&gt;《node与express开发》&lt;/h3&gt;&lt;h2 id=&quot;To-do-list&quot;&gt;&lt;a href=&quot;#To-do-list&quot; class=&quot;headerlink&quot; title=&quot;To do list:&quot;&gt;&lt;/a&gt;To do list:&lt;/h2&gt;</content>
     
     <summary type="html">
@@ -2469,26 +2607,6 @@ and the repository exists.&lt;/code&gt;&lt;/p&gt;
     
     
       <category term="工具" scheme="http://yoursite.com/tags/%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>终端命令</title>
-    <link href="http://yoursite.com/2016/05/01/%E7%BB%88%E7%AB%AF%E5%91%BD%E4%BB%A4/"/>
-    <id>http://yoursite.com/2016/05/01/终端命令/</id>
-    <published>2016-05-01T03:33:52.000Z</published>
-    <updated>2016-05-01T03:35:04.000Z</updated>
-    
-    <content type="html">&lt;h1 id=&quot;MACOS&quot;&gt;&lt;a href=&quot;#MACOS&quot; class=&quot;headerlink&quot; title=&quot;MACOS&quot;&gt;&lt;/a&gt;MACOS&lt;/h1&gt;&lt;h2 id=&quot;mkdir&quot;&gt;&lt;a href=&quot;#mkdir&quot; class=&quot;headerlink&quot; title=&quot;mkdir&quot;&gt;&lt;/a&gt;mkdir&lt;/h2&gt;&lt;h2 id=&quot;cat&quot;&gt;&lt;a href=&quot;#cat&quot; class=&quot;headerlink&quot; title=&quot;cat&quot;&gt;&lt;/a&gt;cat&lt;/h2&gt;&lt;h2 id=&quot;ls&quot;&gt;&lt;a href=&quot;#ls&quot; class=&quot;headerlink&quot; title=&quot;ls&quot;&gt;&lt;/a&gt;ls&lt;/h2&gt;&lt;p&gt;#Windows&lt;/p&gt;
-&lt;p&gt;#linux(unbuntu)&lt;/p&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;h1 id=&quot;MACOS&quot;&gt;&lt;a href=&quot;#MACOS&quot; class=&quot;headerlink&quot; title=&quot;MACOS&quot;&gt;&lt;/a&gt;MACOS&lt;/h1&gt;&lt;h2 id=&quot;mkdir&quot;&gt;&lt;a href=&quot;#mkdir&quot; class=&quot;headerlink&quot; title=&quot;mkd
-    
-    </summary>
-    
     
   </entry>
   
